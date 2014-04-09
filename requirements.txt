@@ -8,6 +8,7 @@ MarkupSafe==0.19
 SQLAlchemy==0.9.4
 WTForms==1.0.5
 Werkzeug==0.9.4
+gunicorn==18.0
 itsdangerous==0.24
 pytz==2014.2
 speaklater==1.3
