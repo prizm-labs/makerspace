@@ -1,0 +1,149 @@
+{% extends '_base.html' %}
+
+{% set page_title = "Unify | Navigations" %}
+
+{% set breadcrumbs = True %}
+
+{% block main_content %}
+<!--=== Content Part ===-->
+<div class="container">
+    <div class="row">
+        {% include '_sidebar_nav_menu.html' %}
+
+        <!--Begin Content-->
+        <div class="col-md-9">
+            <div class="row">
+                <!--Pegination Left-->
+                <div class="col-md-6">
+                    <div class="tag-box tag-box-v1 text-justify">
+                        <h2>{{ _('Pegination Left') }}</h2>
+                        <p>{{ _('At nissimos ducimus voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident...') }}</p>
+                        <ul class="pagination">
+                            <li><a href="#">&laquo;</a></li>
+                            <li class="active"><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">&raquo;</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!--End Pegination Left-->
+
+                <!--Pegination Right-->
+                <div class="col-md-6">
+                    <div class="tag-box tag-box-v1 text-justify">
+                        <h2>{{ _('Pegination Right') }}</h2>
+                        <p>{{ _('At nissimos ducimus voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident...') }}</p>
+                        <div class="text-right">
+                            <ul class="pagination">
+                                <li><a href="#">&laquo;</a></li>
+                                <li><a href="#">1</a></li>
+                                <li class="active"><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">&raquo;</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!--End Pegination Right-->
+            </div>
+
+            <!--Pegination Centered-->
+            <div class="tag-box tag-box-v7 text-justify">
+                <h2>{{ _('Pegination Centered') }}</h2>
+                <p>{{ _('Dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpaid est blanditiis ducimus qui blanditiis praesentium praesentium..') }}</p>
+                <div class="text-center">
+                    <ul class="pagination">
+                        <li><a href="#">&laquo;</a></li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li class="active"><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#">&raquo;</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!--End Pegination Centered-->
+
+            <!--Pegination Sizing-->
+            <div class="alert alert-warning">
+                <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                <strong>{{ _('Pegination Sizing') }}</strong> {{ _('Fancy larger or smaller pagination?') }}<br />
+                {{ _('Add') }} <code>{{ _('.pagination-lg') }}</code> {{ _('or') }} <code>{{ _('.pagination-sm') }}</code> {{ _('for additional sizes.') }}
+            </div>
+            <div class="row pagination-no-space margin-bottom-40">
+                <div class="col-md-4">
+                    <ul class="pagination pagination-lg">
+                        <li class="disabled"><a href="#">&laquo;</a></li>
+                        <li class="active"><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">&raquo;</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <ul class="pagination">
+                        <li><a href="#">&laquo;</a></li>
+                        <li><a href="#">1</a></li>
+                        <li class="active"><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">&raquo;</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <ul class="pagination pagination-sm">
+                        <li><a href="#">&laquo;</a></li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li class="active"><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">&raquo;</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!--End Pegination Sizing-->
+
+            <!--Pager Examples-->
+            <div>
+                <div class="headline"><h2>{{ _('Pager Examples') }}</h2></div>
+                <p>{{ _('At nissimos ducimus voluptatum praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident suntin culpaid est blanditiis ducimucorrupti quos dolores ets quiblan...') }}</p>
+                <ul class="pager">
+                    <li class="previous"><a href="#">{{ _('&larr; Older') }}</a></li>
+                    <li class="next"><a href="#">{{ _('Newer &rarr;') }}</a></li>
+                </ul>
+
+                <hr>
+
+                <p>{{ _('Dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpaid est blanditiis ducimus qui blanditiis.') }}</p>
+                <ul class="pager">
+                <ul class="pager">
+                    <li><a href="#">{{ _('Previous') }}</a></li>
+                    <li><a href="#">{{ _('Next') }}</a></li>
+                </ul>
+                </ul>
+            </div>
+            <!--End Pager Examples-->
+        </div>
+        <!--End Content-->
+    </div>
+</div><!--/container-->
+<!--=== End Content Part ===-->
+{% endblock %}
+
+{% block js %}
+<!-- JS Implementing Plugins -->
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/flexslider/jquery.flexslider-min.js') }}"></script>
+<!-- JS Page Level -->
+<script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        App.init();
+        App.initSliders();
+    });
+</script>
+{% endblock %}

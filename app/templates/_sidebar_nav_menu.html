@@ -1,0 +1,14 @@
+        <!--Begin Sidebar Menu-->
+        <div class="col-md-3">
+            <ul class="list-group sidebar-nav-v1">
+                {% for item in sidebar_nav %}
+                <li class="list-group-item{% if url_for(item.endpoint) == request.script_root + request.path %} active{% endif %}">
+                    {%- if item.label %}
+                    <span class="badge {{ item.label_class }}">{{ item.label }}</span>
+                    {%- endif %}
+                    <a href="{{ url_for(item.endpoint) }}">{{ item.name }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <!--End Sidebar Menu-->

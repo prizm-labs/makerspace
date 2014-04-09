@@ -1,0 +1,134 @@
+{% extends '_base.html' %}
+
+{% set page_title = "Unify | Invoice" %}
+
+{% set breadcrumbs = True %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='plugins/flexslider/flexslider.css') }}" media="screen">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/pages/page_invoice.css') }}">
+{% endblock %}
+
+{% block main_content %}
+<!--=== Content Part ===-->
+<div class="container">
+    <!--Invoice Header-->
+    <div class="row invoice-header">
+        <div class="col-xs-6">
+            <img src="{{ url_for('static', filename='img/img.jpg') }}" alt="">
+            <!-- You also can use a title instead of image
+            <h1 class="pull-left">Product Invoice</h1>
+            -->
+        </div>
+        <div class="col-xs-6 invoice-numb">
+            {{ _('#123456789 / 20, October 2013') }}
+            <span>{{ _('Auiderer facilis consectetur') }}</span>
+        </div>
+    </div>
+    <!--End Invoice Header-->
+
+    <!--Invoice Detials-->
+    <div class="row invoice-info">
+        <div class="col-sm-6">
+            <div class="tag-box tag-box-v4">
+                <h2>{{ _('Client Information:') }}</h2>
+                <ul class="list-unstyled">
+                    <li><strong>{{ _('First Name:') }}</strong> {{ _('MR.JOHN') }}</li>
+                    <li><strong>{{ _('Last Name:') }}</strong> {{ _('NILSON') }}</li>
+                    <li><strong>{{ _('Country:') }}</strong> {{ _('CANADA') }}</li>
+                    <li><strong>{{ _('DOB:') }}</strong> {{ _('YYYY/MM/DD') }}</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="tag-box tag-box-v4">
+                <h2>{{ _('Peyment Details:') }}</h2>
+                <ul class="list-unstyled">
+                    <li><strong>{{ _('Bank Name:') }}</strong> {{ _('123456789012') }}</li>
+                    <li><strong>{{ _('Account Number:') }}</strong> {{ _('123456789012') }}</li>
+                    <li><strong>{{ _('SWIFT Code:') }}</strong> {{ _('123DEMO45DEMO') }}</li>
+                    <li><strong>{{ _('V.A.T Reg #:') }}</strong> {{ _('678DEMO45545') }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--End Invoice Detials-->
+
+    <!--Invoice Table-->
+    <div class="panel panel-grey margin-bottom-40">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{ _('Payment Invoice') }}</h3>
+        </div>
+        <div class="panel-body">
+            <p>{{ _('At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est') }}</p>
+        </div>
+        <table class="table table-striped invoice-table">
+            <thead>
+                <tr>
+                    <th>{{ _('#') }}</th>
+                    <th>{{ _('Item') }}</th>
+                    <th class="hidden-sm">{{ _('Description') }}</th>
+                    <th>{{ _('Quantity') }}</th>
+                    <th>{{ _('Unit Cost') }}</th>
+                    <th>{{ _('Total') }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in invoice.items %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ item.name }}</td>
+                    <td class="hidden-sm">{{ item.description }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>${{ item.unit_cost }}</td>
+                    <td>${{ item.total }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <!--End Invoice Table-->
+
+    <!--Invoice Footer-->
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="tag-box tag-box-v6">
+                <h2>{{ _('Fusce condimentum eleifend enim') }}</h2>
+                <p><strong>{{ _('Note:') }}</strong> {{ _('Atharum quidem rerum facexpe ditailis est et  distinctio lorem ipsum dolor sit amet consectetur adipiscing elit.') }}</p><br>
+                <address>
+                    {{ _('25, Lorem Lis Street, Orange') }} <br>
+                    {{ _('California, US') }} <br>
+                    {{ _('Phone: 800 123 3456') }} <br>
+                    {{ _('Fax: 800 123 3456') }} <br>
+                    {{ _('Email:') }} <a href="mailto:info@example.com">{{ _('info@example.com') }}</a>
+                </address>
+            </div>
+        </div>
+        <div class="col-sm-6 text-right">
+            <ul class="list-unstyled invoice-total-info">
+                <li><strong>{{ _('Sub - Total Amount:') }}</strong> ${{ "{0:.0f}".format(invoice.sub_total) }}</li>
+                <li><strong>{{ _('Discount:') }}</strong> {{ invoice.discount }}%</li>
+                <li><strong>{{ _('VAT') }} ({{ invoice.vat_percent }}%):</strong> ${{ "{0:.2f}".format(invoice.vat) }}</li>
+                <li><strong>{{ _('Grand Total:') }}</strong> $101486</li>
+            </ul>
+            <button class="btn-u" onclick="javascript:window.print();"><i class="icon-print"></i> {{ _('Print') }}</button>
+            <button class="btn-u">{{ _('Submit The Invoice') }}</button>
+        </div>
+    </div>
+    <!--End Invoice Footer-->
+</div><!--/container-->
+<!--=== End Content Part ===-->
+{% endblock %}
+
+{% block js %}
+<!-- JS Implementing Plugins -->
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/flexslider/jquery.flexslider-min.js') }}"></script>
+<!-- JS Page Level -->
+<script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        App.init();
+        App.initSliders();
+    });
+</script>
+{% endblock %}

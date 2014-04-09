@@ -1,0 +1,697 @@
+{% extends '_base.html' %}
+
+{% set page_title = "Unify | Welcome..." %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='plugins/flexslider/flexslider.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='plugins/bxslider/jquery.bxslider.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='plugins/revolution_slider/rs-plugin/css/settings.css') }}" media="screen">
+{% endblock %}
+
+{% block main_content %}
+<!--=== Slider ===-->
+<div class="fullwidthbanner-container">
+    <div class="fullwidthbanner">
+        <ul>
+            <!-- THE FIRST SLIDE -->
+            <li data-transition="3dcurtain-vertical" data-slotamount="10" data-masterspeed="300" data-thumb="{{ url_for('static', filename='img/sliders/revolution/thumbs/thumb1.jpg') }}">
+
+                <!-- THE MAIN IMAGE IN THE FIRST SLIDE -->
+                <img src="{{ url_for('static', filename='img/sliders/revolution/bg1.jpg') }}">
+
+                <div class="caption large_text sfb bg-black-opacity"
+                     data-x="176"
+                     data-y="12"
+                     data-speed="300"
+                     data-start="800"
+                     data-easing="easeOutExpo">
+                     {{ _('OVER') }}
+                     <span style="color: #ffcc00;">{{ _('1000') }}</span>
+                     {{ _('SATISFIED CUSTOMERS') }}
+                </div>
+
+                <div class="caption randomrotate"
+                     data-x="189"
+                     data-y="76"
+                     data-speed="600"
+                     data-start="1100"
+                     data-easing="easeOutExpo">
+                     <img class="img-border" src="{{ url_for('static', filename='img/sliders/revolution/p1.jpg') }}" alt="Image 2">
+                </div>
+
+                <div class="caption randomrotate"
+                     data-x="0"
+                     data-y="92"
+                     data-speed="600"
+                     data-start="1200"
+                     data-easing="easeOutExpo">
+                     <img class="img-border" src="{{ url_for('static', filename='img/sliders/revolution/p2.jpg') }}" alt="Image 3">
+                </div>
+
+                <div class="caption randomrotate"
+                     data-x="200"
+                     data-y="209"
+                     data-speed="600"
+                     data-start="1300"
+                     data-easing="easeOutExpo">
+                     <img class="img-border" src="{{ url_for('static', filename='img/sliders/revolution/p6.jpg') }}" alt="Image 4">
+                </div>
+
+                <div class="caption randomrotate"
+                     data-x="97"
+                     data-y="117"
+                     data-speed="300"
+                     data-start="1400"
+                     data-easing="easeOutExpo">
+                     <img class="img-border" src="{{ url_for('static', filename='img/sliders/revolution/p4.jpg') }}" alt="Image 5">
+                </div>
+
+                <div class="caption randomrotate"
+                     data-x="14"
+                     data-y="222"
+                     data-speed="600"
+                     data-start="1500"
+                     data-easing="easeOutExpo">
+                     <img class="img-border" src="{{ url_for('static', filename='img/sliders/revolution/p5.jpg') }}" alt="Image 6">
+                </div>
+
+                <div class="caption randomrotate"
+                     data-x="638"
+                     data-y="201"
+                     data-speed="300"
+                     data-start="1600"
+                     data-easing="easeOutExpo">
+                     <img class="img-border" src="{{ url_for('static', filename='img/sliders/revolution/p3.jpg') }}" alt="Image 7">
+                </div>
+
+                <div class="caption randomrotate"
+                     data-x="717"
+                     data-y="294"
+                     data-speed="300"
+                     data-start="1700"
+                     data-easing="easeOutExpo">
+                     <img class="img-border" src="{{ url_for('static', filename='img/sliders/revolution/p4.jpg') }}" alt="Image 8">
+                </div>
+
+                <div class="caption randomrotate"
+                     data-x="682"
+                     data-y="79"
+                     data-speed="300"
+                     data-start="1800"
+                     data-easing="easeOutExpo">
+                     <img class="img-border" src="{{ url_for('static', filename='img/sliders/revolution/p8.jpg') }}" alt="Image 9">
+                </div>
+
+                <div class="caption randomrotate"
+                     data-x="807"
+                     data-y="71"
+                     data-speed="300"
+                     data-start="1900"
+                     data-easing="easeOutExpo">
+                     <img class="img-border" src="{{ url_for('static', filename='img/sliders/revolution/p10.jpg') }}" alt="Image 10">
+                </div>
+
+                <div class="caption randomrotate"
+                     data-x="818"
+                     data-y="271"
+                     data-speed="300"
+                     data-start="2000"
+                     data-easing="easeOutExpo">
+                     <img class="img-border" src="{{ url_for('static', filename='img/sliders/revolution/p5.jpg') }}" alt="Image 11">
+                </div>
+
+                <div class="caption randomrotate"
+                     data-x="95"
+                     data-y="248"
+                     data-speed="300"
+                     data-start="2100"
+                     data-easing="easeOutExpo">
+                     <img class="img-border" src="{{ url_for('static', filename='img/sliders/revolution/p9.jpg') }}" alt="Image 12">
+                </div>
+
+                <div class="caption randomrotate"
+                     data-x="762"
+                     data-y="165"
+                     data-speed="300"
+                     data-start="2200"
+                     data-easing="easeOutExpo">
+                     <img class="img-border" src="{{ url_for('static', filename='img/sliders/revolution/p7.jpg') }}" alt="Image 13">
+                </div>
+            </li>
+
+            <!-- THE SECOND SLIDE -->
+            <li data-transition="papercut" data-slotamount="15" data-masterspeed="300" data-delay="9400" data-thumb="{{ url_for('static', filename='img/sliders/revolution/thumbs/thumb2.jpg') }}">
+
+                <!-- THE MAIN IMAGE IN THE SECOND SLIDE -->
+                <img src="{{ url_for('static', filename='img/sliders/revolution/bg2.jpg') }}">
+
+                <div class="caption very_big_white lfl stl"
+                     data-x="18"
+                     data-y="343"
+                     data-speed="300"
+                     data-start="500"
+                     data-easing="easeOutExpo" data-end="8800" data-endspeed="300" data-endeasing="easeInSine">
+                     {{ _('TIMELINED CAPTIONS') }}
+                </div>
+
+                <div class="caption big_white lfl stl"
+                     data-x="18"
+                     data-y="390"
+                     data-speed="300"
+                     data-start="800"
+                     data-easing="easeOutExpo" data-end="9100" data-endspeed="300" data-endeasing="easeInSine">
+                     {{ _('MOVE CAPTIONS IN AND OUT ON ONE SLIDE') }}
+                </div>
+
+                <div class="caption lft ltb"
+                     data-x="600"
+                     data-y="0"
+                     data-speed="600"
+                     data-start="1100"
+                     data-easing="easeOutExpo" data-end="3100" data-endspeed="600" data-endeasing="easeInSine">
+                     <img src="{{ url_for('static', filename='img/sliders/revolution/drink2.jpg') }}" alt="Image 3">
+                </div>
+
+                <div class="caption bold_green_text sft stb"
+                     data-x="760"
+                     data-y="290"
+                     data-speed="300"
+                     data-start="1400"
+                     data-easing="easeOutExpo" data-end="3300" data-endspeed="300" data-endeasing="easeInSine">
+                     {{ _('PRADA') }}
+                </div>
+
+                <div class="caption big_black sfb stb"
+                     data-x="780"
+                     data-y="320"
+                     data-speed="300"
+                     data-start="1700"
+                     data-easing="easeOutExpo" data-end="3200" data-endspeed="300" data-endeasing="easeInSine">
+                     {{ _('$ 128') }}
+                </div>
+
+                <div class="caption lft ltb"
+                     data-x="600"
+                     data-y="0"
+                     data-speed="600"
+                     data-start="3600"
+                     data-easing="easeOutExpo" data-end="5600" data-endspeed="600" data-endeasing="easeInSine">
+                     <img src="{{ url_for('static', filename='img/sliders/revolution/drink1.jpg') }}" alt="Image 6">
+                </div>
+
+                <div class="caption bold_brown_text sft stb"
+                     data-x="760"
+                     data-y="290"
+                     data-speed="300"
+                     data-start="3900"
+                     data-easing="easeOutExpo" data-end="5800" data-endspeed="300" data-endeasing="easeInSine" >
+                     {{ _('Dolce & Gabbana') }}
+                </div>
+
+                <div class="caption big_black sfb stb"
+                     data-x="780"
+                     data-y="320"
+                     data-speed="300"
+                     data-start="4200"
+                     data-easing="easeOutExpo" data-end="5700" data-endspeed="300" data-endeasing="easeInSine">
+                     {{ _('$ 116') }}
+                </div>
+
+                <div class="caption lft ltb"
+                     data-x="600"
+                     data-y="0"
+                     data-speed="600"
+                     data-start="6100"
+                     data-easing="easeOutExpo" data-end="8100" data-endspeed="300" data-endeasing="easeInSine">
+                     <img src="{{ url_for('static', filename='img/sliders/revolution/drink3.jpg') }}" alt="Image 9">
+                </div>
+
+                <div class="caption bold_red_text sft stb"
+                     data-x="760"
+                     data-y="290"
+                     data-speed="300"
+                     data-start="6400"
+                     data-easing="easeOutExpo" data-end="8300" data-endspeed="300" data-endeasing="easeInSine">
+                     {{ _("L'EAU DE CHLOE") }}
+                </div>
+
+                <div class="caption big_black sfb stb"
+                     data-x="780"
+                     data-y="320"
+                     data-speed="300"
+                     data-start="6700"
+                     data-easing="easeOutExpo" data-end="8200" data-endspeed="300" data-endeasing="easeInSine">
+                     {{ _('$ 142') }}
+                </div>
+            </li>
+
+            <!-- THE THIRD SLIDE -->
+            <li data-transition="slideleft" data-slotamount="1" data-masterspeed="300" data-thumb="{{ url_for('static', filename='img/sliders/revolution/thumbs/thumb3.jpg') }}">
+
+                <!-- THE MAIN IMAGE IN THE THIRD SLIDE -->
+                <img src="{{ url_for('static', filename='img/sliders/revolution/bg3.jpg') }}" >
+
+                <div class="caption large_text sft"
+                     data-x="10"
+                     data-y="44"
+                     data-speed="300"
+                     data-start="800"
+                     data-easing="easeOutExpo">
+                     {{ _('TOUCH ENABLED') }}
+                </div>
+
+                <div class="caption medium_text sfl"
+                     data-x="39"
+                     data-y="82"
+                     data-speed="300"
+                     data-start="1100"
+                     data-easing="easeOutExpo">
+                     {{ _('AND') }}
+                </div>
+
+                <div class="caption large_text sfr"
+                     data-x="88"
+                     data-y="78"
+                     data-speed="300"
+                     data-start="1100"
+                     data-easing="easeOutExpo">
+                     <span style="color: #72c02c;">{{ _('RESPONSIVE') }}</span>
+                </div>
+
+                <div class="caption lfl"
+                     data-x="10"
+                     data-y="150"
+                     data-speed="800"
+                     data-start="900"
+                     data-easing="easeOutExpo">
+                     <img src="{{ url_for('static', filename='img/sliders/revolution/imac.png') }}" alt="Image 4">
+                </div>
+
+                <div class="caption lfl"
+                     data-x="210"
+                     data-y="245"
+                     data-speed="600"
+                     data-start="1000"
+                     data-easing="easeOutExpo">
+                     <img src="{{ url_for('static', filename='img/sliders/revolution/ipad.png') }}" alt="Image 5">
+                </div>
+
+                <div class="caption lfl"
+                     data-x="322"
+                     data-y="313"
+                     data-speed="400"
+                     data-start="1100"
+                     data-easing="easeOutExpo">
+                     <img src="{{ url_for('static', filename='img/sliders/revolution/iphone.png') }}" alt="Image 6">
+                </div>
+
+                <div class="caption lft"
+                     data-x="500"
+                     data-y="130"
+                     data-speed="300"
+                     data-start="500"
+                     data-easing="easeOutExpo">
+                     <img src="{{ url_for('static', filename='img/sliders/revolution/html5andcss3.png') }}" alt="Image 6">
+                </div>
+            </li>
+
+            <!-- THE FOURTH SLIDE -->
+            <li data-transition="flyin" data-slotamount="1" data-masterspeed="300" data-thumb="{{ url_for('static', filename='img/sliders/revolution/thumbs/thumb4.jpg') }}">
+
+                <!-- THE MAIN IMAGE IN THE FOURTH SLIDE -->
+                <img src="{{ url_for('static', filename='img/sliders/revolution/bg4.jpg') }}" >
+
+                <div class="caption lfb boxshadow"
+                     data-x="20"
+                     data-y="120"
+                     data-speed="900"
+                     data-start="500"
+                     data-easing="easeOutBack">
+                     <iframe src="http://player.vimeo.com/video/54035990?title=0&amp;byline=0&amp;portrait=0" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+                </div>
+
+                <div class="caption sft big_black"
+                     data-x="570"
+                     data-y="120"
+                     data-speed="300"
+                     data-start="1200"
+                     data-easing="easeOutExpo">
+                     {{ _('Video Support') }}
+                </div>
+
+                <div class="caption sft big_white"
+                     data-x="570"
+                     data-y="162"
+                     data-speed="300"
+                     data-start="1300"
+                     data-easing="easeOutExpo">
+                     {{ _('Vimeo Example') }}
+                </div>
+
+                <div class="caption lfb medium_grey"
+                     data-x="570"
+                     data-y="215"
+                     data-speed="300"
+                     data-start="1400"
+                     data-easing="easeOutExpo">
+                     {{ _('You can easily add') }}
+                </div>
+
+                <div class="caption lfb medium_grey"
+                     data-x="570"
+                     data-y="240"
+                     data-speed="300"
+                     data-start="1500"
+                     data-easing="easeOutExpo">
+                     {{ _('Vimeo & Youtube Videos') }}
+                </div>
+
+                <div class="caption lfb medium_grey"
+                     data-x="570"
+                     data-y="265"
+                     data-speed="300"
+                     data-start="1600"
+                     data-easing="easeOutExpo">
+                     {{ _('to your Slides') }}
+                </div>
+            </li>
+        </ul>
+
+        <div class="tp-bannertimer tp-bottom"></div>
+    </div>
+</div>
+<!--=== End Slider ===-->
+
+<!--=== Purchase Block ===-->
+<div class="purchase">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <span>{{ _('Unify is a clean and fully responsive incredible Template.') }}</span>
+                <p>{{ _('At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi  vehicula sem ut volutpat. Ut non libero magna fusce condimentum eleifend enim a feugiat.') }}</p>
+            </div>
+            <div class="col-md-3">
+                <a href="#" class="btn-buy hover-effect">{{ _('Purchase Now') }}</a>
+            </div>
+        </div>
+    </div>
+</div><!--/row-->
+<!-- End Purchase Block -->
+
+<!--=== Content Part ===-->
+<div class="container">
+	<!-- Service Blocks -->
+	<div class="row margin-bottom-10">
+    	<div class="col-md-4 service-alternative">
+    		<div class="service">
+                <i class="icon-resize-small service-icon"></i>
+    			<div class="desc">
+    				<h4>{{ _('Fully Responsive') }}</h4>
+                    <p>{{ _('Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus etiam sem...') }}</p>
+    			</div>
+    		</div>
+    	</div>
+    	<div class="col-md-4 service-alternative">
+    		<div class="service">
+                <i class="icon-cogs service-icon"></i>
+    			<div class="desc">
+    				<h4>{{ _('HTML5 + CSS3') }}</h4>
+                    <p>{{ _('Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus etiam sem...') }}</p>
+    			</div>
+    		</div>
+    	</div>
+    	<div class="col-md-4 service-alternative">
+    		<div class="service">
+                <i class="icon-plane service-icon"></i>
+    			<div class="desc">
+    				<h4>{{ _('Launch Ready') }}</h4>
+                    <p>{{ _('Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus etiam sem...') }}</p>
+    			</div>
+    		</div>
+    	</div>
+	</div><!--/row-->
+	<!-- End Service Blokcs -->
+
+	<!-- Recent Works -->
+    <div class="row margin-bottom-40">
+        <div class="col-lg-12">
+            <div class="headline"><h2>{{ _('Recent Works') }}</h2></div>
+            <ul class="bxslider recent-work">
+                <li>
+                    <a href="#">
+                        <em class="overflow-hidden"><img src="{{ url_for('static', filename='img/main/1.jpg') }}" alt="" /></em>
+                        <span>
+                            <strong>{{ _('Happy New Year') }}</strong>
+                            <i>{{ _('Anim pariatur cliche reprehenderit') }}</i>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <em class="overflow-hidden"><img src="{{ url_for('static', filename='img/main/2.jpg') }}" alt="" /></em>
+                        <span>
+                            <strong>{{ _('Award Winning Agency') }}</strong>
+                            <i>{{ _('Responsive Bootstrap Template') }}</i>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <em class="overflow-hidden"><img src="{{ url_for('static', filename='img/main/3.jpg') }}" alt="" /></em>
+                        <span>
+                            <strong>{{ _('Wolf Moon Officia') }}</strong>
+                            <i>{{ _('Pariatur prehe cliche reprehrit') }}</i>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <em class="overflow-hidden"><img src="{{ url_for('static', filename='img/main/4.jpg') }}" alt="" /></em>
+                        <span>
+                            <strong>{{ _('Food Truck Quinoa Nesciunt') }}</strong>
+                            <i>{{ _('Craft labore wes anderson cred') }}</i>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <em class="overflow-hidden"><img src="{{ url_for('static', filename='img/main/5.jpg') }}" alt="" /></em>
+                        <span>
+                            <strong>{{ _('Happy New Year') }}</strong>
+                            <i>{{ _('Anim pariatur cliche reprehenderit') }}</i>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <em class="overflow-hidden"><img src="{{ url_for('static', filename='img/main/6.jpg') }}" alt="" /></em>
+                        <span>
+                            <strong>{{ _('Award Winning Agency') }}</strong>
+                            <i>{{ _('Responsive Bootstrap Template') }}</i>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <em class="overflow-hidden"><img src="{{ url_for('static', filename='img/main/7.jpg') }}" alt="" /></em>
+                        <span>
+                            <strong>{{ _('Wolf Moon Officia') }}</strong>
+                            <i>{{ _('Pariatur prehe cliche reprehrit') }}</i>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <em class="overflow-hidden"><img src="{{ url_for('static', filename='img/main/8.jpg') }}" alt="" /></em>
+                        <span>
+                            <strong>{{ _('Food Truck Quinoa Nesciunt') }}</strong>
+                            <i>{{ _('Craft labore wes anderson cred') }}</i>
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div><!--/row-->
+	<!-- End Recent Works -->
+
+	<!-- Info Blokcs -->
+	<div class="row margin-bottom-10">
+    	<!-- Welcome Block -->
+		<div class="col-md-8">
+			<div class="headline"><h2>{{ _('Welcome To Unify') }}</h2></div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <img class="img-responsive margin-bottom-20" src="{{ url_for('static', filename='img/new/img15.jpg') }}" alt="" />
+                </div>
+                <div class="col-sm-8">
+                    <p>{{ _('Unify is an incredibly beautiful responsive Bootstrap Template for corporate and creative professionals. It works on all major web browsers, tablets and phone.') }}</p>
+                    <ul class="list-unstyled margin-bottom-20">
+                        <li><i class="icon-ok color-green"></i> {{ _('Donec id elit non mi porta gravida') }}</li>
+                        <li><i class="icon-ok color-green"></i> {{ _('Corporate and Creative') }}</li>
+                        <li><i class="icon-ok color-green"></i> {{ _('Responsive Bootstrap Template') }}</li>
+                        <li><i class="icon-ok color-green"></i> {{ _('Corporate and Creative') }}</li>
+                    </ul>
+                </div>
+            </div>
+
+            <blockquote class="hero-unify">
+                <p>{{ _('Award winning digital agency. We bring a personal and effective approach to every project we work on, which is why. Unify is an incredibly beautiful responsive Bootstrap Template for corporate professionals.') }}</p>
+                <small>{{ _('CEO, Jack Bour') }}</small>
+            </blockquote>
+        </div><!--/col-md-8-->
+
+        <!-- Posts -->
+        <div class="col-md-4 posts">
+            <div class="headline"><h3>{{ _('Recent Entries') }}</h3></div>
+            <dl class="dl-horizontal">
+                <dt><a href="#"><img alt="" src="{{ url_for('static', filename='img/sliders/elastislide/6.jpg') }}"></a></dt>
+                <dd>
+                    <p><a href="#">{{ _('Anim moon officia Unify is an incredibly beautiful responsive Bootstrap Template') }}</a></p>
+                </dd>
+            </dl>
+            <dl class="dl-horizontal">
+                <dt><a href="#"><img alt="" src="{{ url_for('static', filename='img/sliders/elastislide/10.jpg') }}"></a></dt>
+                <dd>
+                    <p><a href="#">{{ _('Lorem sequat ipsum dolor lorem sit amet, consectetur adipiscing dolor elit.') }}</a></p>
+                </dd>
+            </dl>
+            <dl class="dl-horizontal">
+                <dt><a href="#"><img alt="" src="{{ url_for('static', filename='img/sliders/elastislide/11.jpg') }}"></a></dt>
+                <dd>
+                    <p><a href="#">{{ _('It works on all major web browsers, tablets and lorem sequat ipsum dolor.') }}</a></p>
+                </dd>
+            </dl>
+        </div>
+	</div><!--/row-->
+	<!-- End Info Blokcs -->
+
+	<!-- Our Clients -->
+	<div id="clients-flexslider" class="flexslider home clients">
+        <div class="headline"><h2>{{ _('Our Clients') }}</h2></div>
+		<ul class="slides">
+			<li>
+                <a href="#">
+                    <img src="{{ url_for('static', filename='img/clients/hp_grey.png') }}" alt="" />
+                    <img src="{{ url_for('static', filename='img/clients/hp.png') }}" class="color-img" alt="" />
+                </a>
+            </li>
+			<li>
+                <a href="#">
+                    <img src="{{ url_for('static', filename='img/clients/igneus_grey.png') }}" alt="" />
+                    <img src="{{ url_for('static', filename='img/clients/igneus.png') }}" class="color-img" alt="" />
+                </a>
+            </li>
+			<li>
+                <a href="#">
+                    <img src="{{ url_for('static', filename='img/clients/vadafone_grey.png') }}" alt="" />
+                    <img src="{{ url_for('static', filename='img/clients/vadafone.png') }}" class="color-img" alt="" />
+                </a>
+            </li>
+			<li>
+                <a href="#">
+                    <img src="{{ url_for('static', filename='img/clients/walmart_grey.png') }}" alt="" />
+                    <img src="{{ url_for('static', filename='img/clients/walmart.png') }}" class="color-img" alt="" />
+                </a>
+            </li>
+			<li>
+                <a href="#">
+                    <img src="{{ url_for('static', filename='img/clients/shell_grey.png') }}" alt="" />
+                    <img src="{{ url_for('static', filename='img/clients/shell.png') }}" class="color-img" alt="" />
+                </a>
+            </li>
+			<li>
+                <a href="#">
+                    <img src="{{ url_for('static', filename='img/clients/natural_grey.png') }}" alt="" />
+                    <img src="{{ url_for('static', filename='img/clients/natural.png') }}" class="color-img" alt="" />
+                </a>
+            </li>
+			<li>
+                <a href="#">
+                    <img src="{{ url_for('static', filename='img/clients/aztec_grey.png') }}" alt="" />
+                    <img src="{{ url_for('static', filename='img/clients/aztec.png') }}" class="color-img" alt="" />
+                </a>
+            </li>
+			<li>
+                <a href="#">
+                    <img src="{{ url_for('static', filename='img/clients/gamescast_grey.png') }}" alt="" />
+                    <img src="{{ url_for('static', filename='img/clients/gamescast.png') }}" class="color-img" alt="" />
+                </a>
+            </li>
+			<li>
+                <a href="#">
+                    <img src="{{ url_for('static', filename='img/clients/cisco_grey.png') }}" alt="" />
+                    <img src="{{ url_for('static', filename='img/clients/cisco.png') }}" class="color-img" alt="" />
+                </a>
+            </li>
+			<li>
+                <a href="#">
+                    <img src="{{ url_for('static', filename='img/clients/everyday_grey.png') }}" alt="" />
+                    <img src="{{ url_for('static', filename='img/clients/everyday.png') }}" class="color-img" alt="" />
+                </a>
+            </li>
+			<li>
+                <a href="#">
+                    <img src="{{ url_for('static', filename='img/clients/cocacola_grey.png') }}" alt="" />
+                    <img src="{{ url_for('static', filename='img/clients/cocacola.png') }}" class="color-img" alt="" />
+                </a>
+            </li>
+			<li>
+                <a href="#">
+                    <img src="{{ url_for('static', filename='img/clients/spinworkx_grey.png') }}" alt="" />
+                    <img src="{{ url_for('static', filename='img/clients/spinworkx.png') }}" class="color-img" alt="" />
+                </a>
+            </li>
+			<li>
+                <a href="#">
+                    <img src="{{ url_for('static', filename='img/clients/shell_grey.png') }}" alt="" />
+                    <img src="{{ url_for('static', filename='img/clients/shell.png') }}" class="color-img" alt="" />
+                </a>
+            </li>
+			<li>
+                <a href="#">
+                    <img src="{{ url_for('static', filename='img/clients/natural_grey.png') }}" alt="" />
+                    <img src="{{ url_for('static', filename='img/clients/natural.png') }}" class="color-img" alt="" />
+                </a>
+            </li>
+			<li>
+                <a href="#">
+                    <img src="{{ url_for('static', filename='img/clients/gamescast_grey.png') }}" alt="" />
+                    <img src="{{ url_for('static', filename='img/clients/gamescast.png') }}" class="color-img" alt="" />
+                </a>
+            </li>
+			<li>
+                <a href="#">
+                    <img src="{{ url_for('static', filename='img/clients/everyday_grey.png') }}" alt="" />
+                    <img src="{{ url_for('static', filename='img/clients/everyday.png') }}" class="color-img" alt="" />
+                </a>
+            </li>
+			<li>
+                <a href="#">
+                    <img src="{{ url_for('static', filename='img/clients/spinworkx_grey.png') }}" alt="" />
+                    <img src="{{ url_for('static', filename='img/clients/spinworkx.png') }}" class="color-img" alt="" />
+                </a>
+            </li>
+		</ul>
+	</div><!--/flexslider-->
+	<!-- End Our Clients -->
+</div><!--/container-->
+<!-- End Content Part -->
+{% endblock %}
+
+{% block js %}
+<!-- JS Implementing Plugins -->
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/flexslider/jquery.flexslider-min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/bxslider/jquery.bxslider.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/revolution_slider/rs-plugin/js/jquery.themepunch.revolution.min.js') }}"></script>
+<!-- JS Page Level -->
+<script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/pages/index.js') }}"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+      	App.init();
+        App.initSliders();
+        App.initBxSlider();
+        Index.initRevolutionSlider();
+    });
+</script>
+{% endblock %}

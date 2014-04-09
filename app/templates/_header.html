@@ -1,0 +1,169 @@
+<!--=== Style Switcher ===-->
+<i class="style-switcher-btn icon-cogs hidden-xs"></i>
+<div class="style-switcher">
+    <div class="theme-close"><i class="icon-remove"></i></div>
+    <div class="theme-heading">{{ _('Theme Colors') }}</div>
+    <ul class="list-unstyled">
+        <li class="theme-default theme-active" data-style="default" data-header="light"></li>
+        <li class="theme-blue" data-style="blue" data-header="light"></li>
+        <li class="theme-orange" data-style="orange" data-header="light"></li>
+        <li class="theme-red" data-style="red" data-header="light"></li>
+        <li class="theme-light last" data-style="light" data-header="light"></li>
+    </ul>
+    <div style="margin-bottom:18px;"></div>
+    <div class="theme-heading">{{ _('Layouts') }}</div>
+    <div class="text-center">
+        <a href="#" class="btn-u btn-u-green btn-block active-switcher-btn wide-layout-btn">{{ _('Wide') }}</a>
+        <a href="#" class="btn-u btn-u-green btn-block boxed-layout-btn">{{ _('Boxed') }}</a>
+    </div>
+</div><!--/style-switcher-->
+<!--=== End Style Switcher ===-->
+
+{%- if not disable_header %}
+<!--=== Top ===-->
+{% if css_header2 %}
+<div class="top-v1">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <ul class="list-unstyled top-v1-contacts">
+                    <li>
+                        <i class="icon-envelope"></i> {{ _('Email:') }} <a href="mailto:info@htmlstream.com">{{ _('info@htmlstream.com') }}</a>
+                    </li>
+                    <li>
+                        <i class="icon-phone"></i> {{ _('Hotline: (1) 396 4587 99') }}
+                    </li>
+                </ul>
+            </div><!--/top-v1-contacts-->
+
+            <div class="col-md-6">
+                <ul class="list-unstyled top-v1-data">
+                    <li><a href="#"><i class="icon-home"></i></a></li>
+                    <li><a href="#"><i class="icon-globe"></i></a></li>
+                    <li><a href="#"><i class="icon-shopping-cart"></i></a></li>
+                    <li><a href="#"> {{ _('Quicklinks') }}</a></li>
+                    <li><a href="#">{{ _('My Account') }}</a></li>
+                </ul>
+            </div><!--/top-v1-data-->
+        </div>
+    </div>
+</div><!--/top-v1-->
+{% else %}
+<div class="top">
+    <div class="container">
+        <ul class="loginbar pull-right">
+            <li>
+                <i class="icon-globe"></i>
+                <a>{{ _('Languages') }}</a>
+                <ul class="lenguages">
+                    <li class="active">
+                        <a href="#">{{ _('English') }} <i class="icon-ok"></i></a>
+                    </li>
+                    <li><a href="#">{{ _('Spanish') }}</a></li>
+                    <li><a href="#">{{ _('Russian') }}</a></li>
+                    <li><a href="#">{{ _('German') }}</a></li>
+                </ul>
+            </li>
+            <li class="devider"></li>
+            <li><a href="page_faq">{{ _('Help') }}</a></li>
+            <li class="devider"></li>
+            <li><a href="page_login">{{ _('Login') }}</a></li>
+        </ul>
+    </div>
+</div><!--/top-->
+{% endif %}
+<!--=== End Top ===-->
+
+<!--=== Header ===-->
+<div class="header{% if css_header2 %} margin-bottom-10{% endif %}">
+    <div class="navbar navbar-default" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                    <span class="sr-only">{{ _('Toggle navigation') }}</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">
+                    <img id="logo-header" src="{{ url_for('static', filename='img/logo1-default.png') }}" alt="Logo">
+                </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-responsive-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    {% for item in header_nav %}
+                    {#- Checking if any of the children endpoints is currently opened. #}
+                    {% if item.children %}
+                        {%- set active=[] %}
+                        {%- for child in item.get('children') %}
+                            {%- if url_for(child.get('endpoint')) == request.script_root + request.path -%}
+                               {% do active.append(1) %}
+                            {%- endif %}
+                        {%- endfor %}
+                    {% endif %}
+                    <li class="dropdown{% if active %} active{% endif %}">
+                        {% if item.children %}
+                        <a href="{% if item.endpoint %}{{ url_for(item.endpoint) }}{% else %}#{% endif %}" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">
+                        {% else %}
+                        <a href="{{ url_for(item.endpoint) }}">
+                        {% endif %}
+                            {{ item.name }}
+                            {% if item.children %}<i class="icon-angle-down"></i>{% endif %}
+                        </a>
+                        {% if item.children %}
+                        <ul class="dropdown-menu">
+                            {% for child in item.children %}
+                            {% set active = url_for(child.endpoint) == request.script_root + request.path %}
+                            <li{% if active %} class="active"{% endif %}><a href="{{ url_for(child.endpoint) }}">{{ child.name }}</a></li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </li>
+                    {% endfor %}
+                    <li class="hidden-sm"><a class="search"><i class="icon-search search-btn"></i></a></li>
+                </ul>
+                <div class="search-open">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <span class="input-group-btn">
+                            <button class="btn-u" type="button">{{ _('Go') }}</button>
+                        </span>
+                    </div><!-- /input-group -->
+                </div>
+            </div><!-- /navbar-collapse -->
+        </div>
+    </div>
+</div><!--/header-->
+<!--=== End Header ===-->
+
+{%- if breadcrumbs %}
+{#- Finding current page's navigation menu link name and parent name #}
+{%- set names = [] %}
+{%- for item in header_nav %}
+    {%- for child in item.children %}
+    {%- if url_for(child.endpoint) == request.script_root + request.path %}
+        {%- do names.append(item.name) %} {# Adding current page's parent name #}
+        {%- do names.append(child.name) %} {# Adding current page's name #}
+        {%- do names.append(child.bc_title) %} {# Adding current page's breadcrumb title #}
+    {%- endif %}
+    {%- endfor %}
+{%- endfor %}
+<!--=== Breadcrumbs ===-->
+<div class="breadcrumbs{% if not disable_breadcrumb_bottom_margin %} margin-bottom-40{% endif %}">
+	<div class="container">
+        <h1 class="pull-left">{{ names[2] or names[1] }}</h1>
+        <ul class="pull-right breadcrumb">
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+
+            <li><a href="#">{{ names[0] }}</a></li>
+            <li class="active">{{ names[1] }}</li>
+        </ul>
+    </div><!--/container-->
+</div><!--/breadcrumbs-->
+<!--=== End Breadcrumbs ===-->
+{%- endif %}
+
+{%- endif %}

@@ -1,0 +1,242 @@
+{% extends '_base.html' %}
+
+{% set page_title = "Unify | Invoice" %}
+
+{% set breadcrumbs = True %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='plugins/flexslider/flexslider.css') }}" media="screen">
+{% endblock %}
+
+{% block main_content %}
+<!--=== Content Part ===-->
+<div class="container">
+    <div class="row team margin-bottom-20">
+        <div class="col-md-5">
+            <div class="thumbnail-style">
+                <img alt="" src="{{ url_for('static', filename='img/team/1.jpg') }}" class="img-responsive">
+                <h3><a>{{ _('Jack Bour') }}</a> <small>{{ _('Chief Executive Officer') }}</small></h3>
+                <p>{{ _('Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem...') }}</p>
+                <ul class="list-unstyled list-inline team-socail">
+                    <li><a href="#"><i class="icon-facebook"></i></a></li>
+                    <li><a href="#"><i class="icon-twitter"></i></a></li>
+                    <li><a href="#"><i class="icon-google-plus"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-7">
+            <div class="margin-bottom-10"></div>
+            <p>{{ _('Acilis quidem rerum facilis est et expedita distinctio estet expedita distinctio lorem ipsum dolor sit amet consectetur adipiscing elit. Ut non libero consectetur adipiscing elit magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat.') }}</p><br>
+            <div class="tag-box tag-box-v1">
+                <p>{{ _('Et harum quidem rerum facilis est et expedita distinctio lorem ipsum dolor sit amet consectetur adipiscing elit. Ut non libero consectetur adipiscing elit magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat. Pellentesque viverra vehicula sem ut volutpat.') }}</p>
+            </div>
+            <div class="carousel slide testimonials testimonials-v1" id="testimonials-3">
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <p>{{ _('Ducimusqui ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, sunt in culpaid delvoe molestias..') }}</p>
+                        <div class="testimonial-info">
+                            <img alt="" src="{{ url_for('static', filename='img/testimonials/img2.jpg') }}">
+                            <span class="testimonial-author">
+                                {{ _('Jenny Lawiso') }}
+                                <em>{{ _('Web Developer, Unify Theme.') }}</em>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <p>{{ _('Ducimusqui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, sunt in culpaid delvoe molestias..') }}</p>
+                        <div class="testimonial-info">
+                            <img alt="" src="{{ url_for('static', filename='img/testimonials/img1.jpg') }}">
+                            <span class="testimonial-author">
+                                {{ _('User') }}
+                                <em>{{ _('Java Developer, Htmlstream') }}</em>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <p>{{ _('Ducimusqui ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, sunt in culpaid delvoe molestias..') }}</p>
+                        <div class="testimonial-info">
+                            <img alt="" src="{{ url_for('static', filename='img/testimonials/user.jpg') }}">
+                            <span class="testimonial-author">
+                                {{ _('Kate Davenport') }}
+                                <em>{{ _('Web Designer, Google Inc.') }}</em>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-arrow">
+                    <a data-slide="prev" href="#testimonials-3" class="left carousel-control">
+                        <i class="icon-angle-left"></i>
+                    </a>
+                    <a data-slide="next" href="#testimonials-3" class="right carousel-control">
+                        <i class="icon-angle-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="headline"><h2>{{ _('Account Directors') }}</h2></div>
+    <div class="row team margin-bottom-40">
+        <div class="col-sm-4">
+            <div class="thumbnail-style">
+                <img alt="" src="{{ url_for('static', filename='img/team/3.jpg') }}" class="img-responsive">
+                <h3><a>{{ _('Kate Metus') }}</a> <small>{{ _('Project Manager') }}</small></h3>
+                <p>{{ _('Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem...') }}</p>
+                <ul class="list-unstyled list-inline team-socail">
+                    <li><a href="#"><i class="icon-facebook"></i></a></li>
+                    <li><a href="#"><i class="icon-twitter"></i></a></li>
+                    <li><a href="#"><i class="icon-google-plus"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="thumbnail-style">
+                <img alt="" src="{{ url_for('static', filename='img/team/2.jpg') }}" class="img-responsive">
+                <h3><a>{{ _('Porta Gravida') }}</a> <small>{{ _('VP of Operations') }}</small></h3>
+                <p>{{ _('Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem...') }}</p>
+                <ul class="list-unstyled list-inline team-socail">
+                    <li><a href="#"><i class="icon-facebook"></i></a></li>
+                    <li><a href="#"><i class="icon-twitter"></i></a></li>
+                    <li><a href="#"><i class="icon-google-plus"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="thumbnail-style">
+                <img alt="" src="{{ url_for('static', filename='img/team/4.jpg') }}" class="img-responsive">
+                <h3><a>{{ _('Donec Elit') }}</a> <small>{{ _('Director, R & D Talent') }}</small></h3>
+                <p>{{ _('Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem...') }}</p>
+                <ul class="list-unstyled list-inline team-socail">
+                    <li><a href="#"><i class="icon-facebook"></i></a></li>
+                    <li><a href="#"><i class="icon-twitter"></i></a></li>
+                    <li><a href="#"><i class="icon-google-plus"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="tag-box tag-box-v2">
+        <p>{{ _('Et harum quidem rerum facilis est et expedita distinctio lorem ipsum dolor sit amet consectetur adipiscing elit. Ut non libero consectetur adipiscing elit magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat. Pellentesque viverra vehicula sem ut volutpat.') }}</p>
+    </div>
+
+    <div class="margin-bottom-60"></div>
+
+    <div class="headline"><h2>{{ _('Other Team Members') }}</h2></div>
+    <div class="row team margin-bottom-20">
+        <div class="col-sm-3">
+            <div class="thumbnail-style">
+                <img alt="" src="{{ url_for('static', filename='img/team/1.jpg') }}" class="img-responsive">
+                <h3><a>{{ _('Jack Bour') }}</a> <small>{{ _('Chief Executive Officer') }}</small></h3>
+                <p>{{ _('Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem...') }}</p>
+                <ul class="list-unstyled list-inline team-socail">
+                    <li><a href="#"><i class="icon-facebook"></i></a></li>
+                    <li><a href="#"><i class="icon-twitter"></i></a></li>
+                    <li><a href="#"><i class="icon-google-plus"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="thumbnail-style">
+                <img alt="" src="{{ url_for('static', filename='img/team/3.jpg') }}" class="img-responsive">
+                <h3><a>{{ _('Kate Metus') }}</a> <small>{{ _('Project Manager') }}</small></h3>
+                <p>{{ _('Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem...') }}</p>
+                <ul class="list-unstyled list-inline team-socail">
+                    <li><a href="#"><i class="icon-facebook"></i></a></li>
+                    <li><a href="#"><i class="icon-twitter"></i></a></li>
+                    <li><a href="#"><i class="icon-google-plus"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="thumbnail-style">
+                <img alt="" src="{{ url_for('static', filename='img/team/2.jpg') }}" class="img-responsive">
+                <h3><a>{{ _('Porta Gravida') }}</a> <small>{{ _('VP of Operations') }}</small></h3>
+                <p>{{ _('Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem...') }}</p>
+                <ul class="list-unstyled list-inline team-socail">
+                    <li><a href="#"><i class="icon-facebook"></i></a></li>
+                    <li><a href="#"><i class="icon-twitter"></i></a></li>
+                    <li><a href="#"><i class="icon-google-plus"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="thumbnail-style">
+                <img alt="" src="{{ url_for('static', filename='img/team/4.jpg') }}" class="img-responsive">
+                <h3><a>{{ _('Donec Elit') }}</a> <small>{{ _('Director, R & D Talent') }}</small></h3>
+                <p>{{ _('Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem...') }}</p>
+                <ul class="list-unstyled list-inline team-socail">
+                    <li><a href="#"><i class="icon-facebook"></i></a></li>
+                    <li><a href="#"><i class="icon-twitter"></i></a></li>
+                    <li><a href="#"><i class="icon-google-plus"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <hr class="margin-bottom-40">
+    <div class="row team">
+        <div class="col-sm-3">
+            <div class="thumbnail-style">
+                <img alt="" src="{{ url_for('static', filename='img/team/2.jpg') }}" class="img-responsive">
+                <h3><a>{{ _('Jack Bour') }}</a> <small>{{ _('Chief Executive Officer') }}</small></h3>
+                <p>{{ _('Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem...') }}</p>
+                <ul class="list-unstyled list-inline team-socail">
+                    <li><a href="#"><i class="icon-facebook"></i></a></li>
+                    <li><a href="#"><i class="icon-twitter"></i></a></li>
+                    <li><a href="#"><i class="icon-google-plus"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="thumbnail-style">
+                <img alt="" src="{{ url_for('static', filename='img/team/1.jpg') }}" class="img-responsive">
+                <h3><a>{{ _('Kate Metus') }}</a> <small>{{ _('Project Manager') }}</small></h3>
+                <p>{{ _('Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem...') }}</p>
+                <ul class="list-unstyled list-inline team-socail">
+                    <li><a href="#"><i class="icon-facebook"></i></a></li>
+                    <li><a href="#"><i class="icon-twitter"></i></a></li>
+                    <li><a href="#"><i class="icon-google-plus"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="thumbnail-style">
+                <img alt="" src="{{ url_for('static', filename='img/team/4.jpg') }}" class="img-responsive">
+                <h3><a>{{ _('Porta Gravida') }}</a> <small>{{ _('VP of Operations') }}</small></h3>
+                <p>{{ _('Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem...') }}</p>
+                <ul class="list-unstyled list-inline team-socail">
+                    <li><a href="#"><i class="icon-facebook"></i></a></li>
+                    <li><a href="#"><i class="icon-twitter"></i></a></li>
+                    <li><a href="#"><i class="icon-google-plus"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="thumbnail-style">
+                <img alt="" src="{{ url_for('static', filename='img/team/3.jpg') }}" class="img-responsive">
+                <h3><a>{{ _('Donec Elit') }}</a> <small>{{ _('Director, R & D Talent') }}</small></h3>
+                <p>{{ _('Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem...') }}</p>
+                <ul class="list-unstyled list-inline team-socail">
+                    <li><a href="#"><i class="icon-facebook"></i></a></li>
+                    <li><a href="#"><i class="icon-twitter"></i></a></li>
+                    <li><a href="#"><i class="icon-google-plus"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div><!--/container-->
+<!--=== End Content Part ===-->
+{% endblock %}
+
+{% block js %}
+<!-- JS Implementing Plugins -->
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/flexslider/jquery.flexslider-min.js') }}"></script>
+<!-- JS Page Level -->
+<script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        App.init();
+        App.initSliders();
+    });
+</script>
+{% endblock %}

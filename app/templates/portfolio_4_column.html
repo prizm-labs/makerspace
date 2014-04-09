@@ -1,0 +1,154 @@
+{% extends '_base.html' %}
+
+{% set page_title = "Unify | Portfolio 4 Columns" %}
+
+{% set breadcrumbs = True %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/pages/portfolio-v1.css') }}">
+{% endblock %}
+
+{% block main_content %}
+<!--=== Content Part ===-->
+<div class="container portfolio-4-columns">
+    <div class="row">
+        <div class="col-md-3 col-sm-6">
+            <div class="view view-tenth">
+                <img class="img-responsive" src="{{ url_for('static', filename='img/main/1.jpg') }}" alt="" />
+                <div class="mask">
+                    <h2>{{ _('Portfolio Item') }}</h2>
+                    <p>{{ _('At vero eos et accusamus et iusto odio dignissimos dolores et quas molestias excepturi sint occaecati cupiditate non provident.') }}</p>
+                    <a href="{{ url_for('portfolio_item') }}" class="info">{{ _('Read More') }}</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="view view-tenth">
+                <img class="img-responsive" src="{{ url_for('static', filename='img/main/2.jpg') }}" alt="" />
+                <div class="mask">
+                    <h2>{{ _('Portfolio Item') }}</h2>
+                    <p>{{ _('At vero eos et accusamus et iusto odio dignissimos dolores et quas molestias excepturi sint occaecati cupiditate non provident.') }}</p>
+                    <a href="{{ url_for('portfolio_item') }}" class="info">{{ _('Read More') }}</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="view view-tenth">
+                <img class="img-responsive" src="{{ url_for('static', filename='img/main/5.jpg') }}" alt="" />
+                <div class="mask">
+                    <h2>{{ _('Portfolio Item') }}</h2>
+                    <p>{{ _('At vero eos et accusamus et iusto odio dignissimos dolores et quas molestias excepturi sint occaecati cupiditate non provident.') }}</p>
+                    <a href="{{ url_for('portfolio_item') }}" class="info">{{ _('Read More') }}</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="view view-tenth">
+                <img class="img-responsive" src="{{ url_for('static', filename='img/main/7.jpg') }}" alt="" />
+                <div class="mask">
+                    <h2>{{ _('Portfolio Item') }}</h2>
+                    <p>{{ _('At vero eos et accusamus et iusto odio dignissimos dolores et quas molestias excepturi sint occaecati cupiditate non provident.') }}</p>
+                    <a href="{{ url_for('portfolio_item') }}" class="info">{{ _('Read More') }}</a>
+                </div>
+            </div>
+        </div>
+    </div><!--/row-->
+
+    <div class="row">
+        <div class="col-md-3 col-sm-6">
+            <div class="view view-tenth">
+                <img class="img-responsive" src="{{ url_for('static', filename='img/main/3.jpg') }}" alt="" />
+                <div class="mask">
+                    <h2>{{ _('Portfolio Item') }}</h2>
+                    <p>{{ _('At vero eos et accusamus et iusto odio dignissimos dolores et quas molestias excepturi sint occaecati cupiditate non provident.') }}</p>
+                    <a href="{{ url_for('portfolio_item') }}" class="info">{{ _('Read More') }}</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="view view-tenth">
+                <img class="img-responsive" src="{{ url_for('static', filename='img/main/4.jpg') }}" alt="" />
+                <div class="mask">
+                    <h2>{{ _('Portfolio Item') }}</h2>
+                    <p>{{ _('At vero eos et accusamus et iusto odio dignissimos dolores et quas molestias excepturi sint occaecati cupiditate non provident.') }}</p>
+                    <a href="{{ url_for('portfolio_item') }}" class="info">{{ _('Read More') }}</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="view view-tenth">
+                <img class="img-responsive" src="{{ url_for('static', filename='img/main/6.jpg') }}" alt="" />
+                <div class="mask">
+                    <h2>{{ _('Portfolio Item') }}</h2>
+                    <p>{{ _('At vero eos et accusamus et iusto odio dignissimos dolores et quas molestias excepturi sint occaecati cupiditate non provident.') }}</p>
+                    <a href="{{ url_for('portfolio_item') }}" class="info">{{ _('Read More') }}</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="view view-tenth">
+                <img class="img-responsive" src="{{ url_for('static', filename='img/main/8.jpg') }}" alt="" />
+                <div class="mask">
+                    <h2>{{ _('Portfolio Item') }}</h2>
+                    <p>{{ _('At vero eos et accusamus et iusto odio dignissimos dolores et quas molestias excepturi sint occaecati cupiditate non provident.') }}</p>
+                    <a href="{{ url_for('portfolio_item') }}" class="info">{{ _('Read More') }}</a>
+                </div>
+            </div>
+        </div>
+    </div><!--/row-->
+
+    <div class="row">
+        <div class="col-md-3 col-sm-6">
+            <div class="view view-tenth">
+                <img class="img-responsive" src="{{ url_for('static', filename='img/main/9.jpg') }}" alt="" />
+                <div class="mask">
+                    <h2>{{ _('Portfolio Item') }}</h2>
+                    <p>{{ _('At vero eos et accusamus et iusto odio dignissimos dolores et quas molestias excepturi sint occaecati cupiditate non provident.') }}</p>
+                    <a href="{{ url_for('portfolio_item') }}" class="info">{{ _('Read More') }}</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="view view-tenth">
+                <img class="img-responsive" src="{{ url_for('static', filename='img/main/10.jpg') }}" alt="" />
+                <div class="mask">
+                    <h2>{{ _('Portfolio Item') }}</h2>
+                    <p>{{ _('At vero eos et accusamus et iusto odio dignissimos dolores et quas molestias excepturi sint occaecati cupiditate non provident.') }}</p>
+                    <a href="{{ url_for('portfolio_item') }}" class="info">{{ _('Read More') }}</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="view view-tenth">
+                <img class="img-responsive" src="{{ url_for('static', filename='img/main/1.jpg') }}" alt="" />
+                <div class="mask">
+                    <h2>{{ _('Portfolio Item') }}</h2>
+                    <p>{{ _('At vero eos et accusamus et iusto odio dignissimos dolores et quas molestias excepturi sint occaecati cupiditate non provident.') }}</p>
+                    <a href="{{ url_for('portfolio_item') }}" class="info">{{ _('Read More') }}</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="view view-tenth">
+                <img class="img-responsive" src="{{ url_for('static', filename='img/main/2.jpg') }}" alt="" />
+                <div class="mask">
+                    <h2>{{ _('Portfolio Item') }}</h2>
+                    <p>{{ _('At vero eos et accusamus et iusto odio dignissimos dolores et quas molestias excepturi sint occaecati cupiditate non provident.') }}</p>
+                    <a href="{{ url_for('portfolio_item') }}" class="info">{{ _('Read More') }}</a>
+                </div>
+            </div>
+        </div>
+    </div><!--/row-->
+</div><!--/container-->
+<!--=== End Content Part ===-->
+{% endblock %}
+
+{% block js %}
+<!-- JS Page Level -->
+<script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        App.init();
+    });
+</script>
+{% endblock %}

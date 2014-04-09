@@ -1,0 +1,229 @@
+{% extends '_base.html' %}
+
+{% set page_title = "Unify | Typography" %}
+
+{% set breadcrumbs = True %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='plugins/fancybox/source/jquery.fancybox.css') }}">
+{% endblock %}
+
+{% block main_content %}
+<!--=== Content Part ===-->
+<div class="container">
+    <div class="row">
+        {% include '_sidebar_nav_menu.html' %}
+
+        <!--Begin Content-->
+        <div class="col-md-9">
+            <!-- Paragraph and Heading Examples -->
+            <div class="row margin-bottom-20">
+                <!-- Paragraph Examples -->
+                <div class="col-md-6">
+                    <div class="headline"><h2>{{ _('Paragraph Examples') }}</h2></div>
+                    <p class="lead">{{ _('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna. Sed et quam lacus.') }}</p>
+                    <p><strong>{{ _('Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque.') }}</strong></p>
+                    <p>{{ _(' Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut repellat.') }}</p>
+                    <p><em>{{ _('At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos.') }}</em></p>
+                    <p><small>{{ _('Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.') }}</small></p>
+                </div>
+
+                <!-- Heading Examples -->
+                <div class="col-md-6">
+                    <div class="headline"><h2>{{ _('Heading Examples from H1 to H6') }}</h2></div>
+                    <p>{{ _('At') }} <strong class="color-green">{{ _('vero eos et accusamus') }}</strong> {{ _('et iusto odio ducimus qui blanditiis praesentium voluptatum') }} <strong class="color-green">{{ _('deleniti atque') }}</strong> {{ _('corrupti quos.') }}</p>
+                    <h1>{{ _('h1. Heading 1') }}</h1>
+                    <h2>{{ _('h2. Heading 2') }}</h2>
+                    <h3>{{ _('h3. Heading 3') }}</h3>
+                    <h4>{{ _('h4. Heading 4') }}</h4>
+                    <h5>{{ _('h5. Heading 5') }}</h5>
+                    <h6>{{ _('h6. Heading 6') }}</h6>
+                </div>
+            </div><!--/row-->
+            <!-- End Paragraph and Heading Examples -->
+
+            <!-- Lists and Descriptions -->
+            <div class="row margin-bottom-20">
+                <!-- Unordered Lists -->
+                <div class="col-md-4">
+                    <div class="headline"><h2>{{ _('Unordered Lists') }}</h2></div>
+                    <ul>
+                        <li>{{ _('Lorem ipsum dolor sit amet') }}</li>
+                        <li>{{ _('Consectetur adipiscing elit') }}</li>
+                        <li>{{ _('Integer molestie lorem at massa') }}</li>
+                        <li>{{ _('Facilisis in pretium nisl aliquet') }}</li>
+                        <li>{{ _('Nulla volutpat aliquam velit') }}
+                            <ul>
+                                <li>{{ _('Phasellus iaculis neque') }}</li>
+                                <li>{{ _('Purus sodales ultricies') }}</li>
+                                <li>{{ _('Vestibulum laoreet porttitor') }}</li>
+                                <li>{{ _('Ac tristique libero volutpat at') }}</li>
+                            </ul>
+                        </li>
+                        <li>{{ _('Faucibus porta lacus fringilla vel') }}</li>
+                        <li>{{ _('Aenean sit amet erat nunc') }}</li>
+                        <li>{{ _('Eget porttitor lorem') }}</li>
+                    </ul>
+                </div>
+
+                <!-- Unstyled Lists -->
+                <div class="col-md-4">
+                    <div class="headline"><h2>{{ _('Unstyled Lists') }}</h2></div>
+                    <ul class="list-unstyled">
+                        <li>{{ _('Lorem ipsum dolor sit amet') }}</li>
+                        <li>{{ _('Consectetur adipiscing elit') }}</li>
+                        <li>{{ _('Integer molestie lorem at massa') }}</li>
+                        <li>{{ _('Facilisis in pretium nisl aliquet') }}</li>
+                        <li>{{ _('Nulla volutpat aliquam velit') }}
+                            <ul>
+                                <li>{{ _('Phasellus iaculis neque') }}</li>
+                                <li>{{ _('Purus sodales ultricies') }}</li>
+                                <li>{{ _('Vestibulum laoreet porttitor sem') }}</li>
+                                <li>{{ _('Ac tristique libero volutpat at') }}</li>
+                            </ul>
+                        </li>
+                        <li>{{ _('Faucibus porta lacus fringilla vel') }}</li>
+                        <li>{{ _('Aenean sit amet erat nunc') }}</li>
+                        <li>{{ _('Eget porttitor lorem') }}</li>
+                    </ul>
+                </div>
+
+                <!-- Ordered Lists -->
+                <div class="col-md-4">
+                    <div class="headline"><h2>{{ _('Ordered Lists') }}</h2></div>
+                    <ol>
+                        <li>{{ _('Lorem ipsum dolor sit amet') }}</li>
+                        <li>{{ _('Consectetur adipiscing elit') }}</li>
+                        <li>{{ _('Integer molestie lorem at massa') }}</li>
+                        <li>{{ _('Facilisis in pretium nisl aliquet') }}</li>
+                        <li>{{ _('Nulla volutpat aliquam velit') }}
+                            <ol>
+                                <li>{{ _('Phasellus iaculis neque') }}</li>
+                                <li>{{ _('Purus sodales ultricies') }}</li>
+                                <li>{{ _('Vestibulum laoreet porttitor') }}</li>
+                                <li>{{ _('Ac tristique libero volutpat at') }}</li>
+                            </ol>
+                        </li>
+                        <li>{{ _('Faucibus porta lacus fringilla vel') }}</li>
+                        <li>{{ _('Aenean sit amet erat nunc') }}</li>
+                        <li>{{ _('Eget porttitor lorem') }}</li>
+                    </ol>
+                </div>
+            </div><!--/row-->
+            <!-- End Lists and Descriptions -->
+
+            <!-- Inline Lists -->
+            <div class="headline"><h2>{{ _('Inline Lists') }}</h2></div>
+            <ul class="list-inline">
+                <li>{{ _('1-Lorem ipsum') }}</li>
+                <li>{{ _('2-Consectetur elit') }}</li>
+                <li>{{ _('3-Integer molestie') }}</li>
+                <li>{{ _('4-Facilisis in ') }}</li>
+                <li>{{ _('5-Nulla volutpat') }}</li>
+                <li>{{ _('6-Faucibus porta') }}</li>
+                <li>{{ _('7-Aenean sit') }}</li>
+                <li>{{ _('8-Eget porttitor') }}</li>
+            </ul>
+            <!-- End Inline Lists -->
+
+            <!-- Descriptions -->
+            <div class="row margin-bottom-20">
+                <!-- Description List -->
+                <div class="col-md-6">
+                    <div class="headline"><h2>{{ _('Description') }}</h2></div>
+                    <dl>
+                        <dt>{{ _('Description lists') }}</dt>
+                        <dd>{{ _('A description list is perfect for defining terms.') }}</dd>
+                        <dt>{{ _('Euismod') }}</dt>
+                        <dd>{{ _('Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.') }}</dd>
+                        <dd>{{ _('Donec id elit non mi porta gravida at eget metus.') }}</dd>
+                        <dt>{{ _('Malesuada porta') }}</dt>
+                        <dd>{{ _('Etiam porta sem malesuada magna mollis euismod.') }}</dd>
+                    </dl>
+                </div>
+                <!-- End Description List -->
+
+                <!-- Horizontal Description -->
+                <div class="col-md-6">
+                    <div class="headline"><h2>{{ _('Horizontal Description') }}</h2></div>
+                    <dl class="dl-horizontal">
+                        <dt>{{ _('Description lists') }}</dt>
+                        <dd>{{ _('A description list is perfect for defining terms.') }}</dd>
+                        <dt>{{ _('Euismod') }}</dt>
+                        <dd>{{ _('Vestibulum id ligula porta felis') }}</dd>
+                        <dd>{{ _('Donec id elit non mi porta gravida at eget metus.') }}</dd>
+                        <dt>{{ _('Malesuada porta') }}</dt>
+                        <dd>{{ _('Etiam porta sem malesuada magna mollis euismod.') }}</dd>
+                        <dt>{{ _('Felis euismod semper eget lacinia') }}</dt>
+                        <dd>{{ _('Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum') }}</dd>
+                    </dl>
+                </div>
+                <!-- End Horizontal Description -->
+            </div><!--/row-->
+            <!-- End Descriptions -->
+
+            <!-- Emphasis Classes -->
+            <div class="row margin-bottom-20">
+                <div class="col-md-6">
+                    <div class="headline"><h3>{{ _('Emphasis Classes') }}</h3></div>
+                    <p class="muted">{{ _('Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.') }}</p>
+                    <p class="text-warning">{{ _('Etiam porta sem malesuada magna mollis euismod.') }}</p>
+                    <p class="text-error">{{ _('Donec ullamcorper nulla non metus auctor fringilla.') }}</p>
+                    <p class="text-info">{{ _('Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis.') }}</p>
+                    <p class="text-success">{{ _('Duis mollis, est non commodo luctus, nisi erat porttitor ligula.') }}</p>
+                </div>
+                <div class="col-md-6">
+                    <div class="headline"><h2>{{ _('Blockquote Options in Blocks') }}</h2></div>
+                    <blockquote>
+                        <p>{{ _('Lorem ipsum dolor sit amet, consectetur adipiscing elit posuere erat a ante.') }}</p>
+                        <small>{{ _('Someone famous') }} <cite title="Source Title">{{ _('Source Title') }}</cite></small>
+                    </blockquote>
+                    <blockquote class="hero">
+                        <p>{{ _('Lorem ipsum dolor sit amet, consectetur adipiscing duis mollis, est non commodo luctus elit posuere erat a ante.') }}</p>
+                        <small class="color-green">{{ _('Someone famous') }} <cite title="Source Title">{{ _('Source Title') }}</cite></small>
+                    </blockquote>
+                </div>
+            </div><!--/row-->
+            <!-- End Emphasis Classes -->
+
+            <!-- Blockquote Options -->
+            <div class="headline"><h2>{{ _('Blockquote Options') }}</h2></div>
+            <blockquote>
+                <h2 class="color-green">{{ _('Etiam porta sem malesuada magna mollis euismod') }}</h2>
+                <p>{{ _('Lorem ipsum dolor sit amet, consectetur adipiscing duis mollis, est non commodo luctus elit posuere erat a ante. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis lorem ipsum dolor sit amet, consectetur adipiscing.') }}</p>
+            </blockquote>
+            <blockquote>
+                <p><em>{{ _('At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et. Duis mollis, est non commodo luctus, nisi erat porttitor ligula.') }}</em></p>
+                <small class="color-green"><em>{{ _('Etiam porta sem malesuada') }}</em></small>
+            </blockquote>
+            <blockquote class="margin-bottom-50">
+                <h2>{{ _('Etiam porta sem malesuada magna mollis euismod') }}</h2>
+                <p>{{ _('Lorem ipsum dolor sit amet, consectetur adipiscing duis mollis, est non commodo luctus elit posuere erat a ante. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis lorem ipsum dolor sit amet, consectetur adipiscing.') }}</p>
+            </blockquote>
+
+            <p><strong>{{ _('Add a class') }} <code>{{ _('hero') }}</code> {{ _('to make colored border') }}</strong></p>
+            <blockquote class="hero">
+                <p><em>{{ _('Lorem ipsum dolor sit amet, consectetur adipiscing duis mollis, est non commodo luctus elit posuere erat a ante. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis lorem ipsum dolor sit amet, consectetur adipiscing.') }}</em></p>
+                <small><em>{{ _('Etiam porta sem malesuada') }}</em></small>
+            </blockquote>
+            <blockquote class="hero pagination-centered">
+                <h2 class="color-green">{{ _('Etiam porta sem malesuada magna mollis euismod') }}</h2>
+                <p>{{ _('Lorem ipsum dolor sit amet, consectetur adipiscing duis mollis, est non commodo luctus elit posuere erat a ante. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis lorem ipsum dolor sit amet, consectetur adipiscingsit amet . Lorem ipsum dolor sit amet consectetur.') }}</p>
+            </blockquote>
+            <!-- End Blockquote Options -->
+        </div>
+        <!--End Content-->
+    </div>
+</div><!--/container-->
+<!--=== End Content Part ===-->
+{% endblock %}
+
+{% block js %}
+<!-- JS Page Level -->
+<script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        App.init();
+    });
+</script>
+{% endblock %}

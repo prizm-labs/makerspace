@@ -1,0 +1,167 @@
+{% extends '_base.html' %}
+
+{% set page_title = "Unify | Portfolio Item 1" %}
+
+{% set breadcrumbs = True %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='plugins/bxslider/jquery.bxslider.css') }}">
+{% endblock %}
+
+{% block main_content %}
+<!--=== Content Part ===-->
+<div class="container">
+	<div class="row portfolio-item margin-bottom-50">
+        <!-- Carousel -->
+        <div class="col-md-7">
+            <div class="carousel slide carousel-v1" id="myCarousel">
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <img alt="" src="{{ url_for('static', filename='img/main/11.jpg') }}">
+                        <div class="carousel-caption">
+                            <p>{{ _('Facilisis odio, dapibus ac justo acilisis gestinas.') }}</p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img alt="" src="{{ url_for('static', filename='img/main/12.jpg') }}">
+                        <div class="carousel-caption">
+                            <p>{{ _('Cras justo odio, dapibus ac facilisis into egestas.') }}</p>
+                        </div>
+                        </div>
+                    <div class="item">
+                        <img alt="" src="{{ url_for('static', filename='img/main/13.jpg') }}">
+                        <div class="carousel-caption">
+                            <p>{{ _('Justo cras odio apibus ac afilisis lingestas de.') }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-arrow">
+                    <a data-slide="prev" href="#myCarousel" class="left carousel-control">
+                        <i class="icon-angle-left"></i>
+                    </a>
+                    <a data-slide="next" href="#myCarousel" class="right carousel-control">
+                        <i class="icon-angle-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- End Carousel -->
+
+        <!-- Content Info -->
+        <div class="col-md-5">
+        	<h2>{{ _('Portfolio Item Information') }}</h2>
+            <p>{{ _('At vero eos et accusamus et iusto odio dignissimos') }} <a href="#">{{ _('ducimus qui blanditiis') }}</a> {{ _('praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum Fusce condimentum eleifend enim a feugiat. Pellentesque viverra vehicula sem ut volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna. Sed et quam lacus.') }}</p>
+            <p>{{ _('Molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Ut non libero consectetur adipiscing elit magna. Sed et quam lacus.') }}</p>
+            <ul class="list-unstyled">
+            	<li><i class="icon-user color-green"></i> {{ _('Jack Baur') }}</li>
+            	<li><i class="icon-calendar color-green"></i> {{ _('14,2003 February') }}</li>
+            	<li><i class="icon-tags color-green"></i> {{ _('Websites, Google, HTML5/CSS3') }}</li>
+            </ul>
+            <p><a class="btn-u btn-u-large" href="#">{{ _('VISIT THE PROJECT') }}</a></p>
+        </div>
+        <!-- End Content Info -->
+    </div><!--/row-->
+
+    <div class="tag-box tag-box-v2">
+        <p>{{ _('Et harum quidem rerum facilis est et expedita distinctio lorem ipsum dolor sit amet consectetur adipiscing elit. Ut non libero consectetur adipiscing elit magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat. Pellentesque viverra vehicula sem ut volutpat.') }}</p>
+    </div>
+
+    <div class="margin-bottom-20 clearfix"></div>
+
+	<!-- Recent Works -->
+    <div class="headline"><h2>{{ _('Recent Works') }}</h2></div>
+    <div class="margin-bottom-40">
+        <ul id="list" class="bxslider recent-work">
+            <li>
+                <a href="#">
+                	<em class="overflow-hidden"><img src="{{ url_for('static', filename='img/main/2.jpg') }}" alt="" /></em>
+                    <span>
+                        <strong>{{ _('Happy New Year') }}</strong>
+                        <i>{{ _('Anim pariatur cliche reprehenderit') }}</i>
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                	<em class="overflow-hidden"><img src="{{ url_for('static', filename='img/main/9.jpg') }}" alt="" /></em>
+                    <span>
+                        <strong>{{ _('Award Winning Agency') }}</strong>
+                        <i>{{ _('Responsive Bootstrap Template') }}</i>
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                	<em class="overflow-hidden"><img src="{{ url_for('static', filename='img/main/4.jpg') }}" alt="" /></em>
+                    <span>
+                        <strong>{{ _('Wolf Moon Officia') }}</strong>
+                        <i>{{ _('Pariatur prehe cliche reprehrit') }}</i>
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                	<em class="overflow-hidden"><img src="{{ url_for('static', filename='img/main/5.jpg') }}" alt="" /></em>
+                    <span>
+                        <strong>{{ _('Food Truck Quinoa Nesciunt') }}</strong>
+                        <i>{{ _('Craft labore wes anderson cred') }}</i>
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                	<em class="overflow-hidden"><img src="{{ url_for('static', filename='img/main/6.jpg') }}" alt="" /></em>
+                    <span>
+                        <strong>{{ _('Happy New Year') }}</strong>
+                        <i>{{ _('Anim pariatur cliche reprehenderit') }}</i>
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                	<em class="overflow-hidden"><img src="{{ url_for('static', filename='img/main/7.jpg') }}" alt="" /></em>
+                    <span>
+                        <strong>{{ _('Award Winning Agency') }}</strong>
+                        <i>{{ _('Responsive Bootstrap Template') }}</i>
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                	<em class="overflow-hidden"><img src="{{ url_for('static', filename='img/main/8.jpg') }}" alt="" /></em>
+                    <span>
+                        <strong>{{ _('Wolf Moon Officia') }}</strong>
+                        <i>{{ _('Pariatur prehe cliche reprehrit') }}</i>
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                	<em class="overflow-hidden"><img src="{{ url_for('static', filename='img/main/9.jpg') }}" alt="" /></em>
+                    <span>
+                        <strong>{{ _('Food Truck Quinoa Nesciunt') }}</strong>
+                        <i>{{ _('Craft labore wes anderson cred') }}</i>
+                    </span>
+                </a>
+            </li>
+        </ul>
+	</div><!--/row-->
+	<!-- End Recent Works -->
+</div><!--/container-->
+<!--=== End Content Part ===-->
+{% endblock %}
+
+{% block js %}
+<!-- JS Implementing Plugins -->
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/bxslider/jquery.bxslider.js') }}"></script>
+<!-- JS Page Level -->
+<script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/pages/portfolio.js') }}"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        App.init();
+        App.initBxSlider();
+    });
+</script>
+{% endblock %}

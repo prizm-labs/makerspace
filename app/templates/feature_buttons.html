@@ -1,0 +1,185 @@
+{% extends '_base.html' %}
+
+{% set page_title = "Unify | Tagline Boxes" %}
+
+{% set breadcrumbs = True %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='plugins/fancybox/source/jquery.fancybox.css') }}">
+{% endblock %}
+
+{% block main_content %}
+<!--=== Content Part ===-->
+<div class="container">
+    <div class="row">
+        {% include '_sidebar_nav_menu.html' %}
+
+        <!--Begin Content-->
+        <div class="col-md-9">
+            <!-- Default Buttons -->
+            <div class="margin-bottom-40">
+                <div class="alert alert-warning">
+                    <button data-dismiss="alert" class="close" type="button">×</button>
+                    <strong>{{ _('Info!') }}</strong> {{ _('Here is Default Unify Buttons.') }}
+                </div>
+
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>{{ _('Button') }}</th>
+                            <th>{{ _('class=""') }}</th>
+                            <th>{{ _('Description') }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><button class="btn-u" type="button">{{ _('Button Default') }}</button></td>
+                            <td><code>{{ _('btn-u') }}</code></td>
+                            <td>{{ _('Default Unify Template button style') }}</td>
+                        </tr>
+                        <tr>
+                            <td><button class="btn-u btn-u-blue" type="button">{{ _('Button Blue') }}</button></td>
+                            <td><code>{{ _('btn-u btn-u-blue') }}</code></td>
+                            <td>{{ _('New blue button style') }}</td>
+                        </tr>
+                        <tr>
+                            <td><button class="btn-u btn-u-red" type="button">{{ _('Button Red') }}</button></td>
+                            <td><code>{{ _('btn-u btn-u-red') }}</code></td>
+                            <td>{{ _('New red button style') }}</td>
+                        </tr>
+                        <tr>
+                            <td><button class="btn-u btn-u-orange" type="button">{{ _('Button Orange') }}</button></td>
+                            <td><code>{{ _('btn-u btn-u-orange') }}</code></td>
+                            <td>{{ _('New orange button style') }}</td>
+                        </tr>
+                        <tr>
+                            <td><button class="btn-u btn-u-sea" type="button">{{ _('Button Turquoise') }}</button></td>
+                            <td><code>{{ _('btn-u btn-u-sea') }}</code></td>
+                            <td>{{ _('New turquoise button style') }}</td>
+                        </tr>
+                        <tr>
+                            <td><button class="btn-u btn-u-green" type="button">{{ _('Button Green') }}</button></td>
+                            <td><code>{{ _('btn-u btn-u-green') }}</code></td>
+                            <td>{{ _('New green button style') }}</td>
+                        </tr>
+                        <tr>
+                            <td><button class="btn-u btn-u-yellow" type="button">{{ _('Button Yellow') }}</button></td>
+                            <td><code>{{ _('btn-u btn-u-yellow') }}</code></td>
+                            <td>{{ _('New yellow button style') }}</td>
+                        </tr>
+                        <tr>
+                            <td><button class="btn-u btn-u-default" type="button">{{ _('Button Grey') }}</button></td>
+                            <td><code>{{ _('btn-u btn-u-default') }}</code></td>
+                            <td>{{ _('New grey button style') }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="alert alert-info fade in">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    <strong>{{ _('Heads up!') }}</strong> {{ _('Here is default Bootstrap buttons.') }}
+                </div>
+
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>{{ _('Button') }}</th>
+                            <th>{{ _('class=""') }}</th>
+                            <th>{{ _('Description') }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><button class="btn btn-default" type="button">{{ _('Default') }}</button></td>
+                            <td><code>{{ _('btn btn-default') }}</code></td>
+                            <td>{{ _('Standard gray button with gradient') }}</td>
+                        </tr>
+                        <tr>
+                            <td><button class="btn btn-primary" type="button">{{ _('Primary') }}</button></td>
+                            <td><code>{{ _('btn btn-primary') }}</code></td>
+                            <td>{{ _('Provides extra visual weight and identifies the primary action in a set of buttons') }}</td>
+                        </tr>
+                        <tr>
+                            <td><button class="btn btn-info" type="button">{{ _('Info') }}</button></td>
+                            <td><code>{{ _('btn btn-info') }}</code></td>
+                            <td>{{ _('Used as an alternative to the default styles') }}</td>
+                        </tr>
+                        <tr>
+                            <td><button class="btn btn-success" type="button">{{ _('Success') }}</button></td>
+                            <td><code>{{ _('btn btn-success') }}</code></td>
+                            <td>{{ _('Indicates a successful or positive action') }}</td>
+                        </tr>
+                        <tr>
+                            <td><button class="btn btn-warning" type="button">{{ _('Warning') }}</button></td>
+                            <td><code>{{ _('btn btn-warning') }}</code></td>
+                            <td>{{ _('Indicates caution should be taken with this action') }}</td>
+                        </tr>
+                        <tr>
+                            <td><button class="btn btn-danger" type="button">{{ _('Danger') }}</button></td>
+                            <td><code>{{ _('btn btn-danger') }}</code></td>
+                            <td>{{ _('Indicates a dangerous or potentially negative action') }}</td>
+                        </tr>
+                        <tr>
+                            <td><button class="btn btn-link" type="button">{{ _('Link') }}</button></td>
+                            <td><code>{{ _('btn btn-link') }}</code></td>
+                            <td>{{ _('Deemphasize a button by making it look like a link while maintaining button behavior') }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Button Sizes -->
+            <div class="headline"><h2>{{ _('Button Sizes') }}</h2></div>
+            <div class="row margin-bottom-30">
+                <div class="col-md-6">
+                    <p>{{ _('Fancy larger or smaller buttons? Add') }} <code>{{ _('.btn-lg') }}</code>, <code>{{ _('.btn-sm') }}</code>{{ _(', or ') }}<code>{{ _('.btn-xs') }}</code> {{ _('for additional sizes.') }}</p>
+                    <p>
+                        <button class="btn-u btn-u-large" type="button">{{ _('Large button') }}</button>
+                        <button class="btn-u btn-u-blue btn-u-large" type="button">{{ _('Large button') }}</button>
+                    </p>
+                    <p>
+                        <button class="btn-u btn-u-red" type="button">{{ _('Default button') }}</button>
+                        <button class="btn-u btn-u-orange" type="button">{{ _('Default button') }}</button>
+                    </p>
+                    <p>
+                        <button class="btn-u btn-u-small btn-u-sea" type="button">{{ _('Small button') }}</button>
+                        <button class="btn-u btn-u-small btn-u-green" type="button">{{ _('Small button') }}</button>
+                    </p>
+                    <p>
+                        <button class="btn btn-mini btn-primary" type="button">{{ _('Mini button') }}</button>
+                        <button class="btn btn-mini" type="button">{{ _('Mini button') }}</button>
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <p>{{ _('Create block level buttons—those that span the full width of a parent— by adding') }} <code>{{ _('.btn-block') }}</code>.</p>
+                    <button class="btn-u btn-u-blue btn-u-large btn-block" type="button">{{ _('Block level button') }}</button>
+                    <button class="btn-u btn-u-green btn-u-large btn-block" type="button">{{ _('Block level button') }}</button>
+                    <button class="btn-u btn-u-yellow btn-block" type="button">{{ _('Block level button') }}</button>
+                    <button class="btn-u btn-u-default btn-block" type="button">{{ _('Block level button') }}</button>
+                </div>
+            </div><!--/row-->
+
+            <!-- Disabled state -->
+            <div class="headline"><h2>{{ _('Disabled state') }}</h2></div>
+            <p>{{ _('Add the') }} <code>{{ _('.disabled') }}</code> {{ _('class to') }} <code>{{ _('a') }}</code> {{ _('buttons.') }}</p>
+            <p>{{ _('Add the') }} <code>{{ _('disabled') }}</code> {{ _('attribute to') }} <code>{{ _('button') }}</code> {{ _('buttons.') }}</p>
+            <a href="#" class="btn btn-large btn-primary disabled">{{ _('Primary link') }}</a>
+            <a href="#" class="btn btn-large disabled">{{ _('Link') }}</a>
+            <button type="button" class="btn btn-large btn-primary disabled" disabled="disabled">{{ _('Primary button') }}</button>
+            <button type="button" class="btn btn-large" disabled>{{ _('Button') }}</button>
+        </div>
+        <!--End Content-->
+    </div>
+</div><!--/container-->
+<!--=== End Content Part ===-->
+{% endblock %}
+
+{% block js %}
+<!-- JS Page Level -->
+<script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        App.init();
+    });
+</script>
+{% endblock %}

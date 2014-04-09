@@ -1,0 +1,119 @@
+{% extends '_base.html' %}
+
+{% set page_title = "Unify | Blog Item 2" %}
+
+{% set breadcrumbs = True %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/pages/blog.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/pages/page_magazine.css') }}">
+{% endblock %}
+
+{% block main_content %}
+<!--=== Content Part ===-->
+<div class="container blog-page blog-item">
+    <!--Blog Post-->
+	<div class="blog margin-bottom-40">
+        <div class="blog-img">
+            {% if blog_post.type == 'IMAGE' %}
+                <img class="img-responsive" src="{{ url_for('static', filename=blog_post.header) }}" alt="">
+                {% elif blog_post.type == 'VIDEO' %}
+                <div class="responsive-video">
+                    <iframe src="{{ blog_post.header }}" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+                </div>
+                {% elif blog_post.type == 'IMAGE_CAROUSEL' %}
+                <div class="carousel slide carousel-v1" id="myCarousel">
+                    <div class="carousel-inner">
+                        {% for item in blog_post.header %}
+                        <div class="item{% if loop.first %} active{% endif %}">
+                            <img alt="" src="{{ url_for('static', filename=item.url) }}">
+                            <div class="carousel-caption"><p>{{ item.title }}</p></div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="carousel-arrow">
+                        <a data-slide="prev" href="#myCarousel" class="left carousel-control">
+                            <i class="icon-angle-left"></i>
+                        </a>
+                        <a data-slide="next" href="#myCarousel" class="right carousel-control">
+                            <i class="icon-angle-right"></i>
+                        </a>
+                    </div>
+                </div>
+                {% endif %}
+        </div>
+    	<h2><a href="{{ url_for('blog_item_option1') }}">{{ blog_post.title }}</a></h2>
+        <div class="blog-post-tags">
+            <ul class="list-unstyled list-inline blog-info">
+                <li><i class="icon-calendar"></i> {{ blog_post.date|format_date }}</li>
+                <li><i class="icon-pencil"></i> {{ blog_post.author.name }}</li>
+                <li><i class="icon-comments"></i> <a href="#">{{ blog_post.comments_count }} Comments</a></li>
+                <li><i class="icon-tags"></i> {{ blog_post.tags|join(', ') }}</li>
+            </ul>
+        </div>
+        {{ blog_post.content|safe }}
+    </div>
+    <!--End Blog Post-->
+
+    <hr>
+
+    <!-- Recent Comments -->
+    {% for comment in comments recursive %}
+    <div class="media">
+        <a class="pull-left" href="#">
+            <img class="media-object" src="{{ url_for('static', filename=comment.avatar) }}" alt="" />
+        </a>
+        <div class="media-body">
+            <h4 class="media-heading">{{ comment.name }} <span>{{ comment.time_delta }} / <a href="#">Reply</a></span></h4>
+            <p>{{ comment.comment }}</p>
+            {% if comment.children %}{{ loop(comment.children) }}{% endif %}
+        </div>
+    </div>
+    {% endfor %}
+
+    <hr>
+
+    <!-- Comment Form -->
+    <div class="post-comment">
+        <h3>{{ _('Leave a Comment') }}</h3>
+        <form>
+            {{ comment_form.csrf_token }}
+
+            {{ comment_form.name.label }}{% if comment_form.name.flags.required %}<span class="color-red">*</span>{% endif %}
+            <div class="row margin-bottom-20">
+                <div class="col-md-7 col-md-offset-0">
+                    {{ comment_form.name(class="form-control") }}
+                </div>
+            </div>
+
+            {{ comment_form.email.label }}{% if comment_form.email.flags.required %}<span class="color-red">*</span>{% endif %}
+            <div class="row margin-bottom-20">
+                <div class="col-md-7 col-md-offset-0">
+                    {{ comment_form.email(class="form-control") }}
+                </div>
+            </div>
+
+            {{ comment_form.message.label }}{% if comment_form.message.flags.required %}<span class="color-red">*</span>{% endif %}
+            <div class="row margin-bottom-20">
+                <div class="col-md-11 col-md-offset-0">
+                    {{ comment_form.message(class="form-control", rows="8") }}
+                </div>
+            </div>
+
+            <p><button class="btn-u" type="submit">{{ _('Send Message') }}</button></p>
+        </form>
+    </div>
+    <!-- End Comment Form -->
+</div><!--/container-->
+<!--=== End Content Part ===-->
+{% endblock %}
+
+{% block js %}
+<!-- JS Page Level -->
+<script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        App.init();
+    });
+</script>
+{% endblock %}

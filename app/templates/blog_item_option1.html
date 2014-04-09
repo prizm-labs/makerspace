@@ -1,0 +1,273 @@
+{% extends '_base.html' %}
+
+{% set page_title = "Unify | Blog Item 1" %}
+
+{% set breadcrumbs = True %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/pages/blog.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/pages/page_magazine.css') }}">
+{% endblock %}
+
+{% block main_content %}
+<!--=== Content Part ===-->
+<div class="container">
+	<div class="row blog-page blog-item">
+        <!-- Left Sidebar -->
+    	<div class="col-md-9 md-margin-bottom-60">
+            <!--Blog Post-->
+            <div class="blog margin-bottom-40">
+                <h2><a href="{{ url_for('blog_item_option1') }}">{{ blog_post.title }}</a></h2>
+                <div class="blog-post-tags">
+                    <ul class="list-unstyled list-inline blog-info">
+                        <li><i class="icon-calendar"></i> {{ blog_post.date|format_date }}</li>
+                        <li><i class="icon-pencil"></i> {{ blog_post.author.name }}</li>
+                        <li><i class="icon-comments"></i> <a href="#">{{ blog_post.comments_count }} Comments</a></li>
+                    </ul>
+                    <ul class="list-unstyled list-inline blog-tags">
+                        <li>
+                            <i class="icon-tags"></i>
+                            {% for tag in blog_post.tags %}
+                            <a href="#">{{ tag }}</a>
+                            {% endfor %}
+                        </li>
+                    </ul>
+                </div>
+                <div class="blog-img">
+                    {% if blog_post.type == 'IMAGE' %}
+                    <img class="img-responsive" src="{{ url_for('static', filename=blog_post.header) }}" alt="">
+                    {% elif blog_post.type == 'VIDEO' %}
+                    <div class="responsive-video">
+                        <iframe src="{{ blog_post.header }}" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+                    </div>
+                    {% elif blog_post.type == 'IMAGE_CAROUSEL' %}
+                    <div class="carousel slide carousel-v1" id="myCarousel">
+                        <div class="carousel-inner">
+                            {% for item in blog_post.header %}
+                            <div class="item{% if loop.first %} active{% endif %}">
+                                <img alt="" src="{{ url_for('static', filename=item.url) }}">
+                                <div class="carousel-caption"><p>{{ item.title }}</p></div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <div class="carousel-arrow">
+                            <a data-slide="prev" href="#myCarousel" class="left carousel-control">
+                                <i class="icon-angle-left"></i>
+                            </a>
+                            <a data-slide="next" href="#myCarousel" class="right carousel-control">
+                                <i class="icon-angle-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+                {{ blog_post.content|safe }}
+            </div>
+            <!--End Blog Post-->
+
+			<hr>
+
+            <!-- Recent Comments -->
+            {% for comment in comments recursive %}
+            <div class="media">
+                <a class="pull-left" href="#">
+                    <img class="media-object" src="{{ url_for('static', filename=comment.avatar) }}" alt="" />
+                </a>
+                <div class="media-body">
+                    <h4 class="media-heading">{{ comment.name }} <span>{{ comment.time_delta }} / <a href="#">Reply</a></span></h4>
+                    <p>{{ comment.comment }}</p>
+                    {% if comment.children %}{{ loop(comment.children) }}{% endif %}
+                </div>
+            </div>
+            {% endfor %}
+
+            <hr>
+
+            <!-- Comment Form -->
+            <div class="post-comment">
+            	<h3>{{ _('Leave a Comment') }}</h3>
+                <form>
+                    {{ comment_form.csrf_token }}
+
+                    {{ comment_form.name.label }}{% if comment_form.name.flags.required %}<span class="color-red">*</span>{% endif %}
+                    <div class="row margin-bottom-20">
+                        <div class="col-md-7 col-md-offset-0">
+                            {{ comment_form.name(class="form-control") }}
+                        </div>
+                    </div>
+
+                    {{ comment_form.email.label }}{% if comment_form.email.flags.required %}<span class="color-red">*</span>{% endif %}
+                    <div class="row margin-bottom-20">
+                        <div class="col-md-7 col-md-offset-0">
+                            {{ comment_form.email(class="form-control") }}
+                        </div>
+                    </div>
+
+                    {{ comment_form.message.label }}{% if comment_form.message.flags.required %}<span class="color-red">*</span>{% endif %}
+                    <div class="row margin-bottom-20">
+                        <div class="col-md-11 col-md-offset-0">
+                            {{ comment_form.message(class="form-control", rows="8") }}
+                        </div>
+                    </div>
+
+                    <p><button class="btn-u" type="submit">{{ _('Send Message') }}</button></p>
+                </form>
+            </div>
+            <!-- End Comment Form -->
+        </div>
+        <!-- End Left Sidebar -->
+
+        <!-- Right Sidebar -->
+        <div class="col-md-3 magazine-page">
+            <!-- Search Bar -->
+            <div class="headline headline-md"><h2>{{ _('Search') }}</h2></div>
+            <div class="input-group margin-bottom-40">
+                <input type="text" class="form-control" placeholder="Search">
+                <span class="input-group-btn">
+                    <button class="btn-u" type="button">{{ _('Go') }}</button>
+                </span>
+            </div>
+            <!-- End Search Bar -->
+
+            <!-- Posts -->
+            <div class="posts margin-bottom-40">
+                <div class="headline headline-md"><h2>{{ _('Recent Posts') }}</h2></div>
+                <dl class="dl-horizontal">
+                    <dt><a href="#"><img src="{{ url_for('static', filename='img/sliders/elastislide/6.jpg') }}" alt="" /></a></dt>
+                    <dd>
+                        <p><a href="#">{{ _('Responsive Bootstrap 3 Template placerat idelo alac eratamet.') }}</a></p>
+                    </dd>
+                </dl>
+                <dl class="dl-horizontal">
+                    <dt><a href="#"><img src="{{ url_for('static', filename='img/sliders/elastislide/10.jpg') }}" alt="" /></a></dt>
+                    <dd>
+                        <p><a href="#">{{ _('100+ Amazing Features Layer Slider, Layer Slider, Icons, 60+ Pages etc.') }}</a></p>
+                    </dd>
+                </dl>
+                <dl class="dl-horizontal">
+                    <dt><a href="#"><img src="{{ url_for('static', filename='img/sliders/elastislide/11.jpg') }}" alt="" /></a></dt>
+                    <dd>
+                        <p><a href="#">{{ _('Developer Friendly Code imperdiet condime ntumi mperdiet condim.') }}</a></p>
+                    </dd>
+                </dl>
+            </div><!--/posts-->
+            <!-- End Posts -->
+
+            <!-- Tabs Widget -->
+            <div class="headline headline-md"><h2>{{ _('Tabs Widget') }}</h2></div>
+            <div class="tab-v2 margin-bottom-40">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#home-1">{{ _('About Us') }}</a></li>
+                    <li><a data-toggle="tab" href="#home-2">{{ _('Quick Links') }}</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="home-1" class="tab-pane active">
+                        <p>{{ _('Vivamus imperdiet condimentum diam, eget placerat felis consectetur id. Donec eget orci metus, ac ac adipiscing nunc.') }}</p> <p>{{ _('Pellentesque fermentum, ante ac felis consectetur id. Donec eget orci metusvivamus imperdiet.') }}</p>
+                    </div>
+                    <div id="home-2" class="tab-pane magazine-sb-categories">
+                        <div class="row">
+                            <ul class="list-unstyled col-xs-6">
+                                <li><a href="#">{{ _('Best Sliders') }}</a></li>
+                                <li><a href="#">{{ _('Parralax Page') }}</a></li>
+                                <li><a href="#">{{ _('Backgrounds') }}</a></li>
+                                <li><a href="#">{{ _('Parralax Slider') }}</a></li>
+                                <li><a href="#">{{ _('Responsive') }}</a></li>
+                                <li><a href="#">{{ _('800+ Icons') }}</a></li>
+                            </ul>
+                            <ul class="list-unstyled col-xs-6">
+                                <li><a href="#">{{ _('60+ Pages') }}</a></li>
+                                <li><a href="#">{{ _('Layer Slider') }}</a></li>
+                                <li><a href="#">{{ _('Bootstrap 3') }}</a></li>
+                                <li><a href="#">{{ _('Fixed Header') }}</a></li>
+                                <li><a href="#">{{ _('Best Template') }}</a></li>
+                                <li><a href="#">{{ _('And Many More') }}</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Tabs Widget -->
+
+            <!-- Photo Stream -->
+            <div class="headline headline-md"><h2>{{ _('Photo Stream') }}</h2></div>
+            <ul class="list-unstyled blog-photos margin-bottom-30">
+                <li><a href="#"><img class="hover-effect" alt="" src="{{ url_for('static', filename='img/sliders/elastislide/5.jpg') }}"></a></li>
+                <li><a href="#"><img class="hover-effect" alt="" src="{{ url_for('static', filename='img/sliders/elastislide/6.jpg') }}"></a></li>
+                <li><a href="#"><img class="hover-effect" alt="" src="{{ url_for('static', filename='img/sliders/elastislide/8.jpg') }}"></a></li>
+                <li><a href="#"><img class="hover-effect" alt="" src="{{ url_for('static', filename='img/sliders/elastislide/10.jpg') }}"></a></li>
+                <li><a href="#"><img class="hover-effect" alt="" src="{{ url_for('static', filename='img/sliders/elastislide/11.jpg') }}"></a></li>
+                <li><a href="#"><img class="hover-effect" alt="" src="{{ url_for('static', filename='img/sliders/elastislide/1.jpg') }}"></a></li>
+                <li><a href="#"><img class="hover-effect" alt="" src="{{ url_for('static', filename='img/sliders/elastislide/2.jpg') }}"></a></li>
+                <li><a href="#"><img class="hover-effect" alt="" src="{{ url_for('static', filename='img/sliders/elastislide/7.jpg') }}"></a></li>
+            </ul>
+            <!-- End Photo Stream -->
+
+            <!-- Blog Tags -->
+            <div class="headline headline-md"><h2>{{ _('Blog Tags') }}</h2></div>
+            <ul class="list-unstyled blog-tags margin-bottom-30">
+                <li><a href="#"><i class="icon-tags"></i> {{ _('Business') }}</a></li>
+                <li><a href="#"><i class="icon-tags"></i> {{ _('Music') }}</a></li>
+                <li><a href="#"><i class="icon-tags"></i> {{ _('Internet') }}</a></li>
+                <li><a href="#"><i class="icon-tags"></i> {{ _('Money') }}</a></li>
+                <li><a href="#"><i class="icon-tags"></i> {{ _('Google') }}</a></li>
+                <li><a href="#"><i class="icon-tags"></i> {{ _('TV Shows') }}</a></li>
+                <li><a href="#"><i class="icon-tags"></i> {{ _('Education') }}</a></li>
+                <li><a href="#"><i class="icon-tags"></i> {{ _('People') }}</a></li>
+                <li><a href="#"><i class="icon-tags"></i> {{ _('People') }}</a></li>
+                <li><a href="#"><i class="icon-tags"></i> {{ _('Math') }}</a></li>
+                <li><a href="#"><i class="icon-tags"></i> {{ _('Photos') }}</a></li>
+                <li><a href="#"><i class="icon-tags"></i> {{ _('Electronics') }}</a></li>
+                <li><a href="#"><i class="icon-tags"></i> {{ _('Apple') }}</a></li>
+                <li><a href="#"><i class="icon-tags"></i> {{ _('Canada') }}</a></li>
+            </ul>
+            <!-- End Blog Tags -->
+
+            <!-- Blog Latest Tweets -->
+            <div class="blog-twitter margin-bottom-30">
+                <div class="headline headline-md"><h2>{{ _('Latest Tweets') }}</h2></div>
+                <div class="blog-twitter-inner">
+                    <i class="icon-twitter"></i>
+                    <a href="#">{{ _('@htmlstream') }}</a>
+                    {{ _('At vero eos et accusamus et iusto odio dignissimos.') }}
+                    <a href="#">{{ _('http://t.co/sBav7dm') }}</a>
+                    <span>{{ _('5 hours ago') }}</span>
+                </div>
+                <div class="blog-twitter-inner">
+                    <i class="icon-twitter"></i>
+                    <a href="#">{{ _('@htmlstream') }}</a>
+                    {{ _('At vero eos et accusamus et iusto odio dignissimos.') }}
+                    <a href="#">{{ _('http://t.co/sBav7dm') }}</a>
+                    <span>{{ _('5 hours ago') }}</span>
+                </div>
+                <div class="blog-twitter-inner">
+                    <i class="icon-twitter"></i>
+                    <a href="#">{{ _('@htmlstream') }}</a>
+                    {{ _('At vero eos et accusamus et iusto odio dignissimos.') }}
+                    <a href="#">{{ _('http://t.co/sBav7dm') }}</a>
+                    <span>{{ _('5 hours ago') }}</span>
+                </div>
+                <div class="blog-twitter-inner">
+                    <i class="icon-twitter"></i>
+                    <a href="#">{{ _('@htmlstream') }}</a>
+                    {{ _('At vero eos et accusamus et iusto odio dignissimos.') }}
+                    <a href="#">{{ _('http://t.co/sBav7dm') }}</a>
+                    <span>{{ _('5 hours ago') }}</span>
+                </div>
+            </div>
+            <!-- End Blog Latest Tweets -->
+        </div>
+        <!-- End Right Sidebar -->
+    </div><!--/row-->
+</div><!--/container-->
+<!--=== End Content Part ===-->
+{% endblock %}
+
+{% block js %}
+<!-- JS Page Level -->
+<script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        App.init();
+    });
+</script>
+{% endblock %}

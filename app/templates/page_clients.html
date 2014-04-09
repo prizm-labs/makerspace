@@ -1,0 +1,96 @@
+{% extends '_base.html' %}
+
+{% set page_title = "Unify | Clients" %}
+
+{% set breadcrumbs = True %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/pages/page_clients.css') }}">
+{% endblock %}
+
+{% block main_content %}
+<!--=== Content Part ===-->
+<div class="container">
+	<div class="row">
+    	<div class="col-md-9">
+        	<div class="headline"><h2>{{ _('Our Clinets') }}</h2></div>
+            <div class="clients-page margin-bottom-20">
+            	<a class="img-hover" href="#">
+                	<img src="{{ url_for('static', filename='img/clients/cisco_grey.png') }}" alt="" />
+                	<img src="{{ url_for('static', filename='img/clients/cisco.png') }}" class="img-colorful" alt="" />
+				</a>
+                <p>{{ _('At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est etenim a feugiat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat. Pellentesque viverra vehicula sem ut volutpat. Integer sed arcu.') }} <a class="linked color-green" href="#">{{ _('http://www.example.com') }}</a></p>
+            </div>
+            <div class="clients-page margin-bottom-20">
+            	<a class="img-hover" href="#">
+                	<img src="{{ url_for('static', filename='img/clients/cocacola_grey.png') }}" alt="" />
+                	<img src="{{ url_for('static', filename='img/clients/cocacola.png') }}" class="img-colorful" alt="" />
+				</a>
+                <p>{{ _('At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est etenim a feugiat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat. Pellentesque viverra vehicula sem ut volutpat. Integer sed arcu.') }} <a class="linked color-green" href="#">{{ _('http://www.example.com') }}</a></p>
+            </div>
+            <div class="clients-page margin-bottom-20">
+            	<a class="img-hover" href="#">
+                	<img src="{{ url_for('static', filename='img/clients/hp_grey.png') }}" alt="" />
+                	<img src="{{ url_for('static', filename='img/clients/hp.png') }}" class="img-colorful" alt="" />
+				</a>
+                <p>{{ _('At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est etenim a feugiat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat. Pellentesque viverra vehicula sem ut volutpat. Integer sed arcu.') }} <a class="linked color-green" href="#">{{ _('http://www.example.com') }}</a></p>
+            </div>
+            <div class="clients-page margin-bottom-20">
+            	<a class="img-hover" href="#">
+                	<img src="{{ url_for('static', filename='img/clients/shell_grey.png') }}" alt="" />
+                	<img src="{{ url_for('static', filename='img/clients/shell.png') }}" class="img-colorful" alt="" />
+				</a>
+                <p>{{ _('At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est etenim a feugiat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat. Pellentesque viverra vehicula sem ut volutpat. Integer sed arcu.') }} <a class="linked color-green" href="#">{{ _('http://www.example.com') }}</a></p>
+            </div>
+            <div class="clients-page margin-bottom-20">
+            	<a class="img-hover" href="#">
+                	<img src="{{ url_for('static', filename='img/clients/vadafone_grey.png') }}" alt="" />
+                	<img src="{{ url_for('static', filename='img/clients/vadafone.png') }}" class="img-colorful" alt="" />
+				</a>
+                <p>{{ _('At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est etenim a feugiat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat. Pellentesque viverra vehicula sem ut volutpat. Integer sed arcu.') }} <a class="linked color-green" href="#">{{ _('http://www.example.com') }}</a></p>
+            </div>
+        </div><!--/col-md-9-->
+
+    	<div class="col-md-3">
+        	<!-- Our Services -->
+            <div class="who margin-bottom-30">
+                <div class="headline"><h2>{{ _('Our Services') }}</h2></div>
+                <p>{{ _('At vero eos et accusamus et iusto odio dign issimos ducimus qui blanditiis iusto.') }}</p>
+                <ul class="list-unstyled">
+                    <li><a href="#"><i class="icon-desktop"></i>{{ _('Vivamus imperdiet condimentum') }}</a></li>
+                    <li><a href="#"><i class="icon-bullhorn"></i>{{ _('Anim pariatur cliche squid') }}</a></li>
+                    <li><a href="#"><i class="icon-globe"></i>{{ _('Eget placerat felis consectetur') }}</a></li>
+                    <li><a href="#"><i class="icon-group"></i>{{ _('Condimentum diam eget placerat') }}</a></li>
+                </ul>
+            </div>
+
+        	<!-- About Us -->
+        	<div class="headline"><h2>{{ _('About Us') }}</h2></div>
+            <p class="margin-bottom-30">{{ _('At vero eos et acc usamus et iusto odio dign issimos ducimus atque corrupti quos dolores etrerum facilis est etenim a feugiat cupiditate non quos.') }} <a class="read-more" href="#">{{ _('Read more') }}</a></p>
+
+        	<!-- Contact Us -->
+            <div class="who margin-bottom-30">
+                <div class="headline"><h2>{{ _('Contact Us') }}</h2></div>
+                <p>{{ _('Vero facilis est etenim a feugiat cupiditate non quos etrerum facilis.') }}</p>
+                <ul class="list-unstyled">
+                    <li><a href="#"><i class="icon-home"></i>{{ _('5B amus ED554, New York, US') }}</a></li>
+                    <li><a href="#"><i class="icon-envelope-alt"></i>{{ _('infp@example.com') }}</a></li>
+                    <li><a href="#"><i class="icon-phone-sign"></i>{{ _('1(222) 5x86 x97x') }}</a></li>
+                    <li><a href="#"><i class="icon-globe"></i>{{ _('http://www.example.com') }}</a></li>
+                </ul>
+            </div>
+        </div><!--/col-md-3-->
+    </div><!--/row-->
+</div><!--/container-->
+<!--=== End Content Part ===-->
+{% endblock %}
+
+{% block js %}
+<!-- JS Page Level -->
+<script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        App.init();
+    });
+</script>
+{% endblock %}

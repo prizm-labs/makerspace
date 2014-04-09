@@ -1,0 +1,94 @@
+<!--=== Footer ===-->
+<div class="footer">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4 md-margin-bottom-40">
+                <!-- About -->
+		        <div class="headline"><h2>{{ _('About') }}</h2></div>
+				<p class="margin-bottom-25 md-margin-bottom-40">{{ _('Unify is an incredibly beautiful responsive Bootstrap Template for corporate and creative professionals.') }}</p>
+
+	            <!-- Monthly Newsletter -->
+		        <div class="headline"><h2>{{ _('Monthly Newsletter') }}</h2></div>
+				<p>{{ _('Subscribe to our newsletter and stay up to date with the latest news and deals!') }}</p>
+				<form class="footer-subsribe">
+                    {{ newsletter_form.csrf_token }}
+                    <div class="input-group">
+                        {{ newsletter_form.email(class="form-control", placeholder=newsletter_form.email.label.text) }}
+                        <span class="input-group-btn">
+                            <button class="btn-u" type="button">{{ _('Subscribe') }}</button>
+                        </span>
+                    </div><!-- /input-group -->
+				</form>
+			</div><!--/col-md-4-->
+
+			<div class="col-md-4 md-margin-bottom-40">
+                <div class="posts">
+                    <div class="headline"><h2>{{ _('Recent Blog Entries') }}</h2></div>
+                    <dl class="dl-horizontal">
+                        <dt><a href="#"><img src="{{ url_for('static', filename='img/sliders/elastislide/6.jpg') }}" alt="" /></a></dt>
+                        <dd>
+                            <p><a href="#">{{ _('Anim moon officia Unify is an incredibly beautiful responsive Bootstrap Template') }}</a></p>
+                        </dd>
+                    </dl>
+                    <dl class="dl-horizontal">
+                    <dt><a href="#"><img src="{{ url_for('static', filename='img/sliders/elastislide/10.jpg') }}" alt="" /></a></dt>
+                        <dd>
+                            <p><a href="#">{{ _('Anim moon officia Unify is an incredibly beautiful responsive Bootstrap Template') }}</a></p>
+                        </dd>
+                    </dl>
+                    <dl class="dl-horizontal">
+                    <dt><a href="#"><img src="{{ url_for('static', filename='img/sliders/elastislide/11.jpg') }}" alt="" /></a></dt>
+                        <dd>
+                            <p><a href="#">{{ _('Anim moon officia Unify is an incredibly beautiful responsive Bootstrap Template') }}</a></p>
+                        </dd>
+                    </dl>
+                </div>
+			</div><!--/col-md-4-->
+
+			<div class="col-md-4">
+	            <!-- Monthly Newsletter -->
+		        <div class="headline"><h2>{{ _('Contact Us') }}</h2></div>
+                <address class="md-margin-bottom-40">
+					{{ _('25, Lorem Lis Street, Orange') }} <br />
+					{{ _('California, US') }} <br />
+					{{ _('Phone: 800 123 3456') }} <br />
+					{{ _('Fax: 800 123 3456') }} <br />
+					{{ _('Email:') }} <a href="mailto:info@anybiz.com" class="">{{ _('info@anybiz.com') }}</a>
+                </address>
+
+                <!-- Stay Connected -->
+		        <div class="headline"><h2>{{ _('Stay Connected') }}</h2></div>
+                <ul class="social-icons">
+                    <li><a href="#" data-original-title="Feed" class="social_rss"></a></li>
+                    <li><a href="#" data-original-title="Facebook" class="social_facebook"></a></li>
+                    <li><a href="#" data-original-title="Twitter" class="social_twitter"></a></li>
+                    <li><a href="#" data-original-title="Goole Plus" class="social_googleplus"></a></li>
+                    <li><a href="#" data-original-title="Pinterest" class="social_pintrest"></a></li>
+                    <li><a href="#" data-original-title="Linkedin" class="social_linkedin"></a></li>
+                    <li><a href="#" data-original-title="Vimeo" class="social_vimeo"></a></li>
+                </ul>
+			</div><!--/col-md-4-->
+		</div><!--/row-->
+	</div><!--/container-->
+</div><!--/footer-->
+<!--=== End Footer ===-->
+
+<!--=== Copyright ===-->
+<div class="copyright">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+	            <p class="copyright-space">
+                    {{ _('2013 &copy; Unify. ALL Rights Reserved.') }}
+                    <a href="#">{{ _('Privacy Policy') }}</a> | <a href="#">{{ _('Terms of Service') }}</a>
+                </p>
+			</div>
+			<div class="col-md-6">
+				<a href="{{ url_for('index') }}">
+                    <img id="logo-footer" src="{{ url_for('static', filename='img/logo2-default.png') }}" class="pull-right" alt="" />
+                </a>
+			</div>
+		</div><!--/row-->
+	</div><!--/container-->
+</div><!--/copyright-->
+<!--=== End Copyright ===-->

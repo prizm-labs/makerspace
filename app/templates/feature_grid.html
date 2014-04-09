@@ -1,0 +1,119 @@
+{% extends '_base.html' %}
+
+{% set page_title = "Unify | Grid Layout" %}
+
+{% set breadcrumbs = True %}
+
+{% block main_content %}
+<!--=== Content Part ===-->
+<div class="container">
+    <div class="alert alert-warning fade in margin-bottom-40">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        {{ _('Bootstrap 3 includes a responsive, mobile first fluid grid system that appropriately scales up to 12 columns as the device or viewport size increases.') }}
+        <br>
+        {{ _('Please read more about grid system form the offecial Botostrap page') }} <a target="_blank" href="http://getbootstrap.com/css/#grid">{{ _('http://getbootstrap.com/css/#grid') }}</a>
+    </div>
+
+    <div class="row">
+        {% include '_sidebar_nav_menu.html' %}
+
+        <!--Begin Content-->
+        <div class="col-md-9">
+            <div class="row margin-bottom-10">
+                <div class="col-md-9">
+                    <div class="bg-light"><!-- You can delete "bg-light" class. It is just to make background color -->
+                        <h4><i class="icon-align-justify"></i>{{ _('Three Fourth') }}</h4>
+                        <p>{{ _('At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est') }}</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="bg-light"><!-- You can delete "bg-light" class. It is just to make background color -->
+                        <h4><i class="icon-align-justify"></i>{{ _('One Fourth') }}</h4>
+                        <p>{{ _('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna') }}</p>
+                    </div>
+                </div>
+            </div><!--/row-->
+            <div class="row margin-bottom-10">
+                <div class="col-md-4">
+                    <div class="bg-light"><!-- You can delete "bg-light" class. It is just to make background color -->
+                        <h4><i class="icon-align-justify"></i>{{ _('One Third') }}</h4>
+                        <p>{{ _('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna. Sed et quam lacus') }}</p>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="bg-light"><!-- You can delete "bg-light" class. It is just to make background color -->
+                        <h4><i class="icon-align-justify"></i>{{ _('Two Third') }}</h4>
+                        <p>{{ _('At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident') }}</p>
+                    </div>
+                </div>
+            </div><!--/row-->
+            <div class="row margin-bottom-10">
+                <div class="col-md-3">
+                    <div class="bg-light"><!-- You can delete "bg-light" class. It is just to make background color -->
+                        <h4><i class="icon-align-justify"></i>{{ _('One Fourth') }}</h4>
+                        <p>{{ _('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna.') }}</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="bg-light"><!-- You can delete "bg-light" class. It is just to make background color -->
+                        <h4><i class="icon-align-justify"></i>{{ _('One Half') }}</h4>
+                        <p>{{ _('At vero eos similique sunt in culpa qui officia deserunt et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias') }}</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="bg-light"><!-- You can delete "bg-light" class. It is just to make background color -->
+                        <h4><i class="icon-align-justify"></i>{{ _('One Fourth') }}</h4>
+                        <p>{{ _('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna') }}</p>
+                    </div>
+                </div>
+            </div><!--/row-->
+            <div class="row margin-bottom-10">
+                <div class="col-md-4">
+                    <div class="bg-light"><!-- You can delete "bg-light" class. It is just to make background color -->
+                        <h4><i class="icon-align-justify"></i>{{ _('One Third') }}</h4>
+                        <p>{{ _('At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum') }}</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="bg-light"><!-- You can delete "bg-light" class. It is just to make background color -->
+                        <h4><i class="icon-align-justify"></i>{{ _('One Third') }}</h4>
+                        <p>{{ _('At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti') }}</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="bg-light"><!-- You can delete "bg-light" class. It is just to make background color -->
+                        <h4><i class="icon-align-justify"></i>{{ _('One Third') }}</h4>
+                        <p>{{ _('At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum') }}</p>
+                    </div>
+                </div>
+            </div><!--/row-->
+            <div class="row margin-bottom-10">
+                <div class="col-md-6">
+                    <div class="bg-light"><!-- You can delete "bg-light" class. It is just to make background color -->
+                        <h4><i class="icon-align-justify"></i>{{ _('One Half') }}</h4>
+                        <p>{{ _('At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in feugiat.') }}</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="bg-light"><!-- You can delete "bg-light" class. It is just to make background color -->
+                        <h4><i class="icon-align-justify"></i>{{ _('One Half') }}</h4>
+                        <p>{{ _('At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique suntin') }}</p>
+                    </div>
+                </div>
+            </div><!--/row-->
+        </div>
+        <!--End Content-->
+    </div>
+</div><!--/container-->
+<!--=== End Content Part ===-->
+{% endblock %}
+
+{% block js %}
+<!-- JS Page Level -->
+<script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        App.init();
+    });
+</script>
+{% endblock %}

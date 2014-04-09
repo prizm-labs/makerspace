@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+    <title>{{ page_title|default("Unify") }}</title>
+
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+    <!-- CSS Global Compulsory-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='plugins/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/headers/header{num}.css'.format(num=2 if css_header2 else 1)) }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/responsive.css') }}">
+
+    <!-- CSS Implementing Plugins -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='plugins/font-awesome/css/font-awesome.css') }}">
+    {%- block css %}{% endblock %}
+
+    <!-- CSS Theme -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/themes/default.css') }}" id="style_color">
+    {#- Was originally in raw templates but file is not present. #}
+    {#- <link rel="stylesheet" href="{{ url_for('static', filename='css/themes/headers/default.css') }}" id="style_color-header-{{ 2 if css_header2 else 1 }}">#}
+</head>
+
+{#- Without invoking these variables here, included files aren't able to access them. #}
+{%- set _temp = breadcrumbs %}
+{%- set _temp = disable_header %}
+{%- set _temp = disable_breadcrumb_bottom_margin %}
+
+<body{% if body_class %} class="{{ body_class }}"{% endif %}>
+
+{% include '_header.html' %}
+
+{%- block main_content %}{% endblock %}
+
+{% if not disable_footer %}{% include '_footer.html' %}{% endif %}
+
+<!-- JS Global Compulsory -->
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/jquery-1.10.2.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/jquery-migrate-1.2.1.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/bootstrap/js/bootstrap.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/hover-dropdown.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/back-to-top.js') }}"></script>
+
+{% block js %}{% endblock %}
+
+<!--[if lt IE 9]>
+    <script src="{{ url_for('static', filename='plugins/respond.js') }}"></script>
+    {%- block js_lt_ie9 %}{% endblock %}
+<![endif]-->
+
+</body>
+</html>

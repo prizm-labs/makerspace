@@ -1,0 +1,430 @@
+{% extends '_base.html' %}
+
+{% set page_title = "Unify | Welcome..." %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='plugins/flexslider/flexslider.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='plugins/bxslider/jquery.bxslider.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='plugins/layer_slider/css/layerslider.css') }}">
+{% endblock %}
+
+{% block main_content %}
+<!--=== Slider ===-->
+<div class="layer_slider">
+    <div id="layerslider-container-fw">
+        <div id="layerslider" style="width: 100%; height: 500px; margin: 0px auto; ">
+            <!--First Slide-->
+            <div class="ls-layer" style="slidedirection: right; transition2d: 24,25,27,28; ">
+
+                <img src="{{ url_for('static', filename='img/sliders/layer/bg1.jpg') }}" class="ls-bg" alt="Slide background">
+
+                <img src="{{ url_for('static', filename='img/mockup/iphone1.png') }}" alt="Slider Image" class="ls-s-1" style=" top:110px; left: 240px; slidedirection : left; slideoutdirection : bottom; durationin : 1500; durationout : 1500; ">
+
+                <img src="{{ url_for('static', filename='img/mockup/iphone.png') }}" alt="Slider image" class="ls-s-1" style=" top:60px; left: 40px; slidedirection : left; slideoutdirection : bottom; durationin : 2500; durationout : 2500; ">
+
+                <span class="ls-s-1" style=" text-transform: uppercase; line-height: 45px; font-size:35px; color:#fff; top:200px; left: 590px; slidedirection : top; slideoutdirection : bototm; durationin : 3500; durationout : 3500; ">
+                    {{ _('Fully Responsive') }} <br> {{ _('Bootstrap 3 Template') }}
+                </span>
+
+                <a class="btn-u btn-u-orange ls-s1" href="#" style=" padding: 9px 20px; font-size:25px; top:340px; left: 590px; slidedirection : bottom; slideoutdirection : top; durationin : 3500; durationout : 3500; ">
+                    {{ _('Download Now') }}
+                </a>
+            </div>
+            <!--End First Slide-->
+
+            <!--Second Slide-->
+            <div class="ls-layer" style="slidedirection: top; ">
+                <img src="{{ url_for('static', filename='img/bg/5.jpg') }}" class="ls-bg" alt="Slide background">
+
+                <i class="icon-chevron-sign-right ls-s-1" style=" color: #fff; font-size: 24px; top:70px; left: 40px; slidedirection : left; slideoutdirection : top; durationin : 1500; durationout : 500; "></i>
+
+                <span class="ls-s-2" style=" color: #fff; font-weight: 200; font-size: 22px; top:70px; left: 70px; slidedirection : top; slideoutdirection : bottom; durationin : 1500; durationout : 500; ">
+                    {{ _('Fully Responsive and Easy to Customize') }}
+                </span>
+
+                <i class="icon-chevron-sign-right ls-s-1" style=" color: #fff; font-size: 24px; top:120px; left: 40px; slidedirection : left; slideoutdirection : top; durationin : 2500; durationout : 1500; "></i>
+
+                <span class="ls-s-2" style=" color: #fff; font-weight: 200; font-size: 22px; top:120px; left: 70px; slidedirection : top; slideoutdirection : bottom; durationin : 2500; durationout : 1500; ">
+                    {{ _('Revolution and Layer Slider Included') }}
+                </span>
+
+                <i class="icon-chevron-sign-right ls-s-1" style=" color: #fff; font-size: 24px; top:170px; left: 40px; slidedirection : left; slideoutdirection : top; durationin : 3500; durationout : 3500; "></i>
+
+                <span class="ls-s-2" style=" color: #fff; font-weight: 200; font-size: 22px; top:170px; left: 70px; slidedirection : top; slideoutdirection : bottom; durationin : 3500; durationout : 2500; ">
+                    {{ _('1000+ Glyphicons Pro and Font Awesome Icons') }}
+                </span>
+
+                <i class="icon-chevron-sign-right ls-s-1" style=" color: #fff; font-size: 24px; top:220px; left: 40px; slidedirection : left; slideoutdirection : top; durationin : 4500; durationout : 3500; "></i>
+
+                <span class="ls-s-2" style=" color: #fff; font-weight: 200; font-size: 22px; top:220px; left: 70px; slidedirection : top; slideoutdirection : bottom; durationin : 4500; durationout : 3500; ">
+                    {{ _('Revolution and Layer Slider Included') }}
+                </span>
+
+                <i class="icon-chevron-sign-right ls-s-1" style=" color: #fff; font-size: 24px; top:270px; left: 40px; slidedirection : left; slideoutdirection : top; durationin : 5500; durationout : 4500; "></i>
+
+                <span class="ls-s-2" style=" color: #fff; font-weight: 200; font-size: 22px; top:270px; left: 70px; slidedirection : top; slideoutdirection : bottom; durationin : 5500; durationout : 4500; ">
+                    {{ _('60+ Template Pages and 20+ Plugins Included') }}
+                </span>
+
+                <a class="btn-u btn-u-blue ls-s1" href="#" style=" padding: 9px 20px; font-size:25px; top:340px; left: 40px; slidedirection : bottom; slideoutdirection : bottom; durationin : 6500; durationout : 3500; ">
+                    {{ _('Twitter Bootstrap 3') }}
+                </a>
+
+                <img src="{{ url_for('static', filename='img/mockup/iphone1.png') }}" alt="Slider Image" class="ls-s-1" style=" top:30px; left: 650px; slidedirection : right; slideoutdirection : bottom; durationin : 1500; durationout : 1500; ">
+            </div>
+            <!--End Second Slide-->
+
+            <!--Third Slide-->
+            <div class="ls-layer" style="slidedirection: right; transition2d: 92,93,105; ">
+                <img src="{{ url_for('static', filename='img/sliders/layer/bg2.jpg') }}" class="ls-bg" alt="Slide background">
+
+                <span class="ls-s-1" style=" color: #777; line-height:45px; font-weight: 200; font-size: 35px; top:100px; left: 50px; slidedirection : top; slideoutdirection : bottom; durationin : 1000; durationout : 1000; ">
+                    {{ _('Unify is Fully Responsive') }} <br> {{ _('Twitter Bootstrap 3 Template') }}
+                </span>
+
+                <a class="btn-u btn-u-green ls-s-1" href="#" style=" padding: 9px 20px; font-size:25px; top:220px; left: 50px; slidedirection : bottom; slideoutdirection : bottom; durationin : 2000; durationout : 2000; ">
+                    {{ _('Find Out More') }}
+                </a>
+
+                <img src="{{ url_for('static', filename='img/mockup/iphone.png') }}" alt="Slider Image" class="ls-s-1" style=" top:30px; left: 670px; slidedirection : right; slideoutdirection : bottom; durationin : 3000; durationout : 3000; ">
+            </div>
+            <!--End Third Slide-->
+        </div>
+    </div>
+</div><!--/layer_slider-->
+<!--=== End Slider ===-->
+
+<!--=== Purchase Block ===-->
+<div class="purchase">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <span>{{ _('Unify is a clean and fully responsive incredible Template.') }}</span>
+                <p>{{ _('At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi  vehicula sem ut volutpat. Ut non libero magna fusce condimentum eleifend enim a feugiat.') }}</p>
+            </div>
+            <div class="col-md-3">
+                <a href="#" class="btn-buy hover-effect">{{ _('Purchase Now') }}</a>
+            </div>
+        </div>
+    </div>
+</div><!--/row-->
+<!-- End Purchase Block -->
+
+<!--=== Content Part ===-->
+<div class="container">
+	<!-- Service Blocks -->
+	<div class="row margin-bottom-10">
+    	<div class="col-md-4 service-alternative">
+    		<div class="service">
+                <i class="icon-resize-small service-icon"></i>
+    			<div class="desc">
+    				<h4>{{ _('Fully Responsive') }}</h4>
+                    <p>{{ _('Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus etiam sem...') }}</p>
+    			</div>
+    		</div>
+    	</div>
+    	<div class="col-md-4 service-alternative">
+    		<div class="service">
+                <i class="icon-cogs service-icon"></i>
+    			<div class="desc">
+    				<h4>{{ _('HTML5 + CSS3') }}</h4>
+                    <p>{{ _('Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus etiam sem...') }}</p>
+    			</div>
+    		</div>
+    	</div>
+    	<div class="col-md-4 service-alternative">
+    		<div class="service">
+                <i class="icon-plane service-icon"></i>
+    			<div class="desc">
+    				<h4>{{ _('Launch Ready') }}</h4>
+                    <p>{{ _('Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus etiam sem...') }}</p>
+    			</div>
+    		</div>
+    	</div>
+	</div><!--/row-->
+	<!-- End Service Blokcs -->
+
+    <!-- Recent Works -->
+    <div class="row margin-bottom-40">
+        <div class="col-lg-12">
+            <div class="headline"><h2>{{ _('Recent Works') }}</h2></div>
+            <ul class="bxslider recent-work">
+                <li>
+                    <a href="#">
+                        <em class="overflow-hidden"><img src="{{ url_for('static', filename='img/main/1.jpg') }}" alt="" /></em>
+                        <span>
+                            <strong>{{ _('Happy New Year') }}</strong>
+                            <i>{{ _('Anim pariatur cliche reprehenderit') }}</i>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <em class="overflow-hidden"><img src="{{ url_for('static', filename='img/main/2.jpg') }}" alt="" /></em>
+                        <span>
+                            <strong>{{ _('Award Winning Agency') }}</strong>
+                            <i>{{ _('Responsive Bootstrap Template') }}</i>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <em class="overflow-hidden"><img src="{{ url_for('static', filename='img/main/3.jpg') }}" alt="" /></em>
+                        <span>
+                            <strong>{{ _('Wolf Moon Officia') }}</strong>
+                            <i>{{ _('Pariatur prehe cliche reprehrit') }}</i>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <em class="overflow-hidden"><img src="{{ url_for('static', filename='img/main/4.jpg') }}" alt="" /></em>
+                        <span>
+                            <strong>{{ _('Food Truck Quinoa Nesciunt') }}</strong>
+                            <i>{{ _('Craft labore wes anderson cred') }}</i>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <em class="overflow-hidden"><img src="{{ url_for('static', filename='img/main/5.jpg') }}" alt="" /></em>
+                        <span>
+                            <strong>{{ _('Happy New Year') }}</strong>
+                            <i>{{ _('Anim pariatur cliche reprehenderit') }}</i>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <em class="overflow-hidden"><img src="{{ url_for('static', filename='img/main/6.jpg') }}" alt="" /></em>
+                        <span>
+                            <strong>{{ _('Award Winning Agency') }}</strong>
+                            <i>{{ _('Responsive Bootstrap Template') }}</i>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <em class="overflow-hidden"><img src="{{ url_for('static', filename='img/main/7.jpg') }}" alt="" /></em>
+                        <span>
+                            <strong>{{ _('Wolf Moon Officia') }}</strong>
+                            <i>{{ _('Pariatur prehe cliche reprehrit') }}</i>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <em class="overflow-hidden"><img src="{{ url_for('static', filename='img/main/8.jpg') }}" alt="" /></em>
+                        <span>
+                            <strong>{{ _('Food Truck Quinoa Nesciunt') }}</strong>
+                            <i>{{ _('Craft labore wes anderson cred') }}</i>
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div><!--/row-->
+    <!-- End Recent Works -->
+
+	<!-- Info Blokcs -->
+	<div class="row margin-bottom-10">
+    	<!-- Welcome Block -->
+		<div class="col-md-8">
+			<div class="headline"><h2>{{ _('Welcome To Unify') }}</h2></div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <img class="img-responsive margin-bottom-20" src="{{ url_for('static', filename='img/new/img15.jpg') }}" alt="" />
+                </div>
+                <div class="col-sm-8">
+                    <p>{{ _('Unify is an incredibly beautiful responsive Bootstrap Template for corporate and creative professionals. It works on all major web browsers, tablets and phone.') }}</p>
+                    <ul class="list-unstyled margin-bottom-20">
+                        <li><i class="icon-ok color-green"></i> {{ _('Donec id elit non mi porta gravida') }}</li>
+                        <li><i class="icon-ok color-green"></i> {{ _('Corporate and Creative') }}</li>
+                        <li><i class="icon-ok color-green"></i> {{ _('Responsive Bootstrap Template') }}</li>
+                        <li><i class="icon-ok color-green"></i> {{ _('Corporate and Creative') }}</li>
+                    </ul>
+                </div>
+            </div>
+
+            <blockquote class="hero-unify">
+                <p>{{ _('Award winning digital agency. We bring a personal and effective approach to every project we work on, which is why. Unify is an incredibly beautiful responsive Bootstrap Template for corporate professionals.') }}</p>
+                <small>{{ _('CEO, Jack Bour') }}</small>
+            </blockquote>
+        </div><!--/col-md-8-->
+
+        <!-- Latest Shots -->
+        <div class="col-md-4">
+			<div class="headline"><h2>{{ _('Latest Shots') }}</h2></div>
+			<div id="myCarousel" class="carousel slide carousel-v1">
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <img src="{{ url_for('static', filename='img/main/5.jpg') }}" alt="">
+                        <div class="carousel-caption">
+                            <p>{{ _('Facilisis odio, dapibus ac justo acilisis gestinas.') }}</p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="{{ url_for('static', filename='img/main/4.jpg') }}" alt="">
+                        <div class="carousel-caption">
+                            <p>{{ _('Cras justo odio, dapibus ac facilisis into egestas.') }}</p>
+                        </div>
+                        </div>
+                    <div class="item">
+                        <img src="{{ url_for('static', filename='img/main/3.jpg') }}" alt="">
+                        <div class="carousel-caption">
+                            <p>{{ _('Justo cras odio apibus ac afilisis lingestas de.') }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-arrow">
+                    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                        <i class="icon-angle-left"></i>
+                    </a>
+                    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                        <i class="icon-angle-right"></i>
+                    </a>
+                </div>
+			</div>
+        </div><!--/col-md-4-->
+	</div><!--/row-->
+	<!-- End Info Blokcs -->
+
+	<!-- Our Clients -->
+	<div id="clients-flexslider" class="flexslider home clients">
+        <div class="headline"><h2>{{ _('Our Clients') }}</h2></div>
+		<ul class="slides">
+			<li>
+                <a href="#">
+                    <img src="{{ url_for('static', filename='img/clients/hp_grey.png') }}" alt="" />
+                    <img src="{{ url_for('static', filename='img/clients/hp.png') }}" class="color-img" alt="" />
+                </a>
+            </li>
+			<li>
+                <a href="#">
+                    <img src="{{ url_for('static', filename='img/clients/igneus_grey.png') }}" alt="" />
+                    <img src="{{ url_for('static', filename='img/clients/igneus.png') }}" class="color-img" alt="" />
+                </a>
+            </li>
+			<li>
+                <a href="#">
+                    <img src="{{ url_for('static', filename='img/clients/vadafone_grey.png') }}" alt="" />
+                    <img src="{{ url_for('static', filename='img/clients/vadafone.png') }}" class="color-img" alt="" />
+                </a>
+            </li>
+			<li>
+                <a href="#">
+                    <img src="{{ url_for('static', filename='img/clients/walmart_grey.png') }}" alt="" />
+                    <img src="{{ url_for('static', filename='img/clients/walmart.png') }}" class="color-img" alt="" />
+                </a>
+            </li>
+			<li>
+                <a href="#">
+                    <img src="{{ url_for('static', filename='img/clients/shell_grey.png') }}" alt="" />
+                    <img src="{{ url_for('static', filename='img/clients/shell.png') }}" class="color-img" alt="" />
+                </a>
+            </li>
+			<li>
+                <a href="#">
+                    <img src="{{ url_for('static', filename='img/clients/natural_grey.png') }}" alt="" />
+                    <img src="{{ url_for('static', filename='img/clients/natural.png') }}" class="color-img" alt="" />
+                </a>
+            </li>
+			<li>
+                <a href="#">
+                    <img src="{{ url_for('static', filename='img/clients/aztec_grey.png') }}" alt="" />
+                    <img src="{{ url_for('static', filename='img/clients/aztec.png') }}" class="color-img" alt="" />
+                </a>
+            </li>
+			<li>
+                <a href="#">
+                    <img src="{{ url_for('static', filename='img/clients/gamescast_grey.png') }}" alt="" />
+                    <img src="{{ url_for('static', filename='img/clients/gamescast.png') }}" class="color-img" alt="" />
+                </a>
+            </li>
+			<li>
+                <a href="#">
+                    <img src="{{ url_for('static', filename='img/clients/cisco_grey.png') }}" alt="" />
+                    <img src="{{ url_for('static', filename='img/clients/cisco.png') }}" class="color-img" alt="" />
+                </a>
+            </li>
+			<li>
+                <a href="#">
+                    <img src="{{ url_for('static', filename='img/clients/everyday_grey.png') }}" alt="" />
+                    <img src="{{ url_for('static', filename='img/clients/everyday.png') }}" class="color-img" alt="" />
+                </a>
+            </li>
+			<li>
+                <a href="#">
+                    <img src="{{ url_for('static', filename='img/clients/cocacola_grey.png') }}" alt="" />
+                    <img src="{{ url_for('static', filename='img/clients/cocacola.png') }}" class="color-img" alt="" />
+                </a>
+            </li>
+			<li>
+                <a href="#">
+                    <img src="{{ url_for('static', filename='img/clients/spinworkx_grey.png') }}" alt="" />
+                    <img src="{{ url_for('static', filename='img/clients/spinworkx.png') }}" class="color-img" alt="" />
+                </a>
+            </li>
+			<li>
+                <a href="#">
+                    <img src="{{ url_for('static', filename='img/clients/shell_grey.png') }}" alt="" />
+                    <img src="{{ url_for('static', filename='img/clients/shell.png') }}" class="color-img" alt="" />
+                </a>
+            </li>
+			<li>
+                <a href="#">
+                    <img src="{{ url_for('static', filename='img/clients/natural_grey.png') }}" alt="" />
+                    <img src="{{ url_for('static', filename='img/clients/natural.png') }}" class="color-img" alt="" />
+                </a>
+            </li>
+			<li>
+                <a href="#">
+                    <img src="{{ url_for('static', filename='img/clients/gamescast_grey.png') }}" alt="" />
+                    <img src="{{ url_for('static', filename='img/clients/gamescast.png') }}" class="color-img" alt="" />
+                </a>
+            </li>
+			<li>
+                <a href="#">
+                    <img src="{{ url_for('static', filename='img/clients/everyday_grey.png') }}" alt="" />
+                    <img src="{{ url_for('static', filename='img/clients/everyday.png') }}" class="color-img" alt="" />
+                </a>
+            </li>
+			<li>
+                <a href="#">
+                    <img src="{{ url_for('static', filename='img/clients/spinworkx_grey.png') }}" alt="" />
+                    <img src="{{ url_for('static', filename='img/clients/spinworkx.png') }}" class="color-img" alt="" />
+                </a>
+            </li>
+		</ul>
+	</div><!--/flexslider-->
+	<!-- End Our Clients -->
+</div><!--/container-->
+<!-- End Content Part -->
+{% endblock %}
+
+{% block js %}
+<!-- JS Implementing Plugins -->
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/flexslider/jquery.flexslider-min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/bxslider/jquery.bxslider.js') }}"></script>
+<!-- Layer Slider -->
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/layer_slider/jQuery/jquery-easing-1.3.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/layer_slider/jQuery/jquery-transit-modified.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/layer_slider/js/layerslider.transitions.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/layer_slider/js/layerslider.kreaturamedia.jquery.js') }}"></script>
+<!-- JS Page Level -->
+<script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/pages/index.js') }}"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+      	App.init();
+        App.initSliders();
+        App.initBxSlider();
+        Index.initLayerSlider();
+    });
+</script>
+{% endblock %}
+
+{% block js_lt_ie9 %}
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/layer_slider/assets/js/html5.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends '_base.html' %}
+
+{% set page_title = "Unify | User Registration" %}
+
+{% set breadcrumbs = True %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/pages/page_log_reg_v1.css') }}">
+{% endblock %}
+
+{% block main_content %}
+<!--=== Content Part ===-->
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+            <form class="reg-page">
+                {{ form.csrf_token }}
+                <div class="reg-header">
+                    <h2>{{ _('Register a new account') }}</h2>
+                    <p>{{ _('Already Signed Up? Click') }} <a href="{{ url_for('page_login') }}" class="color-green">{{ _('Sign In') }}</a> {{ _('to login your account.') }}</p>
+                </div>
+
+                {{ form.first_name.label }}
+                {{ form.first_name(class="form-control margin-bottom-20") }}
+
+                {{ form.last_name.label }}
+                {{ form.last_name(class="form-control margin-bottom-20") }}
+
+                {{ form.email.label }} <span class="color-red">*</span>
+                {{ form.email(class="form-control margin-bottom-20") }}
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        {{ form.password.label }} <span class="color-red">*</span>
+                        {{ form.password(class="form-control margin-bottom-20") }}
+                    </div>
+                    <div class="col-sm-6">
+                        {{ form.confirm_password.label }} <span class="color-red">*</span>
+                        {{ form.confirm_password(class="form-control margin-bottom-20") }}
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <label class="checkbox">
+                            {{ form.tc_accept }}
+                            {{ _('I read') }} <a href="{{ url_for('page_terms') }}" class="color-green">{{ _('Terms and Conditions') }}</a>
+                        </label>
+                    </div>
+                    <div class="col-lg-6 text-right">
+                        <button class="btn-u" type="submit">{{ _('Register') }}</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div><!--/container-->
+<!--=== End Content Part ===-->
+{% endblock %}
+
+{% block js %}
+<!-- JS Page Level -->
+<script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        App.init();
+    });
+</script>
+{% endblock %}
