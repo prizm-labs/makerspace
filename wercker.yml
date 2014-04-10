@@ -27,3 +27,13 @@ build:
         code: |
           echo "python version $(python --version) running"
           echo "pip version $(pip --version) running"
+
+    - add-to-known-hosts:
+        hostname: $SERVER_HOSTNAME
+    - add-ssh-key:
+        keyname: DOKKU
+
+    - script: 
+        name: Push to dokku
+        code: | 
+            git push prod master

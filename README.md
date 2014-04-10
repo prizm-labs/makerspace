@@ -10,7 +10,7 @@ ssh root@makefoo.com
 venv
 . venv/bin/activate
 
-git remote add origin dokku@makefoo.com:makefoo.com
+git remote add prod dokku@makefoo.com:makefoo.com
 git push prod master
 
 
