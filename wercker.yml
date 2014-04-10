@@ -30,7 +30,7 @@ build:
 
 deploy:
   steps:
-    - add-to-known-hosts:
+    - add-to-known_hosts:
         hostname: $SERVER_HOSTNAME
     - add-ssh-key:
         keyname: DOKKU
