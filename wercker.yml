@@ -29,6 +29,7 @@ build:
           echo "pip version $(pip --version) running"
 
 deploy:
+  steps:
     - add-to-known-hosts:
         hostname: $SERVER_HOSTNAME
     - add-ssh-key:
