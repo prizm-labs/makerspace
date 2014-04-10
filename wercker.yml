@@ -38,4 +38,5 @@ deploy:
     - script: 
         name: Push to dokku
         code: | 
+            git remote add prod dokku@makefoo.com:makefoo.com
             git push prod master
