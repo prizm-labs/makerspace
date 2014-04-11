@@ -36,10 +36,13 @@ import nav_menu
 
 
 app = Flask(__name__)
+app.secret_key = 'dev'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://root:password@127.0.0.1/makefoo'
+
 db = SQLAlchemy(app)
 babel = Babel(app)
 
-app.secret_key = 'dev'
+
 
 from . import models
 
