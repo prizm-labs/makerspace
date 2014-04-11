@@ -36,10 +36,12 @@ import nav_menu
 
 
 app = Flask(__name__)
+db = SQLAlchemy(app)
 babel = Babel(app)
 
 app.secret_key = 'dev'
 
+from . import models
 
 # mysql://admin:admin@127.0.0.1:
 
