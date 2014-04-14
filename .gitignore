@@ -1,2 +1,7 @@
-venv/*
+/venv/*
 *.pyc
+.Python
+/lib/*
+/bin/*
+/app/*.pyc
+/include/*

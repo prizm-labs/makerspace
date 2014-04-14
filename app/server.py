@@ -42,10 +42,13 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://root:password@127.0.0.1/ma
 db = SQLAlchemy(app)
 babel = Babel(app)
 
+
+
 #from . import models
 import models
 
-session = db.create_scoped_session()
+projects = models.Project.query()
+print(projects)
 
 # mysql://admin:admin@127.0.0.1:
 
@@ -79,29 +82,6 @@ def inject_globals():
 
 # Routing
 #http://flask.pocoo.org/docs/api/#url-route-registrations
-
-projects = models.Project.query.all()
-#print(projects)
-
-
-@app.route('/project/<slug>')
-def show_project(slug):
-    for project in projects:
-        if (slug == project.slug):
-            context_dict = {
-                'project': project,
-                'blog_post': sample_data.blog_posts[0],
-                'comments': sample_data.comments,
-                'comment_form': forms.BlogCommentForm(),
-            }
-            return render_template('project.html', **context_dict)
-        else:
-            render_template('index.html')
-    #blog-item-option-1
-
-
-    
-
 
 @app.route('/')
 def index():

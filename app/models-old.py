@@ -1,4 +1,6 @@
 from . import db
+#from sqlalchemy import Column, Integer, String
+from database import Base
 
 tags = db.Table('tags',
     db.Column('tag_id', db.Integer, db.ForeignKey('tag.id')),

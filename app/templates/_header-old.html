@@ -20,6 +20,59 @@
 <!--=== End Style Switcher ===-->
 
 {%- if not disable_header %}
+<!--=== Top ===-->
+{% if css_header2 %}
+<div class="top-v1">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <ul class="list-unstyled top-v1-contacts">
+                    <li>
+                        <i class="icon-envelope"></i> {{ _('Email:') }} <a href="mailto:info@htmlstream.com">{{ _('info@htmlstream.com') }}</a>
+                    </li>
+                    <li>
+                        <i class="icon-phone"></i> {{ _('Hotline: (1) 396 4587 99') }}
+                    </li>
+                </ul>
+            </div><!--/top-v1-contacts-->
+
+            <div class="col-md-6">
+                <ul class="list-unstyled top-v1-data">
+                    <li><a href="#"><i class="icon-home"></i></a></li>
+                    <li><a href="#"><i class="icon-globe"></i></a></li>
+                    <li><a href="#"><i class="icon-shopping-cart"></i></a></li>
+                    <li><a href="#"> {{ _('Quicklinks') }}</a></li>
+                    <li><a href="#">{{ _('My Account') }}</a></li>
+                </ul>
+            </div><!--/top-v1-data-->
+        </div>
+    </div>
+</div><!--/top-v1-->
+{% else %}
+<div class="top">
+    <div class="container">
+        <ul class="loginbar pull-right">
+            <li>
+                <i class="icon-globe"></i>
+                <a>{{ _('Languages') }}</a>
+                <ul class="lenguages">
+                    <li class="active">
+                        <a href="#">{{ _('English') }} <i class="icon-ok"></i></a>
+                    </li>
+                    <li><a href="#">{{ _('Spanish') }}</a></li>
+                    <li><a href="#">{{ _('Russian') }}</a></li>
+                    <li><a href="#">{{ _('German') }}</a></li>
+                </ul>
+            </li>
+            <li class="devider"></li>
+            <li><a href="page_faq">{{ _('Help') }}</a></li>
+            <li class="devider"></li>
+            <li><a href="page_login">{{ _('Login') }}</a></li>
+        </ul>
+    </div>
+</div><!--/top-->
+{% endif %}
+<!--=== End Top ===-->
 
 <!--=== Header ===-->
 <div class="header{% if css_header2 %} margin-bottom-10{% endif %}">
@@ -98,7 +151,19 @@
     {%- endif %}
     {%- endfor %}
 {%- endfor %}
+<!--=== Breadcrumbs ===-->
+<div class="breadcrumbs{% if not disable_breadcrumb_bottom_margin %} margin-bottom-40{% endif %}">
+	<div class="container">
+        <h1 class="pull-left">{{ names[2] or names[1] }}</h1>
+        <ul class="pull-right breadcrumb">
+            <li><a href="{{ url_for('index') }}">Home</a></li>
 
+            <li><a href="#">{{ names[0] }}</a></li>
+            <li class="active">{{ names[1] }}</li>
+        </ul>
+    </div><!--/container-->
+</div><!--/breadcrumbs-->
+<!--=== End Breadcrumbs ===-->
 {%- endif %}
 
 {%- endif %}
