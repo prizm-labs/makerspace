@@ -1,6 +1,17 @@
 /*Blog Large
 ------------------------------------*/
 /*Blog Page*/
+.blog h1 {
+	line-height: 1.2em;
+	margin: 10px 0;
+	font-weight: bold;
+	font-size: 41.4px;
+}
+
+.blog p {
+	font-size: 18px
+}
+
 .blog h2 {
 	color: #555;
 	font-size: 21px;

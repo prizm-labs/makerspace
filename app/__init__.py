@@ -94,6 +94,9 @@ def show_project(slug):
                 'comments': sample_data.comments,
                 'comment_form': forms.BlogCommentForm(),
             }
+
+            #TODO get related projects
+
             return render_template('project.html', **context_dict)
         else:
             render_template('index.html')

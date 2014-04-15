@@ -9,6 +9,10 @@
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/pages/page_magazine.css') }}">
 {% endblock %}
 
+{% block head_content %} 
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/jquery.fitvids.js') }}"></script>
+{% endblock %}
+
 {% block main_content %}
 <!--=== Content Part ===-->
 <div class="container">
@@ -17,7 +21,7 @@
     	<div class="col-md-9 md-margin-bottom-60">
             <!--Blog Post-->
             <div class="blog margin-bottom-40">
-                <h2><a href="{{ url_for('blog_item_option1') }}">{{ project.title }}</a></h2>
+                <h1>{{ project.title }}</h1>
                 <!--
                 <div class="blog-post-tags">
                     <ul class="list-unstyled list-inline blog-info">
@@ -35,31 +39,33 @@
                     </ul>
                 </div>
                 -->
+                <p>
                 {{ project.description|safe }}
+                </p>
 
                 <div class="blog-img">
-                    <div id="ytplayer"></div>
+                    <div id="ytplayer" style="margin: 0px auto;width:100%;"></div>
                     {% for video in project.videos %}
-                       
+                        <script>
+                          // Load the IFrame Player API code asynchronously.
+                          var tag = document.createElement('script');
+                          tag.src = "https://www.youtube.com/player_api";
+                          var firstScriptTag = document.getElementsByTagName('script')[0];
+                          firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-<script>
-  // Load the IFrame Player API code asynchronously.
-  var tag = document.createElement('script');
-  tag.src = "https://www.youtube.com/player_api";
-  var firstScriptTag = document.getElementsByTagName('script')[0];
-  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+                          // Replace the 'ytplayer' element with an <iframe> and
+                          // YouTube player after the API code downloads.
+                          var player;
+                          function onYouTubePlayerAPIReady() {
+                            player = new YT.Player('ytplayer', {
+                              height: '476',
+                              width: '847',
+                              videoId: '{{video.host_guid}}'
+                            });
 
-  // Replace the 'ytplayer' element with an <iframe> and
-  // YouTube player after the API code downloads.
-  var player;
-  function onYouTubePlayerAPIReady() {
-    player = new YT.Player('ytplayer', {
-      height: '390',
-      width: '640',
-      videoId: '{{video.host_guid}}'
-    });
-  }
-</script>
+                            $(".blog-img").fitVids();
+                          }
+                        </script>
                     {% endfor %}
                     <!--
                     {% if blog_post.type == 'IMAGE' %}

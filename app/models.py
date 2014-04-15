@@ -5,12 +5,10 @@ tags = db.Table('tags',
     db.Column('project_id', db.Integer, db.ForeignKey('project.id'))
 )
 
-'''
 related_projects = db.Table('related_projects',
     db.Column('project_id', db.Integer, db.ForeignKey('project.id')),
-    db.Column('project_id', db.Integer, db.ForeignKey('project.id'))
+    db.Column('related_project_id', db.Integer, db.ForeignKey('project.id'))
 )
-'''
 
 
 class Project(db.Model):
@@ -21,6 +19,7 @@ class Project(db.Model):
   description = db.Column(db.String(512))
   maker_id = db.Column(db.Integer, db.ForeignKey('maker.id'))
   slug = db.Column(db.String(80), unique=True)
+  difficulty = db.Column(db.Integer)
 
   #many-to-manu
   tags = db.relationship('Tag', secondary=tags, backref=db.backref('project', lazy='dynamic')) 
@@ -33,6 +32,14 @@ class Project(db.Model):
   components = db.relationship('Component', backref='project', lazy='dynamic')
 
   resources = db.relationship('Resource', backref='project', lazy='dynamic')
+
+  related_projects = db.relationship("Project",
+                secondary=related_projects,
+                backref='related_to',
+                primaryjoin=id == related_projects.c.project_id,
+                secondaryjoin=id == related_projects.c.related_project_id)
+  
+  #http://stackoverflow.com/questions/9547298/adding-data-to-related-table-with-sqlalchemy
 
   #completion_time
   #difficulty
@@ -131,7 +138,6 @@ class Product(db.Model):
 
   item_id = db.Column(db.Integer, db.ForeignKey('item.id'))
   
-  month = db.Column(db.Integer)
   price = db.Column(db.Float)
   shop_url = db.Column(db.String(512))
 
@@ -143,7 +149,17 @@ class Item(db.Model):
   id = db.Column(db.Integer, primary_key=True)
   name = db.Column(db.String(80), unique=True)
   description = db.Column(db.String(255))
+  note = db.Column(db.String(255))
   #type_id = db.Column(db.Integer, db.ForeignKey('type.id'))
 
   products = db.relationship('Product', backref='item', lazy='dynamic') #optional
 
+
+class Kit(db.Model):
+  id = db.Column(db.Integer, primary_key=True)
+  name = db.Column(db.String(80), unique=True)
+  description = db.Column(db.String(255))
+  month = db.Column(db.Integer)
+  difficulty = db.Column(db.Integer)
+
+  products = db.relationship('Product', backref='item', lazy='dynamic') #optional

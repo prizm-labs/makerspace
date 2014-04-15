@@ -27,6 +27,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/themes/default.css') }}" id="style_color">
     {#- Was originally in raw templates but file is not present. #}
     {#- <link rel="stylesheet" href="{{ url_for('static', filename='css/themes/headers/default.css') }}" id="style_color-header-{{ 2 if css_header2 else 1 }}">#}
+
 </head>
 
 {#- Without invoking these variables here, included files aren't able to access them. #}
@@ -50,6 +51,7 @@
 <script type="text/javascript" src="{{ url_for('static', filename='plugins/back-to-top.js') }}"></script>
 
 {% block js %}{% endblock %}
+{% block head_content %}{% endblock %}
 
 <!--[if lt IE 9]>
     <script src="{{ url_for('static', filename='plugins/respond.js') }}"></script>

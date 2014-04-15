@@ -19,6 +19,11 @@ GRANT ALL PRIVILEGES ON DATABASE makefoo TO root;
 COPY project (slug,title,description) FROM '/Users/mac/Documents/makerspace/table-project.csv' DELIMITERS ',' CSV;
 COPY video (host_guid,project_id,name,path) FROM '/Users/mac/Documents/makerspace/table-video.csv' DELIMITERS ',' CSV;
 
+
+Item > Component
+
+Video > Chapter > Step
+
 select pg_terminate_backend(pid) from pg_stat_activity where datname = 'makefoo';
 
 
