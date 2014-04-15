@@ -188,6 +188,16 @@
             <!-- Posts -->
             <div class="posts margin-bottom-40">
                 <div class="headline headline-md"><h2>{{ _('Recent Posts') }}</h2></div>
+                {% for project in suggested_projects %}
+                    <dl class="dl-horizontal">
+                        <dt><a href="#"><img src="{{ url_for('static', filename='img/sliders/elastislide/6.jpg') }}" alt="" /></a></dt>
+                        <dd>
+                            <p><a href="#">{{project.title}}</a></p>
+                        </dd>
+                    </dl>
+                    
+                {% endfor %}
+                <!--
                 <dl class="dl-horizontal">
                     <dt><a href="#"><img src="{{ url_for('static', filename='img/sliders/elastislide/6.jpg') }}" alt="" /></a></dt>
                     <dd>
@@ -206,6 +216,7 @@
                         <p><a href="#">{{ _('Developer Friendly Code imperdiet condime ntumi mperdiet condim.') }}</a></p>
                     </dd>
                 </dl>
+                -->
             </div><!--/posts-->
             <!-- End Posts -->
 

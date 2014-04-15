@@ -19,7 +19,7 @@ class Project(db.Model):
   description = db.Column(db.String(512))
   maker_id = db.Column(db.Integer, db.ForeignKey('maker.id'))
   slug = db.Column(db.String(80), unique=True)
-  difficulty = db.Column(db.Integer)
+  #difficulty = db.Column(db.Integer)
 
   #many-to-manu
   tags = db.relationship('Tag', secondary=tags, backref=db.backref('project', lazy='dynamic')) 
@@ -38,7 +38,7 @@ class Project(db.Model):
                 backref='related_to',
                 primaryjoin=id == related_projects.c.project_id,
                 secondaryjoin=id == related_projects.c.related_project_id)
-  
+
   #http://stackoverflow.com/questions/9547298/adding-data-to-related-table-with-sqlalchemy
 
   #completion_time
@@ -52,6 +52,7 @@ class Video(db.Model):
   name = db.Column(db.String(80), unique=True)
   host_guid = db.Column(db.String(80), unique=True) #i.e. Youtube "NVedGeVPc30"
   path = db.Column(db.String(80), unique=True)
+  #thumbnail_path = db.Column(db.String(512))
   #host_id = 
 
   chapters = db.relationship('Chapter', backref='project', lazy='dynamic')
@@ -154,7 +155,7 @@ class Item(db.Model):
 
   products = db.relationship('Product', backref='item', lazy='dynamic') #optional
 
-
+'''
 class Kit(db.Model):
   id = db.Column(db.Integer, primary_key=True)
   name = db.Column(db.String(80), unique=True)
@@ -163,3 +164,4 @@ class Kit(db.Model):
   difficulty = db.Column(db.Integer)
 
   products = db.relationship('Product', backref='item', lazy='dynamic') #optional
+'''

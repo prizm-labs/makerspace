@@ -93,6 +93,7 @@ def show_project(slug):
                 'blog_post': sample_data.blog_posts[0],
                 'comments': sample_data.comments,
                 'comment_form': forms.BlogCommentForm(),
+                'suggested_projects': projects
             }
 
             #TODO get related projects
