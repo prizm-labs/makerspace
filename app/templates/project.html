@@ -7,6 +7,7 @@
 {% block css %}
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/pages/blog.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/pages/page_magazine.css') }}">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
 {% endblock %}
 
 {% block head_content %} 
@@ -42,6 +43,28 @@
                 <p>
                 {{ project.description|safe }}
                 </p>
+
+                <div id="subscribe-form">
+                  <button>Subscribe to Makefoo</button>
+                  <div>
+                    <div>
+                        First one is free... so are the rest. Daily.
+                    </div>
+                    <div class="panel-body">
+                    <form class="form-inline" role="form">
+                        {{ subscribe_form.csrf_token }}
+                        <div class="form-group">
+                            {{ subscribe_form.email.label(class="sr-only") }}
+                            {{ subscribe_form.email(class="form-control", placeholder=subscribe_form.email.label.text) }}
+                        </div>
+                        <button type="submit" class="btn-u btn-u-default">{{ _('I\'m in') }}</button>
+                    </form>
+                    </div>
+                    <div class="privacy-policy">
+                        By submitting above you agree to the Makefoo privacy policy.
+                    </div>
+                  </div>
+                </div>
 
                 <div class="blog-img">
                     <div id="ytplayer" style="margin: 0px auto;width:100%;"></div>
@@ -98,8 +121,53 @@
                 </div>
                 
                 
+                <!-- Blog Tags -->
+                <ul class="list-unstyled blog-tags margin-bottom-30">
+                    <li><a href="#"><i class="icon-tags"></i> {{ _('Business') }}</a></li>
+                    <li><a href="#"><i class="icon-tags"></i> {{ _('Music') }}</a></li>
+                    <li><a href="#"><i class="icon-tags"></i> {{ _('Internet') }}</a></li>
+                    <li><a href="#"><i class="icon-tags"></i> {{ _('Money') }}</a></li>
+                    <li><a href="#"><i class="icon-tags"></i> {{ _('Google') }}</a></li>
+                    <li><a href="#"><i class="icon-tags"></i> {{ _('TV Shows') }}</a></li>
+                    <li><a href="#"><i class="icon-tags"></i> {{ _('Education') }}</a></li>
+                    <li><a href="#"><i class="icon-tags"></i> {{ _('People') }}</a></li>
+                    <li><a href="#"><i class="icon-tags"></i> {{ _('People') }}</a></li>
+                    <li><a href="#"><i class="icon-tags"></i> {{ _('Math') }}</a></li>
+                    <li><a href="#"><i class="icon-tags"></i> {{ _('Photos') }}</a></li>
+                    <li><a href="#"><i class="icon-tags"></i> {{ _('Electronics') }}</a></li>
+                    <li><a href="#"><i class="icon-tags"></i> {{ _('Apple') }}</a></li>
+                    <li><a href="#"><i class="icon-tags"></i> {{ _('Canada') }}</a></li>
+                </ul>
+                <!-- End Blog Tags -->
+
             </div>
             <!--End Blog Post-->
+
+            <!-- Next Projects -->
+            <div class="related-projects">
+
+                <h2>Your next project</h2>
+
+            </div>
+            <!-- End Next Projects -->
+
+            <div class="subscribe-footer">
+                <h2>Want more stuff like this?</h2>
+                <p>We're on a mission to spread meaningful content far and wide.<br/>
+                Try our daily email, The Upworthiest, and see for yourself!</p>
+
+                <div class="panel-body">
+                    <form class="form-inline" role="form">
+                        {{ subscribe_form.csrf_token }}
+                        <div class="form-group">
+                            {{ subscribe_form.email.label(class="sr-only") }}
+                            {{ subscribe_form.email(class="form-control", placeholder=subscribe_form.email.label.text) }}
+                        </div>
+                        <button type="submit" class="btn-u btn-u-default">{{ _('I\'m in') }}</button>
+                    </form>
+                </div>
+                <div class="privacy-policy">By submitting above you agree to the Upworthy privacy policy.</div>
+            </div>
 
 			<hr>
 
@@ -175,153 +243,19 @@
 
         <!-- Right Sidebar -->
         <div class="col-md-3 magazine-page">
-            <!-- Search Bar -->
-            <div class="headline headline-md"><h2>{{ _('Search') }}</h2></div>
-            <div class="input-group margin-bottom-40">
-                <input type="text" class="form-control" placeholder="Search">
-                <span class="input-group-btn">
-                    <button class="btn-u" type="button">{{ _('Go') }}</button>
-                </span>
-            </div>
-            <!-- End Search Bar -->
 
             <!-- Posts -->
             <div class="posts margin-bottom-40">
-                <div class="headline headline-md"><h2>{{ _('Recent Posts') }}</h2></div>
+                <div class="headline headline-md"><h2>{{ _('Recommended Projects') }}</h2></div>
                 {% for project in suggested_projects %}
-                    <dl class="dl-horizontal">
-                        <dt><a href="#"><img src="{{ url_for('static', filename='img/sliders/elastislide/6.jpg') }}" alt="" /></a></dt>
-                        <dd>
-                            <p><a href="#">{{project.title}}</a></p>
-                        </dd>
-                    </dl>
-                    
+                    <div class="sidebar-project">
+                        <a href="/project/{{project.slug}}">{{project.title}}</a>
+                        <img style="width:100%" src="http://img.youtube.com/vi/{{project.videos[0].host_guid}}/sddefault.jpg" alt="{{project.title}}"/>
+                    </div>                
                 {% endfor %}
-                <!--
-                <dl class="dl-horizontal">
-                    <dt><a href="#"><img src="{{ url_for('static', filename='img/sliders/elastislide/6.jpg') }}" alt="" /></a></dt>
-                    <dd>
-                        <p><a href="#">{{ _('Responsive Bootstrap 3 Template placerat idelo alac eratamet.') }}</a></p>
-                    </dd>
-                </dl>
-                <dl class="dl-horizontal">
-                    <dt><a href="#"><img src="{{ url_for('static', filename='img/sliders/elastislide/10.jpg') }}" alt="" /></a></dt>
-                    <dd>
-                        <p><a href="#">{{ _('100+ Amazing Features Layer Slider, Layer Slider, Icons, 60+ Pages etc.') }}</a></p>
-                    </dd>
-                </dl>
-                <dl class="dl-horizontal">
-                    <dt><a href="#"><img src="{{ url_for('static', filename='img/sliders/elastislide/11.jpg') }}" alt="" /></a></dt>
-                    <dd>
-                        <p><a href="#">{{ _('Developer Friendly Code imperdiet condime ntumi mperdiet condim.') }}</a></p>
-                    </dd>
-                </dl>
-                -->
-            </div><!--/posts-->
+            </div>
             <!-- End Posts -->
 
-            <!-- Tabs Widget -->
-            <div class="headline headline-md"><h2>{{ _('Tabs Widget') }}</h2></div>
-            <div class="tab-v2 margin-bottom-40">
-                <ul class="nav nav-tabs">
-                    <li class="active"><a data-toggle="tab" href="#home-1">{{ _('About Us') }}</a></li>
-                    <li><a data-toggle="tab" href="#home-2">{{ _('Quick Links') }}</a></li>
-                </ul>
-                <div class="tab-content">
-                    <div id="home-1" class="tab-pane active">
-                        <p>{{ _('Vivamus imperdiet condimentum diam, eget placerat felis consectetur id. Donec eget orci metus, ac ac adipiscing nunc.') }}</p> <p>{{ _('Pellentesque fermentum, ante ac felis consectetur id. Donec eget orci metusvivamus imperdiet.') }}</p>
-                    </div>
-                    <div id="home-2" class="tab-pane magazine-sb-categories">
-                        <div class="row">
-                            <ul class="list-unstyled col-xs-6">
-                                <li><a href="#">{{ _('Best Sliders') }}</a></li>
-                                <li><a href="#">{{ _('Parralax Page') }}</a></li>
-                                <li><a href="#">{{ _('Backgrounds') }}</a></li>
-                                <li><a href="#">{{ _('Parralax Slider') }}</a></li>
-                                <li><a href="#">{{ _('Responsive') }}</a></li>
-                                <li><a href="#">{{ _('800+ Icons') }}</a></li>
-                            </ul>
-                            <ul class="list-unstyled col-xs-6">
-                                <li><a href="#">{{ _('60+ Pages') }}</a></li>
-                                <li><a href="#">{{ _('Layer Slider') }}</a></li>
-                                <li><a href="#">{{ _('Bootstrap 3') }}</a></li>
-                                <li><a href="#">{{ _('Fixed Header') }}</a></li>
-                                <li><a href="#">{{ _('Best Template') }}</a></li>
-                                <li><a href="#">{{ _('And Many More') }}</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End Tabs Widget -->
-
-            <!-- Photo Stream -->
-            <div class="headline headline-md"><h2>{{ _('Photo Stream') }}</h2></div>
-            <ul class="list-unstyled blog-photos margin-bottom-30">
-                <li><a href="#"><img class="hover-effect" alt="" src="{{ url_for('static', filename='img/sliders/elastislide/5.jpg') }}"></a></li>
-                <li><a href="#"><img class="hover-effect" alt="" src="{{ url_for('static', filename='img/sliders/elastislide/6.jpg') }}"></a></li>
-                <li><a href="#"><img class="hover-effect" alt="" src="{{ url_for('static', filename='img/sliders/elastislide/8.jpg') }}"></a></li>
-                <li><a href="#"><img class="hover-effect" alt="" src="{{ url_for('static', filename='img/sliders/elastislide/10.jpg') }}"></a></li>
-                <li><a href="#"><img class="hover-effect" alt="" src="{{ url_for('static', filename='img/sliders/elastislide/11.jpg') }}"></a></li>
-                <li><a href="#"><img class="hover-effect" alt="" src="{{ url_for('static', filename='img/sliders/elastislide/1.jpg') }}"></a></li>
-                <li><a href="#"><img class="hover-effect" alt="" src="{{ url_for('static', filename='img/sliders/elastislide/2.jpg') }}"></a></li>
-                <li><a href="#"><img class="hover-effect" alt="" src="{{ url_for('static', filename='img/sliders/elastislide/7.jpg') }}"></a></li>
-            </ul>
-            <!-- End Photo Stream -->
-
-            <!-- Blog Tags -->
-            <div class="headline headline-md"><h2>{{ _('Blog Tags') }}</h2></div>
-            <ul class="list-unstyled blog-tags margin-bottom-30">
-                <li><a href="#"><i class="icon-tags"></i> {{ _('Business') }}</a></li>
-                <li><a href="#"><i class="icon-tags"></i> {{ _('Music') }}</a></li>
-                <li><a href="#"><i class="icon-tags"></i> {{ _('Internet') }}</a></li>
-                <li><a href="#"><i class="icon-tags"></i> {{ _('Money') }}</a></li>
-                <li><a href="#"><i class="icon-tags"></i> {{ _('Google') }}</a></li>
-                <li><a href="#"><i class="icon-tags"></i> {{ _('TV Shows') }}</a></li>
-                <li><a href="#"><i class="icon-tags"></i> {{ _('Education') }}</a></li>
-                <li><a href="#"><i class="icon-tags"></i> {{ _('People') }}</a></li>
-                <li><a href="#"><i class="icon-tags"></i> {{ _('People') }}</a></li>
-                <li><a href="#"><i class="icon-tags"></i> {{ _('Math') }}</a></li>
-                <li><a href="#"><i class="icon-tags"></i> {{ _('Photos') }}</a></li>
-                <li><a href="#"><i class="icon-tags"></i> {{ _('Electronics') }}</a></li>
-                <li><a href="#"><i class="icon-tags"></i> {{ _('Apple') }}</a></li>
-                <li><a href="#"><i class="icon-tags"></i> {{ _('Canada') }}</a></li>
-            </ul>
-            <!-- End Blog Tags -->
-
-            <!-- Blog Latest Tweets -->
-            <div class="blog-twitter margin-bottom-30">
-                <div class="headline headline-md"><h2>{{ _('Latest Tweets') }}</h2></div>
-                <div class="blog-twitter-inner">
-                    <i class="icon-twitter"></i>
-                    <a href="#">{{ _('@htmlstream') }}</a>
-                    {{ _('At vero eos et accusamus et iusto odio dignissimos.') }}
-                    <a href="#">{{ _('http://t.co/sBav7dm') }}</a>
-                    <span>{{ _('5 hours ago') }}</span>
-                </div>
-                <div class="blog-twitter-inner">
-                    <i class="icon-twitter"></i>
-                    <a href="#">{{ _('@htmlstream') }}</a>
-                    {{ _('At vero eos et accusamus et iusto odio dignissimos.') }}
-                    <a href="#">{{ _('http://t.co/sBav7dm') }}</a>
-                    <span>{{ _('5 hours ago') }}</span>
-                </div>
-                <div class="blog-twitter-inner">
-                    <i class="icon-twitter"></i>
-                    <a href="#">{{ _('@htmlstream') }}</a>
-                    {{ _('At vero eos et accusamus et iusto odio dignissimos.') }}
-                    <a href="#">{{ _('http://t.co/sBav7dm') }}</a>
-                    <span>{{ _('5 hours ago') }}</span>
-                </div>
-                <div class="blog-twitter-inner">
-                    <i class="icon-twitter"></i>
-                    <a href="#">{{ _('@htmlstream') }}</a>
-                    {{ _('At vero eos et accusamus et iusto odio dignissimos.') }}
-                    <a href="#">{{ _('http://t.co/sBav7dm') }}</a>
-                    <span>{{ _('5 hours ago') }}</span>
-                </div>
-            </div>
-            <!-- End Blog Latest Tweets -->
         </div>
         <!-- End Right Sidebar -->
     </div><!--/row-->
@@ -331,10 +265,15 @@
 
 {% block js %}
 <!-- JS Page Level -->
+<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script>
 <script type="text/javascript">
     jQuery(document).ready(function() {
         App.init();
+        $( "#subscribe-form" ).accordion({
+          collapsible: true,
+          active: false
+        });
     });
 </script>
 {% endblock %}

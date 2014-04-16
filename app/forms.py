@@ -17,6 +17,13 @@ class LoginForm(Form):
     password = PasswordField('Password', validators=[DataRequired()])
     remember_me = BooleanField('Remember me')
 
+class SubscribeForm(Form):
+    """
+    Email collector
+    """
+    email = TextField('Email', validators=[DataRequired()])
+
+
 
 class RegisterForm(Form):
     """
