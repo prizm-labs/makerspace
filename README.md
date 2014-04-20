@@ -89,10 +89,18 @@ COPY tags (tag_id,project_id) FROM
 DELIMITERS ',' CSV;
 
 
+# How to setup production DB
+
+https://github.com/jeffutter/dokku-postgresql-plugin
+https://github.com/Kloadut/dokku-pg-plugin
+
+
 
 # How to kill pg process
 
 select pg_terminate_backend(pid) from pg_stat_activity where datname = 'makefoo';
+
+
 
 
 
