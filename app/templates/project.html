@@ -123,20 +123,9 @@
                 
                 <!-- Blog Tags -->
                 <ul class="list-unstyled blog-tags margin-bottom-30">
-                    <li><a href="#"><i class="icon-tags"></i> {{ _('Business') }}</a></li>
-                    <li><a href="#"><i class="icon-tags"></i> {{ _('Music') }}</a></li>
-                    <li><a href="#"><i class="icon-tags"></i> {{ _('Internet') }}</a></li>
-                    <li><a href="#"><i class="icon-tags"></i> {{ _('Money') }}</a></li>
-                    <li><a href="#"><i class="icon-tags"></i> {{ _('Google') }}</a></li>
-                    <li><a href="#"><i class="icon-tags"></i> {{ _('TV Shows') }}</a></li>
-                    <li><a href="#"><i class="icon-tags"></i> {{ _('Education') }}</a></li>
-                    <li><a href="#"><i class="icon-tags"></i> {{ _('People') }}</a></li>
-                    <li><a href="#"><i class="icon-tags"></i> {{ _('People') }}</a></li>
-                    <li><a href="#"><i class="icon-tags"></i> {{ _('Math') }}</a></li>
-                    <li><a href="#"><i class="icon-tags"></i> {{ _('Photos') }}</a></li>
-                    <li><a href="#"><i class="icon-tags"></i> {{ _('Electronics') }}</a></li>
-                    <li><a href="#"><i class="icon-tags"></i> {{ _('Apple') }}</a></li>
-                    <li><a href="#"><i class="icon-tags"></i> {{ _('Canada') }}</a></li>
+                    {% for tag in project.tags %}
+                    <li><a href="#"><i class="icon-tags"></i> {{ tag.name }}</a></li>
+                    {% endfor %}
                 </ul>
                 <!-- End Blog Tags -->
 

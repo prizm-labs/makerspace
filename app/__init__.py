@@ -80,14 +80,15 @@ def inject_globals():
 # Routing
 #http://flask.pocoo.org/docs/api/#url-route-registrations
 
+
 projects = models.Project.query.all()
-#print(projects)
 
 
 @app.route('/project/<slug>')
 def show_project(slug):
     for project in projects:
         if (slug == project.slug):
+
             context_dict = {
                 'project': project,
                 'blog_post': sample_data.blog_posts[0],
@@ -97,12 +98,25 @@ def show_project(slug):
                 'subscribe_form': forms.SubscribeForm()
             }
 
-            #TODO get related projects
+            
+            # Get suggested projects by tag
+            # http://stackoverflow.com/questions/3618690/how-to-query-a-table-in-sqlalchemy
+            # http://docs.sqlalchemy.org/en/rel_0_9/core/metadata.html
+            for tag in project.tags:
+                projects_in_tag = session.query(models.tags).filter(models.tags.c.tag_id==tag.id).all()
+                print tag.name
+                print projects_in_tag
+
+            #TODO
+            # Get suggested projects by related_project
+
+            #TODO
+            # Get suggested projects by popularity/views
 
             return render_template('project.html', **context_dict)
         else:
             render_template('index.html')
-    #blog-item-option-1
+#     #blog-item-option-1
 
 
     
