@@ -1,0 +1,95 @@
+<!--
+	INSTRUCTIONS FOR AWEBER ONLY:
+
+	1. OPEN UP CUSTOM FUNCTIONS.PHP, LOCATED IN /WP-CONTENT/THEMES/THESIS/CUSTOM/
+	2. PASTE THE FUNCTION IN THE FILE
+	
+	
+	TO FIND YOUR AWEBER META DATA
+	
+	1. LOGIN TO YOUR AWEBER ACCOUNT
+	2. GO TO THE 'WEB FORMS' TAB
+	3. EITHER CREATE A NEW FORM OR EDIT AN EXISTING FORM
+	4. CLICK 'PUBLISH -> I WILL INSTALL MY FORM -> RAW HTML'
+	5. UNCHECK THE BOX BELOW THAT SAYS 'Include beautiful form styles. Uncheck to get unformatted basic form.'
+	6. COPY EVERYTHING FROM '<DIV STYLE="DISPLAY: NONE;"> TO THE CLOSING </DIV>
+	7. PASTE IT OVER THE CURRENT CODE IN THE FORM BELOW
+-->
+
+function single_optin() { if(is_single()) { ?>
+	<div id="optin">
+		<form method="post" action="http://www.aweber.com/scripts/addlead.pl"  >
+			<input type="hidden" name="meta_web_form_id" value="1765265178" />
+			<input type="hidden" name="meta_split_id" value="" />
+			<input type="hidden" name="listname" value="kolakube" />
+			<input type="hidden" name="redirect" value="http://www.aweber.com/thankyou-coi.htm?m=text" id="redirect_89c9bdb2e37ee9d2e177940233e30213" />
+			<input type="hidden" name="meta_adtracking" value="Blog_Sidebar" />
+			<input type="hidden" name="meta_message" value="1" />
+			<input type="hidden" name="meta_required" value="name,email" />
+			<input type="hidden" name="meta_tooltip" value="" />
+
+			<p>
+				<label for="name">Enter your name:</label><br />
+				<input type="text" name="name" class="name" value="Enter your name" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" tabindex="500" />
+			</p>
+			<p>
+				<label for="email">Enter your email:</label><br />
+				<input type="text" name="email" class="name" value="Enter your email" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;" tabindex="501" />
+			</p>
+			<p>
+				<input name="submit" type="submit" value="Get Access Today!" tabindex="502" />
+			</p>
+		</form>
+	</div>
+<?php } }
+add_action('thesis_hook_after_post', 'single_optin');
+
+
+
+
+
+
+<!-- 
+	OPEN UP YOUR CUSTOM.CSS FILE, AND PASTE THE FOLLOWING CODE
+	NOTE: MAKE SURE YOU HAVE UPLOADED THE IMAGES PROVIDED IN THE DOWNLOAD
+	INTO YOUR /IMAGES/ FOLDER IN THESIS
+-->
+
+#optin {
+	background: #efefef url(images/gray-form.png) repeat-x;
+	border: 3px solid #e0e0e0;
+	font-weight: bold;
+	margin-bottom: 2em;
+	padding: 10px 0;
+	text-align: center;
+	width: 580px
+}
+	#optin p { margin: 8px 0 0 }
+	#optin input {
+		border-radius: 3px;
+		-moz-border-radius: 3px;
+		-webkit-border-radius: 3px;
+		box-shadow: 0 2px 2px #ddd;
+		-moz-box-shadow: 0 2px 2px #ddd;
+		-webkit-box-shadow: 0 2px 2px #ddd
+	}
+		#optin input[type="text"] {
+			background: #fff url(images/input.png) repeat-x bottom;
+			border: 1px solid #ccc;
+			font-size: 14px;
+			margin: 0 10px 10px 0;
+			padding: 8px 10px;
+			width: 198px;
+		}
+		#optin input[type="submit"] {
+			background: #217b30 url(images/green.png) repeat-x top;
+			border: 1px solid #137725;
+			color: #fff;
+			cursor: pointer;
+			font-size: 18px;
+			font-weight: bold;
+			padding: 8px 0;
+			text-shadow: -1px -1px #1c5d28;
+			width: 198px
+		}
+			#optin input[type="submit"]:hover { color: #c6ffd1 }

@@ -11,15 +11,11 @@
 {% block main_content %}
 <!--=== Content Part ===-->
 <div class="container">
+
+    <h1>{{ category }} Projects</h1>
+
     <!-- Portfolio Sorting Blocks -->
     <div class="sorting-block">
-        <ul class="sorting-nav sorting-nav-v1 text-center">
-            <li class="filter" data-filter="all">{{ _('All') }}</li>
-            <li class="filter" data-filter="category_1">{{ _('UI Design') }}</li>
-            <li class="filter" data-filter="category_2">{{ _('Wordpress') }}</li>
-            <li class="filter" data-filter="category_3">{{ _('HTML5/CSS3') }}</li>
-            <li class="filter" data-filter="category_4">{{ _('Bootstrap 3') }}</li>
-        </ul>
 
         <ul class="row sorting-grid">
             {% for project in projects %}

@@ -19,7 +19,7 @@
 <div class="container">
 	<div class="row blog-page blog-item">
         <!-- Left Sidebar -->
-    	<div class="col-md-9 md-margin-bottom-60">
+    	<div class="col-md-8 md-margin-bottom-60">
             <!--Blog Post-->
             <div class="blog margin-bottom-40">
                 <h1>{{ project.title }}</h1>
@@ -90,34 +90,6 @@
                           }
                         </script>
                     {% endfor %}
-                    <!--
-                    {% if blog_post.type == 'IMAGE' %}
-                    <img class="img-responsive" src="{{ url_for('static', filename=blog_post.header) }}" alt="">
-                    {% elif blog_post.type == 'VIDEO' %}
-                    <div class="responsive-video">
-                        <iframe src="{{ blog_post.header }}" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
-                    </div>
-                    {% elif blog_post.type == 'IMAGE_CAROUSEL' %}
-                    <div class="carousel slide carousel-v1" id="myCarousel">
-                        <div class="carousel-inner">
-                            {% for item in blog_post.header %}
-                            <div class="item{% if loop.first %} active{% endif %}">
-                                <img alt="" src="{{ url_for('static', filename=item.url) }}">
-                                <div class="carousel-caption"><p>{{ item.title }}</p></div>
-                            </div>
-                            {% endfor %}
-                        </div>
-                        <div class="carousel-arrow">
-                            <a data-slide="prev" href="#myCarousel" class="left carousel-control">
-                                <i class="icon-angle-left"></i>
-                            </a>
-                            <a data-slide="next" href="#myCarousel" class="right carousel-control">
-                                <i class="icon-angle-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                    {% endif %}
-                    -->
                 </div>
                 
                 
@@ -236,7 +208,7 @@
         <!-- End Left Sidebar -->
 
         <!-- Right Sidebar -->
-        <div class="col-md-3 magazine-page">
+        <div class="col-md-4 magazine-page">
 
             <!-- Posts -->
             <div class="posts margin-bottom-40">

@@ -36,6 +36,7 @@ import nav_menu
 
 from collections import OrderedDict
 import random
+from sqlalchemy import func
 
 
 app = Flask(__name__)
@@ -144,7 +145,8 @@ def show_project(slug):
 
 @app.route('/category/<slug>')
 def show_category(slug):
-    tag = models.Tag.query.filter(models.Tag.name == slug).first()
+    # http://stackoverflow.com/questions/16573095/case-insensitive-flask-sqlalchemy-query
+    tag = models.Tag.query.filter(func.lower(models.Tag.name) == func.lower(slug)).first()
 
     print tag
 
@@ -155,6 +157,7 @@ def show_category(slug):
         projects = projects_with_ids(projects)
 
         context_dict = {
+            'category': tag.name.capitalize(),
             'projects': projects
         }
 
