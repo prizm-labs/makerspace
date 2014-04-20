@@ -34,6 +34,9 @@ import sample_data
 import forms
 import nav_menu
 
+from collections import OrderedDict
+import random
+
 
 app = Flask(__name__)
 app.secret_key = 'dev'
@@ -67,6 +70,17 @@ app.jinja_env.add_extension('jinja2.ext.do')
 # Pushing zip function to jinja global namespace
 app.jinja_env.globals.update(zip=zip)
 
+def projects_with_tag(tag_obj):
+    tagged_projects = []
+    projects = session.query(models.tags).filter(models.tags.c.tag_id==tag_obj.id).all()
+
+    for mapping in projects:
+        tagged_projects.append(mapping.project_id)
+
+    return tagged_projects
+
+def projects_with_ids(ids_list):
+    return session.query(models.Project).filter(models.Project.id.in_(ids_list)).all()
 
 # Injecting newsletter form and navigation menu dicts into the template context
 @app.context_processor
@@ -81,46 +95,71 @@ def inject_globals():
 #http://flask.pocoo.org/docs/api/#url-route-registrations
 
 
-projects = models.Project.query.all()
-
-
 @app.route('/project/<slug>')
 def show_project(slug):
-    for project in projects:
-        if (slug == project.slug):
+    project = models.Project.query.filter(models.Project.slug == slug).first()
 
-            context_dict = {
-                'project': project,
-                'blog_post': sample_data.blog_posts[0],
-                'comments': sample_data.comments,
-                'comment_form': forms.BlogCommentForm(),
-                'suggested_projects': projects,
-                'subscribe_form': forms.SubscribeForm()
-            }
+    if (project == None):
+        render_template('index.html')
+    else:
 
-            
-            # Get suggested projects by tag
-            # http://stackoverflow.com/questions/3618690/how-to-query-a-table-in-sqlalchemy
-            # http://docs.sqlalchemy.org/en/rel_0_9/core/metadata.html
-            for tag in project.tags:
-                projects_in_tag = session.query(models.tags).filter(models.tags.c.tag_id==tag.id).all()
-                print tag.name
-                print projects_in_tag
+        suggested_projects = []
+        next_project = []
+        
+        # Get suggested projects by tag
+        # http://stackoverflow.com/questions/3618690/how-to-query-a-table-in-sqlalchemy
+        # http://docs.sqlalchemy.org/en/rel_0_9/core/metadata.html
+        for tag in project.tags:
+            suggested_projects.extend(projects_with_tag(tag))
 
-            #TODO
-            # Get suggested projects by related_project
+        # https://docs.python.org/3/library/collections.html#collections.OrderedDict
+        suggested_projects = list(OrderedDict.fromkeys(suggested_projects))
 
-            #TODO
-            # Get suggested projects by popularity/views
+        # http://stackoverflow.com/questions/444475/sqlalchemy-turning-a-list-of-ids-to-a-list-of-objects
+        suggested_projects = projects_with_ids(suggested_projects)
+        random.shuffle(suggested_projects)
 
-            return render_template('project.html', **context_dict)
-        else:
-            render_template('index.html')
-#     #blog-item-option-1
+        next_project = suggested_projects[0]
+        suggested_projects = suggested_projects[1:4]
+
+        #TODO
+        # Get suggested projects by related_project
+
+        #TODO
+        # Get suggested projects by popularity/views
+
+        context_dict = {
+            'project': project,
+            'blog_post': sample_data.blog_posts[0],
+            'comments': sample_data.comments,
+            'comment_form': forms.BlogCommentForm(),
+            'suggested_projects': suggested_projects,
+            'subscribe_form': forms.SubscribeForm(),
+            'next_project': next_project
+        }
+
+        return render_template('project.html', **context_dict)
+        # template based on blog_item_option1
 
 
+@app.route('/category/<slug>')
+def show_category(slug):
+    tag = models.Tag.query.filter(models.Tag.name == slug).first()
+
+    print tag
+
+    if (tag == None):
+        return render_template('index.html')
+    else:
+        projects = projects_with_tag(tag)
+        projects = projects_with_ids(projects)
+
+        context_dict = {
+            'projects': projects
+        }
+
+        return render_template('category.html', **context_dict)
     
-
 
 @app.route('/')
 def index():

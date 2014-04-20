@@ -124,7 +124,7 @@
                 <!-- Blog Tags -->
                 <ul class="list-unstyled blog-tags margin-bottom-30">
                     {% for tag in project.tags %}
-                    <li><a href="#"><i class="icon-tags"></i> {{ tag.name }}</a></li>
+                    <li><a href="/category/{{ tag.name }}"><i class="icon-tags"></i> {{ tag.name }}</a></li>
                     {% endfor %}
                 </ul>
                 <!-- End Blog Tags -->
@@ -135,8 +135,13 @@
             <!-- Next Projects -->
             <div class="related-projects">
 
-                <h2>Your next project</h2>
-
+                <h3>Your next project</h3>
+                <a href="/project/{{project.slug}}">
+                    <div class="next-project">
+                        <h2>{{next_project.title}}</h2>
+                        <img style="width:100%" src="http://img.youtube.com/vi/{{next_project.videos[0].host_guid}}/sddefault.jpg" alt="{{next_project.title}}"/>
+                    </div>                
+                    </a>
             </div>
             <!-- End Next Projects -->
 
@@ -237,10 +242,12 @@
             <div class="posts margin-bottom-40">
                 <div class="headline headline-md"><h2>{{ _('Recommended Projects') }}</h2></div>
                 {% for project in suggested_projects %}
+                    <a href="/project/{{project.slug}}">
                     <div class="sidebar-project">
-                        <a href="/project/{{project.slug}}">{{project.title}}</a>
+                        <a href="/project/{{project.slug}}">{{project.title}}
                         <img style="width:100%" src="http://img.youtube.com/vi/{{project.videos[0].host_guid}}/sddefault.jpg" alt="{{project.title}}"/>
                     </div>                
+                    </a>
                 {% endfor %}
             </div>
             <!-- End Posts -->

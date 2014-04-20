@@ -1,0 +1,57 @@
+{% extends '_base.html' %}
+
+{% set page_title = "Unify | Portfolio" %}
+
+{% set breadcrumbs = True %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/pages/portfolio-v2.css') }}">
+{% endblock %}
+
+{% block main_content %}
+<!--=== Content Part ===-->
+<div class="container">
+    <!-- Portfolio Sorting Blocks -->
+    <div class="sorting-block">
+        <ul class="sorting-nav sorting-nav-v1 text-center">
+            <li class="filter" data-filter="all">{{ _('All') }}</li>
+            <li class="filter" data-filter="category_1">{{ _('UI Design') }}</li>
+            <li class="filter" data-filter="category_2">{{ _('Wordpress') }}</li>
+            <li class="filter" data-filter="category_3">{{ _('HTML5/CSS3') }}</li>
+            <li class="filter" data-filter="category_4">{{ _('Bootstrap 3') }}</li>
+        </ul>
+
+        <ul class="row sorting-grid">
+            {% for project in projects %}
+            <li class="col-md-4 col-sm-6 col-xs-12 mix category_1 category_3" data-cat="1">
+                <a href="/project/{{ project.slug }}">
+                    <img style="width:100%" src="http://img.youtube.com/vi/{{project.videos[0].host_guid}}/sddefault.jpg" alt="{{project.title}}"/>
+                    <span class="sorting-cover">
+                        <span>{{ project.title }}</span>
+                        <p>{{ project.description }}</p>
+                    </span>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+
+        <div class="clearfix"></div>
+    </div>
+    <!-- End Portfolio Sorting Blocks -->
+</div><!--/container-->
+<!--=== End Content Part ===-->
+{% endblock %}
+
+{% block js %}
+<!-- JS Implementing Plugins -->
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/jquery.mixitup.min.js') }}"></script>
+<!-- JS Page Level -->
+<script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/pages/portfolio.js') }}"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        App.init();
+        Portfolio.init();
+    });
+</script>
+{% endblock %}
