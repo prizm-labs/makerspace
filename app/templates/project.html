@@ -123,16 +123,26 @@
                 Try our daily email, The Upworthiest, and see for yourself!</p>
 
                 <div>
-                    <form method="post" action="http://www.aweber.com/scripts/addlead.pl ">
+                    <form id="project-form-1">
                     <input type="hidden" name="listname" value="makerspace" />
                     <input type="hidden" name="redirect" value="http://localhost/" />
                     <input type="hidden" name="meta_message" value="1" /> 
                     <input type="hidden" name="meta_required" value="email" /> 
                     <input type="hidden" name="meta_forward_vars" value="1" /> 
                     <input type="text" name="email" value="" /> Email
-                    <input type="submit" name="submit" value="Subscribe" /> 
+                    <input type="button" class="submit" name="submit" value="I'm In!"/> 
                     </form>
                 </div>
+
+                <script>
+                    $('#project-form-1 button.submit').click(function(){
+                        var data = $('#project-form-1').serialize();
+                        var aweberUrl = 'http://www.aweber.com/scripts/addlead.pl';
+                        $.post('url', data,function(response){
+                            console.log(response);
+                        });
+                    });
+                </script>
 
                 <div class="panel-body">
                     <form class="form-inline" role="form">
