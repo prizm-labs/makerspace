@@ -122,6 +122,18 @@
                 <p>We're on a mission to spread meaningful content far and wide.<br/>
                 Try our daily email, The Upworthiest, and see for yourself!</p>
 
+                <div>
+                    <form method="post" action="http://www.aweber.com/scripts/addlead.pl ">
+                    <input type="hidden" name="listname" value="makerspace" />
+                    <input type="hidden" name="redirect" value="http://localhost/" />
+                    <input type="hidden" name="meta_message" value="1" /> 
+                    <input type="hidden" name="meta_required" value="email" /> 
+                    <input type="hidden" name="meta_forward_vars" value="1" /> 
+                    <input type="text" name="email" value="" /> Email
+                    <input type="submit" name="submit" value="Subscribe" /> 
+                    </form>
+                </div>
+
                 <div class="panel-body">
                     <form class="form-inline" role="form">
                         {{ subscribe_form.csrf_token }}
