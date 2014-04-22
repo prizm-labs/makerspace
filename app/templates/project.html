@@ -130,19 +130,9 @@
                     <input type="hidden" name="meta_required" value="email" /> 
                     <input type="hidden" name="meta_forward_vars" value="1" /> 
                     <input type="text" name="email" value="" /> Email
-                    <input type="button" class="submit" name="submit" value="I'm In!"/> 
+                    <input type="submit" class="submit" value="I'm In!"/> 
                     </form>
                 </div>
-
-                <script>
-                    $('#project-form-1 button.submit').click(function(){
-                        var data = $('#project-form-1').serialize();
-                        var aweberUrl = 'http://www.aweber.com/scripts/addlead.pl';
-                        $.post('url', data,function(response){
-                            console.log(response);
-                        });
-                    });
-                </script>
 
                 <div class="panel-body">
                     <form class="form-inline" role="form">
@@ -264,6 +254,37 @@
           collapsible: true,
           active: false
         });
+
+        $('#project-form-1 button.submit').click(function(){
+            var data = $('#project-form-1').serialize();
+            var aweberUrl = 'http://www.aweber.com/scripts/addlead.pl';
+            alert(1);
+            $.post(aweberUrl, data,function(response){
+                console.log(response);
+                alert(2);
+            });
+        });
+
+        $('#project-form-1').submit(function() {
+
+
+            var data = $('#project-form-1').serialize();
+                    var aweberUrl = 'http://www.aweber.com/scripts/addlead.pl';
+                    alert(1);
+                    $.post(aweberUrl, data,function(response){
+                        console.log(response);
+                        alert(2);
+                    });
+            /*
+            $('#form_id')[0].reset();       
+
+            $('.confirm_message').text('Thanks for subscribing. Check your email to confirm your subscription.').fadeIn('slow', function() {
+                $(this).delay(3000).fadeOut('slow');
+            });
+            */
+            return false;
+        });
+
     });
 </script>
 {% endblock %}

@@ -30,6 +30,9 @@ datetime object to produce date string like `Fri, 01 Jan.` and `Thu, Feb 6.`.
 from flask import Flask, render_template
 from flask.ext.babel import Babel
 from flask.ext.sqlalchemy import SQLAlchemy
+
+from flask import request, jsonify
+
 import sample_data
 import forms
 import nav_menu
@@ -38,6 +41,8 @@ from collections import OrderedDict
 import random
 from sqlalchemy import func
 
+from aweber_api import AWeberAPI
+from aweber import AWeberInterface
 
 app = Flask(__name__)
 app.secret_key = 'dev'
@@ -94,6 +99,24 @@ def inject_globals():
 
 # Routing
 #http://flask.pocoo.org/docs/api/#url-route-registrations
+
+# http://0.0.0.0:7777/register?email=michael.a.garrido%40gmail.com
+@app.route('/register')
+def email_register():
+    print request.query_string
+    print request.args
+    email = request.args.get('email')
+
+    interface = AWeberInterface()
+    _list = interface.find_list()
+    subscriber = {
+        'email': email
+    }
+    response = interface.add_subscriber(subscriber, _list)
+    print response
+
+    return jsonify(response)
+
 
 
 @app.route('/project/<slug>')
