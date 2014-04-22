@@ -255,6 +255,7 @@
           active: false
         });
 
+/*
         $('#project-form-1 button.submit').click(function(){
             var data = $('#project-form-1').serialize();
             var aweberUrl = 'http://www.aweber.com/scripts/addlead.pl';
@@ -264,24 +265,33 @@
                 alert(2);
             });
         });
+*/
+        var resolveSubmission = function(response) {
+
+            console.log(response);
+
+            if (response.success) {
+                alert('Thanks!');
+            } if (response.data.class=="WebServiceError" && response.data.category=="email") {
+                alert('Check for your confirmation email');
+            } else {
+                alert('Error :( Please try again later');
+            }   
+        };
 
         $('#project-form-1').submit(function() {
 
+            var email = $('#project-form-1 input[name=email').val();
 
-            var data = $('#project-form-1').serialize();
-                    var aweberUrl = 'http://www.aweber.com/scripts/addlead.pl';
-                    alert(1);
-                    $.post(aweberUrl, data,function(response){
-                        console.log(response);
-                        alert(2);
-                    });
-            /*
-            $('#form_id')[0].reset();       
-
-            $('.confirm_message').text('Thanks for subscribing. Check your email to confirm your subscription.').fadeIn('slow', function() {
-                $(this).delay(3000).fadeOut('slow');
+            $.ajax({
+              url: '/register',
+              data: {'email':email},
+              success: resolveSubmission
             });
-            */
+            
+            //TODO lock out form UI until response
+            //TODO show loading gif?
+
             return false;
         });
 
