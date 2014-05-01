@@ -123,6 +123,17 @@ def show_project(slug):
             'subscribe_form': forms.SubscribeForm(),
             'next_project': next_project
         }
+        
+        '''
+        # record view count
+        # http://docs.sqlalchemy.org/en/rel_0_9/dialects/postgresql.html#sqlalchemy.dialects.postgresql.HSTORE
+        meta = project.meta;
+        view_count = meta[0]['view_count'];
+        view_count++;
+        project.meta['view_count'] = view_count;
+
+        session.commit();
+        '''
 
         return render_template('project.html', **context_dict)
         # template based on blog_item_option1

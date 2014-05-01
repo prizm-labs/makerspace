@@ -48,19 +48,32 @@ sudo pip install pgsql
 
 psql -h 127.0.0.1
 
+
 CREATE USER root WITH PASSWORD 'password';
 CREATE DATABASE makefoo;
 GRANT ALL PRIVILEGES ON DATABASE makefoo TO root;
+
 \q
+
+DROP DATABASE makefoo;
+
 
 # How to seed DB
 
-python
->>from app import db;db.drop_all();db.create_all();exit();
-
-
+# Install HSTORE extension
+# http://www.postgresql.org/docs/9.1/static/sql-createextension.html
 psql -h 127.0.0.1 -d makefoo
+create extension hstore;
 \d+;
+
+
+# Create tables
+
+python >>
+from app import db;db.drop_all();db.create_all();exit();
+
+
+# Populate tables
 
 COPY project (slug,title,description) FROM 
 '../db/table-project.csv' 
@@ -75,7 +88,6 @@ COPY tags (tag_id,project_id) FROM
 DELIMITERS ',' CSV;
 
 \q
-
 
 
 # from iMac 27"
