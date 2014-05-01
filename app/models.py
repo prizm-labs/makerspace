@@ -1,4 +1,6 @@
 from . import db
+from sqlalchemy.dialects.postgresql import HSTORE
+
 
 tags = db.Table('tags',
     db.Column('tag_id', db.Integer, db.ForeignKey('tag.id')),
@@ -21,7 +23,7 @@ class Project(db.Model):
   slug = db.Column(db.String(80), unique=True)
   #difficulty = db.Column(db.Integer)
 
-  #many-to-manu
+  #many-to-many
   tags = db.relationship('Tag', secondary=tags, backref=db.backref('project', lazy='dynamic')) 
 
   #one-to-many
@@ -33,17 +35,32 @@ class Project(db.Model):
 
   resources = db.relationship('Resource', backref='project', lazy='dynamic')
 
+  # http://stackoverflow.com/questions/9547298/adding-data-to-related-table-with-sqlalchemy
   related_projects = db.relationship("Project",
                 secondary=related_projects,
                 backref='related_to',
                 primaryjoin=id == related_projects.c.project_id,
                 secondaryjoin=id == related_projects.c.related_project_id)
 
-  #http://stackoverflow.com/questions/9547298/adding-data-to-related-table-with-sqlalchemy
+  meta = db.relationship('Meta', backref='project', lazy='dynamic')
 
   #completion_time
   #difficulty
   #related_projects = db.relationship('Project', secondary=related_projects, backref=db.backref('project', lazy='dynamic'))
+
+class Tag(db.Model):
+
+  id = db.Column(db.Integer, primary_key=True)
+  name = db.Column(db.String(80), unique=True)
+
+
+class Meta(db.Model):
+
+  id  = db.Column(db.Integer, primary_key=True)
+  project_id = db.Column(db.Integer, db.ForeignKey('project.id'))
+  data = db.Column(HSTORE)
+  # http://docs.sqlalchemy.org/en/rel_0_9/dialects/postgresql.html#sqlalchemy.dialects.postgresql.HSTORE
+
 
 class Video(db.Model):
   #hosted on youtube or wistia
@@ -68,15 +85,7 @@ class Resource(db.Model):
   #type_id = 
 
 
-class Tag(db.Model):
-  #__tablename__ = "tags"
-
-  id = db.Column(db.Integer, primary_key=True)
-  name = db.Column(db.String(80), unique=True)
-
-
 class Maker(db.Model):
-  #__tablename__ = "makers"
 
   id = db.Column(db.Integer, primary_key=True)
   youtube_channel_url = db.Column(db.String(512))
@@ -91,7 +100,6 @@ class Maker(db.Model):
 
 
 class Chapter(db.Model):
-  #__tablename__ = "chapters"
 
   id = db.Column(db.Integer, primary_key=True)
   video_id = db.Column(db.Integer, db.ForeignKey('video.id'))
@@ -102,7 +110,6 @@ class Chapter(db.Model):
 
 
 class Step(db.Model):
-  #__tablename__ = "steps"
 
   id = db.Column(db.Integer, primary_key=True)
   title = db.Column(db.String(80), unique=True)
@@ -131,7 +138,6 @@ class Component(db.Model):
 
 
 class Product(db.Model):
-  #__tablename__ = "products"
 
   id = db.Column(db.Integer, primary_key=True)
   name = db.Column(db.String(80), unique=True)

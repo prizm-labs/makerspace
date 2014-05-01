@@ -1,51 +1,23 @@
-"""
-Following blocks are available in the templates.
+from . import app
+from . import models
+from . import db
 
-css             - Use this for placing page specific styles.
-main_content    - Use this for main content area.
-js              - Use this for placing page specific scripts.
-js_lt_ie9       - Use this for placing scripts inside `less than ie9` conditional
+from sqlalchemy import func
+from flask import render_template
 
+import sample_data
+import forms
+import nav_menu
 
-Use the `page_title` variable to set the page's title. Like -
-    {% set page_title = "Unify - Personal Profile" %}
+from collections import OrderedDict
+import random
 
+from aweber_api import AWeberAPI
+from aweber import AWeberInterface
 
-Set the following flags to enable/disable certain parts of the site.
-
-breadcrumbs                         - To enable breadcrumbs, set this to `True`.
-disable_breadcrumb_bottom_margin    - To remove breadcrumb sections's bottom margin,
-                                      set this to true
-disable_header                      - To disable header, set this to `True`.
-disable_footer                      - To disable footer, set this to `True`.
-
-E.g.
-    {% set breadcrumbs = True %}
-
-
-`format_date` filter has been added to the jinja context which can used to format a
-datetime object to produce date string like `Fri, 01 Jan.` and `Thu, Feb 6.`.
-"""
-
-from flask import Flask
-from flask import request, jsonify
-
-from flask.ext.babel import Babel
-from flask.ext.sqlalchemy import SQLAlchemy
-
-app = Flask(__name__)
-app.secret_key = 'dev'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://root:password@127.0.0.1/makefoo'
-
-db = SQLAlchemy(app)
-babel = Babel(app)
-
-import models
-
-import routes
-
-'''
 session = db.create_scoped_session()
+
+# mysql://admin:admin@127.0.0.1:
 
 # Adding a filter for formatting date
 @app.template_filter('format_date')
@@ -105,7 +77,6 @@ def email_register():
     print response
 
     return jsonify(response)
-
 
 
 @app.route('/project/<slug>')
@@ -178,6 +149,7 @@ def show_category(slug):
         return render_template('category.html', **context_dict)
     
 
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -191,4 +163,3 @@ def index():
 
     # featured
     # query for projects with tag 'featured'
-'''

@@ -96,6 +96,7 @@
                 <!-- Blog Tags -->
                 <ul class="list-unstyled blog-tags margin-bottom-30">
                     {% for tag in project.tags %}
+                    <!-- #TODO do not show 'featured' tag -->
                     <li><a href="/category/{{ tag.name }}"><i class="icon-tags"></i> {{ tag.name }}</a></li>
                     {% endfor %}
                 </ul>
