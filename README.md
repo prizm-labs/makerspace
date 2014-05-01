@@ -31,6 +31,12 @@ sudo ARCHFLAGS="-arch x86_64" CFLAGS=-Wunused-command-line-argument-hard-error-i
 
 pip install -r requirements.txt
 
+virtualenv venv
+source venv/bin/activate
+deactivate
+
+pip freeze requirements.txt
+
 
 
 # How to setup local DB
@@ -50,12 +56,11 @@ GRANT ALL PRIVILEGES ON DATABASE makefoo TO root;
 # How to seed DB
 
 python
->>from app import db
->>db.create_all()
+>>from app import db;db.drop_all();db.create_all();exit();
 
 
 psql -h 127.0.0.1 -d makefoo
-\d+
+\d+;
 
 COPY project (slug,title,description) FROM 
 '../db/table-project.csv' 
@@ -69,8 +74,12 @@ COPY tags (tag_id,project_id) FROM
 '../db/table-tags.csv' 
 DELIMITERS ',' CSV;
 
+\q
+
+
 
 # from iMac 27"
+# from Mac Mini
 
 COPY project (slug,title,description) FROM 
 '/Users/dodeca/makerspace/db/project.csv' 
@@ -87,6 +96,10 @@ DELIMITERS ',' CSV;
 COPY tags (tag_id,project_id) FROM 
 '/Users/dodeca/makerspace/db/tags.csv' 
 DELIMITERS ',' CSV;
+
+
+
+
 
 
 # How to setup production DB

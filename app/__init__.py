@@ -118,7 +118,7 @@ def email_register():
     return jsonify(response)
 
 
-
+#'''
 @app.route('/project/<slug>')
 def show_project(slug):
     project = models.Project.query.filter(models.Project.slug == slug).first()
@@ -186,6 +186,7 @@ def show_category(slug):
 
         return render_template('category.html', **context_dict)
     
+#'''
 
 @app.route('/')
 def index():

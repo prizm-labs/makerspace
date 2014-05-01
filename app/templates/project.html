@@ -51,7 +51,7 @@
                         First one is free... so are the rest. Daily.
                     </div>
                     <div class="panel-body">
-                    <form class="form-inline" role="form">
+                    <form class="form-inline registration-form" role="form">
                         {{ subscribe_form.csrf_token }}
                         <div class="form-group">
                             {{ subscribe_form.email.label(class="sr-only") }}
@@ -122,20 +122,8 @@
                 <p>We're on a mission to spread meaningful content far and wide.<br/>
                 Try our daily email, The Upworthiest, and see for yourself!</p>
 
-                <div>
-                    <form id="project-form-1">
-                    <input type="hidden" name="listname" value="makerspace" />
-                    <input type="hidden" name="redirect" value="http://localhost/" />
-                    <input type="hidden" name="meta_message" value="1" /> 
-                    <input type="hidden" name="meta_required" value="email" /> 
-                    <input type="hidden" name="meta_forward_vars" value="1" /> 
-                    <input type="text" name="email" value="" /> Email
-                    <input type="submit" class="submit" value="I'm In!"/> 
-                    </form>
-                </div>
-
                 <div class="panel-body">
-                    <form class="form-inline" role="form">
+                    <form class="form-inline registration-form" role="form">
                         {{ subscribe_form.csrf_token }}
                         <div class="form-group">
                             {{ subscribe_form.email.label(class="sr-only") }}
@@ -249,51 +237,96 @@
 <script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script>
 <script type="text/javascript">
     jQuery(document).ready(function() {
+        
         App.init();
+        
         $( "#subscribe-form" ).accordion({
           collapsible: true,
           active: false
         });
+        
+        var Form = function(registrationFormSelector){
 
-/*
-        $('#project-form-1 button.submit').click(function(){
-            var data = $('#project-form-1').serialize();
-            var aweberUrl = 'http://www.aweber.com/scripts/addlead.pl';
-            alert(1);
-            $.post(aweberUrl, data,function(response){
+            function bindFormAction() {
+                $(registrationFormSelector).on('submit',submitForm);
+            };
+
+            function unbindFormAction() {
+                $(registrationFormSelector).off('submit',submitForm);
+            };
+
+            function showFormProcessing() {
+
+            };
+
+            function hideFormProcessing() {
+
+            };
+
+            function resolveSubmission(response) {
                 console.log(response);
-                alert(2);
-            });
-        });
-*/
-        var resolveSubmission = function(response) {
 
-            console.log(response);
+                bindFormAction();
+                hideFormProcessing();
 
-            if (response.success) {
-                alert('Thanks!');
-            } if (response.data.class=="WebServiceError" && response.data.category=="email") {
-                alert('Check for your confirmation email');
-            } else {
-                alert('Error :( Please try again later');
-            }   
+                if (response.success) {
+                    alert('Thanks!');
+                } if (response.data.class=="WebServiceError" && response.data.category=="email") {
+                    alert('Check for your confirmation email');
+                } else {
+                    alert('Error :( Please try again later');
+                }   
+            };
+
+            function registrationFormAction() {
+                var email = $(registrationFormSelector).find('input[name=email]').first().val();
+
+                $.ajax({
+                  url: '/register',
+                  data: {'email':email},
+                  success: resolveSubmission
+                });
+            };
+
+            function submitForm() {
+                event.preventDefault();
+                console.log('submitting form');
+
+                // lock out form UI until response
+                unbindFormAction();
+                showFormProcessing();
+
+                registrationFormAction();
+
+                return false;
+            };
+
+            // form init
+            bindFormAction();
+
+            return {
+                submit: submitForm
+            };
         };
 
-        $('#project-form-1').submit(function() {
+        var Project = function(){
 
-            var email = $('#project-form-1 input[name=email').val();
+            var formSelector = '.registration-form';
 
-            $.ajax({
-              url: '/register',
-              data: {'email':email},
-              success: resolveSubmission
-            });
-            
-            //TODO lock out form UI until response
-            //TODO show loading gif?
+            return {
+                bindForms: function(){
+                    $(formSelector).each(function(index,formDOM){
+                        console.log(formDOM);
+                        var form = new Form(formDOM);
+                        console.log(form);
+                    });
+                }
+            };
+        };
 
-            return false;
-        });
+        // project init
+        var project = new Project();
+        project.bindForms();
 
     });
 </script>
