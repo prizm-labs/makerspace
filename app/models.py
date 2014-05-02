@@ -180,11 +180,15 @@ Address record can also locate its parent with no need to scan
 amongst many tables.
 
 """
+
+from sqlalchemy import create_engine, Integer, Column, String, ForeignKey, Table
+
+from sqlalchemy.ext.mutable import MutableDict
 from sqlalchemy.ext.declarative import declarative_base, declared_attr
-from sqlalchemy import create_engine, Integer, Column, \
-                    String, ForeignKey, Table
-from sqlalchemy.orm import Session, relationship, backref
 from sqlalchemy.ext.associationproxy import association_proxy
+
+from sqlalchemy.orm import Session, relationship, backref
+
 
 
 class Base(object):
@@ -227,7 +231,7 @@ class MetaAssociation(Base):
 class Meta(Base):
 
   id  = db.Column(db.Integer, primary_key=True)
-  data = db.Column(HSTORE)
+  data = db.Column(MutableDict.as_mutable(HSTORE))
   # http://docs.sqlalchemy.org/en/rel_0_9/dialects/postgresql.html#sqlalchemy.dialects.postgresql.HSTORE
 
   association_id = db.Column(db.Integer,

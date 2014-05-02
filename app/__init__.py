@@ -44,17 +44,18 @@ import models
 
 import routes
 
+from sqlalchemy.orm import Session
+from sqlalchemy import create_engine
+
 Base = models.Base
 engine = create_engine('postgresql://root:password@127.0.0.1/makefoo', echo=True)
 Customer = models.Customer
 Supplier = models.Supplier
 Meta = models.Meta
 '''
-from app import Base, Customer, Supplier, Meta, db
+from app import Base, Customer, Supplier, Meta, db, engine
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine
-
-engine = create_engine('postgresql://root:password@127.0.0.1/makefoo', echo=True)
 
 
 Base.metadata.create_all(engine)
@@ -62,32 +63,28 @@ Base.metadata.create_all(engine)
 Base.metadata.drop_all(engine)
 
 
-
-session = db.create_scoped_session()
-
-session = Session(engine)
-
 db.session.add_all([
     Customer(
-        name='customer 1',
+        name='customer 2',
         metas=[
             Meta(
-              data={'foo':'bar'})
-        ]
-    ),
-    Supplier(
-        company_name='Ace Hammers',
-        metas=[
-            Meta(
-              data={'foo':'bar'})
+              data={'page_views': '0'})
         ]
     )
 ])
 
 db.session.commit()
 
+customer = db.session.query(Customer).one()
+customer.metas[0].data['page_views']
+
 for customer in db.session.query(Customer):
     for m in customer.metas:
         print(m.data)
         print(m.parent.name)
+
+
+        user = User.query.get(5)
+user.name = 'New Name'
+db.session.commit()
 '''

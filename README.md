@@ -52,6 +52,8 @@ psql -h 127.0.0.1
 CREATE USER root WITH PASSWORD 'password';
 CREATE DATABASE makefoo;
 GRANT ALL PRIVILEGES ON DATABASE makefoo TO root;
+USE makefoo;
+create extension hstore;
 
 \q
 
@@ -124,7 +126,10 @@ https://github.com/Kloadut/dokku-pg-plugin
 
 
 # How to kill pg process
+# http://blog.gahooa.com/2010/11/03/how-to-force-drop-a-postgresql-database-by-killing-off-connection-processes/
+ps -a
 
+psql -h 127.0.0.1
 select pg_terminate_backend(pid) from pg_stat_activity where datname = 'makefoo';
 
 
