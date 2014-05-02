@@ -1,187 +1,9 @@
-from . import db
+#from . import db
 from sqlalchemy.dialects.postgresql import HSTORE
 
+from sqlalchemy import *
 
-tags = db.Table('tags',
-    db.Column('tag_id', db.Integer, db.ForeignKey('tag.id')),
-    db.Column('project_id', db.Integer, db.ForeignKey('project.id'))
-)
-
-related_projects = db.Table('related_projects',
-    db.Column('project_id', db.Integer, db.ForeignKey('project.id')),
-    db.Column('related_project_id', db.Integer, db.ForeignKey('project.id'))
-)
-
-
-class Project(db.Model):
-  #__tablename__ = "projects"
-
-  id = db.Column(db.Integer(), primary_key=True)
-  title = db.Column(db.String(80), unique=True)
-  description = db.Column(db.String(512))
-  maker_id = db.Column(db.Integer, db.ForeignKey('maker.id'))
-  slug = db.Column(db.String(80), unique=True)
-  #difficulty = db.Column(db.Integer)
-
-  #many-to-many
-  tags = db.relationship('Tag', secondary=tags, backref=db.backref('project', lazy='dynamic')) 
-
-  #one-to-many
-  videos = db.relationship('Video', backref='project', lazy='dynamic') #video 1 of N
-
-  steps = db.relationship('Step', backref='project', lazy='dynamic')
-
-  components = db.relationship('Component', backref='project', lazy='dynamic')
-
-  resources = db.relationship('Resource', backref='project', lazy='dynamic')
-
-  # http://stackoverflow.com/questions/9547298/adding-data-to-related-table-with-sqlalchemy
-  related_projects = db.relationship("Project",
-                secondary=related_projects,
-                backref='related_to',
-                primaryjoin=id == related_projects.c.project_id,
-                secondaryjoin=id == related_projects.c.related_project_id)
-
-  #meta = db.relationship('Meta', backref='project', lazy='dynamic')
-
-  #completion_time
-  #difficulty
-  #related_projects = db.relationship('Project', secondary=related_projects, backref=db.backref('project', lazy='dynamic'))
-
-class Tag(db.Model):
-
-  id = db.Column(db.Integer, primary_key=True)
-  name = db.Column(db.String(80), unique=True)
-
-'''
-class Meta(db.Model):
-
-  id  = db.Column(db.Integer, primary_key=True)
-  project_id = db.Column(db.Integer, db.ForeignKey('project.id'))
-  data = db.Column(HSTORE)
-  # http://docs.sqlalchemy.org/en/rel_0_9/dialects/postgresql.html#sqlalchemy.dialects.postgresql.HSTORE
-'''
-
-class Video(db.Model):
-  #hosted on youtube or wistia
-  id = db.Column(db.Integer, primary_key=True)
-  project_id = db.Column(db.Integer, db.ForeignKey('project.id'))
-  name = db.Column(db.String(80), unique=True)
-  host_guid = db.Column(db.String(80), unique=True) #i.e. Youtube "NVedGeVPc30"
-  path = db.Column(db.String(80), unique=True)
-  #thumbnail_path = db.Column(db.String(512))
-  #host_id = 
-
-  chapters = db.relationship('Chapter', backref='project', lazy='dynamic')
-  
-
-class Resource(db.Model):
-  #downloadable image, pdf, schematic
-  id = db.Column(db.Integer, primary_key=True)
-  project_id = db.Column(db.Integer, db.ForeignKey('project.id'))
-  step_id = db.Column(db.Integer, db.ForeignKey('step.id'))
-  name = db.Column(db.String(80))
-  path = db.Column(db.String(80), unique=True)
-  #type_id = 
-
-
-class Maker(db.Model):
-
-  id = db.Column(db.Integer, primary_key=True)
-  youtube_channel_url = db.Column(db.String(512))
-  facebook_url = db.Column(db.String(512))
-  twitter_handle = db.Column(db.String(40))
-  email = db.Column(db.String(40))
-  name = db.Column(db.String(80), unique=True) #i.e. KipKay
-  alias = db.Column(db.String(80), unique=True) #i.e. Kip K.
-  description = db.Column(db.String(512))
-  logo_url = db.Column(db.String(512))
-  headshot_url = db.Column(db.String(512))
-
-
-class Chapter(db.Model):
-
-  id = db.Column(db.Integer, primary_key=True)
-  video_id = db.Column(db.Integer, db.ForeignKey('video.id'))
-  title = db.Column(db.String(80), unique=True)
-  start_time = db.Column(db.Integer())
-  duration = db.Column(db.Integer())
-  order = db.Column(db.Integer)
-
-
-class Step(db.Model):
-
-  id = db.Column(db.Integer, primary_key=True)
-  title = db.Column(db.String(80), unique=True)
-  start_time = db.Column(db.Integer())
-  description = db.Column(db.String(255))
-  order = db.Column(db.Integer)
-
-  project_id = db.Column(db.Integer, db.ForeignKey('project.id'))
-  chapter_id = db.Column(db.Integer, db.ForeignKey('chapter.id'))
-
-  resources = db.relationship('Resource', backref='step', lazy='dynamic')
-
-  components = db.relationship('Component', backref='step', lazy='dynamic')
-
-
-class Component(db.Model):
-
-  id = db.Column(db.Integer, primary_key=True)
-  step_id = db.Column(db.Integer, db.ForeignKey('step.id'))
-  project_id = db.Column(db.Integer, db.ForeignKey('project.id'))
-  item_id = db.Column(db.Integer, db.ForeignKey('item.id'))
-  quantity = db.Column(db.Integer)
-  note = db.Column(db.String(255)) #size/portion i.e. 4"x4",  
-  required = db.Column(db.Boolean)
-  #Component Set for alternate components  
-
-
-class Product(db.Model):
-
-  id = db.Column(db.Integer, primary_key=True)
-  name = db.Column(db.String(80), unique=True)
-  description = db.Column(db.String(255))
-
-  item_id = db.Column(db.Integer, db.ForeignKey('item.id'))
-  
-  price = db.Column(db.Float)
-  shop_url = db.Column(db.String(512))
-
-
-class Item(db.Model):
-  #non-consumable > tool
-  #consumable > material / part
-
-  id = db.Column(db.Integer, primary_key=True)
-  name = db.Column(db.String(80), unique=True)
-  description = db.Column(db.String(255))
-  note = db.Column(db.String(255))
-  #type_id = db.Column(db.Integer, db.ForeignKey('type.id'))
-
-  products = db.relationship('Product', backref='item', lazy='dynamic') #optional
-
-"""discriminator_on_related.py
-
-The HasAddresses mixin will provide a relationship
-to the fixed Address table based on a fixed association table.
-
-The association table will also contain a "discriminator"
-which determines what type of parent object associates to the
-Address row.
-
-This is a "polymorphic association".   Even though a "discriminator"
-that refers to a particular table is present, the extra association
-table is used so that traditional foreign key constraints may be used.
-
-This configuration has the advantage that a fixed set of tables
-are used, with no extra-table-per-parent needed.   The individual
-Address record can also locate its parent with no need to scan
-amongst many tables.
-
-"""
-
-from sqlalchemy import create_engine, Integer, Column, String, ForeignKey, Table
+#from sqlalchemy import create_engine, Integer, Column, String, ForeignKey, Table
 
 from sqlalchemy.ext.mutable import MutableDict
 from sqlalchemy.ext.declarative import declarative_base, declared_attr
@@ -199,8 +21,11 @@ class Base(object):
     @declared_attr
     def __tablename__(cls):
         return cls.__name__.lower()
-    id = db.Column(db.Integer, primary_key=True)
+    id = Column(Integer, primary_key=True)
+
 Base = declarative_base(cls=Base)
+
+# http://docs.sqlalchemy.org/en/rel_0_9/core/metadata.html
 
 
 class MetaAssociation(Base):
@@ -219,7 +44,7 @@ class MetaAssociation(Base):
                                 metas=metas,
                                 discriminator=discriminator)
 
-    discriminator = db.Column(db.String)
+    discriminator = Column(String)
     """Refers to the type of parent."""
 
     @property
@@ -230,12 +55,11 @@ class MetaAssociation(Base):
 
 class Meta(Base):
 
-  id  = db.Column(db.Integer, primary_key=True)
-  data = db.Column(MutableDict.as_mutable(HSTORE))
+  data = Column(MutableDict.as_mutable(HSTORE))
   # http://docs.sqlalchemy.org/en/rel_0_9/dialects/postgresql.html#sqlalchemy.dialects.postgresql.HSTORE
 
-  association_id = db.Column(db.Integer,
-                        db.ForeignKey("meta_association.id")
+  association_id = Column(Integer,
+                        ForeignKey("meta_association.id")
                     )
 
   association = relationship(
@@ -251,8 +75,8 @@ class HasMeta(object):
     """
     @declared_attr
     def meta_association_id(cls):
-        return db.Column(db.Integer,
-                                db.ForeignKey("meta_association.id"))
+        return Column(Integer,
+                                ForeignKey("meta_association.id"))
 
     @declared_attr
     def meta_association(cls):
@@ -261,56 +85,152 @@ class HasMeta(object):
                     "meta_association", "metas",
                     creator=MetaAssociation.creator(discriminator)
                 )
-        return db.relationship("MetaAssociation",
+        return relationship("MetaAssociation",
                     backref=backref("%s_parent" % discriminator,
                                         uselist=False))
-'''
-class Address(Base):
-    """The Address class.
 
-    This represents all address records in a
-    single table.
+tags = Table('tags',Base.metadata,
+    Column('tag_id', Integer, ForeignKey('tag.id')),
+    Column('project_id', Integer, ForeignKey('project.id'))
+)
 
-    """
-    association_id = Column(Integer,
-                        ForeignKey("address_association.id")
-                    )
-    street = Column(String)
-    city = Column(String)
-    zip = Column(String)
-    association = relationship(
-                    "AddressAssociation",
-                    backref="addresses")
-
-    parent = association_proxy("association", "parent")
-
-    def __repr__(self):
-        return "%s(street=%r, city=%r, zip=%r)" % \
-            (self.__class__.__name__, self.street,
-            self.city, self.zip)
+related_projects = Table('related_projects',Base.metadata,
+    Column('project_id', Integer, ForeignKey('project.id')),
+    Column('related_project_id', Integer, ForeignKey('project.id'))
+)
 
 
-class HasAddresses(object):
-    """HasAddresses mixin, creates a relationship to
-    the address_association table for each parent.
 
-    """
-    @declared_attr
-    def address_association_id(cls):
-        return Column(Integer,
-                                ForeignKey("address_association.id"))
+class Project(HasMeta,Base):
+  #__tablename__ = "projects"
 
-    @declared_attr
-    def address_association(cls):
-        discriminator = cls.__name__.lower()
-        cls.addresses= association_proxy(
-                    "address_association", "addresses",
-                    creator=AddressAssociation.creator(discriminator)
-                )
-        return relationship("AddressAssociation",
-                    backref=backref("%s_parent" % discriminator,
-                                        uselist=False))
-'''
+  title = Column(String(80), unique=True)
+  description = Column(String(512))
+  maker_id = Column(Integer, ForeignKey('maker.id'))
+  slug = Column(String(80), unique=True)
+  #difficulty = Column(Integer)
+
+  #many-to-many
+  tags = relationship('Tag', secondary=tags, backref=backref('project', lazy='dynamic')) 
+
+  #one-to-many
+  videos = relationship('Video', backref='project', lazy='dynamic') #video 1 of N
+
+  steps = relationship('Step', backref='project', lazy='dynamic')
+
+  components = relationship('Component', backref='project', lazy='dynamic')
+
+  resources = relationship('Resource', backref='project', lazy='dynamic')
+
+  # http://stackoverflow.com/questions/9547298/adding-data-to-related-table-with-sqlalchemy
+  related_projects = relationship("Project",
+                secondary=related_projects,
+                backref='related_to',
+                primaryjoin=id == related_projects.c.project_id,
+                secondaryjoin=id == related_projects.c.related_project_id)
+
+  #meta = relationship('Meta', backref='project', lazy='dynamic')
+
+  #completion_time
+  #difficulty
+  #related_projects = relationship('Project', secondary=related_projects, backref=backref('project', lazy='dynamic'))
+
+class Tag(HasMeta,Base):
+
+  name = Column(String(80), unique=True)
+
+
+class Video(HasMeta,Base):
+  #hosted on youtube or wistia
+  project_id = Column(Integer, ForeignKey('project.id'))
+  name = Column(String(80), unique=True)
+  host_guid = Column(String(80), unique=True) #i.e. Youtube "NVedGeVPc30"
+  path = Column(String(80), unique=True)
+  #thumbnail_path = Column(String(512))
+  #host_id = 
+
+  chapters = relationship('Chapter', backref='project', lazy='dynamic')
+  
+
+class Resource(HasMeta,Base):
+  #downloadable image, pdf, schematic
+  project_id = Column(Integer, ForeignKey('project.id'))
+  step_id = Column(Integer, ForeignKey('step.id'))
+  name = Column(String(80))
+  path = Column(String(80), unique=True)
+  #type_id = 
+
+
+class Maker(HasMeta,Base):
+
+  youtube_channel_url = Column(String(512))
+  facebook_url = Column(String(512))
+  twitter_handle = Column(String(40))
+  email = Column(String(40))
+  name = Column(String(80), unique=True) #i.e. KipKay
+  alias = Column(String(80), unique=True) #i.e. Kip K.
+  description = Column(String(512))
+  logo_url = Column(String(512))
+  headshot_url = Column(String(512))
+
+
+class Chapter(HasMeta,Base):
+
+  video_id = Column(Integer, ForeignKey('video.id'))
+  title = Column(String(80), unique=True)
+  start_time = Column(Integer())
+  duration = Column(Integer())
+  order = Column(Integer)
+
+
+class Step(HasMeta,Base):
+
+  title = Column(String(80), unique=True)
+  start_time = Column(Integer())
+  description = Column(String(255))
+  order = Column(Integer)
+
+  project_id = Column(Integer, ForeignKey('project.id'))
+  chapter_id = Column(Integer, ForeignKey('chapter.id'))
+
+  resources = relationship('Resource', backref='step', lazy='dynamic')
+
+  components = relationship('Component', backref='step', lazy='dynamic')
+
+
+class Component(HasMeta,Base):
+
+  step_id = Column(Integer, ForeignKey('step.id'))
+  project_id = Column(Integer, ForeignKey('project.id'))
+  item_id = Column(Integer, ForeignKey('item.id'))
+  quantity = Column(Integer)
+  note = Column(String(255)) #size/portion i.e. 4"x4",  
+  required = Column(Boolean)
+  #Component Set for alternate components  
+
+
+class Product(HasMeta,Base):
+
+  name = Column(String(80), unique=True)
+  description = Column(String(255))
+
+  item_id = Column(Integer, ForeignKey('item.id'))
+  
+  price = Column(Float)
+  shop_url = Column(String(512))
+
+
+class Item(HasMeta,Base):
+  #non-consumable > tool
+  #consumable > material / part
+
+  name = Column(String(80), unique=True)
+  description = Column(String(255))
+  note = Column(String(255))
+  #type_id = Column(Integer, ForeignKey('type.id'))
+
+  products = relationship('Product', backref='item', lazy='dynamic') #optional
+
 
 class Customer(HasMeta, Base):
     name = Column(String)
@@ -319,14 +239,13 @@ class Supplier(HasMeta, Base):
     company_name = Column(String)
 
 
-
 '''
-class Kit(db.Model):
-  id = db.Column(db.Integer, primary_key=True)
-  name = db.Column(db.String(80), unique=True)
-  description = db.Column(db.String(255))
-  month = db.Column(db.Integer)
-  difficulty = db.Column(db.Integer)
+class Kit(Base):
+  id = Column(Integer, primary_key=True)
+  name = Column(String(80), unique=True)
+  description = Column(String(255))
+  month = Column(Integer)
+  difficulty = Column(Integer)
 
-  products = db.relationship('Product', backref='item', lazy='dynamic') #optional
+  products = relationship('Product', backref='item', lazy='dynamic') #optional
 '''

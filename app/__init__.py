@@ -78,6 +78,14 @@ db.session.commit()
 customer = db.session.query(Customer).one()
 customer.metas[0].data['page_views']
 
+page_views = customer.metas[0].data['page_views']
+page_views = int(page_views)
+page_views+=1
+
+customer.metas[0].data['page_views'] = str(page_views)
+db.session.commit()
+
+
 for customer in db.session.query(Customer):
     for m in customer.metas:
         print(m.data)
