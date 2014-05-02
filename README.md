@@ -67,6 +67,8 @@ create extension hstore;
 \d+;
 
 
+
+
 # Create tables
 
 python >>

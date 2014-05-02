@@ -42,7 +42,7 @@ class Project(db.Model):
                 primaryjoin=id == related_projects.c.project_id,
                 secondaryjoin=id == related_projects.c.related_project_id)
 
-  meta = db.relationship('Meta', backref='project', lazy='dynamic')
+  #meta = db.relationship('Meta', backref='project', lazy='dynamic')
 
   #completion_time
   #difficulty
@@ -53,14 +53,14 @@ class Tag(db.Model):
   id = db.Column(db.Integer, primary_key=True)
   name = db.Column(db.String(80), unique=True)
 
-
+'''
 class Meta(db.Model):
 
   id  = db.Column(db.Integer, primary_key=True)
   project_id = db.Column(db.Integer, db.ForeignKey('project.id'))
   data = db.Column(HSTORE)
   # http://docs.sqlalchemy.org/en/rel_0_9/dialects/postgresql.html#sqlalchemy.dialects.postgresql.HSTORE
-
+'''
 
 class Video(db.Model):
   #hosted on youtube or wistia
@@ -160,6 +160,161 @@ class Item(db.Model):
   #type_id = db.Column(db.Integer, db.ForeignKey('type.id'))
 
   products = db.relationship('Product', backref='item', lazy='dynamic') #optional
+
+"""discriminator_on_related.py
+
+The HasAddresses mixin will provide a relationship
+to the fixed Address table based on a fixed association table.
+
+The association table will also contain a "discriminator"
+which determines what type of parent object associates to the
+Address row.
+
+This is a "polymorphic association".   Even though a "discriminator"
+that refers to a particular table is present, the extra association
+table is used so that traditional foreign key constraints may be used.
+
+This configuration has the advantage that a fixed set of tables
+are used, with no extra-table-per-parent needed.   The individual
+Address record can also locate its parent with no need to scan
+amongst many tables.
+
+"""
+from sqlalchemy.ext.declarative import declarative_base, declared_attr
+from sqlalchemy import create_engine, Integer, Column, \
+                    String, ForeignKey, Table
+from sqlalchemy.orm import Session, relationship, backref
+from sqlalchemy.ext.associationproxy import association_proxy
+
+
+class Base(object):
+    """Base class which provides automated table name
+    and surrogate primary key column.
+
+    """
+    @declared_attr
+    def __tablename__(cls):
+        return cls.__name__.lower()
+    id = db.Column(db.Integer, primary_key=True)
+Base = declarative_base(cls=Base)
+
+
+class MetaAssociation(Base):
+    """Associates a collection of Address objects
+    with a particular parent.
+
+    """
+    __tablename__ = "meta_association"
+
+    @classmethod
+    def creator(cls, discriminator):
+        """Provide a 'creator' function to use with
+        the association proxy."""
+
+        return lambda metas:MetaAssociation(
+                                metas=metas,
+                                discriminator=discriminator)
+
+    discriminator = db.Column(db.String)
+    """Refers to the type of parent."""
+
+    @property
+    def parent(self):
+        """Return the parent object."""
+        return getattr(self, "%s_parent" % self.discriminator)
+
+
+class Meta(Base):
+
+  id  = db.Column(db.Integer, primary_key=True)
+  data = db.Column(HSTORE)
+  # http://docs.sqlalchemy.org/en/rel_0_9/dialects/postgresql.html#sqlalchemy.dialects.postgresql.HSTORE
+
+  association_id = db.Column(db.Integer,
+                        db.ForeignKey("meta_association.id")
+                    )
+
+  association = relationship(
+                    "MetaAssociation",
+                    backref="metas")
+  parent = association_proxy("association", "parent")
+
+
+class HasMeta(object):
+    """HasMeta mixin, creates a relationship to
+    the meta_association table for each parent.
+
+    """
+    @declared_attr
+    def meta_association_id(cls):
+        return db.Column(db.Integer,
+                                db.ForeignKey("meta_association.id"))
+
+    @declared_attr
+    def meta_association(cls):
+        discriminator = cls.__name__.lower()
+        cls.metas = association_proxy(
+                    "meta_association", "metas",
+                    creator=MetaAssociation.creator(discriminator)
+                )
+        return db.relationship("MetaAssociation",
+                    backref=backref("%s_parent" % discriminator,
+                                        uselist=False))
+'''
+class Address(Base):
+    """The Address class.
+
+    This represents all address records in a
+    single table.
+
+    """
+    association_id = Column(Integer,
+                        ForeignKey("address_association.id")
+                    )
+    street = Column(String)
+    city = Column(String)
+    zip = Column(String)
+    association = relationship(
+                    "AddressAssociation",
+                    backref="addresses")
+
+    parent = association_proxy("association", "parent")
+
+    def __repr__(self):
+        return "%s(street=%r, city=%r, zip=%r)" % \
+            (self.__class__.__name__, self.street,
+            self.city, self.zip)
+
+
+class HasAddresses(object):
+    """HasAddresses mixin, creates a relationship to
+    the address_association table for each parent.
+
+    """
+    @declared_attr
+    def address_association_id(cls):
+        return Column(Integer,
+                                ForeignKey("address_association.id"))
+
+    @declared_attr
+    def address_association(cls):
+        discriminator = cls.__name__.lower()
+        cls.addresses= association_proxy(
+                    "address_association", "addresses",
+                    creator=AddressAssociation.creator(discriminator)
+                )
+        return relationship("AddressAssociation",
+                    backref=backref("%s_parent" % discriminator,
+                                        uselist=False))
+'''
+
+class Customer(HasMeta, Base):
+    name = Column(String)
+
+class Supplier(HasMeta, Base):
+    company_name = Column(String)
+
+
 
 '''
 class Kit(db.Model):
