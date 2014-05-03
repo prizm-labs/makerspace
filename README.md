@@ -74,46 +74,29 @@ create extension hstore;
 # Create tables
 
 python >>
-from app import db;db.drop_all();db.create_all();exit();
+from app import Base, engine
+
+Base.metadata.drop_all(engine)
+Base.metadata.create_all(engine)
 
 
 # Populate tables
 
-COPY project (slug,title,description) FROM 
-'../db/table-project.csv' 
-DELIMITERS ',' CSV;
-
-COPY video (host_guid,project_id,name,path) FROM 
-'../db/table-video.csv' 
-DELIMITERS ',' CSV;
-
-COPY tags (tag_id,project_id) FROM 
-'../db/table-tags.csv' 
-DELIMITERS ',' CSV;
-
-\q
+python import.py
 
 
-# from iMac 27"
-# from Mac Mini
 
-COPY project (slug,title,description) FROM 
-'/Users/dodeca/makerspace/db/project.csv' 
-DELIMITERS ',' CSV;
+# add default meta to all projects
 
-COPY video (host_guid,project_id,name,path) FROM 
-'/Users/dodeca/makerspace/db/video.csv' 
-DELIMITERS ',' CSV;
+python >>
+from app import models, db
 
-COPY tag (id,name) FROM 
-'/Users/dodeca/makerspace/db/tag.csv' 
-DELIMITERS ',' CSV;
+projects = db.session.query(models.Project).all()
 
-COPY tags (tag_id,project_id) FROM 
-'/Users/dodeca/makerspace/db/tags.csv' 
-DELIMITERS ',' CSV;
+for p in projects:
+  p.metas = [Meta(data={'page_views': '0'})]
 
-
+db.session.commit()
 
 
 
@@ -131,9 +114,6 @@ ps -a
 
 psql -h 127.0.0.1
 select pg_terminate_backend(pid) from pg_stat_activity where datname = 'makefoo';
-
-
-
 
 
 

@@ -2,8 +2,6 @@
 
 {% set page_title = "Unify | Portfolio" %}
 
-{% set breadcrumbs = True %}
-
 {% block css %}
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/pages/portfolio-v2.css') }}">
 {% endblock %}
@@ -12,13 +10,43 @@
 <!--=== Content Part ===-->
 <div class="container">
 
-    <h1>Featured</h1>
-
+    
     <!-- Portfolio Sorting Blocks -->
     <div class="sorting-block">
 
+        <h1>Featured</h1>
         <ul class="row sorting-grid">
-            {% for project in featured_projects %}
+            {% for project in featured %}
+            <li class="col-md-4 col-sm-6 col-xs-12 mix category_1 category_3" data-cat="1">
+                <a href="/project/{{ project.slug }}">
+                    <img style="width:100%" src="http://img.youtube.com/vi/{{project.videos[0].host_guid}}/sddefault.jpg" alt="{{project.title}}"/>
+                    <span class="sorting-cover">
+                        <span>{{ project.title }}</span>
+                        <p>{{ project.description }}</p>
+                    </span>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+
+        <h1>Latest</h1>
+        <ul class="row sorting-grid">
+            {% for project in latest %}
+            <li class="col-md-4 col-sm-6 col-xs-12 mix category_1 category_3" data-cat="1">
+                <a href="/project/{{ project.slug }}">
+                    <img style="width:100%" src="http://img.youtube.com/vi/{{project.videos[0].host_guid}}/sddefault.jpg" alt="{{project.title}}"/>
+                    <span class="sorting-cover">
+                        <span>{{ project.title }}</span>
+                        <p>{{ project.description }}</p>
+                    </span>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+
+        <h1>Popular</h1>
+        <ul class="row sorting-grid">
+            {% for project in popular %}
             <li class="col-md-4 col-sm-6 col-xs-12 mix category_1 category_3" data-cat="1">
                 <a href="/project/{{ project.slug }}">
                     <img style="width:100%" src="http://img.youtube.com/vi/{{project.videos[0].host_guid}}/sddefault.jpg" alt="{{project.title}}"/>

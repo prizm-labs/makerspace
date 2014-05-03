@@ -2,7 +2,7 @@
 from sqlalchemy.dialects.postgresql import HSTORE
 
 from sqlalchemy import *
-
+import datetime
 #from sqlalchemy import create_engine, Integer, Column, String, ForeignKey, Table
 
 from sqlalchemy.ext.mutable import MutableDict
@@ -21,7 +21,13 @@ class Base(object):
     @declared_attr
     def __tablename__(cls):
         return cls.__name__.lower()
-    id = Column(Integer, primary_key=True)
+    #id = Column(Integer, primary_key=True)
+    # cannot let 'id' be inherited
+    # https://www.mail-archive.com/sqlalchemy@googlegroups.com/msg32619.html
+
+    created_on = Column(DateTime, default=datetime.datetime.now)
+    updated_on = Column(DateTime, onupdate=datetime.datetime.now)
+    #info = Column(MutableDict.as_mutable(HSTORE), default=Meta())
 
 Base = declarative_base(cls=Base)
 
@@ -29,6 +35,7 @@ Base = declarative_base(cls=Base)
 
 
 class MetaAssociation(Base):
+    id = Column(Integer, primary_key=True)
     """Associates a collection of Address objects
     with a particular parent.
 
@@ -54,7 +61,7 @@ class MetaAssociation(Base):
 
 
 class Meta(Base):
-
+  id = Column(Integer, primary_key=True)
   data = Column(MutableDict.as_mutable(HSTORE))
   # http://docs.sqlalchemy.org/en/rel_0_9/dialects/postgresql.html#sqlalchemy.dialects.postgresql.HSTORE
 
@@ -69,6 +76,7 @@ class Meta(Base):
 
 
 class HasMeta(object):
+
     """HasMeta mixin, creates a relationship to
     the meta_association table for each parent.
 
@@ -103,6 +111,7 @@ related_projects = Table('related_projects',Base.metadata,
 
 class Project(HasMeta,Base):
   #__tablename__ = "projects"
+  id = Column(Integer, primary_key=True)
 
   title = Column(String(80), unique=True)
   description = Column(String(512))
@@ -123,24 +132,38 @@ class Project(HasMeta,Base):
   resources = relationship('Resource', backref='project', lazy='dynamic')
 
   # http://stackoverflow.com/questions/9547298/adding-data-to-related-table-with-sqlalchemy
+  '''
   related_projects = relationship("Project",
                 secondary=related_projects,
                 backref='related_to',
                 primaryjoin=id == related_projects.c.project_id,
                 secondaryjoin=id == related_projects.c.related_project_id)
+  '''
+  # http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-viii-followers-contacts-and-friends
+  related_projects = relationship('Project', 
+        secondary=related_projects,
+        #backref = backref('related_projects', lazy = 'dynamic'), 
+        backref='related_to',
+        primaryjoin = (related_projects.c.project_id == id), 
+        secondaryjoin = (related_projects.c.related_project_id == id), 
+        lazy = 'dynamic')
 
-  #meta = relationship('Meta', backref='project', lazy='dynamic')
+  # http://stackoverflow.com/questions/19258471/sqlalchemy-orm-init-method-vs
+  #def __init__(self):
+  #    self.metas = [Meta(data={'page_views': '0'})]
 
   #completion_time
   #difficulty
   #related_projects = relationship('Project', secondary=related_projects, backref=backref('project', lazy='dynamic'))
 
-class Tag(HasMeta,Base):
 
+class Tag(HasMeta,Base):
+  id = Column(Integer, primary_key=True)
   name = Column(String(80), unique=True)
 
 
 class Video(HasMeta,Base):
+  id = Column(Integer, primary_key=True)
   #hosted on youtube or wistia
   project_id = Column(Integer, ForeignKey('project.id'))
   name = Column(String(80), unique=True)
@@ -153,6 +176,7 @@ class Video(HasMeta,Base):
   
 
 class Resource(HasMeta,Base):
+  id = Column(Integer, primary_key=True)
   #downloadable image, pdf, schematic
   project_id = Column(Integer, ForeignKey('project.id'))
   step_id = Column(Integer, ForeignKey('step.id'))
@@ -162,7 +186,7 @@ class Resource(HasMeta,Base):
 
 
 class Maker(HasMeta,Base):
-
+  id = Column(Integer, primary_key=True)
   youtube_channel_url = Column(String(512))
   facebook_url = Column(String(512))
   twitter_handle = Column(String(40))
@@ -175,7 +199,7 @@ class Maker(HasMeta,Base):
 
 
 class Chapter(HasMeta,Base):
-
+  id = Column(Integer, primary_key=True)
   video_id = Column(Integer, ForeignKey('video.id'))
   title = Column(String(80), unique=True)
   start_time = Column(Integer())
@@ -184,7 +208,7 @@ class Chapter(HasMeta,Base):
 
 
 class Step(HasMeta,Base):
-
+  id = Column(Integer, primary_key=True)
   title = Column(String(80), unique=True)
   start_time = Column(Integer())
   description = Column(String(255))
@@ -199,7 +223,7 @@ class Step(HasMeta,Base):
 
 
 class Component(HasMeta,Base):
-
+  id = Column(Integer, primary_key=True)
   step_id = Column(Integer, ForeignKey('step.id'))
   project_id = Column(Integer, ForeignKey('project.id'))
   item_id = Column(Integer, ForeignKey('item.id'))
@@ -210,7 +234,7 @@ class Component(HasMeta,Base):
 
 
 class Product(HasMeta,Base):
-
+  id = Column(Integer, primary_key=True)
   name = Column(String(80), unique=True)
   description = Column(String(255))
 
@@ -223,7 +247,7 @@ class Product(HasMeta,Base):
 class Item(HasMeta,Base):
   #non-consumable > tool
   #consumable > material / part
-
+  id = Column(Integer, primary_key=True)
   name = Column(String(80), unique=True)
   description = Column(String(255))
   note = Column(String(255))
@@ -233,9 +257,11 @@ class Item(HasMeta,Base):
 
 
 class Customer(HasMeta, Base):
+    id = Column(Integer, primary_key=True)
     name = Column(String)
 
 class Supplier(HasMeta, Base):
+    id = Column(Integer, primary_key=True)
     company_name = Column(String)
 
 

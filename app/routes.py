@@ -2,7 +2,7 @@ from . import app
 from . import models
 from . import db
 
-from sqlalchemy import func
+from sqlalchemy import func,desc
 from flask import render_template
 
 import sample_data
@@ -49,6 +49,26 @@ def projects_with_tag(tag_obj):
 def projects_with_ids(ids_list):
     return session.query(models.Project).filter(models.Project.id.in_(ids_list)).all()
 
+def get_page_views(project):
+    page_views = project.metas[0].data['page_views']
+    page_views = int(page_views)
+    return page_views
+
+def get_featured(projects):
+    featured_tag_id = 55
+
+    featured_projects = [i for i in projects if any(t.id == featured_tag_id for t in i.tags)]
+
+    '''
+    featured_tag = db.session.query(models.Tag).filter(models.Tag.id==featured_tag_id).first()
+    featured_projects = projects_with_tag(featured_tag)
+    print 'featured projects ids:'
+    print featured_projects
+    featured_projects = projects_with_ids(featured_projects)
+    '''
+    return featured_projects
+
+
 # Injecting newsletter form and navigation menu dicts into the template context
 @app.context_processor
 def inject_globals():
@@ -81,7 +101,7 @@ def email_register():
 
 @app.route('/project/<slug>')
 def show_project(slug):
-    project = models.Project.query.filter(models.Project.slug == slug).first()
+    project = db.session.query(models.Project).filter(models.Project.slug == slug).first()
 
     if (project == None):
         render_template('index.html')
@@ -123,17 +143,19 @@ def show_project(slug):
             'subscribe_form': forms.SubscribeForm(),
             'next_project': next_project
         }
-        
-        '''
+
         # record view count
         # http://docs.sqlalchemy.org/en/rel_0_9/dialects/postgresql.html#sqlalchemy.dialects.postgresql.HSTORE
-        meta = project.meta;
-        view_count = meta[0]['view_count'];
-        view_count++;
-        project.meta['view_count'] = view_count;
 
-        session.commit();
-        '''
+        page_views = project.metas[0].data['page_views']
+        page_views = int(page_views)
+        page_views+=1
+
+        project.metas[0].data['page_views'] = str(page_views)
+
+        print 'project page views:'+str(page_views)
+        
+        db.session.commit()
 
         return render_template('project.html', **context_dict)
         # template based on blog_item_option1
@@ -163,14 +185,52 @@ def show_category(slug):
 
 @app.route('/')
 def index():
-    return render_template('index.html')
-    # lastest
-    # now
-    # time range
-    # query for projects sorted by post date
 
-    # popular
-    # query for projects sorted by view count
+    projects = db.session.query(models.Project).all()
 
-    # featured
-    # query for projects with tag 'featured'
+    bucket_limit = 3
+
+    def compare_page_views(projectA, projectB):
+        a = get_page_views(projectA)
+        b = get_page_views(projectB)
+        if a > b:
+            return -1
+        elif a < b:
+            return 1
+        else:
+            return 0
+
+
+    #latest = db.session.query(models.Project).order_by(models.Project.created_on.desc()).limit(bucket_limit).all()
+    latest = sorted(projects, key=lambda project: project.created_on)
+    latest = latest[:bucket_limit]
+    
+    popular = sorted(projects, cmp=compare_page_views)
+    popular = popular[:bucket_limit]
+    
+    featured = get_featured(projects)
+    featured = featured[:bucket_limit]
+
+    print 'latest projects:'
+    for p in latest:
+        print p.title
+
+    print 'popular projects:'
+    for p in popular:
+        print p.title
+        print get_page_views(p)
+
+    print 'featured projects:'
+    for p in featured:
+        print p.title
+
+
+    #TODO make sure all buckets have unique videos
+
+    context_dict = {
+            'latest': latest,
+            'popular': popular,
+            'featured': featured
+        }
+
+    return render_template('home.html', **context_dict)
