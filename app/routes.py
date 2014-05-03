@@ -69,6 +69,56 @@ def get_featured(projects):
     return featured_projects
 
 
+def compare_page_views(projectA, projectB):
+    a = get_page_views(projectA)
+    b = get_page_views(projectB)
+    if a > b:
+        return -1
+    elif a < b:
+        return 1
+    else:
+        return 0
+
+
+def get_top_projects(projects,asIds = False):
+
+    bucket_limit = 3
+
+    #latest = db.session.query(models.Project).order_by(models.Project.created_on.desc()).limit(bucket_limit).all()
+    latest = sorted(projects, key=lambda project: project.created_on)
+    latest = latest[::-1]
+    latest = latest[:bucket_limit]
+    
+    popular = sorted(projects, cmp=compare_page_views)
+    popular = popular[:bucket_limit]
+    
+    featured = get_featured(projects)
+    featured = featured[:bucket_limit]
+
+    print 'latest projects:'
+    for p in latest:
+        print p.title
+
+    print 'popular projects:'
+    for p in popular:
+        print p.title
+        print get_page_views(p)
+
+    print 'featured projects:'
+    for p in featured:
+        print p.title
+
+    def mapId(project):
+        return project.id
+
+    if (asIds):
+        latest = map(mapId,latest)
+        popular = map(mapId,popular)
+        featured = map(mapId,featured)
+
+    return { 'latest':latest, 'popular':popular, 'featured':featured }
+
+
 # Injecting newsletter form and navigation menu dicts into the template context
 @app.context_processor
 def inject_globals():
@@ -101,7 +151,9 @@ def email_register():
 
 @app.route('/project/<slug>')
 def show_project(slug):
+
     project = db.session.query(models.Project).filter(models.Project.slug == slug).first()
+    projects = db.session.query(models.Project).all()
 
     if (project == None):
         render_template('index.html')
@@ -116,11 +168,25 @@ def show_project(slug):
         for tag in project.tags:
             suggested_projects.extend(projects_with_tag(tag))
 
+        # remove current project from suggestions
+        if project.id in suggested_projects:
+            print 'found same project in suggestions'
+            suggested_projects.remove(project.id)
+
+        top_projects = get_top_projects(projects,True)
+
+        suggested_projects += top_projects['featured']+top_projects['latest']+top_projects['popular']
+
         # https://docs.python.org/3/library/collections.html#collections.OrderedDict
         suggested_projects = list(OrderedDict.fromkeys(suggested_projects))
 
         # http://stackoverflow.com/questions/444475/sqlalchemy-turning-a-list-of-ids-to-a-list-of-objects
         suggested_projects = projects_with_ids(suggested_projects)
+        
+
+        
+
+
         random.shuffle(suggested_projects)
 
         next_project = suggested_projects[0]
@@ -188,49 +254,11 @@ def index():
 
     projects = db.session.query(models.Project).all()
 
-    bucket_limit = 3
-
-    def compare_page_views(projectA, projectB):
-        a = get_page_views(projectA)
-        b = get_page_views(projectB)
-        if a > b:
-            return -1
-        elif a < b:
-            return 1
-        else:
-            return 0
-
-
-    #latest = db.session.query(models.Project).order_by(models.Project.created_on.desc()).limit(bucket_limit).all()
-    latest = sorted(projects, key=lambda project: project.created_on)
-    latest = latest[:bucket_limit]
-    
-    popular = sorted(projects, cmp=compare_page_views)
-    popular = popular[:bucket_limit]
-    
-    featured = get_featured(projects)
-    featured = featured[:bucket_limit]
-
-    print 'latest projects:'
-    for p in latest:
-        print p.title
-
-    print 'popular projects:'
-    for p in popular:
-        print p.title
-        print get_page_views(p)
-
-    print 'featured projects:'
-    for p in featured:
-        print p.title
+    top_projects = get_top_projects(projects)
 
 
     #TODO make sure all buckets have unique videos
 
-    context_dict = {
-            'latest': latest,
-            'popular': popular,
-            'featured': featured
-        }
+    context_dict = top_projects
 
     return render_template('home.html', **context_dict)
