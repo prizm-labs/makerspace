@@ -158,7 +158,6 @@ def show_project(slug):
     if (project == None):
         render_template('index.html')
     else:
-
         suggested_projects = []
         next_project = []
         
@@ -182,21 +181,12 @@ def show_project(slug):
 
         # http://stackoverflow.com/questions/444475/sqlalchemy-turning-a-list-of-ids-to-a-list-of-objects
         suggested_projects = projects_with_ids(suggested_projects)
-        
-
-        
-
 
         random.shuffle(suggested_projects)
 
         next_project = suggested_projects[0]
         suggested_projects = suggested_projects[1:4]
 
-        #TODO
-        # Get suggested projects by related_project
-
-        #TODO
-        # Get suggested projects by popularity/views
 
         #TODO do not show 'featured' tag
 

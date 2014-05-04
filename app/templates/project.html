@@ -8,6 +8,20 @@
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/pages/blog.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/pages/page_magazine.css') }}">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+<style>
+    .subscribe-footer, .related-projects {
+        text-align: center;
+    }
+    .next-project img { 
+        width:80%; max-width:500px; min-width:320px;
+    }
+    .registration-form input[name="email"] {
+        width: 300px;
+    }
+    .collapsible-form .ui-widget-content{
+         border: 1px solid #ff6a0c;
+    }
+</style>
 {% endblock %}
 
 {% block head_content %} 
@@ -44,8 +58,8 @@
                 {{ project.description|safe }}
                 </p>
 
-                <div id="subscribe-form">
-                  <button>Subscribe to Makefoo</button>
+                <div id="project-top-form" class="collapsible-form">
+                  <button type="button" class="btn btn-warning">{{ _('Subscribe to King of Random') }}</button>
                   <div>
                     <div>
                         First one is free... so are the rest. Daily.
@@ -57,7 +71,7 @@
                             {{ subscribe_form.email.label(class="sr-only") }}
                             {{ subscribe_form.email(class="form-control", placeholder=subscribe_form.email.label.text) }}
                         </div>
-                        <button type="submit" class="btn-u btn-u-default">{{ _('I\'m in') }}</button>
+                        <button type="submit" class="btn btn-warning">{{ _('I\'m in') }}</button>
                     </form>
                     </div>
                     <div class="privacy-policy">
@@ -105,38 +119,46 @@
             </div>
             <!--End Blog Post-->
 
-            <!-- Next Projects -->
-            <div class="related-projects">
 
-                <h3>Your next project</h3>
-                <a href="/project/{{project.slug}}">
+            
+
+                <!-- Next Projects -->
+                <div class="panel panel-default related-projects">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">Your next project</h3>
+                  </div>
+                  <div class="panel-body">
+                    <a href="/project/{{project.slug}}">
                     <div class="next-project">
                         <h2>{{next_project.title}}</h2>
-                        <img style="width:100%" src="http://img.youtube.com/vi/{{next_project.videos[0].host_guid}}/sddefault.jpg" alt="{{next_project.title}}"/>
+                        <img src="http://img.youtube.com/vi/{{next_project.videos[0].host_guid}}/mqdefault.jpg" alt="{{next_project.title}}"/>
                     </div>                
                     </a>
-            </div>
-            <!-- End Next Projects -->
+                  </div>
+                </div>
+                <!-- End Next Projects -->
+                <div class="well subscribe-footer">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">Want more stuff like this?</h3>
+                  </div>
+                  <div class="panel-body">
+                    <p>We're on a mission to spread meaningful content far and wide.<br/>
+                    Try our daily email, The Upworthiest, and see for yourself!</p>
 
-            <div class="subscribe-footer">
-                <h2>Want more stuff like this?</h2>
-                <p>We're on a mission to spread meaningful content far and wide.<br/>
-                Try our daily email, The Upworthiest, and see for yourself!</p>
-
-                <div class="panel-body">
                     <form class="form-inline registration-form" role="form">
                         {{ subscribe_form.csrf_token }}
                         <div class="form-group">
                             {{ subscribe_form.email.label(class="sr-only") }}
                             {{ subscribe_form.email(class="form-control", placeholder=subscribe_form.email.label.text) }}
                         </div>
-                        <button type="submit" class="btn-u btn-u-default">{{ _('I\'m in') }}</button>
+                        <button type="submit" class="btn btn-warning">{{ _('I\'m in') }}</button>
                     </form>
-                </div>
-                <div class="privacy-policy">By submitting above you agree to the Upworthy privacy policy.</div>
-            </div>
+                  </div>
 
-			<hr>
+                    <div class="panel-footer">
+                        <div class="privacy-policy">By submitting above you agree to the Upworthy privacy policy.</div>
+                    </div>
+                </div>
 
             <!-- Recent Comments -->
             <!--
@@ -213,15 +235,25 @@
 
             <!-- Posts -->
             <div class="posts margin-bottom-40">
-                <div class="headline headline-md"><h2>{{ _('Recommended Projects') }}</h2></div>
-                {% for project in suggested_projects %}
-                    <a href="/project/{{project.slug}}">
-                    <div class="sidebar-project">
-                        <a href="/project/{{project.slug}}">{{project.title}}
-                        <img style="width:100%" src="http://img.youtube.com/vi/{{project.videos[0].host_guid}}/sddefault.jpg" alt="{{project.title}}"/>
-                    </div>                
-                    </a>
-                {% endfor %}
+                <div class="panel panel-default">
+                  <!-- Default panel contents -->
+                  <div class="panel-heading">{{ _('Recommended Projects') }}</div>
+
+                  <!-- List group -->
+                  <ul class="list-group">
+                    {% for project in suggested_projects %}
+                    <li class="list-group-item">
+                        <a href="/project/{{project.slug}}">
+                        <div class="sidebar-project">
+                            <a href="/project/{{project.slug}}">{{project.title}}
+                            <img style="" src="http://img.youtube.com/vi/{{project.videos[0].host_guid}}/mqdefault.jpg" alt="{{project.title}}"/>
+                        </div>                
+                        </a>
+                    </li>
+                    {% endfor %}
+                  </ul>
+                </div>
+                
             </div>
             <!-- End Posts -->
 
@@ -241,9 +273,9 @@
         
         App.init();
         
-        $( "#subscribe-form" ).accordion({
-          collapsible: true,
-          active: false
+        $( "#project-top-form" ).accordion({
+          collapsible: true
+          //active: false
         });
         
         var Form = function(registrationFormSelector){

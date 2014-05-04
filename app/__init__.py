@@ -30,16 +30,40 @@ datetime object to produce date string like `Fri, 01 Jan.` and `Thu, Feb 6.`.
 from flask import Flask
 from flask import request, jsonify
 
+from flask.ext.assets import Environment, Bundle
+
+from flask.ext.admin import Admin
+from flask.ext.login import LoginManager
+
 from flask.ext.babel import Babel
 from flask.ext.sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.secret_key = 'dev'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://root:password@127.0.0.1/makefoo'
+app.config['ASSETS_DEBUG'] = True
 
 db = SQLAlchemy(app)
 babel = Babel(app)
 
+login_manager = LoginManager()
+login_manager.init_app(app)
+
+# http://flask-assets.readthedocs.org/en/latest/
+'''
+sass = Bundle('*.sass' filters='sass', output='gen/sass.css')
+all_css = Bundle('css/jquery.calendar.css', sass,
+                 filters='cssmin', output="gen/all.css")
+{% assets "js_all" %}
+    <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+{% endassets %}
+'''
 import models
 
 import routes
+
+from admin_views import *
+
+admin = Admin(app)
+add_admin_views(admin)
+# Add administrative views here
