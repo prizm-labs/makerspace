@@ -107,6 +107,11 @@ related_projects = Table('related_projects',Base.metadata,
     Column('related_project_id', Integer, ForeignKey('project.id'))
 )
 
+class Page(HasMeta,Base):
+  id = Column(Integer, primary_key=True)
+  slug = Column(String(80), unique=True)
+  title = Column(String(80))
+  html = Column(Text)
 
 
 class Project(HasMeta,Base):

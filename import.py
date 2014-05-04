@@ -47,6 +47,18 @@ def import_all_models():
 
 import_all_models()
 
+#TODO create association tables
+'''
+psql -h 127.0.0.1 -d makefoo
+
+COPY tags (tag_id,project_id) FROM 
+'/Users/dodeca/makerspace/db/tags.csv' 
+DELIMITERS ',' CSV;
+
+COPY related_projects (project_id,related_project_id) FROM 
+'/Users/dodeca/makerspace/db/related_projects.csv' 
+DELIMITERS ',' CSV;
+'''
 
 
 
@@ -66,17 +78,7 @@ COPY tag (id,name) FROM
 DELIMITERS ',' CSV;
 '''
 
-'''
-psql -h 127.0.0.1 -d makefoo
 
-COPY tags (tag_id,project_id) FROM 
-'/Users/dodeca/makerspace/db/tags.csv' 
-DELIMITERS ',' CSV;
-
-COPY related_projects (project_id,related_project_id) FROM 
-'/Users/dodeca/makerspace/db/related_projects.csv' 
-DELIMITERS ',' CSV;
-'''
 
 '''
 from app import Base, Customer, Supplier, Meta, db, engine

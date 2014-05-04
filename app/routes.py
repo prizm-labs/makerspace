@@ -218,7 +218,33 @@ def index():
 
     context_dict = top_projects
 
-    return render_template('home.html', **context_dict)
+    return render_template('_home.html', **context_dict)
+
+
+# standalone content pages
+def standalone_content(page):
+
+    context_dict = {
+            'title': page.title,
+            'html':page.html
+    }
+
+    return render_template('_standalone.html', **context_dict)
+
+
+from functools import partial
+
+pages = db.session.query(models.Page).all()
+
+for page in pages:
+    app.add_url_rule('/'+page.slug, 
+        page.slug, # this is the name used for url_for
+        #standalone_content(page))
+        partial(standalone_content, page=page))
+
+    # TODO register slugs with base template (i.e. footer), so other pages can link with url_for    
+    # http://stackoverflow.com/questions/14342969/python-flask-route-with-dynamic-first-component
+
 
 
 @app.route('/project/<slug>')
