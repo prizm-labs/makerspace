@@ -9,18 +9,56 @@
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/pages/page_magazine.css') }}">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
 <style>
-    .subscribe-footer, .related-projects {
-        text-align: center;
+    p.large {
+        font-size: 20px;
     }
-    .next-project img { 
-        width:80%; max-width:500px; min-width:320px;
+
+    .header {
+        border: none;
     }
+
+    .project-description {
+
+    }
+
+    .privacy-policy {
+        margin-top: 20px;
+    }
+
+    .collapsible-form {
+        margin-top: 15px;
+        margin-bottom: 20px;
+    }
+
     .registration-form input[name="email"] {
         width: 300px;
     }
-    .collapsible-form .ui-widget-content{
+
+    .next-project img { 
+        width:80%; max-width:500px; min-width:320px;
+    }
+    
+    .collapsible-form .ui-widget-content, .well.footer-form {
          border: 1px solid #ff6a0c;
     }
+
+    .form-inline .form-group {
+        margin-top: 20px;
+    }
+
+    .sidebar-projects h3, .next-projects h3, .sidebar-project h2 {
+        margin-top: 0;
+    } 
+
+    .sidebar-project img {
+        margin-bottom: 10px;
+    }
+
+    .project-tags {
+        padding-left: 10px;
+    }
+
+
 </style>
 {% endblock %}
 
@@ -35,8 +73,18 @@
         <!-- Left Sidebar -->
     	<div class="col-md-8 md-margin-bottom-60">
             <!--Blog Post-->
-            <div class="blog margin-bottom-40">
+            <div class="project margin-bottom-40">
                 <h1>{{ project.title }}</h1>
+
+                <div class="project-tags">
+                    <ul class="list-unstyled blog-tags">
+                        {% for tag in project.tags %}
+                        <!-- #TODO do not show 'featured' tag -->
+                        <li><a href="/category/{{ tag.name }}"><i class="icon-tags"></i><span class="h5">{{ tag.name }}</span></a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
                 <!--
                 <div class="blog-post-tags">
                     <ul class="list-unstyled list-inline blog-info">
@@ -54,28 +102,28 @@
                     </ul>
                 </div>
                 -->
-                <p>
+                <div class="project-description">
+                <p class="large">
                 {{ project.description|safe }}
                 </p>
+            </div>
 
                 <div id="project-top-form" class="collapsible-form">
                   <button type="button" class="btn btn-warning">{{ _('Subscribe to King of Random') }}</button>
-                  <div>
-                    <div>
+                  <div class="panel-body">
+                    <p class="large">
                         First one is free... so are the rest. Daily.
-                    </div>
-                    <div class="panel-body">
+                    </p>
                     <form class="form-inline registration-form" role="form">
                         {{ subscribe_form.csrf_token }}
                         <div class="form-group">
                             {{ subscribe_form.email.label(class="sr-only") }}
                             {{ subscribe_form.email(class="form-control", placeholder=subscribe_form.email.label.text) }}
+                            <button type="submit" class="btn btn-warning">{{ _('I\'m in') }}</button>
                         </div>
-                        <button type="submit" class="btn btn-warning">{{ _('I\'m in') }}</button>
                     </form>
-                    </div>
                     <div class="privacy-policy">
-                        By submitting above you agree to the Makefoo privacy policy.
+                        <small>By submitting above you agree to our privacy policy.</small>
                     </div>
                   </div>
                 </div>
@@ -106,15 +154,6 @@
                     {% endfor %}
                 </div>
                 
-                
-                <!-- Blog Tags -->
-                <ul class="list-unstyled blog-tags margin-bottom-30">
-                    {% for tag in project.tags %}
-                    <!-- #TODO do not show 'featured' tag -->
-                    <li><a href="/category/{{ tag.name }}"><i class="icon-tags"></i> {{ tag.name }}</a></li>
-                    {% endfor %}
-                </ul>
-                <!-- End Blog Tags -->
 
             </div>
             <!--End Blog Post-->
@@ -123,12 +162,11 @@
             
 
                 <!-- Next Projects -->
-                <div class="panel panel-default related-projects">
-                  <div class="panel-heading">
-                    <h3 class="panel-title">Your next project</h3>
-                  </div>
+                <div class="panel panel-default next-projects text-center">
                   <div class="panel-body">
-                    <a href="/project/{{project.slug}}">
+                    <h3>Your Next Project</h3>
+
+                    <a href="/project/{{next_project.slug}}">
                     <div class="next-project">
                         <h2>{{next_project.title}}</h2>
                         <img src="http://img.youtube.com/vi/{{next_project.videos[0].host_guid}}/mqdefault.jpg" alt="{{next_project.title}}"/>
@@ -137,12 +175,11 @@
                   </div>
                 </div>
                 <!-- End Next Projects -->
-                <div class="well subscribe-footer">
-                  <div class="panel-heading">
-                    <h3 class="panel-title">Want more stuff like this?</h3>
-                  </div>
-                  <div class="panel-body">
-                    <p>We're on a mission to spread meaningful content far and wide.<br/>
+
+                <div class="well footer-form text-center">
+                    <h2>Want more stuff like this?</h2>
+
+                    <p class="large">We're on a mission to spread meaningful content far and wide.<br/>
                     Try our daily email, The Upworthiest, and see for yourself!</p>
 
                     <form class="form-inline registration-form" role="form">
@@ -150,14 +187,12 @@
                         <div class="form-group">
                             {{ subscribe_form.email.label(class="sr-only") }}
                             {{ subscribe_form.email(class="form-control", placeholder=subscribe_form.email.label.text) }}
+                            <button type="submit" class="btn btn-warning">{{ _('I\'m in') }}</button>
                         </div>
-                        <button type="submit" class="btn btn-warning">{{ _('I\'m in') }}</button>
+                        
                     </form>
-                  </div>
 
-                    <div class="panel-footer">
-                        <div class="privacy-policy">By submitting above you agree to the Upworthy privacy policy.</div>
-                    </div>
+                    <div class="privacy-policy"><small>By submitting above you agree to the Upworthy privacy policy.</small></div>
                 </div>
 
             <!-- Recent Comments -->
@@ -233,21 +268,18 @@
         <!-- Right Sidebar -->
         <div class="col-md-4 magazine-page">
 
-            <!-- Posts -->
-            <div class="posts margin-bottom-40">
+            <div class="sidebar-projects margin-bottom-40">
                 <div class="panel panel-default">
-                  <!-- Default panel contents -->
-                  <div class="panel-heading">{{ _('Recommended Projects') }}</div>
-
+                    <div class="panel-body">
+                        <h3>Recommended Projects</h3>
+                    </div>
                   <!-- List group -->
                   <ul class="list-group">
                     {% for project in suggested_projects %}
-                    <li class="list-group-item">
+                    <li class="list-group-item sidebar-project">
                         <a href="/project/{{project.slug}}">
-                        <div class="sidebar-project">
-                            <a href="/project/{{project.slug}}">{{project.title}}
+                            <a href="/project/{{project.slug}}"><h2>{{project.title}}</h2></a>
                             <img style="" src="http://img.youtube.com/vi/{{project.videos[0].host_guid}}/mqdefault.jpg" alt="{{project.title}}"/>
-                        </div>                
                         </a>
                     </li>
                     {% endfor %}
@@ -255,7 +287,6 @@
                 </div>
                 
             </div>
-            <!-- End Posts -->
 
         </div>
         <!-- End Right Sidebar -->
