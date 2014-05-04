@@ -3,7 +3,7 @@ from flask.ext.admin import Admin, BaseView, expose
 class MyView(BaseView):
     @expose('/')
     def index(self):
-        return self.render('admin_home.html')
+        return self.render('_admin_home.html')
 
 
 def add_admin_views(admin):

@@ -1,0 +1,96 @@
+{% extends '_base.html' %}
+
+{% set page_title = "Unify | Contact Us" %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='plugins/flexslider/flexslider.css') }}" media="screen">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/pages/page_contact.css') }}">
+{% endblock %}
+
+{% block main_content %}
+<!--=== Content Part ===-->
+<div class="container">
+    <div class="row margin-bottom-30">
+        <div class="col-md-9 mb-margin-bottom-30">
+            <p>{{ _('Accusamus et iusto odio dignissimos') }} <strong class="color-green">{{ _('ducimus qui blanditiis') }}</strong> {{ _('praesentium voluptatum deleniti atque corrupti quos dolores et quas feugiat. Et harum quidem rerum facilis est et expedita distinctio lorem ipsum dolor sit amet, consectetur adipiscing') }} <strong class="color-green">{{ _('elit landitiis') }}</strong>{{ _('. Quidem rerum facilis est et expedita distinctio lorem ipsum dolor sit amet consectetur adipidipiscing elit mag scing. Ut non libero consectetur adipiscing elit magna distinctio lorem ipsum dolor sit amet consectetur adipiscing eliidem rerum facilist.') }}</p><br>
+            <div class="tag-box tag-box-v2">
+                <p>{{ _('Et harum quidem rerum facilis est et expedita distinctio lorem ipsum dolor sit amet consectetur adipiscing elit. Ut non libero consectetur adipiscing elit magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat. Pellentesque viverra vehicula sem ut volutpat.') }}</p>
+            </div>
+            <p>{{ _('Et harum quidem rerum facilis est et expedita distinctio lorem ipsum dolor sit amet consectetur adipiscing elit. Ut non libero consectetur adipiscing elit magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat.') }}</p><br>
+            <form class="contact-form" role="form">
+                {{ form.csrf_token }}
+                {{ form.name.label }} {% if form.name.flags.required %}<span class="color-red">*</span>{% endif %}
+                <div class="row margin-bottom-20">
+                    <div class="col-md-7 col-md-offset-0">
+                        {{ form.name(class="form-control") }}
+                    </div>
+                </div>
+
+                {{ form.email.label }} {% if form.email.flags.required %}<span class="color-red">*</span>{% endif %}
+                <div class="row margin-bottom-20">
+                    <div class="col-md-7 col-md-offset-0">
+                        {{ form.email(class="form-control") }}
+                    </div>
+                </div>
+
+                {{ form.message.label }} {% if form.message.flags.required %}<span class="color-red">*</span>{% endif %}
+                <div class="row margin-bottom-20">
+                    <div class="col-md-11 col-md-offset-0">
+                        {{ form.message(class="form-control", rows="8") }}
+                    </div>
+                </div>
+
+                <p><button type="submit" class="btn-u">{{ _('Send Message') }}</button></p>
+            </form>
+        </div><!--/col-md-9-->
+
+        <div class="col-md-3">
+
+            <!-- Contacts -->
+            <div class="headline"><h2>{{ _('Contacts') }}</h2></div>
+            <ul class="list-unstyled who margin-bottom-30">
+                <li><a href="#"><i class="icon-home"></i>{{ _('5B Streat, City 50987 New Town US') }}</a></li>
+                <li><a href="#"><i class="icon-envelope-alt"></i>{{ _('info@example.com') }}</a></li>
+                <li><a href="#"><i class="icon-phone-sign"></i>{{ _('1(222) 5x86 x97x') }}</a></li>
+                <li><a href="#"><i class="icon-globe"></i>{{ _('http://www.example.com') }}</a></li>
+            </ul>
+            <!-- End Contacts -->
+
+        </div><!--/col-md-3-->
+    </div><!--/row-->
+
+</div><!--/container-->
+<!--=== End Content Part ===-->
+{% endblock %}
+
+{% block js %}
+<!-- JS Implementing Plugins -->
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/gmap/gmap.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/flexslider/jquery.flexslider-min.js') }}"></script>
+<!-- JS Page Level -->
+<script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/pages/contact.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/form.js') }}"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        App.init();
+        App.initSliders();
+        //Contact.initMap();
+
+
+        var config = {
+            forms: [
+                { selector: '.contact-form', 
+                  submit: '/contact_message',
+                  fields: ['email','name','message','csrf_token']
+                }
+            ]
+        };
+
+        // project init
+        var project = new Project(config);
+        project.bindForms();
+    });
+</script>
+{% endblock %}

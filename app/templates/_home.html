@@ -6,28 +6,39 @@
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/pages/portfolio-v2.css') }}">
 {% endblock %}
 
+
+## http://jinja.pocoo.org/docs/templates/#macros
+
+% macro project_bucket(title, class, projects)
+    <h1>{{title}}</h1>
+    <ul class="row sorting-grid">
+        {% for project in projects %}
+        <li class="col-md-4 col-sm-6 col-xs-12 mix{{class}}" data-cat="1">
+            <a href="/project/{{ project.slug }}">
+                <img style="width:100%" src="http://img.youtube.com/vi/{{project.videos[0].host_guid}}/mqdefault.jpg" alt="{{project.title}}"/>
+                <span class="sorting-cover">
+                    <span>{{ project.title }}</span>
+                    <p>{{ project.description }}</p>
+                </span>
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+% endmacro
+
+
 {% block main_content %}
 <!--=== Content Part ===-->
 <div class="container">
 
-    <h1>{{ category }} Projects</h1>
-
+    
     <!-- Portfolio Sorting Blocks -->
     <div class="sorting-block">
 
-        <ul class="row sorting-grid">
-            {% for project in projects %}
-            <li class="col-md-4 col-sm-6 col-xs-12 mix category_1 category_3" data-cat="1">
-                <a href="/project/{{ project.slug }}">
-                    <img style="width:100%" src="http://img.youtube.com/vi/{{project.videos[0].host_guid}}/sddefault.jpg" alt="{{project.title}}"/>
-                    <span class="sorting-cover">
-                        <span>{{ project.title }}</span>
-                        <p>{{ project.description }}</p>
-                    </span>
-                </a>
-            </li>
-            {% endfor %}
-        </ul>
+        {{ project_bucket('Featured','featured',featured) }}
+        {{ project_bucket('Latest','latest',latest) }}
+        {{ project_bucket('Popular','popular',popular) }}
+
 
         <div class="clearfix"></div>
     </div>

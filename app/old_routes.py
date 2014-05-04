@@ -1,8 +1,14 @@
+from . import app
+from flask import render_template
 
+import forms
+import sample_data
+
+'''
 @app.route('/')
 def index():
     return render_template('index.html')
-
+'''
 
 @app.route('/page_home1')
 def page_home1():

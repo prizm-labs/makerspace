@@ -38,10 +38,17 @@ from flask.ext.login import LoginManager
 from flask.ext.babel import Babel
 from flask.ext.sqlalchemy import SQLAlchemy
 
+from flask.ext.mail import Mail
+
 app = Flask(__name__)
-app.secret_key = 'dev'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://root:password@127.0.0.1/makefoo'
-app.config['ASSETS_DEBUG'] = True
+app.config.from_object('config')
+
+
+mail = Mail(app)
+
+# custom Jinja template prefix
+# http://flask.pocoo.org/snippets/101/
+app.jinja_env.line_statement_prefix = '%'
 
 db = SQLAlchemy(app)
 babel = Babel(app)
@@ -61,6 +68,7 @@ all_css = Bundle('css/jquery.calendar.css', sass,
 import models
 
 import routes
+#import old_routes
 
 from admin_views import *
 

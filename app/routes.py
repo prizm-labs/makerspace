@@ -1,19 +1,20 @@
 from . import app
-from . import models
-from . import db
 
+from . import db, models
 from sqlalchemy import func,desc
-from flask import render_template
-
-import sample_data
-import forms
-import nav_menu
-
 from collections import OrderedDict
 import random
 
+from flask import render_template, request, jsonify
+import nav_menu
+
+import forms
 from aweber_api import AWeberAPI
 from aweber import AWeberInterface
+
+from flask.ext.mail import Message
+from . import mail
+from config import ADMINS
 
 session = db.create_scoped_session()
 
@@ -131,6 +132,9 @@ def inject_globals():
 # Routing
 #http://flask.pocoo.org/docs/api/#url-route-registrations
 
+
+# API Routes
+
 # http://0.0.0.0:7777/register?email=michael.a.garrido%40gmail.com
 @app.route('/register')
 def email_register():
@@ -148,6 +152,74 @@ def email_register():
 
     return jsonify(response)
 
+@app.route('/contact_message', methods=['POST'])
+def contact_email():
+
+    success = False
+    data = ''
+    print request.form
+
+    # validate crsf token 
+    # http://wtforms.simplecodes.com/docs/1.0.2/ext.html
+
+    form = forms.ContactForm(request.form)
+
+    if form.validate():
+        #pass # We're all good, create a user or whatever it is you do
+        
+
+        email = request.form['email']
+        name = request.form['name'] or 'Anonymous'
+        message = request.form['message']
+
+        msg = Message('Contact form: '+email, sender = ADMINS[0], recipients = ADMINS)
+        msg.body = 'Name: '+name+', Email: '+email+', Message: '+message
+        msg.html = 'Name: '+name+', Email: '+email+', Message: '+message
+
+        with app.app_context():
+            mail.send(msg)
+
+        success = True
+        data = 'Thanks, I will contact you soon!'
+    elif form.csrf_token.errors:
+        data = 'Invalid token'
+        #pass # If we're here we suspect the user of cross-site request forgery
+    else:
+        #pass # Any other errors
+        data = 'Unknown error'
+
+    response = { 'success': success, 'data': data }
+    print response
+
+    return jsonify(response)
+'''
+from flask.ext.mail import Message
+from app import app, mail
+from config import ADMINS
+msg = Message('test subject', sender = ADMINS[0], recipients = ADMINS)
+msg.body = 'text body'
+msg.html = '<b>HTML</b> body'
+with app.app_context():
+  mail.send(msg)
+'''
+
+
+# Page Routes
+
+@app.route('/')
+def index():
+
+    projects = db.session.query(models.Project).all()
+
+    top_projects = get_top_projects(projects)
+
+
+    #TODO make sure all buckets have unique videos
+
+    context_dict = top_projects
+
+    return render_template('home.html', **context_dict)
+
 
 @app.route('/project/<slug>')
 def show_project(slug):
@@ -156,7 +228,7 @@ def show_project(slug):
     projects = db.session.query(models.Project).all()
 
     if (project == None):
-        render_template('index.html')
+        render_template('_index.html')
     else:
         suggested_projects = []
         next_project = []
@@ -167,10 +239,6 @@ def show_project(slug):
         for tag in project.tags:
             suggested_projects.extend(projects_with_tag(tag))
 
-        # remove current project from suggestions
-        if project.id in suggested_projects:
-            print 'found same project in suggestions'
-            suggested_projects.remove(project.id)
 
         top_projects = get_top_projects(projects,True)
 
@@ -178,6 +246,11 @@ def show_project(slug):
 
         # https://docs.python.org/3/library/collections.html#collections.OrderedDict
         suggested_projects = list(OrderedDict.fromkeys(suggested_projects))
+
+        # remove current project from suggestions
+        if project.id in suggested_projects:
+            print 'found same project in suggestions'
+            suggested_projects.remove(project.id)
 
         # http://stackoverflow.com/questions/444475/sqlalchemy-turning-a-list-of-ids-to-a-list-of-objects
         suggested_projects = projects_with_ids(suggested_projects)
@@ -192,11 +265,9 @@ def show_project(slug):
 
         context_dict = {
             'project': project,
-            'blog_post': sample_data.blog_posts[0],
-            'comments': sample_data.comments,
             'comment_form': forms.BlogCommentForm(),
-            'suggested_projects': suggested_projects,
             'subscribe_form': forms.SubscribeForm(),
+            'suggested_projects': suggested_projects,
             'next_project': next_project
         }
 
@@ -213,19 +284,19 @@ def show_project(slug):
         
         db.session.commit()
 
-        return render_template('project.html', **context_dict)
+        return render_template('_project.html', **context_dict)
         # template based on blog_item_option1
 
 
 @app.route('/category/<slug>')
 def show_category(slug):
     # http://stackoverflow.com/questions/16573095/case-insensitive-flask-sqlalchemy-query
-    tag = models.Tag.query.filter(func.lower(models.Tag.name) == func.lower(slug)).first()
+    tag = db.session.query(models.Tag).filter(func.lower(models.Tag.name) == func.lower(slug)).first()
 
-    print tag
+    #print tag
 
     if (tag == None):
-        return render_template('index.html')
+        return render_template('_index.html')
     else:
         projects = projects_with_tag(tag)
         projects = projects_with_ids(projects)
@@ -235,20 +306,26 @@ def show_category(slug):
             'projects': projects
         }
 
-        return render_template('category.html', **context_dict)
+        return render_template('_category.html', **context_dict)
+
+
+@app.route('/page/<slug>')
+def show_page(slug):
+    context_dict = {
+            'category': tag.name.capitalize(),
+            'projects': projects
+        }
+
+    return render_template('_category.html', **context_dict)
+
+@app.route('/contact')
+def page_contact():
+    # based on page_contact3.html
+    return render_template('_contact.html', form=forms.ContactForm())
+
+
+
     
 
 
-@app.route('/')
-def index():
 
-    projects = db.session.query(models.Project).all()
-
-    top_projects = get_top_projects(projects)
-
-
-    #TODO make sure all buckets have unique videos
-
-    context_dict = top_projects
-
-    return render_template('home.html', **context_dict)

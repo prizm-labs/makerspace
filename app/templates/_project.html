@@ -84,7 +84,7 @@
                         {% endfor %}
                     </ul>
                 </div>
-
+                
                 <div class="project-description">
                 <p class="large">
                 {{ project.description|safe }}
@@ -177,6 +177,25 @@
 
                     <div class="privacy-policy"><small>By submitting above you agree to the Upworthy privacy policy.</small></div>
                 </div>
+
+            <!-- Recent Comments -->
+            <!--
+            {% for comment in comments recursive %}
+            <div class="media">
+                <a class="pull-left" href="#">
+                    <img class="media-object" src="{{ url_for('static', filename=comment.avatar) }}" alt="" />
+                </a>
+                <div class="media-body">
+                    <h4 class="media-heading">{{ comment.name }} <span>{{ comment.time_delta }} / <a href="#">Reply</a></span></h4>
+                    <p>{{ comment.comment }}</p>
+                    {% if comment.children %}{{ loop(comment.children) }}{% endif %}
+                </div>
+            </div>
+            {% endfor %}
+
+            <hr>
+            -->
+            <!-- Comment Form -->
             
             <div class="post-comment">
                 <h3>{{ _('Leave a Comment') }}</h3>
@@ -263,7 +282,6 @@
 <!-- JS Page Level -->
 <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='js/form.js') }}"></script>
 <script type="text/javascript">
     jQuery(document).ready(function() {
         
@@ -273,18 +291,88 @@
           collapsible: true
           //active: false
         });
+        
+        var Form = function(registrationFormSelector){
 
-        var config = {
-            forms: [
-                { selector: '.registration-form', 
-                  submit: '/register',
-                  fields: ['email','csrf_token']
+            function bindFormAction() {
+                $(registrationFormSelector).on('submit',submitForm);
+            };
+
+            function unbindFormAction() {
+                $(registrationFormSelector).off('submit',submitForm);
+            };
+
+            function showFormProcessing() {
+
+            };
+
+            function hideFormProcessing() {
+
+            };
+
+            function resolveSubmission(response) {
+                console.log(response);
+
+                bindFormAction();
+                hideFormProcessing();
+
+                if (response.success) {
+                    alert('Thanks!');
+                } if (response.data.class=="WebServiceError" && response.data.category=="email") {
+                    alert('Check for your confirmation email');
+                } else {
+                    alert('Error :( Please try again later');
+                }   
+            };
+
+            function registrationFormAction() {
+                var email = $(registrationFormSelector).find('input[name=email]').first().val();
+
+                $.ajax({
+                  url: '/register',
+                  data: {'email':email},
+                  success: resolveSubmission
+                });
+            };
+
+            function submitForm() {
+                event.preventDefault();
+                console.log('submitting form');
+
+                // lock out form UI until response
+                unbindFormAction();
+                showFormProcessing();
+
+                registrationFormAction();
+
+                return false;
+            };
+
+            // form init
+            bindFormAction();
+
+            return {
+                submit: submitForm
+            };
+        };
+
+        var Project = function(){
+
+            var formSelector = '.registration-form';
+
+            return {
+                bindForms: function(){
+                    $(formSelector).each(function(index,formDOM){
+                        console.log(formDOM);
+                        var form = new Form(formDOM);
+                        console.log(form);
+                    });
                 }
-            ]
+            };
         };
 
         // project init
-        var project = new Project(config);
+        var project = new Project();
         project.bindForms();
 
     });
