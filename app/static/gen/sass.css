@@ -1,0 +1,57 @@
+@media -sass-debug-info{filename{}line{font-family:\000031}}
+p.large {
+  font-size: 20px;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\000035}}
+.header {
+  border: none;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\000039}}
+.privacy-policy {
+  margin-top: 20px;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\0000313}}
+.collapsible-form {
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\0000318}}
+.registration-form input[name="email"] {
+  width: 300px;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\0000322}}
+.next-project img {
+  width: 80%;
+  max-width: 500px;
+  min-width: 320px;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\0000328}}
+.collapsible-form .ui-widget-content, .well.footer-form {
+  border: 1px solid #ff6a0c;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\0000332}}
+.form-inline .form-group {
+  margin-top: 20px;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\0000335}}
+.sidebar-projects h3, .next-projects h3, .sidebar-project h2 {
+  margin-top: 0;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\0000339}}
+.sidebar-project img {
+  margin-bottom: 10px;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\0000343}}
+.project-tags {
+  padding-left: 10px;
+}

@@ -57,6 +57,9 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 
 # http://flask-assets.readthedocs.org/en/latest/
+sass = Bundle('sass/project.sass', filters='sass', output='gen/sass.css')
+assets = Environment(app)
+assets.register('sass_all',sass)
 '''
 sass = Bundle('*.sass' filters='sass', output='gen/sass.css')
 all_css = Bundle('css/jquery.calendar.css', sass,
