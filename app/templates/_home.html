@@ -2,7 +2,7 @@
 
 {% set page_title = "Unify | Portfolio" %}
 
-% set footer_full_width = True
+{% set footer_width = 12 %}
 
 {% block css %}
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/pages/portfolio-v2.css') }}">
@@ -19,7 +19,7 @@
             <a href="/project/{{ project.slug }}">
                 <img style="width:100%" src="http://img.youtube.com/vi/{{project.videos[0].host_guid}}/mqdefault.jpg" alt="{{project.title}}"/>
                 <span class="sorting-cover">
-                    <span>{{ project.title }}</span>
+                    <h3>{{ project.title }}</h3>
                     <p>{{ project.description }}</p>
                 </span>
             </a>

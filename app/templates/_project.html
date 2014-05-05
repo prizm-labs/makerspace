@@ -3,7 +3,7 @@
 {% set page_title = project.title %}
 {% set content_header = project.title %}
 
-% set footer_full_width = False
+{% set footer_width = 8 %}
 
 {% block css %}
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/pages/blog.css') }}">
@@ -112,7 +112,7 @@
                   </div>
                 </div>
 
-                <div class="blog-img">
+                <div class="project-video">
                     <div id="ytplayer" style="margin: 0px auto;width:100%;"></div>
                     {% for video in project.videos %}
                         <script>
