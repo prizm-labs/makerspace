@@ -61,7 +61,10 @@ db = SQLAlchemy(app)
 babel = Babel(app)
 
 # http://flask-assets.readthedocs.org/en/latest/
-sass = Bundle('sass/project.sass', filters='sass', output='gen/sass.css')
+
+# custom fonts: Mueso Sans
+# https://typekit.com/fonts/museo-sans
+sass = Bundle('sass/global.sass','sass/project.sass', filters='sass', output='gen/sass.css')
 assets = Environment(app)
 assets.register('sass_all',sass)
 '''

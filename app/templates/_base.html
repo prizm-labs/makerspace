@@ -34,48 +34,7 @@
     <!-- Twitter Bootstrap -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
-
-    <style>
-    body {
-        color: #585f69;
-    }
-    .footer {
-        
-        background: transparent;
-        font-size: 18px;
-    }
-    .footer .navigation li {
-        display: inline-block;
-        list-style: none;
-        margin: 0 5px;
-    }
-    .footer a, .copyright a {
-        color: #585f69;
-        font-size: 18px;
-        text-decoration: none;
-        border-bottom: 1px dotted #b3bdc2
-    }   
-    .footer .copyright {
-        border: none;
-        background: transparent;
-    }
-    .header {
-        border: none;
-    }
-    .navbar-default {
-        box-shadow: none;
-        -webkit-box-shadow: none;
-        border: none;
-    } 
-    a {
-        color: #585f69;
-    }
-    a:hover {
-        text-decoration: none;
-        color: #e38d13;
-    }
     {%- block css %}{% endblock %}
-</style>
 </head>
 
 {#- Without invoking these variables here, included files aren't able to access them. #}
@@ -101,6 +60,9 @@
 <!-- Twitter Bootstrap -->
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
+<!-- Custom Fonts -->
+<script type="text/javascript" src="//use.typekit.net/eak1qrt.js"></script>
+<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 {% block js %}{% endblock %}
 {% block head_content %}{% endblock %}
 
