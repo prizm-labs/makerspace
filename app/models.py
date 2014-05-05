@@ -12,6 +12,9 @@ from sqlalchemy.ext.associationproxy import association_proxy
 from sqlalchemy.orm import Session, relationship, backref
 
 
+ROLE_USER = 0
+ROLE_ADMIN = 1
+
 
 class Base(object):
     """Base class which provides automated table name
@@ -201,6 +204,28 @@ class Maker(HasMeta,Base):
   description = Column(String(512))
   logo_url = Column(String(512))
   headshot_url = Column(String(512))
+
+class User(HasMeta,Base):
+  id = Column(Integer, primary_key = True)
+  nickname = Column(String(64), unique = True)
+  email = Column(String(120), unique = True)
+  role = Column(SmallInteger, default = ROLE_USER)
+  #posts = relationship('Post', backref = 'author', lazy = 'dynamic')
+
+  def is_authenticated(self):
+      return True
+
+  def is_active(self):
+      return True
+
+  def is_anonymous(self):
+      return False
+
+  def get_id(self):
+      return unicode(self.id)
+
+  def __repr__(self):
+      return '<User %r>' % (self.nickname)
 
 
 class Chapter(HasMeta,Base):

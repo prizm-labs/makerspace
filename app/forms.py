@@ -4,7 +4,12 @@ Contains Forms
 
 from flask_wtf import Form
 from wtforms import TextField, PasswordField, BooleanField, TextAreaField
-from wtforms.validators import DataRequired, EqualTo
+from wtforms.validators import DataRequired, EqualTo, Required
+
+
+class OpenIdLoginForm(Form):
+    openid = TextField('openid', validators = [Required()])
+    remember_me = BooleanField('remember_me', default = False)
 
 
 class LoginForm(Form):

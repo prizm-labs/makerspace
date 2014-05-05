@@ -9,5 +9,7 @@ class MyView(BaseView):
 
 def add_admin_views(admin,models,db):
   admin.add_view(MyView(name='Hello'))
+
   admin.add_view(ModelView(models.Project, db.session))
   admin.add_view(ModelView(models.Page, db.session))
+  admin.add_view(ModelView(models.User, db.session))
