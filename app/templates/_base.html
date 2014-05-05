@@ -35,12 +35,54 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
 
+    <style>
+    body {
+        color: #585f69;
+    }
+    .footer {
+        
+        background: transparent;
+        font-size: 18px;
+    }
+    .footer .navigation li {
+        display: inline-block;
+        list-style: none;
+        margin: 0 5px;
+    }
+    .footer a, .copyright a {
+        color: #585f69;
+        font-size: 18px;
+        text-decoration: none;
+        border-bottom: 1px dotted #b3bdc2
+    }   
+    .footer .copyright {
+        border: none;
+        background: transparent;
+    }
+    .header {
+        border: none;
+    }
+    .navbar-default {
+        box-shadow: none;
+        -webkit-box-shadow: none;
+        border: none;
+    } 
+    a {
+        color: #585f69;
+    }
+    a:hover {
+        text-decoration: none;
+        color: #e38d13;
+    }
+    {%- block css %}{% endblock %}
+</style>
 </head>
 
 {#- Without invoking these variables here, included files aren't able to access them. #}
 {%- set _temp = breadcrumbs %}
 {%- set _temp = disable_header %}
 {%- set _temp = disable_breadcrumb_bottom_margin %}
+{%- set _temp = footer_width %}
 
 <body{% if body_class %} class="{{ body_class }}"{% endif %}>
 
@@ -48,7 +90,7 @@
 
 {%- block main_content %}{% endblock %}
 
-{% if not disable_footer %}{% include '_footer.html' %}{% endif %}
+{% if not disable_footer %}{% include '_footer.html' with context %}{% endif %}
 
 <!-- JS Global Compulsory -->
 <script type="text/javascript" src="{{ url_for('static', filename='plugins/jquery-1.10.2.min.js') }}"></script>

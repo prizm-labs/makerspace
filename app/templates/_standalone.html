@@ -1,0 +1,24 @@
+{% extends '_base.html' %}
+
+{% set page_title = title %}
+
+{% block main_content %}
+<!--=== Content Part ===-->
+<div class="container">
+	<div class="row-fluid privacy">
+        <h1>{{ title }}</h1>
+        {{ html|safe }}
+    </div><!--/row-fluid-->
+</div><!--/container-->
+<!--=== End Content Part ===-->
+{% endblock %}
+
+{% block js %}
+<!-- JS Page Level -->
+<script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        App.init();
+    });
+</script>
+{% endblock %}

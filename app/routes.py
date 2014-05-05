@@ -5,7 +5,7 @@ from sqlalchemy import func,desc
 from collections import OrderedDict
 import random
 
-from flask import render_template, request, jsonify
+from flask import render_template, request, jsonify, flash, redirect, session, url_for, g
 import nav_menu
 
 import forms
@@ -16,9 +16,72 @@ from flask.ext.mail import Message
 from . import mail
 from config import ADMINS
 
-session = db.create_scoped_session()
+from . import lm, oid
+from flask.ext.login import login_user, logout_user, current_user, login_required
+#from models import User, ROLE_USER, ROLE_ADMIN
 
+#session = db.create_scoped_session()
 # mysql://admin:admin@127.0.0.1:
+
+@lm.user_loader
+def load_user(id):
+    return db.session.query(models.User).get(int(id))
+
+
+
+@app.before_request
+def before_request():
+    g.user = current_user
+
+
+@app.route('/login', methods = ['GET', 'POST'])
+@oid.loginhandler
+def login():
+    print g.user
+    if g.user is not None and g.user.is_authenticated():
+        if g.user.role == models.ROLE_ADMIN:
+            return redirect('/admin')
+        else:
+            return redirect('/')
+
+    form = forms.OpenIdLoginForm()
+    if form.validate_on_submit():
+        session['remember_me'] = form.remember_me.data
+        return oid.try_login(form.openid.data, ask_for = ['nickname', 'email'])
+    return render_template('_login.html', 
+        title = 'Sign In',
+        form = form,
+        providers = app.config['OPENID_PROVIDERS'])
+
+@oid.after_login
+def after_login(resp):
+    if resp.email is None or resp.email == "":
+        flash('Invalid login. Please try again.')
+        return redirect(url_for('login'))
+    user = db.session.query(models.User).filter_by(email = resp.email).first()
+    if user is None:
+        nickname = resp.nickname
+        if nickname is None or nickname == "":
+            nickname = resp.email.split('@')[0]
+        user = models.User(nickname = nickname, email = resp.email, role = models.ROLE_USER)
+        db.session.add(user)
+        db.session.commit()
+    remember_me = False
+    if 'remember_me' in session:
+        remember_me = session['remember_me']
+        session.pop('remember_me', None)
+    login_user(user, remember = remember_me)
+
+    #return redirect(request.args.get('next') or url_for('index'))
+    return redirect(url_for('index'))
+
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('index'))
+
+
+
 
 # Adding a filter for formatting date
 @app.template_filter('format_date')
@@ -40,7 +103,7 @@ app.jinja_env.globals.update(zip=zip)
 
 def projects_with_tag(tag_obj):
     tagged_projects = []
-    projects = session.query(models.tags).filter(models.tags.c.tag_id==tag_obj.id).all()
+    projects = db.session.query(models.tags).filter(models.tags.c.tag_id==tag_obj.id).all()
 
     for mapping in projects:
         tagged_projects.append(mapping.project_id)
@@ -48,7 +111,7 @@ def projects_with_tag(tag_obj):
     return tagged_projects
 
 def projects_with_ids(ids_list):
-    return session.query(models.Project).filter(models.Project.id.in_(ids_list)).all()
+    return db.session.query(models.Project).filter(models.Project.id.in_(ids_list)).all()
 
 def get_page_views(project):
     page_views = project.metas[0].data['page_views']
@@ -207,6 +270,7 @@ with app.app_context():
 # Page Routes
 
 @app.route('/')
+@login_required
 def index():
 
     projects = db.session.query(models.Project).all()
@@ -218,7 +282,33 @@ def index():
 
     context_dict = top_projects
 
-    return render_template('home.html', **context_dict)
+    return render_template('_home.html', **context_dict)
+
+
+# standalone content pages
+def standalone_content(page):
+
+    context_dict = {
+            'title': page.title,
+            'html':page.html
+    }
+
+    return render_template('_standalone.html', **context_dict)
+
+
+from functools import partial
+
+pages = db.session.query(models.Page).all()
+
+for page in pages:
+    app.add_url_rule('/'+page.slug, 
+        page.slug, # this is the name used for url_for
+        #standalone_content(page))
+        partial(standalone_content, page=page))
+
+    # TODO register slugs with base template (i.e. footer), so other pages can link with url_for    
+    # http://stackoverflow.com/questions/14342969/python-flask-route-with-dynamic-first-component
+
 
 
 @app.route('/project/<slug>')

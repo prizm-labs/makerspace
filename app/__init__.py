@@ -27,8 +27,11 @@ E.g.
 datetime object to produce date string like `Fri, 01 Jan.` and `Thu, Feb 6.`.
 """
 
-from flask import Flask
-from flask import request, jsonify
+from flask import Flask, request, jsonify
+
+import os
+from flask.ext.openid import OpenID
+from config import basedir
 
 from flask.ext.assets import Environment, Bundle
 
@@ -43,6 +46,10 @@ from flask.ext.mail import Mail
 app = Flask(__name__)
 app.config.from_object('config')
 
+lm = LoginManager()
+lm.init_app(app)
+lm.login_view = 'login'
+oid = OpenID(app, os.path.join(basedir, 'tmp'))
 
 mail = Mail(app)
 
@@ -52,9 +59,6 @@ app.jinja_env.line_statement_prefix = '%'
 
 db = SQLAlchemy(app)
 babel = Babel(app)
-
-login_manager = LoginManager()
-login_manager.init_app(app)
 
 # http://flask-assets.readthedocs.org/en/latest/
 sass = Bundle('sass/project.sass', filters='sass', output='gen/sass.css')
@@ -71,10 +75,10 @@ all_css = Bundle('css/jquery.calendar.css', sass,
 import models
 
 import routes
-#import old_routes
+import old_routes
 
 from admin_views import *
 
 admin = Admin(app)
-add_admin_views(admin)
+add_admin_views(admin,models,db)
 # Add administrative views here

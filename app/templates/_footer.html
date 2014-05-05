@@ -2,55 +2,26 @@
 <div class="footer">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-4 md-margin-bottom-40">
-
-	            <!-- Monthly Newsletter -->
-		        <div class="headline"><h2>{{ _('Monthly Newsletter') }}</h2></div>
-				<p>{{ _('Subscribe to our newsletter and stay up to date with the latest news and deals!') }}</p>
-				<form class="footer-subsribe">
-                    {{ newsletter_form.csrf_token }}
-                    <div class="input-group">
-                        {{ newsletter_form.email(class="form-control", placeholder=newsletter_form.email.label.text) }}
-                        <span class="input-group-btn">
-                            <button class="btn-u" type="button">{{ _('Subscribe') }}</button>
-                        </span>
-                    </div><!-- /input-group -->
-				</form>
-			</div><!--/col-md-4-->
-
-			<div class="col-md-4">
-                <!-- Stay Connected -->
-		        <div class="headline"><h2>{{ _('Stay Connected') }}</h2></div>
-                <ul class="social-icons">
-                    <li><a href="#" data-original-title="Feed" class="social_rss"></a></li>
-                    <li><a href="#" data-original-title="Facebook" class="social_facebook"></a></li>
-                    <li><a href="#" data-original-title="Twitter" class="social_twitter"></a></li>
-                </ul>
-			</div><!--/col-md-4-->
-
-            <div class="col-md-4">
+            <div class="col-md-{{footer_width}} text-center">
+            	<ul class="navigation">
+            		<li>
+                    	<a href="{{ url_for('about') }}">{{ _('About') }}</a>
+                    </li>
+                    <li>
+                    	<a href="{{ url_for('page_contact') }}">{{ _('Contact') }}</a>
+                    </li>
+            		<li>
+                    <a href="{{ url_for('privacy-policy') }}">{{ _('Privacy') }}</a>
+                    </li>
+                    <li>
+                    	<a href="{{ url_for('terms-of-service') }}">{{ _('Terms') }}</a>
+                    </li>
+            	</li>
+            	<div class="copyright">
+            		{{ _('2014 &copy; KingOfRandom. ALL Rights Reserved.') }}
+            	</div>
             </div><!--/col-md-4-->
 		</div><!--/row-->
 	</div><!--/container-->
 </div><!--/footer-->
 <!--=== End Footer ===-->
-
-<!--=== Copyright ===-->
-<div class="copyright">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-6">
-	            <p class="copyright-space">
-                    {{ _('2013 &copy; Unify. ALL Rights Reserved.') }}
-                    <a href="#">{{ _('Privacy Policy') }}</a> | <a href="#">{{ _('Terms of Service') }}</a>
-                </p>
-			</div>
-			<div class="col-md-6">
-				<a href="{{ url_for('index') }}">
-                    <img id="logo-footer" src="{{ url_for('static', filename='img/logo2-default.png') }}" class="pull-right" alt="" />
-                </a>
-			</div>
-		</div><!--/row-->
-	</div><!--/container-->
-</div><!--/copyright-->
-<!--=== End Copyright ===-->

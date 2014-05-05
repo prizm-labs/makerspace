@@ -6,3 +6,5 @@
 /app/*.pyc
 /include/*
 /app/static/.webassets*
+/.idea/*
+/tmp/*
