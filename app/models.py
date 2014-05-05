@@ -168,6 +168,8 @@ class Project(HasMeta,Base):
 class Tag(HasMeta,Base):
   id = Column(Integer, primary_key=True)
   name = Column(String(80), unique=True)
+  def __repr__(self):
+      return '<Tag %r>' % (self.name)
 
 
 class Video(HasMeta,Base):
@@ -181,6 +183,8 @@ class Video(HasMeta,Base):
   #host_id = 
 
   chapters = relationship('Chapter', backref='project', lazy='dynamic')
+  def __repr__(self):
+      return '<Video %r>' % (self.name)
   
 
 class Resource(HasMeta,Base):
