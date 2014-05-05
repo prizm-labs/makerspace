@@ -6,6 +6,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 SECRET_KEY = 'dev'
 
 SQLALCHEMY_DATABASE_URI = 'postgresql://root:password@127.0.0.1/makefoo'
+SQLALCHEMY_MIGRATE_REPO = os.path.join(basedir, 'db_repository')
 
 # flag for packaging static assets
 ASSETS_DEBUG = True
