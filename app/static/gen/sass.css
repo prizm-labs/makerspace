@@ -1,22 +1,29 @@
 @media -sass-debug-info{filename{}line{font-family:\000031}}
 body {
   color: #585f69;
+  font-family: "museo-sans", sans-serif, Helvetica;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\000034}}
+@media -sass-debug-info{filename{}line{font-family:\000035}}
+.navbar-brand {
+  margin: 10px auto;
+  height: auto;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\000039}}
 .footer {
   background: transparent;
   font-size: 18px;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\000038}}
+@media -sass-debug-info{filename{}line{font-family:\0000313}}
 .footer .navigation li {
   display: inline-block;
   list-style: none;
   margin: 0 5px;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000313}}
+@media -sass-debug-info{filename{}line{font-family:\0000318}}
 .footer a, .copyright a {
   color: #585f69;
   font-size: 18px;
@@ -24,30 +31,30 @@ body {
   border-bottom: 1px dotted #b3bdc2;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000319}}
+@media -sass-debug-info{filename{}line{font-family:\0000324}}
 .footer .copyright {
   border: none;
   background: transparent;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000323}}
+@media -sass-debug-info{filename{}line{font-family:\0000328}}
 .header {
   border: none;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000326}}
+@media -sass-debug-info{filename{}line{font-family:\0000331}}
 .navbar-default {
   box-shadow: none;
   -webkit-box-shadow: none;
   border: none;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000331}}
+@media -sass-debug-info{filename{}line{font-family:\0000336}}
 a {
   color: #585f69;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000334}}
+@media -sass-debug-info{filename{}line{font-family:\0000339}}
 a:hover {
   text-decoration: none;
   color: #e38d13;
@@ -58,55 +65,65 @@ p.large {
   font-size: 20px;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\000035}}
+@media -sass-debug-info{filename{}line{font-family:\000034}}
+.project h1 {
+  border-bottom: 1px solid #bbbbbb;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\000037}}
+.panel-default {
+  border: 1px solid #bbbbbb;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\0000310}}
 .header {
   border: none;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\000039}}
+@media -sass-debug-info{filename{}line{font-family:\0000314}}
 .privacy-policy {
   margin-top: 20px;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000313}}
+@media -sass-debug-info{filename{}line{font-family:\0000318}}
 .collapsible-form {
   margin-top: 15px;
   margin-bottom: 20px;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000318}}
+@media -sass-debug-info{filename{}line{font-family:\0000323}}
 .registration-form input[name="email"] {
   width: 300px;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000322}}
+@media -sass-debug-info{filename{}line{font-family:\0000327}}
 .next-project img {
   width: 80%;
   max-width: 500px;
   min-width: 320px;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000328}}
+@media -sass-debug-info{filename{}line{font-family:\0000333}}
 .collapsible-form .ui-widget-content, .well.footer-form {
   border: 1px solid #ff6a0c;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000332}}
+@media -sass-debug-info{filename{}line{font-family:\0000337}}
 .form-inline .form-group {
   margin-top: 20px;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000335}}
+@media -sass-debug-info{filename{}line{font-family:\0000340}}
 .sidebar-projects h3, .next-projects h3, .sidebar-project h2 {
   margin-top: 0;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000339}}
+@media -sass-debug-info{filename{}line{font-family:\0000344}}
 .sidebar-project img {
   margin-bottom: 10px;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000343}}
+@media -sass-debug-info{filename{}line{font-family:\0000348}}
 .project-tags {
   padding-left: 10px;
 }

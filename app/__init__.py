@@ -64,8 +64,9 @@ babel = Babel(app)
 
 # custom fonts: Mueso Sans
 # https://typekit.com/fonts/museo-sans
-sass = Bundle('sass/global.sass','sass/project.sass', filters='sass', output='gen/sass.css')
+
 assets = Environment(app)
+sass = Bundle('sass/global.sass','sass/project.sass', filters='sass', output='gen/sass.css')
 assets.register('sass_all',sass)
 '''
 sass = Bundle('*.sass' filters='sass', output='gen/sass.css')
