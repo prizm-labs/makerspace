@@ -28,7 +28,6 @@ def load_user(id):
     return db.session.query(models.User).get(int(id))
 
 
-
 @app.before_request
 def before_request():
     g.user = current_user
@@ -270,7 +269,6 @@ with app.app_context():
 # Page Routes
 
 @app.route('/')
-@login_required
 def index():
 
     projects = db.session.query(models.Project).all()

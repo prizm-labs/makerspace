@@ -1,6 +1,8 @@
 from flask.ext.admin import Admin, BaseView, expose
 from flask.ext.admin.contrib.sqla import ModelView
 
+# TODO add @login_required for all admin views
+
 class MyView(BaseView):
     @expose('/')
     def index(self):

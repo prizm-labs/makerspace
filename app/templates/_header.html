@@ -33,9 +33,16 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+
+                {%- if header_position == "center" -%}
+                    <a class="navbar-brand center" href="/">
+                    <img id="logo-header" src="{{ url_for('static', filename='img/brand-m.png') }}" alt="Logo">
+                </a>
+                {%- else -%}
                 <a class="navbar-brand" href="/">
                     <img id="logo-header" src="{{ url_for('static', filename='img/brand-s.png') }}" alt="Logo">
                 </a>
+                {%- endif -%}
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
