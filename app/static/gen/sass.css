@@ -1,4 +1,59 @@
 @media -sass-debug-info{filename{}line{font-family:\000031}}
+body {
+  color: #585f69;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\000034}}
+.footer {
+  background: transparent;
+  font-size: 18px;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\000038}}
+.footer .navigation li {
+  display: inline-block;
+  list-style: none;
+  margin: 0 5px;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\0000313}}
+.footer a, .copyright a {
+  color: #585f69;
+  font-size: 18px;
+  text-decoration: none;
+  border-bottom: 1px dotted #b3bdc2;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\0000319}}
+.footer .copyright {
+  border: none;
+  background: transparent;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\0000323}}
+.header {
+  border: none;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\0000326}}
+.navbar-default {
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  border: none;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\0000331}}
+a {
+  color: #585f69;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\0000334}}
+a:hover {
+  text-decoration: none;
+  color: #e38d13;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\000031}}
 p.large {
   font-size: 20px;
 }

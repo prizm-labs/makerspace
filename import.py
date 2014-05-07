@@ -25,7 +25,11 @@ def create_tag(columns):
   row = models.Tag(id=columns[0],name=columns[1])
   return row
 
-table_creators = {'project':create_project, 'video':create_video, 'tag':create_tag}
+def create_page(columns):
+  row = models
+  return row
+
+table_creators = {'project':create_project, 'video':create_video, 'tag':create_tag, 'page': create_page}
 
 def import_model(table_name):
   with open(root_dir+table_name+'.csv', 'Ur') as f:

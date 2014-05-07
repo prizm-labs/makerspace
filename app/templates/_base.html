@@ -1,9 +1,10 @@
+{%- set default_title="King of Random" -%}
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 <!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
 <head>
-    <title>{{ page_title|default("Unify") }}</title>
+    <title>{{ page_title|default_title }}</title>
 
     <!-- Meta -->
     <meta charset="utf-8">
@@ -21,10 +22,6 @@
 
     <!-- CSS Implementing Plugins -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='plugins/font-awesome/css/font-awesome.css') }}">
-    {% assets "sass_all" %}
-    <link rel="stylesheet" href="{{ ASSET_URL }}" type="text/css" />
-    {% endassets %}
-    {%- block css %}{% endblock %}
 
     <!-- CSS Theme -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/themes/default.css') }}" id="style_color">
@@ -34,7 +31,15 @@
     <!-- Twitter Bootstrap -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+
+    <!--<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">-->
+
     {%- block css %}{% endblock %}
+
+    {% assets "sass_all" %}
+    <link rel="stylesheet" href="{{ ASSET_URL }}" type="text/css" />
+    {% endassets %}
+    
 </head>
 
 {#- Without invoking these variables here, included files aren't able to access them. #}
