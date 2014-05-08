@@ -69,14 +69,15 @@
 }
 
 .sorting-block .sorting-grid li a:hover span.sorting-cover {
-	background: #72c02c;
+	background: transparent;
     -webkit-transition: all 0.4s ease;
     -moz-transition: all 0.4s ease;
     -o-transition: all 0.4s ease;
     transition: all 0.4s ease;	
 }
-
+/*
 .sorting-block .sorting-grid li a:hover span.sorting-cover p,
 .sorting-block .sorting-grid li a:hover span.sorting-cover span {
 	color: #fff;
 }
+*/

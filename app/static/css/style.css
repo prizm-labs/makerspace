@@ -266,7 +266,7 @@ blockquote:hover {
 	color: #72c02c;
 }
 .footer a:hover {
-	color: #a8f85f;
+	/*color: #a8f85f;*/
     -webkit-transition: all 0.4s ease-in-out;
     -moz-transition: all 0.4s ease-in-out;
     -o-transition: all 0.4s ease-in-out;
@@ -1002,7 +1002,9 @@ ul.blog-tags a i {
 }
 
 ul.blog-tags a:hover {
+	/*
 	background: #72c02c;
+	*/
 }
 
 ul.blog-tags a:hover,
