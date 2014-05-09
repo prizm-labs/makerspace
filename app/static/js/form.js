@@ -5,7 +5,9 @@ var Form = function(config){
     var submitUrl = config.submit;
 
     var submitBtn = $(formSelector).find('[type=submit]')[0];
-    console.log(submitBtn);
+    var feedbackArea = $(formSelector).find(config.feedback)[0];
+    console.log(feedbackArea);
+
     var l = Ladda.create(submitBtn);
 
     function bindFormAction() {
@@ -16,28 +18,26 @@ var Form = function(config){
         $(formSelector).off('submit',submitForm);
     };
 
-    function showFormProcessing() {
-
-    };
-
-    function hideFormProcessing() {
-
-    };
-
     function resolveSubmission(response) {
         console.log(response);
 
         bindFormAction();
-        hideFormProcessing();
+
+        var message;
 
         if (response.success) {
-            alert('Thanks!');
+            message = 'Thanks! Your journey has just begun.';
         } else if (response.data.class=="WebServiceError" && response.data.category=="email") {
-            alert('Check for your confirmation email');
+            message = 'Please check for your confirmation email';
         } else {
-            alert('Error :( Please try again later');
+            message = 'Uh oh :( Please try again later';
         }   
+        showFeedback(message);
     };
+
+    function showFeedback(message) {
+        $(feedbackArea).html(message).fadeIn(300).delay(5000).fadeOut(300);
+    }
 
     function gatherFormData(fields){
         data = {}
@@ -65,7 +65,6 @@ var Form = function(config){
 
         // lock out form UI until response
         unbindFormAction();
-        showFormProcessing();
 
         registrationFormAction();
 
@@ -101,6 +100,7 @@ var Project = function(config){
 
                     var config = {
                         selector: formDOM,
+                        feedback: f.feedback,
                         submit: f.submit,
                         fields: f.fields
                     };

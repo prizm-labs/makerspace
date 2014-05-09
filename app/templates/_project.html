@@ -51,7 +51,11 @@
                             {{ subscribe_form.email.label(class="sr-only") }}
                             {{ subscribe_form.email(class="form-control", placeholder=subscribe_form.email.label.text) }}
                             <button type="submit" class="btn btn-warning ladda-button" data-style="expand-right" data-size="l"><span class="ladda-label">{{ _('I\'m in') }}</span></button>
+                            <div class="form-feedback-wrap">
+                                <div class="form-feedback"></div>
+                            </div>
                         </div>
+                        
                     </form>
                     <div class="privacy-policy">
                         <small>By submitting above you agree to our privacy policy.</small>
@@ -119,6 +123,7 @@
                             {{ subscribe_form.email.label(class="sr-only") }}
                             {{ subscribe_form.email(class="form-control", placeholder=subscribe_form.email.label.text) }}
                             <button type="submit" class="btn btn-warning ladda-button" data-style="expand-right" data-size="l"><span class="ladda-label">{{ _('I\'m in') }}</span></button>
+                            <div class="form-feedback"></div>
                         </div>
                         
                     </form>
@@ -253,9 +258,11 @@
 
         var config = {
             forms: [
-                { selector: '.registration-form', 
-                  submit: '/register',
-                  fields: ['email']
+                { 
+                    selector: '.registration-form', 
+                    feedback: '.form-feedback',
+                    submit: '/register',
+                    fields: ['email']
                 }
             ]
         };
