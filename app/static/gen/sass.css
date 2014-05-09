@@ -1,31 +1,32 @@
 @media -sass-debug-info{filename{}line{font-family:\000035}}
 body {
+  position: relative;
   color: #585f69;
   font-family: "museo-sans", sans-serif, Helvetica;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\000039}}
+@media -sass-debug-info{filename{}line{font-family:\0000310}}
 .navbar-brand {
   margin: 10px auto;
   height: auto;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000313}}
+@media -sass-debug-info{filename{}line{font-family:\0000314}}
 .navbar-brand.center {
   float: none;
 }
 @media screen and (max-width: 768px) {
-@media -sass-debug-info{filename{}line{font-family:\0000317}}
+@media -sass-debug-info{filename{}line{font-family:\0000318}}
   .navbar-brand.center #logo-header {
     width: 300px;
   }
 }
-@media -sass-debug-info{filename{}line{font-family:\0000320}}
+@media -sass-debug-info{filename{}line{font-family:\0000321}}
 .navbar-brand.center #logo-header {
   margin: 10px auto;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000325}}
+@media -sass-debug-info{filename{}line{font-family:\0000326}}
 .sorting-block ul.sorting-grid {
   padding-top: 15px;
   background-image: linear-gradient(to right, #333333 50%, rgba(255, 255, 255, 0) 0%);
@@ -34,20 +35,20 @@ body {
   background-repeat: repeat-x;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000332}}
+@media -sass-debug-info{filename{}line{font-family:\0000333}}
 .footer {
   background: transparent;
   font-size: 18px;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000336}}
+@media -sass-debug-info{filename{}line{font-family:\0000337}}
 .footer .navigation li {
   display: inline-block;
   list-style: none;
   margin: 0 5px;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000341}}
+@media -sass-debug-info{filename{}line{font-family:\0000342}}
 .footer a, .copyright a {
   color: #585f69;
   font-size: 18px;
@@ -55,36 +56,36 @@ body {
   border-bottom: 1px dotted #b3bdc2;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000347}}
+@media -sass-debug-info{filename{}line{font-family:\0000348}}
 .footer .copyright {
   border: none;
   background: transparent;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000351}}
+@media -sass-debug-info{filename{}line{font-family:\0000352}}
 .header {
   border: none;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000354}}
+@media -sass-debug-info{filename{}line{font-family:\0000355}}
 .navbar-default {
   box-shadow: none;
   -webkit-box-shadow: none;
   border: none;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000359}}
+@media -sass-debug-info{filename{}line{font-family:\0000360}}
 .navbar-header {
   width: 100%;
   text-align: center;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000363}}
+@media -sass-debug-info{filename{}line{font-family:\0000364}}
 a {
   color: #585f69;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000366}}
+@media -sass-debug-info{filename{}line{font-family:\0000367}}
 a:hover {
   text-decoration: none;
   color: #e38d13;
@@ -161,4 +162,23 @@ ul.blog-tags a:hover {
 @media -sass-debug-info{filename{}line{font-family:\0000354}}
 .project-tags {
   padding-left: 10px;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\0000358}}
+.stickem-container {
+  position: relative;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\0000361}}
+.stickit {
+  margin-left: 660px;
+  position: fixed;
+  top: 0;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\0000367}}
+.stickit-end {
+  bottom: 40px;
+  position: absolute;
+  right: 0;
 }

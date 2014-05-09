@@ -11,13 +11,12 @@
 {% endblock %}
 
 {% block head_content %} 
-<script type="text/javascript" src="{{ url_for('static', filename='plugins/jquery.fitvids.js') }}"></script>
 {% endblock %}
 
 {% block main_content %}
 <!--=== Content Part ===-->
 <div class="container">
-	<div class="row blog-page blog-item">
+	<div class="row blog-page blog-item stickem-container">
         <!-- Left Sidebar -->
     	<div class="col-md-8 md-margin-bottom-60">
             <!--Blog Post-->
@@ -199,9 +198,9 @@
         <!-- Right Sidebar -->
         <div class="col-md-4 magazine-page">
 
-            <div class="sidebar-projects margin-bottom-40">
-                <div class="panel panel-default">
-                    <div class="panel-body">
+            <div class="sidebar-projects stickem">
+                <div class="panel panel-default" id="fixed-sidebar">
+                    <div class="panel-body"> 
                         <h3>Recommended Projects</h3>
                     </div>
                   <!-- List group -->
@@ -214,6 +213,7 @@
                         </a>
                     </li>
                     {% endfor %}
+
                   </ul>
                 </div>
                 
@@ -229,12 +229,17 @@
 {% block js %}
 <!-- JS Page Level -->
 <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/jquery.fitvids.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/jquery.sticky-sidebar-scroll.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script>
 <script type="text/javascript">
     jQuery(document).ready(function() {
         
         App.init();
-        
+
+        // http://www.skipser.com/p/2/p/sticky-sidebar-div-jquery-plugin.html
+        $.stickysidebarscroll("#fixed-sidebar",{offset: {top: 80, bottom: 150}});
+
         $( "#project-top-form" ).accordion({
           collapsible: true
           //active: false
