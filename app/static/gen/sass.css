@@ -163,22 +163,3 @@ ul.blog-tags a:hover {
 .project-tags {
   padding-left: 10px;
 }
-
-@media -sass-debug-info{filename{}line{font-family:\0000358}}
-.stickem-container {
-  position: relative;
-}
-
-@media -sass-debug-info{filename{}line{font-family:\0000361}}
-.stickit {
-  margin-left: 660px;
-  position: fixed;
-  top: 0;
-}
-
-@media -sass-debug-info{filename{}line{font-family:\0000367}}
-.stickit-end {
-  bottom: 40px;
-  position: absolute;
-  right: 0;
-}

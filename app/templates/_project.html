@@ -8,6 +8,7 @@
 {% block css %}
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/pages/blog.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/pages/page_magazine.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='plugins/ladda/ladda-themeless.min.css') }}">
 {% endblock %}
 
 {% block head_content %} 
@@ -49,7 +50,7 @@
                         <div class="form-group">
                             {{ subscribe_form.email.label(class="sr-only") }}
                             {{ subscribe_form.email(class="form-control", placeholder=subscribe_form.email.label.text) }}
-                            <button type="submit" class="btn btn-warning">{{ _('I\'m in') }}</button>
+                            <button type="submit" class="btn btn-warning ladda-button" data-style="expand-right" data-size="l"><span class="ladda-label">{{ _('I\'m in') }}</span></button>
                         </div>
                     </form>
                     <div class="privacy-policy">
@@ -117,7 +118,7 @@
                         <div class="form-group">
                             {{ subscribe_form.email.label(class="sr-only") }}
                             {{ subscribe_form.email(class="form-control", placeholder=subscribe_form.email.label.text) }}
-                            <button type="submit" class="btn btn-warning">{{ _('I\'m in') }}</button>
+                            <button type="submit" class="btn btn-warning ladda-button" data-style="expand-right" data-size="l"><span class="ladda-label">{{ _('I\'m in') }}</span></button>
                         </div>
                         
                     </form>
@@ -231,101 +232,36 @@
 <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='plugins/jquery.fitvids.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='plugins/jquery.sticky-sidebar-scroll.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/ladda/spin.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/ladda/ladda.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/form.js') }}"></script>
 <script type="text/javascript">
     jQuery(document).ready(function() {
         
         App.init();
 
+        //Ladda.bind( 'input[type=submit]' );
+
         // http://www.skipser.com/p/2/p/sticky-sidebar-div-jquery-plugin.html
-        $.stickysidebarscroll("#fixed-sidebar",{offset: {top: 80, bottom: 150}});
+        $.stickysidebarscroll("#fixed-sidebar",{offset: {top: -100, bottom: 150}});
 
         $( "#project-top-form" ).accordion({
           collapsible: true
           //active: false
         });
-        
-        var Form = function(registrationFormSelector){
 
-            function bindFormAction() {
-                $(registrationFormSelector).on('submit',submitForm);
-            };
-
-            function unbindFormAction() {
-                $(registrationFormSelector).off('submit',submitForm);
-            };
-
-            function showFormProcessing() {
-
-            };
-
-            function hideFormProcessing() {
-
-            };
-
-            function resolveSubmission(response) {
-                console.log(response);
-
-                bindFormAction();
-                hideFormProcessing();
-
-                if (response.success) {
-                    alert('Thanks!');
-                } if (response.data.class=="WebServiceError" && response.data.category=="email") {
-                    alert('Check for your confirmation email');
-                } else {
-                    alert('Error :( Please try again later');
-                }   
-            };
-
-            function registrationFormAction() {
-                var email = $(registrationFormSelector).find('input[name=email]').first().val();
-
-                $.ajax({
-                  url: '/register',
-                  data: {'email':email},
-                  success: resolveSubmission
-                });
-            };
-
-            function submitForm() {
-                event.preventDefault();
-                console.log('submitting form');
-
-                // lock out form UI until response
-                unbindFormAction();
-                showFormProcessing();
-
-                registrationFormAction();
-
-                return false;
-            };
-
-            // form init
-            bindFormAction();
-
-            return {
-                submit: submitForm
-            };
-        };
-
-        var Project = function(){
-
-            var formSelector = '.registration-form';
-
-            return {
-                bindForms: function(){
-                    $(formSelector).each(function(index,formDOM){
-                        console.log(formDOM);
-                        var form = new Form(formDOM);
-                        console.log(form);
-                    });
+        var config = {
+            forms: [
+                { selector: '.registration-form', 
+                  submit: '/register',
+                  fields: ['email']
                 }
-            };
+            ]
         };
 
         // project init
-        var project = new Project();
+        var project = new Project(config);
         project.bindForms();
 
     });

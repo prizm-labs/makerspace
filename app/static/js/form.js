@@ -4,6 +4,10 @@ var Form = function(config){
     var formFields = config.fields;
     var submitUrl = config.submit;
 
+    var submitBtn = $(formSelector).find('[type=submit]')[0];
+    console.log(submitBtn);
+    var l = Ladda.create(submitBtn);
+
     function bindFormAction() {
         $(formSelector).on('submit',submitForm);
     };
@@ -44,13 +48,15 @@ var Form = function(config){
     }
 
     function registrationFormAction() {
+        l.start();
 
         $.ajax({
           method: 'POST',
           url: submitUrl,
           data: gatherFormData(formFields),
           success: resolveSubmission
-        });
+        }).always(function() { l.stop(); });
+        return false;
     };
 
     function submitForm() {

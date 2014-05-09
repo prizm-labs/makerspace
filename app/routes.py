@@ -198,7 +198,7 @@ def inject_globals():
 # API Routes
 
 # http://0.0.0.0:7777/register?email=michael.a.garrido%40gmail.com
-@app.route('/register')
+@app.route('/register', methods=['POST'])
 def email_register():
     print request.query_string
     print request.args
