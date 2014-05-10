@@ -43,7 +43,10 @@ from flask.ext.sqlalchemy import SQLAlchemy
 
 from flask.ext.mail import Mail
 
-app = Flask(__name__)
+# server robots.txt at root
+# http://www.robotstxt.org/orig.html
+# https://vilimpoc.org/blog/2012/11/21/serving-static-files-from-root-and-not-static-using-flask/
+app = Flask(__name__,static_url_path='')
 app.config.from_object('config')
 
 # custom Jinja template prefix
