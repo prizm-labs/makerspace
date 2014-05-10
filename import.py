@@ -18,7 +18,7 @@ def create_project(columns):
   return row
 
 def create_video(columns):
-  row = models.Video(host_guid=columns[0],project_id=columns[1],name=columns[2],path=columns[3])
+  row = models.Video(project_id=columns[0],host_guid=columns[1],name=columns[2],path=columns[3])
   return row
 
 def create_tag(columns):

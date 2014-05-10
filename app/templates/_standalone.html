@@ -4,9 +4,8 @@
 
 {% block main_content %}
 <!--=== Content Part ===-->
-<div class="container">
-	<div class="row-fluid privacy">
-        <h1>{{ title }}</h1>
+<div class="container standalone {{title}}">
+	<div class="row-fluid">
         {{ html|safe }}
     </div><!--/row-fluid-->
 </div><!--/container-->
