@@ -1,10 +1,11 @@
 {% extends '_base.html' %}
 
-{% set page_title = "Unify | Contact Us" %}
+{% set page_title = "Contact the King" %}
 
 {% block css %}
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='plugins/flexslider/flexslider.css') }}" media="screen">
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/pages/page_contact.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='plugins/ladda/ladda-themeless.min.css') }}">
 {% endblock %}
 
 {% block main_content %}
@@ -40,7 +41,12 @@
                     </div>
                 </div>
 
-                <p><button type="submit" class="btn-u">{{ _('Send Message') }}</button></p>
+                <p>
+                    <button type="submit" class="btn btn-warning ladda-button" data-style="expand-right" data-size="l"><span class="ladda-label">{{ _('Send') }}</span></button>
+                    <div class="form-feedback-wrap">
+                        <div class="form-feedback"></div>
+                    </div>
+                </p>
             </form>
         </div><!--/col-md-9-->
 
@@ -69,8 +75,9 @@
 <script type="text/javascript" src="{{ url_for('static', filename='plugins/gmap/gmap.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='plugins/flexslider/jquery.flexslider-min.js') }}"></script>
 <!-- JS Page Level -->
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/ladda/spin.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/ladda/ladda.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='js/pages/contact.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/form.js') }}"></script>
 <script type="text/javascript">
     jQuery(document).ready(function() {
@@ -81,7 +88,9 @@
 
         var config = {
             forms: [
-                { selector: '.contact-form', 
+                { 
+                  selector: '.contact-form', 
+                  feedback: '.form-feedback',
                   submit: '/contact_message',
                   fields: ['email','name','message','csrf_token']
                 }

@@ -64,13 +64,6 @@ assets.register('sass_all',sass)
 
 mail = Mail(app)
 
-
-'''
-lm = LoginManager()
-lm.init_app(app)
-lm.login_view = 'login'
-'''
-
 '''
 sass = Bundle('*.sass' filters='sass', output='gen/sass.css')
 all_css = Bundle('css/jquery.calendar.css', sass,

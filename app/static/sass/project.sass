@@ -1,4 +1,6 @@
+@import 'variables.sass'
 @import 'theme.sass'
+
 
 p.large
     font-size: 20px
@@ -37,9 +39,7 @@ ul.blog-tags a:hover
 
 
 .next-project img
-    width: 80%
-    max-width: 500px
-    min-width: 320px
+    width: 320px
 
 
 .collapsible-form .ui-widget-content, .well.footer-form
@@ -49,12 +49,19 @@ ul.blog-tags a:hover
 .form-inline .form-group
     margin-top: 20px
 
+
+.sidebar-projects
+    @media screen and (max-width: $break-medium)
+        text-align: center
+
+
 .sidebar-projects h3, .next-projects h3, .sidebar-project h2
     margin-top: 0
 
 
 .sidebar-project img
     margin-bottom: 10px
+
 
 
 .project-tags

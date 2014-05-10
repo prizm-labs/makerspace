@@ -24,65 +24,6 @@ from flask.ext.login import login_user, logout_user, current_user, login_require
 
 #session = db.create_scoped_session()
 # mysql://admin:admin@127.0.0.1:
-'''
-@lm.user_loader
-def load_user(id):
-    return db.session.query(models.User).get(int(id))
-
-@app.before_request
-def before_request():
-    g.user = current_user
-'''
-
-
-
-'''
-@app.route('/login', methods = ['GET', 'POST'])
-@oid.loginhandler
-def login():
-    print g.user
-    if g.user is not None and g.user.is_authenticated():
-        if g.user.role == models.ROLE_ADMIN:
-            return redirect('/admin')
-        else:
-            return redirect('/')
-
-    form = forms.OpenIdLoginForm()
-    if form.validate_on_submit():
-        session['remember_me'] = form.remember_me.data
-        return oid.try_login(form.openid.data, ask_for = ['nickname', 'email'])
-    return render_template('_login.html', 
-        title = 'Sign In',
-        form = form,
-        providers = app.config['OPENID_PROVIDERS'])
-
-@oid.after_login
-def after_login(resp):
-    if resp.email is None or resp.email == "":
-        flash('Invalid login. Please try again.')
-        return redirect(url_for('login'))
-    user = db.session.query(models.User).filter_by(email = resp.email).first()
-    if user is None:
-        nickname = resp.nickname
-        if nickname is None or nickname == "":
-            nickname = resp.email.split('@')[0]
-        user = models.User(nickname = nickname, email = resp.email, role = models.ROLE_USER)
-        db.session.add(user)
-        db.session.commit()
-    remember_me = False
-    if 'remember_me' in session:
-        remember_me = session['remember_me']
-        session.pop('remember_me', None)
-    login_user(user, remember = remember_me)
-
-    #return redirect(request.args.get('next') or url_for('index'))
-    return redirect(url_for('index'))
-
-@app.route('/logout')
-def logout():
-    logout_user()
-    return redirect(url_for('index'))
-'''
 
 
 
@@ -272,21 +213,6 @@ with app.app_context():
 
 # Page Routes
 
-@app.route('/')
-def index():
-
-    projects = db.session.query(models.Project).all()
-
-    top_projects = get_top_projects(projects)
-
-
-    #TODO make sure all buckets have unique videos
-
-    context_dict = top_projects
-
-    return render_template('_home.html', **context_dict)
-
-
 # standalone content pages
 def standalone_content(page):
 
@@ -310,7 +236,21 @@ for page in pages:
 
     # TODO register slugs with base template (i.e. footer), so other pages can link with url_for    
     # http://stackoverflow.com/questions/14342969/python-flask-route-with-dynamic-first-component
+    
 
+@app.route('/')
+def index():
+
+    projects = db.session.query(models.Project).all()
+
+    top_projects = get_top_projects(projects)
+
+
+    #TODO make sure all buckets have unique videos
+
+    context_dict = top_projects
+
+    return render_template('_home.html', **context_dict)
 
 
 @app.route('/project/<slug>')

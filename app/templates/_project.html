@@ -93,9 +93,6 @@
             </div>
             <!--End Blog Post-->
 
-
-            
-
                 <!-- Next Projects -->
                 <div class="panel panel-default next-projects text-center">
                   <div class="panel-body">
@@ -131,23 +128,6 @@
                     <div class="privacy-policy"><small>By submitting above you agree to the Upworthy privacy policy.</small></div>
                 </div>
 
-            <!-- Recent Comments -->
-            <!--
-            {% for comment in comments recursive %}
-            <div class="media">
-                <a class="pull-left" href="#">
-                    <img class="media-object" src="{{ url_for('static', filename=comment.avatar) }}" alt="" />
-                </a>
-                <div class="media-body">
-                    <h4 class="media-heading">{{ comment.name }} <span>{{ comment.time_delta }} / <a href="#">Reply</a></span></h4>
-                    <p>{{ comment.comment }}</p>
-                    {% if comment.children %}{{ loop(comment.children) }}{% endif %}
-                </div>
-            </div>
-            {% endfor %}
-
-            <hr>
-            -->
             <!-- Comment Form -->
             
             <div class="post-comment">
@@ -167,34 +147,6 @@
                 </script>
                 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
                 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-                <!--    
-                <form>
-                    {{ comment_form.csrf_token }}
-
-                    {{ comment_form.name.label }}{% if comment_form.name.flags.required %}<span class="color-red">*</span>{% endif %}
-                    <div class="row margin-bottom-20">
-                        <div class="col-md-7 col-md-offset-0">
-                            {{ comment_form.name(class="form-control") }}
-                        </div>
-                    </div>
-
-                    {{ comment_form.email.label }}{% if comment_form.email.flags.required %}<span class="color-red">*</span>{% endif %}
-                    <div class="row margin-bottom-20">
-                        <div class="col-md-7 col-md-offset-0">
-                            {{ comment_form.email(class="form-control") }}
-                        </div>
-                    </div>
-
-                    {{ comment_form.message.label }}{% if comment_form.message.flags.required %}<span class="color-red">*</span>{% endif %}
-                    <div class="row margin-bottom-20">
-                        <div class="col-md-11 col-md-offset-0">
-                            {{ comment_form.message(class="form-control", rows="8") }}
-                        </div>
-                    </div>
-
-                    <p><button class="btn-u" type="submit">{{ _('Send Message') }}</button></p>
-                </form>
-                -->
             </div>
             
             <!-- End Comment Form -->
@@ -204,7 +156,7 @@
         <!-- Right Sidebar -->
         <div class="col-md-4 magazine-page">
 
-            <div class="sidebar-projects stickem">
+            <div class="sidebar-projects">
                 <div class="panel panel-default" id="fixed-sidebar">
                     <div class="panel-body"> 
                         <h3>Recommended Projects</h3>
@@ -249,7 +201,9 @@
         //Ladda.bind( 'input[type=submit]' );
 
         // http://www.skipser.com/p/2/p/sticky-sidebar-div-jquery-plugin.html
-        $.stickysidebarscroll("#fixed-sidebar",{offset: {top: -100, bottom: 150}});
+        if ($(window).width()>=1200) {
+            $.stickysidebarscroll("#fixed-sidebar",{offset: {top: -100, bottom: 150}});
+        }
 
         $( "#project-top-form" ).accordion({
           collapsible: true
