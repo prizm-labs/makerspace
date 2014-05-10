@@ -236,19 +236,19 @@ for page in pages:
 
     # TODO register slugs with base template (i.e. footer), so other pages can link with url_for    
     # http://stackoverflow.com/questions/14342969/python-flask-route-with-dynamic-first-component
-    
+
 
 @app.route('/')
 def index():
 
     projects = db.session.query(models.Project).all()
 
-    top_projects = get_top_projects(projects)
+    project_buckets = get_top_projects(projects)
 
-
+    project_buckets['all'] = projects
     #TODO make sure all buckets have unique videos
 
-    context_dict = top_projects
+    context_dict = project_buckets
 
     return render_template('_home.html', **context_dict)
 

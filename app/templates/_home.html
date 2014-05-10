@@ -16,7 +16,7 @@
     <h1>{{title}}</h1>
     <ul class="row sorting-grid">
         {% for project in projects %}
-        <li class="col-md-4 col-sm-6 col-xs-12 mix{{class}}" data-cat="1">
+        <li class="col-md-4 col-sm-6 col-xs-12 mix{{class}} project-listing" data-cat="1">
             <a href="/project/{{ project.slug }}">
                 <img style="width:100%" src="http://img.youtube.com/vi/{{project.videos[0].host_guid}}/mqdefault.jpg" alt="{{project.title}}"/>
                 <span class="sorting-cover">
@@ -42,6 +42,7 @@
         {{ project_bucket('Latest','latest',latest) }}
         {{ project_bucket('Popular','popular',popular) }}
 
+        {{ project_bucket('All','all',all) }}
 
         <div class="clearfix"></div>
     </div>
