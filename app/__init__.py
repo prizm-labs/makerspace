@@ -36,7 +36,7 @@ from config import basedir
 from flask.ext.assets import Environment, Bundle
 
 from flask.ext.admin import Admin
-from flask.ext.login import LoginManager
+from flask.ext import login
 
 from flask.ext.babel import Babel
 from flask.ext.sqlalchemy import SQLAlchemy
@@ -45,13 +45,6 @@ from flask.ext.mail import Mail
 
 app = Flask(__name__)
 app.config.from_object('config')
-
-lm = LoginManager()
-lm.init_app(app)
-lm.login_view = 'login'
-oid = OpenID(app, os.path.join(basedir, 'tmp'))
-
-mail = Mail(app)
 
 # custom Jinja template prefix
 # http://flask.pocoo.org/snippets/101/
@@ -68,6 +61,16 @@ babel = Babel(app)
 assets = Environment(app)
 sass = Bundle('sass/global.sass','sass/project.sass', filters='sass', output='gen/sass.css')
 assets.register('sass_all',sass)
+
+mail = Mail(app)
+
+
+'''
+lm = LoginManager()
+lm.init_app(app)
+lm.login_view = 'login'
+'''
+
 '''
 sass = Bundle('*.sass' filters='sass', output='gen/sass.css')
 all_css = Bundle('css/jquery.calendar.css', sass,
@@ -81,8 +84,24 @@ import models
 import routes
 import old_routes
 
-from admin_views import *
+import app_admin
 
-admin = Admin(app)
-add_admin_views(admin,models,db)
-# Add administrative views here
+app_admin.init_admin()
+
+
+# Initialize flask-login
+def init_login():
+    login_manager = login.LoginManager()
+    login_manager.init_app(app)
+    login_manager.login_view = 'login'
+
+    # Create user loader function
+    @login_manager.user_loader
+    def load_user(user_id):
+        return db.session.query(models.User).get(user_id)
+
+    return login_manager
+
+lm = init_login()
+
+

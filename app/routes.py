@@ -1,6 +1,8 @@
 from . import app
 
-from . import db, models
+from . import db
+import models
+
 from sqlalchemy import func,desc
 from collections import OrderedDict
 import random
@@ -16,23 +18,25 @@ from flask.ext.mail import Message
 from . import mail
 from config import ADMINS
 
-from . import lm, oid
+#from . import lm, oid
 from flask.ext.login import login_user, logout_user, current_user, login_required
 #from models import User, ROLE_USER, ROLE_ADMIN
 
 #session = db.create_scoped_session()
 # mysql://admin:admin@127.0.0.1:
-
+'''
 @lm.user_loader
 def load_user(id):
     return db.session.query(models.User).get(int(id))
 
-
 @app.before_request
 def before_request():
     g.user = current_user
+'''
 
 
+
+'''
 @app.route('/login', methods = ['GET', 'POST'])
 @oid.loginhandler
 def login():
@@ -78,7 +82,7 @@ def after_login(resp):
 def logout():
     logout_user()
     return redirect(url_for('index'))
-
+'''
 
 
 
