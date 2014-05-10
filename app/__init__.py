@@ -73,14 +73,10 @@ all_css = Bundle('css/jquery.calendar.css', sass,
 {% endassets %}
 '''
 import models
-
 import routes
-import old_routes
-
 import app_admin
 
 app_admin.init_admin()
-
 
 # Initialize flask-login
 def init_login():

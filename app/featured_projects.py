@@ -1,5 +1,5 @@
 import csv
-from app import db,models
+from . import db,models
 from sqlalchemy.orm import Session
 from sqlalchemy import func
 

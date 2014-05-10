@@ -114,5 +114,8 @@ class ProjectView(MyModelView):
 
 def add_admin_views(admin):
   admin.add_view(ProjectView(models.Project, db.session))
+  admin.add_view(MyModelView(models.Video, db.session))
+  admin.add_view(MyModelView(models.Tag, db.session))
+  admin.add_view(MyModelView(models.Meta, db.session))
   admin.add_view(MyModelView(models.Page, db.session))
   admin.add_view(MyModelView(models.User, db.session))

@@ -29,13 +29,9 @@ class Project(db.Model):
 
   #one-to-many
   videos = db.relationship('Video', backref='project', lazy='dynamic') #video 1 of N
-
   steps = db.relationship('Step', backref='project', lazy='dynamic')
-
   components = db.relationship('Component', backref='project', lazy='dynamic')
-
   resources = db.relationship('Resource', backref='project', lazy='dynamic')
-
   #completion_time
   #difficulty
   #related_projects = db.relationship('Project', secondary=related_projects, backref=db.backref('project', lazy='dynamic'))
