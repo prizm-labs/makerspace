@@ -49,9 +49,9 @@ sudo pip install pgsql
 psql -h 127.0.0.1
 
 
-CREATE USER root WITH PASSWORD 'password';
+CREATE USER admin WITH PASSWORD 'password';
 CREATE DATABASE makefoo;
-GRANT ALL PRIVILEGES ON DATABASE makefoo TO root;
+GRANT ALL PRIVILEGES ON DATABASE makefoo TO admin;
 \q
 
 # Install HSTORE extension
@@ -118,6 +118,16 @@ db.session.commit()
 
 # How to setup production DB
 
+
+# dump local DB
+# http://www.postgresql.org/docs/9.1/static/backup-dump.html
+
+source ~/.profile
+source ~/.bashrc
+
+pg_dump -h 127.0.0.1 makefoo > dump.txt --no-owner --no-privileges
+
+
 https://github.com/jeffutter/dokku-postgresql-plugin
 https://github.com/Kloadut/dokku-pg-plugin
 
@@ -129,6 +139,8 @@ https://github.com/Kloadut/dokku-pg-plugin
 
 # How to setup deployment
 
+# deploy with Dokku
+
 cat ~/.ssh/id_rsa.pub | ssh root@makefoo.com "sudo sshcommand acl-add dokku MacMini2009"
 
 ssh root@makefoo.com
@@ -136,6 +148,56 @@ ssh root@makefoo.com
 git remote add prod dokku@makefoo.com:makefoo.com
 git push prod master
 
+
+# deploy on Ubuntu
+
+sudo apt-get install libapache2-mod-wsgi 
+sudo a2enmod wsgi 
+apt-get update
+sudo apt-get install python-pip 
+
+cd /var/www/makerspace
+sudo virtualenv venv
+sudo pip install Flask 
+
+# https://www.digitalocean.com/community/articles/how-to-install-and-use-postgresql-on-ubuntu-12-04
+sudo apt-get install postgresql postgresql-contrib
+
+
+# https://jordanktakayama.wordpress.com/2013/02/20/lessons-learned-from-deploying-django-on-heroku/
+
+# https://help.ubuntu.com/community/PostgreSQL
+sudo -u postgres psql postgres
+sudo -u postgres createuser --superuser admin
+
+sudo -u postgres psql
+=# \password admin
+
+
+sudo apt-get install python-dev
+sudo apt-get install python-psycopg2
+sudo apt-get install libpq-devpip 
+
+
+# create 'makefoo' DB and install hstore extension
+CREATE USER admin WITH PASSWORD 'password';
+CREATE DATABASE makefoo;
+GRANT ALL PRIVILEGES ON DATABASE makefoo TO admin;
+\q
+
+# Install HSTORE extension
+# http://www.postgresql.org/docs/9.1/static/sql-createextension.html
+psql -h 127.0.0.1 -d makefoo
+create extension hstore;
+\d+;
+
+
+psql makefoo < dump.txt
+
+
+source venv/bin/activate 
+
+pip install -r requirements.txt
 
 
 

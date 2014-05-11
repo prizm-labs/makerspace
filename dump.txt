@@ -10,28 +10,28 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 
 --
--- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: -
 --
 
 CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 
 
 --
--- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: -
 --
 
 COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
 
 
 --
--- Name: hstore; Type: EXTENSION; Schema: -; Owner: 
+-- Name: hstore; Type: EXTENSION; Schema: -; Owner: -
 --
 
 CREATE EXTENSION IF NOT EXISTS hstore WITH SCHEMA public;
 
 
 --
--- Name: EXTENSION hstore; Type: COMMENT; Schema: -; Owner: 
+-- Name: EXTENSION hstore; Type: COMMENT; Schema: -; Owner: -
 --
 
 COMMENT ON EXTENSION hstore IS 'data type for storing sets of (key, value) pairs';
@@ -44,7 +44,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: chapter; Type: TABLE; Schema: public; Owner: root; Tablespace: 
+-- Name: chapter; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE chapter (
@@ -60,10 +60,8 @@ CREATE TABLE chapter (
 );
 
 
-ALTER TABLE public.chapter OWNER TO root;
-
 --
--- Name: chapter_id_seq; Type: SEQUENCE; Schema: public; Owner: root
+-- Name: chapter_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE chapter_id_seq
@@ -74,17 +72,15 @@ CREATE SEQUENCE chapter_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.chapter_id_seq OWNER TO root;
-
 --
--- Name: chapter_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: root
+-- Name: chapter_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE chapter_id_seq OWNED BY chapter.id;
 
 
 --
--- Name: component; Type: TABLE; Schema: public; Owner: root; Tablespace: 
+-- Name: component; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE component (
@@ -101,10 +97,8 @@ CREATE TABLE component (
 );
 
 
-ALTER TABLE public.component OWNER TO root;
-
 --
--- Name: component_id_seq; Type: SEQUENCE; Schema: public; Owner: root
+-- Name: component_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE component_id_seq
@@ -115,17 +109,15 @@ CREATE SEQUENCE component_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.component_id_seq OWNER TO root;
-
 --
--- Name: component_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: root
+-- Name: component_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE component_id_seq OWNED BY component.id;
 
 
 --
--- Name: guru; Type: TABLE; Schema: public; Owner: root; Tablespace: 
+-- Name: guru; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE guru (
@@ -145,10 +137,8 @@ CREATE TABLE guru (
 );
 
 
-ALTER TABLE public.guru OWNER TO root;
-
 --
--- Name: guru_id_seq; Type: SEQUENCE; Schema: public; Owner: root
+-- Name: guru_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE guru_id_seq
@@ -159,17 +149,15 @@ CREATE SEQUENCE guru_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.guru_id_seq OWNER TO root;
-
 --
--- Name: guru_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: root
+-- Name: guru_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE guru_id_seq OWNED BY guru.id;
 
 
 --
--- Name: item; Type: TABLE; Schema: public; Owner: root; Tablespace: 
+-- Name: item; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE item (
@@ -183,10 +171,8 @@ CREATE TABLE item (
 );
 
 
-ALTER TABLE public.item OWNER TO root;
-
 --
--- Name: item_id_seq; Type: SEQUENCE; Schema: public; Owner: root
+-- Name: item_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE item_id_seq
@@ -197,17 +183,15 @@ CREATE SEQUENCE item_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.item_id_seq OWNER TO root;
-
 --
--- Name: item_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: root
+-- Name: item_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE item_id_seq OWNED BY item.id;
 
 
 --
--- Name: maker; Type: TABLE; Schema: public; Owner: root; Tablespace: 
+-- Name: maker; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE maker (
@@ -221,10 +205,8 @@ CREATE TABLE maker (
 );
 
 
-ALTER TABLE public.maker OWNER TO root;
-
 --
--- Name: maker_id_seq; Type: SEQUENCE; Schema: public; Owner: root
+-- Name: maker_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE maker_id_seq
@@ -235,17 +217,15 @@ CREATE SEQUENCE maker_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.maker_id_seq OWNER TO root;
-
 --
--- Name: maker_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: root
+-- Name: maker_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE maker_id_seq OWNED BY maker.id;
 
 
 --
--- Name: meta; Type: TABLE; Schema: public; Owner: root; Tablespace: 
+-- Name: meta; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE meta (
@@ -257,10 +237,8 @@ CREATE TABLE meta (
 );
 
 
-ALTER TABLE public.meta OWNER TO root;
-
 --
--- Name: meta_association; Type: TABLE; Schema: public; Owner: root; Tablespace: 
+-- Name: meta_association; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE meta_association (
@@ -271,10 +249,8 @@ CREATE TABLE meta_association (
 );
 
 
-ALTER TABLE public.meta_association OWNER TO root;
-
 --
--- Name: meta_association_id_seq; Type: SEQUENCE; Schema: public; Owner: root
+-- Name: meta_association_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE meta_association_id_seq
@@ -285,17 +261,15 @@ CREATE SEQUENCE meta_association_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.meta_association_id_seq OWNER TO root;
-
 --
--- Name: meta_association_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: root
+-- Name: meta_association_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE meta_association_id_seq OWNED BY meta_association.id;
 
 
 --
--- Name: meta_id_seq; Type: SEQUENCE; Schema: public; Owner: root
+-- Name: meta_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE meta_id_seq
@@ -306,17 +280,15 @@ CREATE SEQUENCE meta_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.meta_id_seq OWNER TO root;
-
 --
--- Name: meta_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: root
+-- Name: meta_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE meta_id_seq OWNED BY meta.id;
 
 
 --
--- Name: page; Type: TABLE; Schema: public; Owner: root; Tablespace: 
+-- Name: page; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE page (
@@ -330,10 +302,8 @@ CREATE TABLE page (
 );
 
 
-ALTER TABLE public.page OWNER TO root;
-
 --
--- Name: page_id_seq; Type: SEQUENCE; Schema: public; Owner: root
+-- Name: page_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE page_id_seq
@@ -344,17 +314,15 @@ CREATE SEQUENCE page_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.page_id_seq OWNER TO root;
-
 --
--- Name: page_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: root
+-- Name: page_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE page_id_seq OWNED BY page.id;
 
 
 --
--- Name: product; Type: TABLE; Schema: public; Owner: root; Tablespace: 
+-- Name: product; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE product (
@@ -370,10 +338,8 @@ CREATE TABLE product (
 );
 
 
-ALTER TABLE public.product OWNER TO root;
-
 --
--- Name: product_id_seq; Type: SEQUENCE; Schema: public; Owner: root
+-- Name: product_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE product_id_seq
@@ -384,17 +350,15 @@ CREATE SEQUENCE product_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.product_id_seq OWNER TO root;
-
 --
--- Name: product_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: root
+-- Name: product_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE product_id_seq OWNED BY product.id;
 
 
 --
--- Name: project; Type: TABLE; Schema: public; Owner: root; Tablespace: 
+-- Name: project; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE project (
@@ -409,10 +373,8 @@ CREATE TABLE project (
 );
 
 
-ALTER TABLE public.project OWNER TO root;
-
 --
--- Name: project_id_seq; Type: SEQUENCE; Schema: public; Owner: root
+-- Name: project_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE project_id_seq
@@ -423,17 +385,15 @@ CREATE SEQUENCE project_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.project_id_seq OWNER TO root;
-
 --
--- Name: project_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: root
+-- Name: project_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE project_id_seq OWNED BY project.id;
 
 
 --
--- Name: related_projects; Type: TABLE; Schema: public; Owner: root; Tablespace: 
+-- Name: related_projects; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE related_projects (
@@ -442,10 +402,8 @@ CREATE TABLE related_projects (
 );
 
 
-ALTER TABLE public.related_projects OWNER TO root;
-
 --
--- Name: resource; Type: TABLE; Schema: public; Owner: root; Tablespace: 
+-- Name: resource; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE resource (
@@ -460,10 +418,8 @@ CREATE TABLE resource (
 );
 
 
-ALTER TABLE public.resource OWNER TO root;
-
 --
--- Name: resource_id_seq; Type: SEQUENCE; Schema: public; Owner: root
+-- Name: resource_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE resource_id_seq
@@ -474,17 +430,15 @@ CREATE SEQUENCE resource_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.resource_id_seq OWNER TO root;
-
 --
--- Name: resource_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: root
+-- Name: resource_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE resource_id_seq OWNED BY resource.id;
 
 
 --
--- Name: step; Type: TABLE; Schema: public; Owner: root; Tablespace: 
+-- Name: step; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE step (
@@ -501,10 +455,8 @@ CREATE TABLE step (
 );
 
 
-ALTER TABLE public.step OWNER TO root;
-
 --
--- Name: step_id_seq; Type: SEQUENCE; Schema: public; Owner: root
+-- Name: step_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE step_id_seq
@@ -515,17 +467,15 @@ CREATE SEQUENCE step_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.step_id_seq OWNER TO root;
-
 --
--- Name: step_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: root
+-- Name: step_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE step_id_seq OWNED BY step.id;
 
 
 --
--- Name: tag; Type: TABLE; Schema: public; Owner: root; Tablespace: 
+-- Name: tag; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE tag (
@@ -537,10 +487,8 @@ CREATE TABLE tag (
 );
 
 
-ALTER TABLE public.tag OWNER TO root;
-
 --
--- Name: tag_id_seq; Type: SEQUENCE; Schema: public; Owner: root
+-- Name: tag_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE tag_id_seq
@@ -551,17 +499,15 @@ CREATE SEQUENCE tag_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.tag_id_seq OWNER TO root;
-
 --
--- Name: tag_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: root
+-- Name: tag_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE tag_id_seq OWNED BY tag.id;
 
 
 --
--- Name: tags; Type: TABLE; Schema: public; Owner: root; Tablespace: 
+-- Name: tags; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE tags (
@@ -570,10 +516,8 @@ CREATE TABLE tags (
 );
 
 
-ALTER TABLE public.tags OWNER TO root;
-
 --
--- Name: video; Type: TABLE; Schema: public; Owner: root; Tablespace: 
+-- Name: video; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE video (
@@ -588,10 +532,8 @@ CREATE TABLE video (
 );
 
 
-ALTER TABLE public.video OWNER TO root;
-
 --
--- Name: video_id_seq; Type: SEQUENCE; Schema: public; Owner: root
+-- Name: video_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE video_id_seq
@@ -602,115 +544,113 @@ CREATE SEQUENCE video_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.video_id_seq OWNER TO root;
-
 --
--- Name: video_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: root
+-- Name: video_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE video_id_seq OWNED BY video.id;
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: root
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY chapter ALTER COLUMN id SET DEFAULT nextval('chapter_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: root
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY component ALTER COLUMN id SET DEFAULT nextval('component_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: root
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY guru ALTER COLUMN id SET DEFAULT nextval('guru_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: root
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY item ALTER COLUMN id SET DEFAULT nextval('item_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: root
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY maker ALTER COLUMN id SET DEFAULT nextval('maker_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: root
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY meta ALTER COLUMN id SET DEFAULT nextval('meta_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: root
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY meta_association ALTER COLUMN id SET DEFAULT nextval('meta_association_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: root
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY page ALTER COLUMN id SET DEFAULT nextval('page_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: root
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY product ALTER COLUMN id SET DEFAULT nextval('product_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: root
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY project ALTER COLUMN id SET DEFAULT nextval('project_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: root
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY resource ALTER COLUMN id SET DEFAULT nextval('resource_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: root
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY step ALTER COLUMN id SET DEFAULT nextval('step_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: root
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY tag ALTER COLUMN id SET DEFAULT nextval('tag_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: root
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY video ALTER COLUMN id SET DEFAULT nextval('video_id_seq'::regclass);
 
 
 --
--- Data for Name: chapter; Type: TABLE DATA; Schema: public; Owner: root
+-- Data for Name: chapter; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY chapter (created_on, updated_on, id, video_id, title, start_time, duration, "order", meta_association_id) FROM stdin;
@@ -718,14 +658,14 @@ COPY chapter (created_on, updated_on, id, video_id, title, start_time, duration,
 
 
 --
--- Name: chapter_id_seq; Type: SEQUENCE SET; Schema: public; Owner: root
+-- Name: chapter_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('chapter_id_seq', 1, false);
 
 
 --
--- Data for Name: component; Type: TABLE DATA; Schema: public; Owner: root
+-- Data for Name: component; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY component (created_on, updated_on, id, step_id, project_id, item_id, quantity, note, required, meta_association_id) FROM stdin;
@@ -733,14 +673,14 @@ COPY component (created_on, updated_on, id, step_id, project_id, item_id, quanti
 
 
 --
--- Name: component_id_seq; Type: SEQUENCE SET; Schema: public; Owner: root
+-- Name: component_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('component_id_seq', 1, false);
 
 
 --
--- Data for Name: guru; Type: TABLE DATA; Schema: public; Owner: root
+-- Data for Name: guru; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY guru (created_on, updated_on, id, youtube_channel_url, facebook_url, twitter_handle, email, name, alias, description, logo_url, headshot_url, meta_association_id) FROM stdin;
@@ -748,14 +688,14 @@ COPY guru (created_on, updated_on, id, youtube_channel_url, facebook_url, twitte
 
 
 --
--- Name: guru_id_seq; Type: SEQUENCE SET; Schema: public; Owner: root
+-- Name: guru_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('guru_id_seq', 1, false);
 
 
 --
--- Data for Name: item; Type: TABLE DATA; Schema: public; Owner: root
+-- Data for Name: item; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY item (created_on, updated_on, id, name, description, note, meta_association_id) FROM stdin;
@@ -763,14 +703,14 @@ COPY item (created_on, updated_on, id, name, description, note, meta_association
 
 
 --
--- Name: item_id_seq; Type: SEQUENCE SET; Schema: public; Owner: root
+-- Name: item_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('item_id_seq', 1, false);
 
 
 --
--- Data for Name: maker; Type: TABLE DATA; Schema: public; Owner: root
+-- Data for Name: maker; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY maker (created_on, updated_on, id, nickname, email, role, meta_association_id) FROM stdin;
@@ -780,14 +720,14 @@ COPY maker (created_on, updated_on, id, nickname, email, role, meta_association_
 
 
 --
--- Name: maker_id_seq; Type: SEQUENCE SET; Schema: public; Owner: root
+-- Name: maker_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('maker_id_seq', 2, true);
 
 
 --
--- Data for Name: meta; Type: TABLE DATA; Schema: public; Owner: root
+-- Data for Name: meta; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY meta (created_on, updated_on, id, data, association_id) FROM stdin;
@@ -860,7 +800,7 @@ COPY meta (created_on, updated_on, id, data, association_id) FROM stdin;
 
 
 --
--- Data for Name: meta_association; Type: TABLE DATA; Schema: public; Owner: root
+-- Data for Name: meta_association; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY meta_association (created_on, updated_on, id, discriminator) FROM stdin;
@@ -933,21 +873,21 @@ COPY meta_association (created_on, updated_on, id, discriminator) FROM stdin;
 
 
 --
--- Name: meta_association_id_seq; Type: SEQUENCE SET; Schema: public; Owner: root
+-- Name: meta_association_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('meta_association_id_seq', 65, true);
 
 
 --
--- Name: meta_id_seq; Type: SEQUENCE SET; Schema: public; Owner: root
+-- Name: meta_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('meta_id_seq', 65, true);
 
 
 --
--- Data for Name: page; Type: TABLE DATA; Schema: public; Owner: root
+-- Data for Name: page; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY page (created_on, updated_on, id, slug, title, html, meta_association_id) FROM stdin;
@@ -958,14 +898,14 @@ COPY page (created_on, updated_on, id, slug, title, html, meta_association_id) F
 
 
 --
--- Name: page_id_seq; Type: SEQUENCE SET; Schema: public; Owner: root
+-- Name: page_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('page_id_seq', 3, true);
 
 
 --
--- Data for Name: product; Type: TABLE DATA; Schema: public; Owner: root
+-- Data for Name: product; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY product (created_on, updated_on, id, name, description, item_id, price, shop_url, meta_association_id) FROM stdin;
@@ -973,14 +913,14 @@ COPY product (created_on, updated_on, id, name, description, item_id, price, sho
 
 
 --
--- Name: product_id_seq; Type: SEQUENCE SET; Schema: public; Owner: root
+-- Name: product_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('product_id_seq', 1, false);
 
 
 --
--- Data for Name: project; Type: TABLE DATA; Schema: public; Owner: root
+-- Data for Name: project; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY project (created_on, updated_on, id, title, description, maker_id, slug, meta_association_id) FROM stdin;
@@ -1053,14 +993,14 @@ COPY project (created_on, updated_on, id, title, description, maker_id, slug, me
 
 
 --
--- Name: project_id_seq; Type: SEQUENCE SET; Schema: public; Owner: root
+-- Name: project_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('project_id_seq', 65, true);
 
 
 --
--- Data for Name: related_projects; Type: TABLE DATA; Schema: public; Owner: root
+-- Data for Name: related_projects; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY related_projects (project_id, related_project_id) FROM stdin;
@@ -1074,7 +1014,7 @@ COPY related_projects (project_id, related_project_id) FROM stdin;
 
 
 --
--- Data for Name: resource; Type: TABLE DATA; Schema: public; Owner: root
+-- Data for Name: resource; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY resource (created_on, updated_on, id, project_id, step_id, name, path, meta_association_id) FROM stdin;
@@ -1082,14 +1022,14 @@ COPY resource (created_on, updated_on, id, project_id, step_id, name, path, meta
 
 
 --
--- Name: resource_id_seq; Type: SEQUENCE SET; Schema: public; Owner: root
+-- Name: resource_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('resource_id_seq', 1, false);
 
 
 --
--- Data for Name: step; Type: TABLE DATA; Schema: public; Owner: root
+-- Data for Name: step; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY step (created_on, updated_on, id, title, start_time, description, "order", project_id, chapter_id, meta_association_id) FROM stdin;
@@ -1097,14 +1037,14 @@ COPY step (created_on, updated_on, id, title, start_time, description, "order", 
 
 
 --
--- Name: step_id_seq; Type: SEQUENCE SET; Schema: public; Owner: root
+-- Name: step_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('step_id_seq', 1, false);
 
 
 --
--- Data for Name: tag; Type: TABLE DATA; Schema: public; Owner: root
+-- Data for Name: tag; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY tag (created_on, updated_on, id, name, meta_association_id) FROM stdin;
@@ -1167,14 +1107,14 @@ COPY tag (created_on, updated_on, id, name, meta_association_id) FROM stdin;
 
 
 --
--- Name: tag_id_seq; Type: SEQUENCE SET; Schema: public; Owner: root
+-- Name: tag_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('tag_id_seq', 1, false);
 
 
 --
--- Data for Name: tags; Type: TABLE DATA; Schema: public; Owner: root
+-- Data for Name: tags; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY tags (tag_id, project_id) FROM stdin;
@@ -1300,7 +1240,7 @@ COPY tags (tag_id, project_id) FROM stdin;
 
 
 --
--- Data for Name: video; Type: TABLE DATA; Schema: public; Owner: root
+-- Data for Name: video; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY video (created_on, updated_on, id, project_id, name, host_guid, path, meta_association_id) FROM stdin;
@@ -1373,14 +1313,14 @@ COPY video (created_on, updated_on, id, project_id, name, host_guid, path, meta_
 
 
 --
--- Name: video_id_seq; Type: SEQUENCE SET; Schema: public; Owner: root
+-- Name: video_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('video_id_seq', 65, true);
 
 
 --
--- Name: chapter_pkey; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
+-- Name: chapter_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY chapter
@@ -1388,7 +1328,7 @@ ALTER TABLE ONLY chapter
 
 
 --
--- Name: chapter_title_key; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
+-- Name: chapter_title_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY chapter
@@ -1396,7 +1336,7 @@ ALTER TABLE ONLY chapter
 
 
 --
--- Name: component_pkey; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
+-- Name: component_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY component
@@ -1404,7 +1344,7 @@ ALTER TABLE ONLY component
 
 
 --
--- Name: guru_alias_key; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
+-- Name: guru_alias_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY guru
@@ -1412,7 +1352,7 @@ ALTER TABLE ONLY guru
 
 
 --
--- Name: guru_name_key; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
+-- Name: guru_name_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY guru
@@ -1420,7 +1360,7 @@ ALTER TABLE ONLY guru
 
 
 --
--- Name: guru_pkey; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
+-- Name: guru_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY guru
@@ -1428,7 +1368,7 @@ ALTER TABLE ONLY guru
 
 
 --
--- Name: item_name_key; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
+-- Name: item_name_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY item
@@ -1436,7 +1376,7 @@ ALTER TABLE ONLY item
 
 
 --
--- Name: item_pkey; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
+-- Name: item_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY item
@@ -1444,7 +1384,7 @@ ALTER TABLE ONLY item
 
 
 --
--- Name: maker_email_key; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
+-- Name: maker_email_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY maker
@@ -1452,7 +1392,7 @@ ALTER TABLE ONLY maker
 
 
 --
--- Name: maker_nickname_key; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
+-- Name: maker_nickname_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY maker
@@ -1460,7 +1400,7 @@ ALTER TABLE ONLY maker
 
 
 --
--- Name: maker_pkey; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
+-- Name: maker_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY maker
@@ -1468,7 +1408,7 @@ ALTER TABLE ONLY maker
 
 
 --
--- Name: meta_association_pkey; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
+-- Name: meta_association_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY meta_association
@@ -1476,7 +1416,7 @@ ALTER TABLE ONLY meta_association
 
 
 --
--- Name: meta_pkey; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
+-- Name: meta_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY meta
@@ -1484,7 +1424,7 @@ ALTER TABLE ONLY meta
 
 
 --
--- Name: page_pkey; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
+-- Name: page_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY page
@@ -1492,7 +1432,7 @@ ALTER TABLE ONLY page
 
 
 --
--- Name: page_slug_key; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
+-- Name: page_slug_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY page
@@ -1500,7 +1440,7 @@ ALTER TABLE ONLY page
 
 
 --
--- Name: product_name_key; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
+-- Name: product_name_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY product
@@ -1508,7 +1448,7 @@ ALTER TABLE ONLY product
 
 
 --
--- Name: product_pkey; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
+-- Name: product_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY product
@@ -1516,7 +1456,7 @@ ALTER TABLE ONLY product
 
 
 --
--- Name: project_pkey; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
+-- Name: project_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY project
@@ -1524,7 +1464,7 @@ ALTER TABLE ONLY project
 
 
 --
--- Name: project_slug_key; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
+-- Name: project_slug_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY project
@@ -1532,7 +1472,7 @@ ALTER TABLE ONLY project
 
 
 --
--- Name: project_title_key; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
+-- Name: project_title_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY project
@@ -1540,7 +1480,7 @@ ALTER TABLE ONLY project
 
 
 --
--- Name: resource_path_key; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
+-- Name: resource_path_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY resource
@@ -1548,7 +1488,7 @@ ALTER TABLE ONLY resource
 
 
 --
--- Name: resource_pkey; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
+-- Name: resource_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY resource
@@ -1556,7 +1496,7 @@ ALTER TABLE ONLY resource
 
 
 --
--- Name: step_pkey; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
+-- Name: step_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY step
@@ -1564,7 +1504,7 @@ ALTER TABLE ONLY step
 
 
 --
--- Name: step_title_key; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
+-- Name: step_title_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY step
@@ -1572,7 +1512,7 @@ ALTER TABLE ONLY step
 
 
 --
--- Name: tag_name_key; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
+-- Name: tag_name_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY tag
@@ -1580,7 +1520,7 @@ ALTER TABLE ONLY tag
 
 
 --
--- Name: tag_pkey; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
+-- Name: tag_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY tag
@@ -1588,7 +1528,7 @@ ALTER TABLE ONLY tag
 
 
 --
--- Name: video_host_guid_key; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
+-- Name: video_host_guid_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY video
@@ -1596,7 +1536,7 @@ ALTER TABLE ONLY video
 
 
 --
--- Name: video_name_key; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
+-- Name: video_name_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY video
@@ -1604,7 +1544,7 @@ ALTER TABLE ONLY video
 
 
 --
--- Name: video_path_key; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
+-- Name: video_path_key; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY video
@@ -1612,7 +1552,7 @@ ALTER TABLE ONLY video
 
 
 --
--- Name: video_pkey; Type: CONSTRAINT; Schema: public; Owner: root; Tablespace: 
+-- Name: video_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY video
@@ -1620,7 +1560,7 @@ ALTER TABLE ONLY video
 
 
 --
--- Name: chapter_meta_association_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: root
+-- Name: chapter_meta_association_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY chapter
@@ -1628,7 +1568,7 @@ ALTER TABLE ONLY chapter
 
 
 --
--- Name: chapter_video_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: root
+-- Name: chapter_video_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY chapter
@@ -1636,7 +1576,7 @@ ALTER TABLE ONLY chapter
 
 
 --
--- Name: component_item_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: root
+-- Name: component_item_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY component
@@ -1644,7 +1584,7 @@ ALTER TABLE ONLY component
 
 
 --
--- Name: component_meta_association_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: root
+-- Name: component_meta_association_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY component
@@ -1652,7 +1592,7 @@ ALTER TABLE ONLY component
 
 
 --
--- Name: component_project_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: root
+-- Name: component_project_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY component
@@ -1660,7 +1600,7 @@ ALTER TABLE ONLY component
 
 
 --
--- Name: component_step_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: root
+-- Name: component_step_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY component
@@ -1668,7 +1608,7 @@ ALTER TABLE ONLY component
 
 
 --
--- Name: guru_meta_association_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: root
+-- Name: guru_meta_association_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY guru
@@ -1676,7 +1616,7 @@ ALTER TABLE ONLY guru
 
 
 --
--- Name: item_meta_association_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: root
+-- Name: item_meta_association_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY item
@@ -1684,7 +1624,7 @@ ALTER TABLE ONLY item
 
 
 --
--- Name: maker_meta_association_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: root
+-- Name: maker_meta_association_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY maker
@@ -1692,7 +1632,7 @@ ALTER TABLE ONLY maker
 
 
 --
--- Name: meta_association_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: root
+-- Name: meta_association_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY meta
@@ -1700,7 +1640,7 @@ ALTER TABLE ONLY meta
 
 
 --
--- Name: page_meta_association_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: root
+-- Name: page_meta_association_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY page
@@ -1708,7 +1648,7 @@ ALTER TABLE ONLY page
 
 
 --
--- Name: product_item_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: root
+-- Name: product_item_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY product
@@ -1716,7 +1656,7 @@ ALTER TABLE ONLY product
 
 
 --
--- Name: product_meta_association_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: root
+-- Name: product_meta_association_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY product
@@ -1724,7 +1664,7 @@ ALTER TABLE ONLY product
 
 
 --
--- Name: project_maker_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: root
+-- Name: project_maker_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY project
@@ -1732,7 +1672,7 @@ ALTER TABLE ONLY project
 
 
 --
--- Name: project_meta_association_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: root
+-- Name: project_meta_association_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY project
@@ -1740,7 +1680,7 @@ ALTER TABLE ONLY project
 
 
 --
--- Name: related_projects_project_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: root
+-- Name: related_projects_project_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY related_projects
@@ -1748,7 +1688,7 @@ ALTER TABLE ONLY related_projects
 
 
 --
--- Name: related_projects_related_project_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: root
+-- Name: related_projects_related_project_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY related_projects
@@ -1756,7 +1696,7 @@ ALTER TABLE ONLY related_projects
 
 
 --
--- Name: resource_meta_association_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: root
+-- Name: resource_meta_association_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY resource
@@ -1764,7 +1704,7 @@ ALTER TABLE ONLY resource
 
 
 --
--- Name: resource_project_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: root
+-- Name: resource_project_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY resource
@@ -1772,7 +1712,7 @@ ALTER TABLE ONLY resource
 
 
 --
--- Name: resource_step_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: root
+-- Name: resource_step_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY resource
@@ -1780,7 +1720,7 @@ ALTER TABLE ONLY resource
 
 
 --
--- Name: step_chapter_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: root
+-- Name: step_chapter_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY step
@@ -1788,7 +1728,7 @@ ALTER TABLE ONLY step
 
 
 --
--- Name: step_meta_association_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: root
+-- Name: step_meta_association_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY step
@@ -1796,7 +1736,7 @@ ALTER TABLE ONLY step
 
 
 --
--- Name: step_project_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: root
+-- Name: step_project_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY step
@@ -1804,7 +1744,7 @@ ALTER TABLE ONLY step
 
 
 --
--- Name: tag_meta_association_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: root
+-- Name: tag_meta_association_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY tag
@@ -1812,7 +1752,7 @@ ALTER TABLE ONLY tag
 
 
 --
--- Name: tags_project_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: root
+-- Name: tags_project_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY tags
@@ -1820,7 +1760,7 @@ ALTER TABLE ONLY tags
 
 
 --
--- Name: tags_tag_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: root
+-- Name: tags_tag_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY tags
@@ -1828,7 +1768,7 @@ ALTER TABLE ONLY tags
 
 
 --
--- Name: video_meta_association_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: root
+-- Name: video_meta_association_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY video
@@ -1836,21 +1776,11 @@ ALTER TABLE ONLY video
 
 
 --
--- Name: video_project_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: root
+-- Name: video_project_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY video
     ADD CONSTRAINT video_project_id_fkey FOREIGN KEY (project_id) REFERENCES project(id);
-
-
---
--- Name: public; Type: ACL; Schema: -; Owner: dodeca
---
-
-REVOKE ALL ON SCHEMA public FROM PUBLIC;
-REVOKE ALL ON SCHEMA public FROM dodeca;
-GRANT ALL ON SCHEMA public TO dodeca;
-GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
 --
