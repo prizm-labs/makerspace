@@ -75,12 +75,12 @@ class MyAdminIndexView(AdminIndexView):
         if resp.email is None or resp.email == "":
             flash('Invalid login. Please try again.')
             return redirect(url_for('.login_view'))
-        user = db.session.query(models.User).filter_by(email = resp.email).first()
+        user = db.session.query(models.Maker).filter_by(email = resp.email).first()
         if user is None:
             nickname = resp.nickname
             if nickname is None or nickname == "":
                 nickname = resp.email.split('@')[0]
-            user = models.User(nickname = nickname, email = resp.email, role = models.ROLE_USER)
+            user = models.Maker(nickname = nickname, email = resp.email, role = models.ROLE_USER)
             db.session.add(user)
             db.session.commit()
         remember_me = False
@@ -118,4 +118,4 @@ def add_admin_views(admin):
   admin.add_view(MyModelView(models.Tag, db.session))
   admin.add_view(MyModelView(models.Meta, db.session))
   admin.add_view(MyModelView(models.Page, db.session))
-  admin.add_view(MyModelView(models.User, db.session))
+  admin.add_view(MyModelView(models.Maker, db.session))

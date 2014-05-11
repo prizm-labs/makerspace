@@ -26,14 +26,26 @@ body {
   margin: 10px auto;
 }
 
+@media -sass-debug-info{filename{}line{font-family:\0000323}}
+.project-listing {
+  overflow: hidden;
+}
 @media screen and (min-width: 768px) {
 @media -sass-debug-info{filename{}line{font-family:\0000323}}
   .project-listing {
     height: 400px;
+    margin-bottom: 30px;
+  }
+}
+@media screen and (max-width: 768px) {
+@media -sass-debug-info{filename{}line{font-family:\0000323}}
+  .project-listing {
+    height: 200px;
+    margin-bottom: 15px;
   }
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000329}}
+@media -sass-debug-info{filename{}line{font-family:\0000337}}
 .sorting-block ul.sorting-grid {
   padding-top: 15px;
   background-image: linear-gradient(to right, #333333 50%, rgba(255, 255, 255, 0) 0%);
@@ -42,20 +54,20 @@ body {
   background-repeat: repeat-x;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000336}}
+@media -sass-debug-info{filename{}line{font-family:\0000344}}
 .footer {
   background: transparent;
   font-size: 18px;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000340}}
+@media -sass-debug-info{filename{}line{font-family:\0000348}}
 .footer .navigation li {
   display: inline-block;
   list-style: none;
   margin: 0 5px;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000345}}
+@media -sass-debug-info{filename{}line{font-family:\0000353}}
 .footer a, .copyright a {
   color: #585f69;
   font-size: 18px;
@@ -63,39 +75,44 @@ body {
   border-bottom: 1px dotted #b3bdc2;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000351}}
+@media -sass-debug-info{filename{}line{font-family:\0000359}}
 .footer .copyright {
   border: none;
   background: transparent;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000355}}
+@media -sass-debug-info{filename{}line{font-family:\0000363}}
 .header {
   border: none;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000358}}
+@media -sass-debug-info{filename{}line{font-family:\0000366}}
 .navbar-default {
   box-shadow: none;
   -webkit-box-shadow: none;
   border: none;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000363}}
+@media -sass-debug-info{filename{}line{font-family:\0000371}}
 .navbar-header {
   width: 100%;
   text-align: center;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000367}}
+@media -sass-debug-info{filename{}line{font-family:\0000375}}
 a {
   color: #585f69;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000370}}
+@media -sass-debug-info{filename{}line{font-family:\0000378}}
 a:hover {
   text-decoration: none;
   color: #e38d13;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\0000385}}
+.standalone img {
+  width: 100%;
 }
 
 @media -sass-debug-info{filename{}line{font-family:\000035}}

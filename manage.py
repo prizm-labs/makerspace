@@ -1,3 +1,5 @@
+# http://flask-script.readthedocs.org/en/latest/
+
 # http://blog.miguelgrinberg.com/post/flask-migrate-alembic-database-migration-wrapper-for-flask
 
 # python manage.py db init

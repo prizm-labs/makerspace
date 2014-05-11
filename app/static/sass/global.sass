@@ -21,8 +21,16 @@ body
         margin: 10px auto
 
 .project-listing
+    overflow: hidden
+
     @media screen and (min-width: $break-small)
         height: 400px
+        margin-bottom: 30px
+
+    @media screen and (max-width: $break-small)
+        height: 200px
+        margin-bottom: 15px
+
 
 //http://stackoverflow.com/questions/6250394/how-to-increase-space-between-dotted-border-dots
 //http://jsfiddle.net/olivictor/Ldf7z/
@@ -72,3 +80,7 @@ a:hover
     color: $theme-orange
 
 a:active
+
+// pages
+.standalone img
+    width: 100%

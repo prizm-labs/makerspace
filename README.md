@@ -35,7 +35,7 @@ virtualenv venv
 source venv/bin/activate
 deactivate
 
-pip freeze requirements.txt
+pip freeze > requirements.txt
 
 
 
@@ -52,15 +52,7 @@ psql -h 127.0.0.1
 CREATE USER root WITH PASSWORD 'password';
 CREATE DATABASE makefoo;
 GRANT ALL PRIVILEGES ON DATABASE makefoo TO root;
-USE makefoo;
-create extension hstore;
-
 \q
-
-DROP DATABASE makefoo;
-
-
-# How to seed DB
 
 # Install HSTORE extension
 # http://www.postgresql.org/docs/9.1/static/sql-createextension.html
@@ -69,7 +61,29 @@ create extension hstore;
 \d+;
 
 
+# clear and reset database
 
+# How to kill pg process
+# http://blog.gahooa.com/2010/11/03/how-to-force-drop-a-postgresql-database-by-killing-off-connection-processes/
+ps -a
+
+psql -h 127.0.0.1
+select pg_terminate_backend(pid) from pg_stat_activity where datname = 'makefoo';
+
+
+DROP DATABASE makefoo;
+CREATE DATABASE makefoo;
+GRANT ALL PRIVILEGES ON DATABASE makefoo TO root;
+\q
+
+psql -h 127.0.0.1 -d makefoo
+create extension hstore;
+\q 
+
+\d+;
+
+
+# How to seed DB
 
 # Create tables
 
@@ -82,7 +96,8 @@ Base.metadata.create_all(engine)
 
 # Populate tables
 
-python import.py
+python db_init.py
+python db_seed.py
 
 
 
@@ -107,13 +122,6 @@ https://github.com/jeffutter/dokku-postgresql-plugin
 https://github.com/Kloadut/dokku-pg-plugin
 
 
-
-# How to kill pg process
-# http://blog.gahooa.com/2010/11/03/how-to-force-drop-a-postgresql-database-by-killing-off-connection-processes/
-ps -a
-
-psql -h 127.0.0.1
-select pg_terminate_backend(pid) from pg_stat_activity where datname = 'makefoo';
 
 
 

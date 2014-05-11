@@ -1,12 +1,17 @@
 import csv
-from app import db,models
+from flask import Flask
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine
+from flask.ext.sqlalchemy import SQLAlchemy
 
+#from app import db,models
+import sys
+sys.path.append("app/")
+import models
 
-engine = create_engine('postgresql://root:password@127.0.0.1/makefoo', echo=True)
-models.Base.metadata.drop_all(engine)
-models.Base.metadata.create_all(engine)
+app = Flask(__name__,static_url_path='')
+app.config.from_object('config')
+db = SQLAlchemy(app)
 
 
 # from iMac 27"
@@ -26,7 +31,7 @@ def create_tag(columns):
   return row
 
 def create_page(columns):
-  row = models
+  row = models.Page(slug=columns[0],title=columns[1],html=columns[2])
   return row
 
 table_creators = {'project':create_project, 'video':create_video, 'tag':create_tag, 'page': create_page}
@@ -36,14 +41,14 @@ def import_model(table_name):
     data = list(tuple(rec) for rec in csv.reader(f, delimiter=','))
     rows = []
     for row in data:
-      print row
+      #print row
       creator = table_creators[table_name]
       rows.append(creator(row))
     db.session.add_all(rows)
     db.session.commit()
 
 def import_all_models():
-  models_to_import = ['project','video','tag']
+  models_to_import = ['project','video','tag','page']
 
   for m in models_to_import:
     import_model(m)
@@ -54,6 +59,8 @@ import_all_models()
 #TODO create association tables
 '''
 psql -h 127.0.0.1 -d makefoo
+
+INSERT INTO maker (nickname,email,role) VALUES ('michael.a.garrido','michael.a.garrido@gmail.com',1);                                               ;
 
 COPY tags (tag_id,project_id) FROM 
 '/Users/dodeca/makerspace/db/tags.csv' 
@@ -68,6 +75,10 @@ DELIMITERS ',' CSV;
 
 '''
 psql -h 127.0.0.1 -d makefoo
+
+COPY page (slug,title,html) FROM 
+'/Users/dodeca/makerspace/db/page.csv' 
+DELIMITERS ',' CSV;
 
 COPY project (slug,title,description) FROM 
 '/Users/dodeca/makerspace/db/project.csv' 

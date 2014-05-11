@@ -1,3 +1,7 @@
+# -*- coding: utf-8 -*-
+# handle Non-ASCII characters
+# http://stackoverflow.com/questions/18078851/syntaxerror-of-non-ascii-character
+
 from . import app
 
 from . import db
@@ -341,6 +345,23 @@ def show_category(slug):
         return render_template('_category.html', **context_dict)
 
 
+@app.route('/contact')
+def page_contact():
+    # based on page_contact3.html
+    context_dict = {
+            'form': forms.ContactForm(),
+            'html': u"<h1>Contact the King</h1><p>I get tons of emails every day. While I can’t respond to every email, I do read all of them -- so please email away.</p><p>My email is grant at thekingofrandom dot com</p>",
+            'links': [
+                { 'class':'email', 'title':'Email', 'url':'mailto:grant@thekingofrandom.com'},
+                { 'class':'facebook', 'title':'Facebook', 'url':'https://www.facebook.com/thekingofrandomfanpage'},
+                { 'class':'youtube', 'title':'Youtube','url':'https://www.youtube.com/user/01032010814'},
+                { 'class':'twitter', 'title':'Twitter','url':'http://www.pinterest.com/thekingofrandom/random-weekend-projects/'},
+                { 'class':'google-plus', 'title':'Google','url':'https://plus.google.com/u/0/+Thekingofrandom/posts'}
+            ]
+        }
+    return render_template('_contact.html', **context_dict)
+
+'''
 @app.route('/page/<slug>')
 def show_page(slug):
     context_dict = {
@@ -349,13 +370,7 @@ def show_page(slug):
         }
 
     return render_template('_category.html', **context_dict)
-
-@app.route('/contact')
-def page_contact():
-    # based on page_contact3.html
-    return render_template('_contact.html', form=forms.ContactForm())
-
-
+'''
 
     
 

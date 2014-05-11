@@ -39,27 +39,19 @@ Base = declarative_base(cls=Base)
 
 class MetaAssociation(Base):
     id = Column(Integer, primary_key=True)
-    """Associates a collection of Address objects
-    with a particular parent.
 
-    """
     __tablename__ = "meta_association"
 
     @classmethod
     def creator(cls, discriminator):
-        """Provide a 'creator' function to use with
-        the association proxy."""
-
         return lambda metas:MetaAssociation(
                                 metas=metas,
                                 discriminator=discriminator)
 
     discriminator = Column(String)
-    """Refers to the type of parent."""
 
     @property
     def parent(self):
-        """Return the parent object."""
         return getattr(self, "%s_parent" % self.discriminator)
 
 
@@ -121,8 +113,8 @@ class Project(HasMeta,Base):
   #__tablename__ = "projects"
   id = Column(Integer, primary_key=True)
 
-  title = Column(String(80), unique=True)
-  description = Column(String(512))
+  title = Column(String(160), unique=True)
+  description = Column(Text)
   maker_id = Column(Integer, ForeignKey('maker.id'))
   slug = Column(String(80), unique=True)
   #difficulty = Column(Integer)
@@ -198,18 +190,10 @@ class Resource(HasMeta,Base):
 
 
 class Maker(HasMeta,Base):
-  id = Column(Integer, primary_key=True)
-  youtube_channel_url = Column(String(512))
-  facebook_url = Column(String(512))
-  twitter_handle = Column(String(40))
-  email = Column(String(40))
-  name = Column(String(80), unique=True) #i.e. KipKay
-  alias = Column(String(80), unique=True) #i.e. Kip K.
-  description = Column(String(512))
-  logo_url = Column(String(512))
-  headshot_url = Column(String(512))
+  # user table is reserved Postgres
+  # https://github.com/coleifer/peewee/issues/30
+  #__tablename__ = "users"
 
-class User(HasMeta,Base):
   id = Column(Integer, primary_key = True)
   nickname = Column(String(64), unique = True)
   email = Column(String(120), unique = True)
@@ -290,13 +274,17 @@ class Item(HasMeta,Base):
   products = relationship('Product', backref='item', lazy='dynamic') #optional
 
 
-class Customer(HasMeta, Base):
-    id = Column(Integer, primary_key=True)
-    name = Column(String)
-
-class Supplier(HasMeta, Base):
-    id = Column(Integer, primary_key=True)
-    company_name = Column(String)
+class Guru(HasMeta,Base):
+  id = Column(Integer, primary_key=True)
+  youtube_channel_url = Column(String(512))
+  facebook_url = Column(String(512))
+  twitter_handle = Column(String(40))
+  email = Column(String(40))
+  name = Column(String(80), unique=True) #i.e. KipKay
+  alias = Column(String(80), unique=True) #i.e. Kip K.
+  description = Column(String(512))
+  logo_url = Column(String(512))
+  headshot_url = Column(String(512))
 
 
 '''
