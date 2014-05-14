@@ -12,6 +12,8 @@ class AWeberInterface(object):
 
         self.application = AWeberAPI(consumer_key, consumer_secret)
         self.account = self.application.get_account(self.access_token, self.access_secret)
+        print self.application
+        print self.account
 
     def connect_to_AWeber_account(self):
         app_id = '7XXXXXX8'
@@ -34,7 +36,9 @@ class AWeberInterface(object):
 
     def add_subscriber(self, subscriber, _list):
         list_url = '/accounts/%s/lists/%s' % (self.account.id, _list.id)
+        print list_url
         _list = self.account.load_from_url(list_url)
+        print _list
 
         success = False
         data = {}
@@ -48,6 +52,7 @@ class AWeberInterface(object):
             }
 
         except APIException, exc:
+            print APIException
             print exc
             report = exc.message.split(':')
             # WebServiceError: email: Subscriber already subscribed and has not confirmed.

@@ -17,12 +17,15 @@
     <ul class="row sorting-grid">
         {% for project in projects %}
         <li class="col-md-4 col-sm-6 col-xs-12 mix{{class}} project-listing" data-cat="1">
-            <a href="/project/{{ project.slug }}">
+            <a href="#" data-container="body" data-toggle="popover" data-description="{{ project.description }}" rel="popover" data-clickthru="/project/{{ project.slug }}">
+            <div class="click-target">
                 <img style="width:100%" src="http://img.youtube.com/vi/{{project.videos[0].host_guid}}/mqdefault.jpg" alt="{{project.title}}"/>
-                <span class="sorting-cover">
-                    <h3>{{ project.title }}</h3>
-                    <p>{{ project.description }}</p>
-                </span>
+                <div class="project-description">
+                    <span class="sorting-cover">
+                        <h3>{{ project.title }}</h3>
+                    </span>
+                </div>
+            </div>
             </a>
         </li>
         {% endfor %}
@@ -34,7 +37,6 @@
 <!--=== Content Part ===-->
 <div class="container">
 
-    
     <!-- Portfolio Sorting Blocks -->
     <div class="sorting-block">
 
@@ -61,6 +63,123 @@
     jQuery(document).ready(function() {
         App.init();
         Portfolio.init();
+
+        var mouseOutTimer = null;
+        var parentCache = null;
+        var popoverCache = null;
+        var currentElementOver = null;
+        var popoverActive = false;
+
+        var positionCheckInterval = 750;
+
+        // $(document).on('mouseover', 'div.popover', function() {
+        //     currentElementOver = $(this);
+        //     console.log(currentElementOver);
+        // });
+
+        
+
+        $('[rel="popover"]').popover({
+            placement: 'right',
+            trigger: 'manual',
+            html: true,
+            animation: false,
+            content: function(e) {
+                //console.log(this);
+                var title = "<h3>About This Project</h3>";
+                var description = $(this).data('description');
+                var content = '<div class="pop-wrap">'+description+'</div>';
+
+                return title+content;
+            }
+        });
+        
+
+        
+        $('[rel="popover"]').hover(function(e){
+            console.log('over parent');
+            //console.log(e);
+            currentElementOver = $(this)[0];
+
+            // check if over new listing
+            // new listing should force its popover
+            if (popoverActive && currentElementOver!=parentCache) {
+                console.log('OVER NEW PARENT');
+                closePopover(parentCache);
+                showPopover(e.delegateTarget,this);
+            }
+
+            // check if over same listing
+            else if (popoverActive && currentElementOver==parentCache) {
+                console.log('OVER SAME PARENT');
+                
+            } else {
+                console.log('OVER NEW PARENT FRESH');
+                showPopover(e.delegateTarget,this);
+            }
+            
+
+        }, function(e){
+            console.log('out parent');
+            currentElementOver = null;
+
+            mouseOutTimer = setTimeout(function(){
+                startMouseOutTimer(e.delegateTarget)
+            },positionCheckInterval);
+        });
+
+        $('[rel="popover"]').click(function(){
+            var location = $(this).data("clickthru");
+            window.location.assign(location);
+        });
+
+        function showPopover(parent,selector) {
+            $(parent).popover('show');
+            popoverActive = true;
+
+            popoverCache = $('div.popover')[0];
+            parentCache = $(selector)[0];
+
+            initPopoverEvents();
+        }
+
+        function initPopoverEvents() {
+            $('div.popover').hover(function(e) {
+                currentElementOver = $(this)[0];
+                console.log('over popover');
+                //console.log(currentElementOver);
+            }, function(e) {
+                currentElementOver= null;
+                console.log('out popover');
+                //console.log(currentElementOver);
+                setTimeout(function(e){
+                    startMouseOutTimer(parentCache)
+                },positionCheckInterval);
+            });
+        }
+
+        function closePopover(parent) {
+            console.log('hiding popover');
+            $(parent).popover('hide');
+            popoverActive = false;
+            parentCache = null;
+            popoverCache = null;
+        }
+
+        function startMouseOutTimer(parent) {
+            console.log('check currentElementOver');
+            //console.log(currentElementOver);
+            //console.log(popoverCache);
+            //console.log(parentCache);
+
+            if (currentElementOver==parentCache || currentElementOver==popoverCache) {
+
+                console.log('keep popover');
+            } else {
+                closePopover(parent);
+            }
+        }
+
     });
 </script>
 {% endblock %}

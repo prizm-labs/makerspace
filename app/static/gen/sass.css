@@ -1,51 +1,250 @@
-@media -sass-debug-info{filename{}line{font-family:\000034}}
+@import url("//fonts.googleapis.com/css?family=News+Cycle:400,700");
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\0000311}}
 body {
-  position: relative;
-  color: #585f69;
-  font-family: "museo-sans", sans-serif, Helvetica;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  color: #777777;
+  background: #f2f2f2;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\000039}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\0000317}}
+.btn {
+  font-family: "News Cycle", "Arial Narrow Bold", sans-serif;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\0000321}}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-family: "News Cycle", "Arial Narrow Bold", sans-serif;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\0000337}}
+h1 small,
+h2 small,
+h3 small,
+h4 small,
+h5 small,
+h6 small,
+.h1 small,
+.h2 small,
+.h3 small,
+.h4 small,
+.h5 small,
+.h6 small,
+h1 .small,
+h2 .small,
+h3 .small,
+h4 .small,
+h5 .small,
+h6 .small,
+.h1 .small,
+.h2 .small,
+.h3 .small,
+.h4 .small,
+.h5 .small,
+.h6 .small {
+  font-weight: normal;
+  line-height: 1;
+  color: #999999;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\0000365}}
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3 {
+  margin-top: 21px;
+  margin-bottom: 10.5px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\0000374}}
+h1 small,
+.h1 small,
+h2 small,
+.h2 small,
+h3 small,
+.h3 small,
+h1 .small,
+.h1 .small,
+h2 .small,
+.h2 .small,
+h3 .small,
+.h3 .small {
+  font-size: 65%;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\0000388}}
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+  margin-top: 10.5px;
+  margin-bottom: 10.5px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\0000397}}
+h4 small,
+.h4 small,
+h5 small,
+.h5 small,
+h6 small,
+.h6 small,
+h4 .small,
+.h4 .small,
+h5 .small,
+.h5 .small,
+h6 .small,
+.h6 .small {
+  font-size: 75%;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\00003111}}
+h1,
+.h1 {
+  font-size: 39px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\00003115}}
+h2,
+.h2 {
+  font-size: 32px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\00003119}}
+h3,
+.h3 {
+  font-size: 26px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\00003123}}
+h4,
+.h4 {
+  font-size: 19px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\00003127}}
+h5,
+.h5 {
+  font-size: 15px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\00003131}}
+h6,
+.h6 {
+  font-size: 13px;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\000035}}
+body {
+  padding-top: 80px;
+  position: relative;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\0000311}}
+.navbar-default {
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  border-bottom: 1px solid #bbbbbb;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\0000319}}
 .navbar-brand {
-  margin: 10px auto;
   height: auto;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000313}}
+@media -sass-debug-info{filename{}line{font-family:\0000322}}
 .navbar-brand.center {
   float: none;
 }
 @media screen and (max-width: 768px) {
-@media -sass-debug-info{filename{}line{font-family:\0000317}}
+@media -sass-debug-info{filename{}line{font-family:\0000326}}
   .navbar-brand.center #logo-header {
     width: 300px;
   }
 }
-@media -sass-debug-info{filename{}line{font-family:\0000320}}
+@media -sass-debug-info{filename{}line{font-family:\0000329}}
 .navbar-brand.center #logo-header {
   margin: 10px auto;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000323}}
+@media -sass-debug-info{filename{}line{font-family:\0000333}}
+.navbar-nav > li {
+  padding-top: 16px;
+}
+@media -sass-debug-info{filename{}line{font-family:\0000337}}
+.navbar-nav > li .h4 {
+  margin: 0;
+}
+@media -sass-debug-info{filename{}line{font-family:\0000340}}
+.navbar-nav > li a:hover {
+  color: #e38d13 !important;
+}
+@media -sass-debug-info{filename{}line{font-family:\0000343}}
+.navbar-nav > li .subscribe-btn {
+  margin-left: 14px;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\0000347}}
 .project-listing {
   overflow: hidden;
+  padding-bottom: 4px;
 }
 @media screen and (min-width: 768px) {
-@media -sass-debug-info{filename{}line{font-family:\0000323}}
+@media -sass-debug-info{filename{}line{font-family:\0000347}}
   .project-listing {
-    height: 400px;
+    height: 350px;
     margin-bottom: 30px;
   }
 }
 @media screen and (max-width: 768px) {
-@media -sass-debug-info{filename{}line{font-family:\0000323}}
+@media -sass-debug-info{filename{}line{font-family:\0000347}}
   .project-listing {
     height: 200px;
     margin-bottom: 15px;
   }
 }
+@media -sass-debug-info{filename{}line{font-family:\0000359}}
+.project-listing .click-target {
+  border-bottom: 4px solid #bdc3c7;
+  border-right: 1px solid #bdc3c7;
+  border-top: 1px solid #bdc3c7;
+  border-left: 1px solid #bdc3c7;
+}
 
-@media -sass-debug-info{filename{}line{font-family:\0000337}}
+@media -sass-debug-info{filename{}line{font-family:\0000367}}
+.popover {
+  width: 300px;
+}
+@media -sass-debug-info{filename{}line{font-family:\0000370}}
+.popover h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\0000374}}
+.pop-wrap {
+  height: 225px;
+  overflow: hidden;
+  font-size: 18px;
+  font-family: "Helvetica", sans-serif;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\0000382}}
 .sorting-block ul.sorting-grid {
   padding-top: 15px;
   background-image: linear-gradient(to right, #333333 50%, rgba(255, 255, 255, 0) 0%);
@@ -54,20 +253,21 @@ body {
   background-repeat: repeat-x;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000344}}
+@media -sass-debug-info{filename{}line{font-family:\0000389}}
 .footer {
+  margin-top: 30px;
   background: transparent;
   font-size: 18px;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000348}}
+@media -sass-debug-info{filename{}line{font-family:\0000394}}
 .footer .navigation li {
   display: inline-block;
   list-style: none;
   margin: 0 5px;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000353}}
+@media -sass-debug-info{filename{}line{font-family:\0000399}}
 .footer a, .copyright a {
   color: #585f69;
   font-size: 18px;
@@ -75,135 +275,156 @@ body {
   border-bottom: 1px dotted #b3bdc2;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000359}}
+@media -sass-debug-info{filename{}line{font-family:\00003105}}
 .footer .copyright {
   border: none;
   background: transparent;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000363}}
-.header {
-  border: none;
-}
-
-@media -sass-debug-info{filename{}line{font-family:\0000366}}
-.navbar-default {
-  box-shadow: none;
-  -webkit-box-shadow: none;
-  border: none;
-}
-
-@media -sass-debug-info{filename{}line{font-family:\0000371}}
-.navbar-header {
-  width: 100%;
-  text-align: center;
-}
-
-@media -sass-debug-info{filename{}line{font-family:\0000375}}
+@media -sass-debug-info{filename{}line{font-family:\00003110}}
 a {
   color: #585f69;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000378}}
+@media -sass-debug-info{filename{}line{font-family:\00003113}}
 a:hover {
   text-decoration: none;
   color: #e38d13;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000385}}
+@media -sass-debug-info{filename{}line{font-family:\00003120}}
 .standalone img {
   width: 100%;
 }
 
 @media -sass-debug-info{filename{}line{font-family:\000035}}
+.sorting-block .sorting-grid li span.sorting-cover {
+  padding: 0 19px 19px 19px;
+  display: block;
+  margin-top: 0;
+  background: #fcfcfc;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\0000311}}
+.project-description {
+  margin: 14px auto 20px auto;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\0000314}}
 p.large {
-  font-size: 20px;
+  font-size: 22px;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\000038}}
-ul.blog-tags a:hover {
-  background: #e38d13;
-}
-
-@media -sass-debug-info{filename{}line{font-family:\0000312}}
+@media -sass-debug-info{filename{}line{font-family:\0000317}}
 .project h1 {
-  border-bottom: 1px solid #bbbbbb;
+  color: #222222;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000315}}
+@media -sass-debug-info{filename{}line{font-family:\0000320}}
+.footer-form, .collapsible-form {
+  color: #222222;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\0000323}}
 .panel-default {
   border: 1px solid #bbbbbb;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000318}}
+@media -sass-debug-info{filename{}line{font-family:\0000326}}
+.next-projects {
+  margin: 16px;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\0000329}}
 .header {
   border: none;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000322}}
+@media -sass-debug-info{filename{}line{font-family:\0000333}}
 .privacy-policy {
   margin-top: 20px;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000326}}
+@media -sass-debug-info{filename{}line{font-family:\0000337}}
 .collapsible-form {
   margin-top: 15px;
   margin-bottom: 20px;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000331}}
+@media -sass-debug-info{filename{}line{font-family:\0000342}}
 .registration-form input[name="email"] {
   width: 300px;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000334}}
+@media -sass-debug-info{filename{}line{font-family:\0000345}}
 .registration-form button[type="submit"] {
   margin-right: 10px;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000337}}
+@media -sass-debug-info{filename{}line{font-family:\0000348}}
 .panel-body.ui-accordion-content {
   height: auto !important;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000341}}
+@media -sass-debug-info{filename{}line{font-family:\0000352}}
 .next-project img {
   width: 320px;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000345}}
+@media -sass-debug-info{filename{}line{font-family:\0000356}}
 .collapsible-form .ui-widget-content, .well.footer-form {
   border: 1px solid #ff6a0c;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000349}}
+@media -sass-debug-info{filename{}line{font-family:\0000360}}
 .form-inline .form-group {
   margin-top: 20px;
 }
 
 @media screen and (max-width: 990px) {
-@media -sass-debug-info{filename{}line{font-family:\0000353}}
+@media -sass-debug-info{filename{}line{font-family:\0000364}}
   .sidebar-projects {
     text-align: center;
   }
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000358}}
+@media -sass-debug-info{filename{}line{font-family:\0000369}}
 .sidebar-projects h3, .next-projects h3, .sidebar-project h2 {
   margin-top: 0;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000362}}
+@media -sass-debug-info{filename{}line{font-family:\0000373}}
 .sidebar-project img {
   margin-bottom: 10px;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000367}}
+@media -sass-debug-info{filename{}line{font-family:\0000378}}
 .project-tags {
   padding-left: 10px;
 }
 
-@media -sass-debug-info{filename{}line{font-family:\0000371}}
+/*Blog Content Tags */
+@media -sass-debug-info{filename{}line{font-family:\0000383}}
+.project-tags li {
+  display: inline;
+  font-size: 12px;
+  color: #555555;
+  font-size: 11px;
+  padding: 3px 7px;
+  margin-right: 2px;
+  background: #f4f4f4;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\0000394}}
+.project-tags a .h5 {
+  padding-left: 4px;
+}
+@media -sass-debug-info{filename{}line{font-family:\0000397}}
+.project-tags a:hover .h5 {
+  color: #e38d13;
+}
+
+@media -sass-debug-info{filename{}line{font-family:\00003102}}
 .form-feedback-wrap {
   display: inline-block;
 }

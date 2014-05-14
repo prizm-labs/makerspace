@@ -13,6 +13,6 @@ app = Flask(__name__,static_url_path='')
 #app.config.from_object('config')
 db = SQLAlchemy(app)
 
-engine = create_engine('postgresql://root:password@127.0.0.1/makefoo', echo=True)
+engine = create_engine('postgresql://admin:password@127.0.0.1/makefoo', echo=True)
 models.Base.metadata.drop_all(engine)
 models.Base.metadata.create_all(engine)

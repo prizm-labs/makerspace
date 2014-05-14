@@ -1,13 +1,22 @@
 @import 'variables.sass'
 @import 'theme.sass'
 
+
 body
+    // offset for fixed navbar
+    padding-top: 80px
     position: relative
-    color: #585f69
-    font-family: "museo-sans", sans-serif, Helvetica
+
+
+.navbar-default
+    box-shadow: none
+    -webkit-box-shadow: none
+    border-bottom: 1px solid #bbb 
+
+.navbar-header
+
 
 .navbar-brand
-    margin: 10px auto
     height: auto
 
 .navbar-brand.center
@@ -20,17 +29,53 @@ body
     #logo-header
         margin: 10px auto
 
+
+.navbar-nav>li
+    @media (min-width: 768px)
+    padding-top: 16px
+
+    .h4 
+        margin: 0
+
+    a:hover 
+        color: $theme-color-primary !important
+
+    .subscribe-btn
+        margin-left: 14px
+
+
 .project-listing
     overflow: hidden
+    padding-bottom: 4px
 
     @media screen and (min-width: $break-small)
-        height: 400px
+        height: 350px
         margin-bottom: 30px
 
     @media screen and (max-width: $break-small)
         height: 200px
         margin-bottom: 15px
 
+    .click-target
+        border-bottom: 4px solid $theme-border-neutral
+        border-right: 1px solid $theme-border-neutral
+        border-top: 1px solid $theme-border-neutral
+        border-left: 1px solid $theme-border-neutral
+
+
+// POPOVERS
+.popover 
+    width: 300px
+
+    h3
+        margin-top: 0
+        margin-bottom: 15px
+
+.pop-wrap 
+    height: 225px
+    overflow: hidden
+    font-size: 18px
+    font-family: "Helvetica", sans-serif
 
 //http://stackoverflow.com/questions/6250394/how-to-increase-space-between-dotted-border-dots
 //http://jsfiddle.net/olivictor/Ldf7z/
@@ -42,6 +87,7 @@ body
     background-repeat: repeat-x
 
 .footer
+    margin-top: 30px
     background: transparent
     font-size: 18px
 
@@ -60,24 +106,13 @@ body
     border: none
     background: transparent
 
-.header
-    border: none
-
-.navbar-default
-    box-shadow: none
-    -webkit-box-shadow: none
-    border: none
-
-.navbar-header
-    width: 100%
-    text-align: center
 
 a
     color: #585f69
 
 a:hover
     text-decoration: none
-    color: $theme-orange
+    color: $theme-color-primary
 
 a:active
 

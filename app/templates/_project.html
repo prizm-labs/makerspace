@@ -7,7 +7,6 @@
 
 {% block css %}
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/pages/blog.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/pages/page_magazine.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='plugins/ladda/ladda-themeless.min.css') }}">
 {% endblock %}
 
@@ -40,17 +39,17 @@
             </div>
 
                 <div id="project-top-form" class="collapsible-form">
-                  <button type="button" class="btn btn-warning">{{ _('Subscribe to King of Random') }}</button>
+                  <button type="button" class="btn btn-warning btn-lg">{{ _('Subscribe to King of Random') }}</button>
                   <div class="panel-body">
                     <p class="large">
-                        First one is free... so are the rest. Daily.
+                        Get a FREE DIY Mini Course that will change your life.
                     </p>
                     <form class="form-inline registration-form" role="form">
                         {{ subscribe_form.csrf_token }}
                         <div class="form-group">
                             {{ subscribe_form.email.label(class="sr-only") }}
                             {{ subscribe_form.email(class="form-control", placeholder=subscribe_form.email.label.text) }}
-                            <button type="submit" class="btn btn-warning ladda-button" data-style="expand-right" data-size="l"><span class="ladda-label">{{ _('I\'m in') }}</span></button>
+                            <button type="submit" class="btn btn-warning btn-lg ladda-button" data-style="expand-right" data-size="l"><span class="ladda-label">{{ _('Go') }}</span></button>
                             <div class="form-feedback-wrap">
                                 <div class="form-feedback"></div>
                             </div>
@@ -58,13 +57,15 @@
                         
                     </form>
                     <div class="privacy-policy">
-                        <small>By submitting above you agree to our <a href="{{ url_for('privacy-policy') }}">privacy policy</a>.</small>
+                        <small>We'll never spam you. Unsubscribe anytime.</small>
                     </div>
                   </div>
                 </div>
 
                 <div class="project-video">
-                    <div id="ytplayer" style="margin: 0px auto;width:100%;"></div>
+                    <div id="ytplayer" style="margin: 0px auto;width:100%;">
+                        You need Flash player 8+ and JavaScript enabled to view this video.
+                    </div>
                     {% for video in project.videos %}
                         <script>
                           // Load the IFrame Player API code asynchronously.
@@ -72,18 +73,24 @@
                           tag.src = "https://www.youtube.com/player_api";
                           var firstScriptTag = document.getElementsByTagName('script')[0];
                           firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-                          // Replace the 'ytplayer' element with an <iframe> and
-                          // YouTube player after the API code downloads.
+                          // https://developers.google.com/youtube/iframe_api_reference#Loading_a_Video_Player
+                          // https://developers.google.com/youtube/player_parameters?playerVersion=HTML5
                           var player;
                           function onYouTubePlayerAPIReady() {
                             player = new YT.Player('ytplayer', {
                               height: '476',
                               width: '847',
-                              videoId: '{{video.host_guid}}'
+                              videoId: '{{video.host_guid}}',
+                              playerVars: { 
+                                  autohide: 1,
+                                  color: 'white',
+                                  controls: 2,
+                                  enablejsapi: 1,
+                                  rel: 0 
+                              }
                             });
 
-                            $(".blog-img").fitVids();
+                            $(".project-video").fitVids();
                           }
                         </script>
                     {% endfor %}
@@ -109,23 +116,27 @@
                 <!-- End Next Projects -->
 
                 <div class="well footer-form text-center">
-                    <h2>Want more stuff like this?</h2>
+                    <h2>Get a FREE DIY Mini Course</h2>
 
-                    <p class="large"><br/>
-                    Try our daily email, The Upworthiest, and see for yourself!</p>
+                    <p class="large">
+                    Get 10 absolutely epic and amazing DIY projects delivered to your inbox.<br/>
+I promise it'll change your life. 100% FREE!
+</p>
 
                     <form class="form-inline registration-form" role="form">
                         {{ subscribe_form.csrf_token }}
                         <div class="form-group">
                             {{ subscribe_form.email.label(class="sr-only") }}
                             {{ subscribe_form.email(class="form-control", placeholder=subscribe_form.email.label.text) }}
-                            <button type="submit" class="btn btn-warning ladda-button" data-style="expand-right" data-size="l"><span class="ladda-label">{{ _('I\'m in') }}</span></button>
+                            <button type="submit" class="btn btn-lg btn-warning ladda-button" data-style="expand-right" data-size="l"><span class="ladda-label">{{ _('Go') }}</span></button>
                             <div class="form-feedback"></div>
                         </div>
                         
                     </form>
 
-                    <div class="privacy-policy"><small>By submitting above you agree to our <a href="{{ url_for('privacy-policy') }}">privacy policy</a>.</small></div>
+                    <div class="privacy-policy">
+                        <small>We'll never spam you. Unsubscribe anytime.</small>
+                    </div>
                 </div>
 
             <!-- Comment Form -->

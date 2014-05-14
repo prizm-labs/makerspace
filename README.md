@@ -122,6 +122,7 @@ db.session.commit()
 # dump local DB
 # http://www.postgresql.org/docs/9.1/static/backup-dump.html
 
+# http://stackoverflow.com/questions/3274397/reload-profile-in-bash-shell-script-in-unix
 source ~/.profile
 source ~/.bashrc
 
@@ -173,16 +174,19 @@ sudo -u postgres createuser --superuser admin
 sudo -u postgres psql
 =# \password admin
 
+apt-get install -y libxml2-dev libxslt1-dev
+apt-get install -y nginx uwsgi uwsgi-plugin-python
 
 sudo apt-get install python-dev
 sudo apt-get install python-psycopg2
 sudo apt-get install libpq-devpip 
 
-
+psql
 # create 'makefoo' DB and install hstore extension
 CREATE USER admin WITH PASSWORD 'password';
 CREATE DATABASE makefoo;
 GRANT ALL PRIVILEGES ON DATABASE makefoo TO admin;
+grant all on all tables in schema public to admin;
 \q
 
 # Install HSTORE extension
@@ -202,7 +206,7 @@ pip install -r requirements.txt
 
 
 # How to run app locally
-
+source venv/bin/activate 
 python wsgi.py
 
 gunicorn wsgi:app -b 0.0.0.0:7777 -w 3
