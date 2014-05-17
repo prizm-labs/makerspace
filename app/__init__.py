@@ -62,8 +62,11 @@ babel = Babel(app)
 # https://typekit.com/fonts/museo-sans
 
 assets = Environment(app)
-sass = Bundle('sass/global.sass','sass/project.sass', filters='sass', output='gen/sass.css')
+sass = Bundle('sass/master.sass', filters='sass', output='gen/sass.css', depends='sass/*.sass')
 assets.register('sass_all',sass)
+
+# http://stackoverflow.com/questions/16826233/why-wont-python-webassets-pyscss-regenerate-css-from-scss-files-in-debug-mode
+# https://github.com/miracle2k/webassets/issues/231
 
 mail = Mail(app)
 

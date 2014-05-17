@@ -1,0 +1,80 @@
+{% extends '_base.html' %}
+
+{% set page_title = "Subscribe" %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='plugins/ladda/ladda-themeless.min.css') }}">
+{% endblock %}
+
+{% block main_content %}
+<!--=== Content Part ===-->
+<div class="container standalone page-subscribe">
+  <div class="row-fluid">
+    <div class="col-md-12 text-center jumbo">
+      <h1>{{title}}</h1>
+      <p class="lead">{{subtitle}}</p>
+    </div>
+  </div>
+	<div class="row-fluid">
+    <div class="col-md-5 col-md-offset-1">
+      <img src="/img/pages/grant_solo.jpg" width="100%"/>
+    </div>
+    <div class="col-md-5">
+        <div class="well">
+            <h3>{{form_text}}</h3>
+            <p>{{form_sub_text}}</p>
+
+            <div class="accent-form-fields">                                                 
+                    <form class="subscribe-form" role="form">
+                        {{ form.csrf_token }}
+                          <div class="form-group">
+                            {{ form.name.label }} {% if form.name.flags.required %}<span class="color-red">*</span>{% endif %}
+                                {{ form.name(class="form-control") }}
+                        </div>
+                        <div class="form-group">
+                            {{ form.email.label }} {% if form.email.flags.required %}<span class="color-red">*</span>{% endif %}
+                                {{ form.email(class="form-control") }}
+                        </div>
+                        <div class="form-group">
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-warning btn-lg">{{call_to_action}}</button>
+                            </div>
+                            <div class="text-center form-feedback"></div>
+                        </div>
+                    </form>
+            </div>
+          </div>
+       </div>
+    </div><!--/row-fluid-->
+</div><!--/container-->
+<!--=== End Content Part ===-->
+{% endblock %}
+
+{% block js %}
+<!-- JS Page Level -->
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/ladda/spin.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/ladda/ladda.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/form.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        App.init();
+
+        var config = {
+            forms: [
+                { 
+                  selector: '.subscribe-form', 
+                  feedback: '.form-feedback',
+                  submit: '/new_subscription',
+                  fields: ['email','name','csrf_token']
+                }
+            ]
+        };
+
+        // project init
+        var project = new Project(config);
+        project.bindForms();
+    });
+</script>
+{% endblock %}

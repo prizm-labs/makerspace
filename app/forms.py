@@ -26,6 +26,7 @@ class SubscribeForm(Form):
     """
     Email collector
     """
+    name = TextField('Name', validators=[DataRequired()])
     email = TextField('Email', validators=[DataRequired()])
 
 

@@ -8,10 +8,15 @@ body
     position: relative
 
 
+.well
+    border: 3px solid $theme-color-secondary
+
 .navbar-default
     box-shadow: none
     -webkit-box-shadow: none
     border-bottom: 1px solid #bbb 
+    background: $theme-color-secondary
+
 
 .navbar-header
 
@@ -32,13 +37,13 @@ body
 
 .navbar-nav>li
     @media (min-width: 768px)
-    padding-top: 16px
+    text-transform: uppercase
 
-    .h4 
-        margin: 0
-
-    a:hover 
-        color: $theme-color-primary !important
+    a
+        color: $theme-font-light !important
+        
+        &:hover 
+            color: $theme-color-primary !important
 
     .subscribe-btn
         margin-left: 14px
@@ -103,6 +108,8 @@ body
     border-bottom: 1px dotted #b3bdc2
 
 .footer .copyright
+    color: $theme-font-secondary
+    margin-top: 20px
     border: none
     background: transparent
 

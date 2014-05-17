@@ -163,6 +163,24 @@ def email_register():
 
     return jsonify(response)
 
+@app.route('/new_subscription', methods=['POST'])
+def new_subscription():
+    print request.query_string
+    print request.args
+    name = request.args.get('name')
+    email = request.args.get('email')
+
+    interface = AWeberInterface()
+    _list = interface.find_list()
+    subscriber = {
+        'name': name,
+        'email': email
+    }
+    response = interface.add_subscriber(subscriber, _list)
+    print response
+
+    return jsonify(response)
+
 @app.route('/contact_message', methods=['POST'])
 def contact_email():
 
@@ -360,6 +378,26 @@ def page_contact():
             ]
         }
     return render_template('_contact.html', **context_dict)
+
+@app.route('/subscribe')
+def page_subscribe():
+
+    sub_text = '100% FREE. I promise never to spam you.'
+
+    context_dict = {
+            'form': forms.SubscribeForm(),
+            'title':'My best content on DIY, lifehacks, and pranks',
+            'subtitle':'Lifehack tips & videos delivered to you for free every week.',
+            'form_text': 'This content will be life-changing. I promise.',
+            'form_sub_text': sub_text.format(), 
+            'call_to_action':'Get more videos & tips!'
+            # http://stackoverflow.com/questions/10678229/selectively-escape-percent-in-python
+            #'html': u"<h1>Contact the King</h1><p>I get tons of emails every day. While I can’t respond to every email, I do read all of them -- so please email away.</p><p>My email is grant at thekingofrandom dot com</p>"
+            }
+
+
+    return render_template('_subscribe.html', **context_dict)
+
 
 '''
 @app.route('/page/<slug>')
