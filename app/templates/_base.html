@@ -43,6 +43,33 @@
     {%- block js_lt_ie9 %}{% endblock %}
     <![endif]-->
     {% block head_content %}{% endblock %}
+
+    <!-- AddThis Smart Layers BEGIN -->
+<!-- Go to http://www.addthis.com/get/smart-layers to customize -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53771f384fac2e18"></script>
+<script type="text/javascript">
+    // customization API 
+    // http://support.addthis.com/customer/portal/articles/1200473-smart-layers-api#follow
+  addthis.layers({
+    'theme' : 'transparent',
+    'share' : {
+      'position' : 'left',
+      'numPreferredServices' : 5
+    }, 
+    'follow' : {
+      'services' : [
+        {'service': 'facebook', 'id': 'thekingofrandomfanpage'},
+        {'service': 'google_follow', 'id': 'Thekingofrandom'},
+        {'service': 'youtube', 'id': '01032010814'},
+        {'service': 'pinterest', 'id': 'random-weekend-projects'}
+      ],
+      'offset': {'top':'76px'},
+      'theme':'light'
+    },  
+    'whatsnext' : {}  
+  });
+</script>
+<!-- AddThis Smart Layers END -->
 </head>
 
 {#- Without invoking these variables here, included files aren't able to access them. #}
