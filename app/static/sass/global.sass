@@ -7,6 +7,14 @@ body
     padding-top: 80px
     position: relative
 
+a
+    color: #585f69
+
+a:hover
+    text-decoration: none
+    color: $theme-color-primary
+
+a:active
 
 .well
     border: 3px solid $theme-color-secondary
@@ -16,6 +24,12 @@ body
     -webkit-box-shadow: none
     border-bottom: 1px solid #bbb 
     background: $theme-color-secondary
+
+
+
+.header
+    border: none
+
 
 
 .navbar-header
@@ -67,6 +81,9 @@ body
         border-top: 1px solid $theme-border-neutral
         border-left: 1px solid $theme-border-neutral
 
+.project-description
+    margin: 14px auto 0 auto
+
 
 // POPOVERS
 .popover 
@@ -112,17 +129,3 @@ body
     margin-top: 20px
     border: none
     background: transparent
-
-
-a
-    color: #585f69
-
-a:hover
-    text-decoration: none
-    color: $theme-color-primary
-
-a:active
-
-// pages
-.standalone img
-    width: 100%

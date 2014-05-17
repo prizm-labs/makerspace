@@ -4,20 +4,20 @@
 @import url("//fonts.googleapis.com/css?family=Roboto:400,700");
 @import url("//fonts.googleapis.com/css?family=News+Cycle:400,700");
 @import url("//fonts.googleapis.com/css?family=Roboto:400,700");
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\0000317}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\0000319}}
 body {
   font-family: "Roboto", "Helvetica", sans-serif;
   color: #444444;
   background: #f2f2f2;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\0000323}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\0000325}}
 .btn {
   text-transform: uppercase;
   font-weight: 700;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\0000328}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\0000330}}
 h1,
 h2,
 h3,
@@ -35,7 +35,7 @@ h6,
   line-height: 1.1;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\0000344}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\0000346}}
 h1 small,
 h2 small,
 h3 small,
@@ -65,7 +65,7 @@ h6 .small,
   color: #999999;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\0000372}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\0000374}}
 h1,
 .h1,
 h2,
@@ -76,7 +76,7 @@ h3,
   margin-bottom: 10.5px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\0000381}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\0000383}}
 h1 small,
 .h1 small,
 h2 small,
@@ -92,7 +92,7 @@ h3 .small,
   font-size: 65%;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\0000395}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\0000397}}
 h4,
 .h4,
 h5,
@@ -103,7 +103,7 @@ h6,
   margin-bottom: 10.5px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\00003104}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\00003106}}
 h4 small,
 .h4 small,
 h5 small,
@@ -119,37 +119,37 @@ h6 .small,
   font-size: 75%;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\00003118}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\00003120}}
 h1,
 .h1 {
   font-size: 39px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\00003122}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\00003124}}
 h2,
 .h2 {
   font-size: 32px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\00003126}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\00003128}}
 h3,
 .h3 {
   font-size: 26px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\00003130}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\00003132}}
 h4,
 .h4 {
   font-size: 19px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\00003134}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\00003136}}
 h5,
 .h5 {
   font-size: 15px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\00003138}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\00003140}}
 h6,
 .h6 {
   font-size: 13px;
@@ -161,12 +161,23 @@ body {
   position: relative;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/global\.sass}line{font-family:\0000311}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/global\.sass}line{font-family:\0000310}}
+a {
+  color: #585f69;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/global\.sass}line{font-family:\0000313}}
+a:hover {
+  text-decoration: none;
+  color: #e38d13;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/global\.sass}line{font-family:\0000319}}
 .well {
   border: 3px solid #375a7f;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/global\.sass}line{font-family:\0000314}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/global\.sass}line{font-family:\0000322}}
 .navbar-default {
   box-shadow: none;
   -webkit-box-shadow: none;
@@ -174,63 +185,68 @@ body {
   background: #375a7f;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/global\.sass}line{font-family:\0000324}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/global\.sass}line{font-family:\0000330}}
+.header {
+  border: none;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/global\.sass}line{font-family:\0000338}}
 .navbar-brand {
   height: auto;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/global\.sass}line{font-family:\0000327}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/global\.sass}line{font-family:\0000341}}
 .navbar-brand.center {
   float: none;
 }
 @media screen and (max-width: 768px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/global\.sass}line{font-family:\0000331}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/global\.sass}line{font-family:\0000345}}
   .navbar-brand.center #logo-header {
     width: 300px;
   }
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/global\.sass}line{font-family:\0000334}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/global\.sass}line{font-family:\0000348}}
 .navbar-brand.center #logo-header {
   margin: 10px auto;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/global\.sass}line{font-family:\0000338}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/global\.sass}line{font-family:\0000352}}
 .navbar-nav > li {
   text-transform: uppercase;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/global\.sass}line{font-family:\0000342}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/global\.sass}line{font-family:\0000356}}
 .navbar-nav > li a {
   color: #eeeeee !important;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/global\.sass}line{font-family:\0000345}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/global\.sass}line{font-family:\0000359}}
 .navbar-nav > li a:hover {
   color: #e38d13 !important;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/global\.sass}line{font-family:\0000348}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/global\.sass}line{font-family:\0000362}}
 .navbar-nav > li .subscribe-btn {
   margin-left: 14px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/global\.sass}line{font-family:\0000352}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/global\.sass}line{font-family:\0000366}}
 .project-listing {
   overflow: hidden;
   padding-bottom: 4px;
 }
 @media screen and (min-width: 768px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/global\.sass}line{font-family:\0000352}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/global\.sass}line{font-family:\0000366}}
   .project-listing {
     height: 350px;
     margin-bottom: 30px;
   }
 }
 @media screen and (max-width: 768px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/global\.sass}line{font-family:\0000352}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/global\.sass}line{font-family:\0000366}}
   .project-listing {
     height: 200px;
     margin-bottom: 15px;
   }
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/global\.sass}line{font-family:\0000364}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/global\.sass}line{font-family:\0000378}}
 .project-listing .click-target {
   border-bottom: 4px solid #bdc3c7;
   border-right: 1px solid #bdc3c7;
@@ -238,17 +254,22 @@ body {
   border-left: 1px solid #bdc3c7;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/global\.sass}line{font-family:\0000372}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/global\.sass}line{font-family:\0000384}}
+.project-description {
+  margin: 14px auto 0 auto;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/global\.sass}line{font-family:\0000389}}
 .popover {
   width: 300px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/global\.sass}line{font-family:\0000375}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/global\.sass}line{font-family:\0000392}}
 .popover h3 {
   margin-top: 0;
   margin-bottom: 15px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/global\.sass}line{font-family:\0000379}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/global\.sass}line{font-family:\0000396}}
 .pop-wrap {
   height: 225px;
   overflow: hidden;
@@ -256,7 +277,7 @@ body {
   font-family: "Helvetica", sans-serif;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/global\.sass}line{font-family:\0000387}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/global\.sass}line{font-family:\00003104}}
 .sorting-block ul.sorting-grid {
   padding-top: 15px;
   background-image: linear-gradient(to right, #333333 50%, rgba(255, 255, 255, 0) 0%);
@@ -265,21 +286,21 @@ body {
   background-repeat: repeat-x;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/global\.sass}line{font-family:\0000394}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/global\.sass}line{font-family:\00003111}}
 .footer {
   margin-top: 30px;
   background: transparent;
   font-size: 18px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/global\.sass}line{font-family:\0000399}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/global\.sass}line{font-family:\00003116}}
 .footer .navigation li {
   display: inline-block;
   list-style: none;
   margin: 0 5px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/global\.sass}line{font-family:\00003104}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/global\.sass}line{font-family:\00003121}}
 .footer a, .copyright a {
   color: #585f69;
   font-size: 18px;
@@ -287,7 +308,7 @@ body {
   border-bottom: 1px dotted #b3bdc2;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/global\.sass}line{font-family:\00003110}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/global\.sass}line{font-family:\00003127}}
 .footer .copyright {
   color: #585f69;
   margin-top: 20px;
@@ -295,36 +316,20 @@ body {
   background: transparent;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/global\.sass}line{font-family:\00003117}}
-a {
-  color: #585f69;
-}
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/global\.sass}line{font-family:\00003120}}
-a:hover {
-  text-decoration: none;
-  color: #e38d13;
-}
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/global\.sass}line{font-family:\00003127}}
-.standalone img {
-  width: 100%;
-}
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\0000317}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\0000319}}
 body {
   font-family: "Roboto", "Helvetica", sans-serif;
   color: #444444;
   background: #f2f2f2;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\0000323}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\0000325}}
 .btn {
   text-transform: uppercase;
   font-weight: 700;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\0000328}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\0000330}}
 h1,
 h2,
 h3,
@@ -342,7 +347,7 @@ h6,
   line-height: 1.1;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\0000344}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\0000346}}
 h1 small,
 h2 small,
 h3 small,
@@ -372,7 +377,7 @@ h6 .small,
   color: #999999;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\0000372}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\0000374}}
 h1,
 .h1,
 h2,
@@ -383,7 +388,7 @@ h3,
   margin-bottom: 10.5px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\0000381}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\0000383}}
 h1 small,
 .h1 small,
 h2 small,
@@ -399,7 +404,7 @@ h3 .small,
   font-size: 65%;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\0000395}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\0000397}}
 h4,
 .h4,
 h5,
@@ -410,7 +415,7 @@ h6,
   margin-bottom: 10.5px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\00003104}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\00003106}}
 h4 small,
 .h4 small,
 h5 small,
@@ -426,37 +431,37 @@ h6 .small,
   font-size: 75%;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\00003118}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\00003120}}
 h1,
 .h1 {
   font-size: 39px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\00003122}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\00003124}}
 h2,
 .h2 {
   font-size: 32px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\00003126}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\00003128}}
 h3,
 .h3 {
   font-size: 26px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\00003130}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\00003132}}
 h4,
 .h4 {
   font-size: 19px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\00003134}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\00003136}}
 h5,
 .h5 {
   font-size: 15px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\00003138}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\00003140}}
 h6,
 .h6 {
   font-size: 13px;
@@ -477,21 +482,25 @@ h6,
   margin: 30px auto;
   width: 100%;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/pages\.sass}line{font-family:\0000320}}
+.standalone img {
+  width: 100%;
+}
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\0000317}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\0000319}}
 body {
   font-family: "Roboto", "Helvetica", sans-serif;
   color: #444444;
   background: #f2f2f2;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\0000323}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\0000325}}
 .btn {
   text-transform: uppercase;
   font-weight: 700;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\0000328}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\0000330}}
 h1,
 h2,
 h3,
@@ -509,7 +518,7 @@ h6,
   line-height: 1.1;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\0000344}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\0000346}}
 h1 small,
 h2 small,
 h3 small,
@@ -539,7 +548,7 @@ h6 .small,
   color: #999999;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\0000372}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\0000374}}
 h1,
 .h1,
 h2,
@@ -550,7 +559,7 @@ h3,
   margin-bottom: 10.5px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\0000381}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\0000383}}
 h1 small,
 .h1 small,
 h2 small,
@@ -566,7 +575,7 @@ h3 .small,
   font-size: 65%;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\0000395}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\0000397}}
 h4,
 .h4,
 h5,
@@ -577,7 +586,7 @@ h6,
   margin-bottom: 10.5px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\00003104}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\00003106}}
 h4 small,
 .h4 small,
 h5 small,
@@ -593,43 +602,49 @@ h6 .small,
   font-size: 75%;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\00003118}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\00003120}}
 h1,
 .h1 {
   font-size: 39px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\00003122}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\00003124}}
 h2,
 .h2 {
   font-size: 32px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\00003126}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\00003128}}
 h3,
 .h3 {
   font-size: 26px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\00003130}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\00003132}}
 h4,
 .h4 {
   font-size: 19px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\00003134}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\00003136}}
 h5,
 .h5 {
   font-size: 15px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\00003138}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/theme\.sass}line{font-family:\00003140}}
 h6,
 .h6 {
   font-size: 13px;
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/project\.sass}line{font-family:\000035}}
+.list-group-item {
+  border: none;
+  background: transparent;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/project\.sass}line{font-family:\000039}}
 .sorting-block .sorting-grid li span.sorting-cover {
   padding: 0 19px 19px 19px;
   display: block;
@@ -637,106 +652,124 @@ h6,
   background: #fcfcfc;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/project\.sass}line{font-family:\0000311}}
-.project-description {
-  margin: 14px auto 20px auto;
-}
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/project\.sass}line{font-family:\0000314}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/project\.sass}line{font-family:\0000316}}
 p.large {
-  font-size: 22px;
+  font-size: 20px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/project\.sass}line{font-family:\0000317}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/project\.sass}line{font-family:\0000319}}
 .project h1 {
   color: #111111;
-}
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/project\.sass}line{font-family:\0000320}}
-.footer-form, .collapsible-form {
-  color: #111111;
+  font-size: 46px;
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/project\.sass}line{font-family:\0000323}}
-.panel-default {
-  border: 1px solid #bbbbbb;
-}
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/project\.sass}line{font-family:\0000326}}
-.next-projects {
-  margin: 16px;
-}
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/project\.sass}line{font-family:\0000329}}
-.header {
-  border: none;
-}
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/project\.sass}line{font-family:\0000333}}
 .privacy-policy {
   margin-top: 20px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/project\.sass}line{font-family:\0000337}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/project\.sass}line{font-family:\0000327}}
+.project-summary {
+  margin: 12px auto 24px auto;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/project\.sass}line{font-family:\0000334}}
+.next-projects {
+  margin: 24px 0;
+  padding-bottom: 20px;
+  border: 1px solid #e38d13;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/project\.sass}line{font-family:\0000339}}
+.next-projects h3 {
+  color: rgba(255, 255, 255, 0.81);
+  margin-top: 0;
+  margin-bottom: 20px;
+  background: #e38d13;
+  padding: 12px 0;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/project\.sass}line{font-family:\0000347}}
+.next-projects .next-project img {
+  width: 320px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/project\.sass}line{font-family:\0000352}}
+.collapsible-form, .footer-form, .registration-form {
+  color: #111111;
+  background: #e8e8e8;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/project\.sass}line{font-family:\0000356}}
 .collapsible-form {
   margin-top: 15px;
   margin-bottom: 20px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/project\.sass}line{font-family:\0000360}}
+.collapsible-form h2 {
+  margin-top: 0;
+}
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/project\.sass}line{font-family:\0000342}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/project\.sass}line{font-family:\0000365}}
 .registration-form input[name="email"] {
   width: 300px;
 }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/project\.sass}line{font-family:\0000345}}
-.registration-form button[type="submit"] {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/project\.sass}line{font-family:\0000369}}
+.registration-form.bottom-form button[type="submit"] {
+  margin-top: 14px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/project\.sass}line{font-family:\0000373}}
+.registration-form.top-form button[type="submit"] {
   margin-right: 10px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/project\.sass}line{font-family:\0000348}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/project\.sass}line{font-family:\0000376}}
 .panel-body.ui-accordion-content {
   height: auto !important;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/project\.sass}line{font-family:\0000352}}
-.next-project img {
-  width: 320px;
-}
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/project\.sass}line{font-family:\0000356}}
-.collapsible-form .ui-widget-content, .well.footer-form {
-  border: 1px solid #ff6a0c;
-}
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/project\.sass}line{font-family:\0000360}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/project\.sass}line{font-family:\0000384}}
 .form-inline .form-group {
   margin-top: 20px;
 }
 
 @media screen and (max-width: 990px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/project\.sass}line{font-family:\0000364}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/project\.sass}line{font-family:\0000388}}
   .sidebar-projects {
     text-align: center;
   }
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/project\.sass}line{font-family:\0000369}}
-.sidebar-projects h3, .next-projects h3, .sidebar-project h2 {
-  margin-top: 0;
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/project\.sass}line{font-family:\0000394}}
+.sidebar-projects h2 {
+  padding: 0 15px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/project\.sass}line{font-family:\0000373}}
-.sidebar-project img {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/project\.sass}line{font-family:\0000398}}
+.sidebar-project {
   margin-bottom: 10px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/project\.sass}line{font-family:\00003101}}
+.sidebar-project h3 {
+  margin-top: 0;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/project\.sass}line{font-family:\00003103}}
+.sidebar-project img {
+  margin-bottom: 6px;
+}
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/project\.sass}line{font-family:\0000378}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/project\.sass}line{font-family:\00003106}}
+.panel, .panel-default {
+  border: none;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/project\.sass}line{font-family:\00003112}}
 .project-tags {
   padding-left: 10px;
 }
 
 /*Blog Content Tags */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/project\.sass}line{font-family:\0000383}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/project\.sass}line{font-family:\00003117}}
 .project-tags li {
   display: inline;
   font-size: 12px;
@@ -747,16 +780,16 @@ p.large {
   background: #f4f4f4;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/project\.sass}line{font-family:\0000394}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/project\.sass}line{font-family:\00003128}}
 .project-tags a .h5 {
   padding-left: 4px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/project\.sass}line{font-family:\0000397}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/project\.sass}line{font-family:\00003131}}
 .project-tags a:hover .h5 {
   color: #e38d13;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/project\.sass}line{font-family:\00003102}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dodeca\/makerspace\/app\/static\/sass\/project\.sass}line{font-family:\00003136}}
 .form-feedback-wrap {
   display: inline-block;
 }

@@ -2,59 +2,83 @@
 @import 'theme.sass'
 
 
+.list-group-item
+    border: none
+    background: transparent
+
 .sorting-block .sorting-grid li span.sorting-cover
     padding: 0 19px 19px 19px
     display: block
     margin-top: 0
     background: $theme-bg-accent
 
-.project-description
-    margin: 14px auto 20px auto
 
 p.large
-    font-size: 22px
+    font-size: 20px
 
 .project h1
     color: $theme-font-accent
-
-.footer-form, .collapsible-form
-    color: $theme-font-accent
-
-.panel-default
-    border: 1px solid #bbb 
-
-.next-projects
-    margin: 16px
-
-.header
-    border: none
-
+    font-size: 46px
 
 .privacy-policy 
     margin-top: 20px
 
 
+.project-summary
+    margin: 12px auto 24px auto
+
+
+.panel-default
+
+
+.next-projects
+    margin: 24px 0
+    padding-bottom: 20px
+    border: 1px solid $theme-color-primary
+
+    h3
+        color: $theme-font-transparent
+        margin-top: 0
+        margin-bottom: 20px
+        background: $theme-color-primary
+        padding: 12px 0
+
+    .next-project
+        img
+            width: 320px
+
+
+
+.collapsible-form, .footer-form, .registration-form
+    color: $theme-font-accent
+    background: $theme-bg-well
+
 .collapsible-form 
     margin-top: 15px
     margin-bottom: 20px
 
+    h2
+        margin-top: 0
 
-.registration-form input[name="email"]
-    width: 300px
 
-.registration-form button[type="submit"]
-    margin-right: 10px
+.registration-form
+    input[name="email"]
+        width: 300px
+
+    &.bottom-form
+        button[type="submit"]
+            margin-top: 14px
+
+    &.top-form
+        button[type="submit"]
+            margin-right: 10px
 
 .panel-body.ui-accordion-content 
     height: auto !important
 
 
-.next-project img
-    width: 320px
-
-
 .collapsible-form .ui-widget-content, .well.footer-form
-    border: 1px solid #ff6a0c
+    //border: 1px solid #ff6a0c
 
 
 .form-inline .form-group
@@ -66,13 +90,23 @@ p.large
         text-align: center
 
 
-.sidebar-projects h3, .next-projects h3, .sidebar-project h2
-    margin-top: 0
+.sidebar-projects
+    h2 
+        padding: 0 15px
 
 
-.sidebar-project img
+.sidebar-project
     margin-bottom: 10px
 
+    h3
+        margin-top: 0
+    img
+        margin-bottom: 6px
+
+.panel, .panel-default
+    border: none
+    box-shadow: none
+    -webkit-box-shadow: none
 
 
 .project-tags

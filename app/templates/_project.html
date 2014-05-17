@@ -15,12 +15,12 @@
 
 {% block main_content %}
 <!--=== Content Part ===-->
-<div class="container">
-	<div class="row blog-page blog-item stickem-container">
+<div class="container project">
+	<div class="row blog-page blog-item">
         <!-- Left Sidebar -->
-    	<div class="col-md-8 md-margin-bottom-60">
+    	<div class="col-md-8">
             <!--Blog Post-->
-            <div class="project margin-bottom-40">
+            <div class="project row">
                 <h1>{{ project.title }}</h1>
 
                 <div class="project-tags">
@@ -32,23 +32,22 @@
                     </ul>
                 </div>
                 
-                <div class="project-description">
+                <div class="project-summary">
                 <p class="large">
                 {{ project.description|safe }}
                 </p>
             </div>
 
-                <div id="project-top-form" class="collapsible-form">
-                  <button type="button" class="btn btn-warning btn-lg">{{ _('Subscribe to King of Random') }}</button>
-                  <div class="panel-body">
+                <div class="collapsible-form well">
+                  <h2>{{ _('Subscribe to King of Random') }}</h2>
                     <p class="large">
                         Get a FREE DIY Mini Course that will change your life.
                     </p>
-                    <form class="form-inline registration-form" role="form">
+                    <form class="form-inline top-form registration-form" role="form">
                         {{ subscribe_form.csrf_token }}
                         <div class="form-group">
                             {{ subscribe_form.email.label(class="sr-only") }}
-                            {{ subscribe_form.email(class="form-control", placeholder=subscribe_form.email.label.text) }}
+                            {{ subscribe_form.email(class="form-control input-lg", placeholder=subscribe_form.email.label.text) }}
                             <button type="submit" class="btn btn-warning btn-lg ladda-button" data-style="expand-right" data-size="l"><span class="ladda-label">{{ _('Go') }}</span></button>
                             <div class="form-feedback-wrap">
                                 <div class="form-feedback"></div>
@@ -59,7 +58,6 @@
                     <div class="privacy-policy">
                         <small>We'll never spam you. Unsubscribe anytime.</small>
                     </div>
-                  </div>
                 </div>
 
                 <div class="project-video">
@@ -98,24 +96,25 @@
                 
 
             </div>
-            <!--End Blog Post-->
-
+            <!--End Project-->
                 <!-- Next Projects -->
-                <div class="panel panel-default next-projects text-center">
-                  <div class="panel-body">
-                    <h3>Your Next Project</h3>
+                <div class="next-projects text-center row">
+                    <h3>Your Next Awesome Project</h3>
 
                     <a href="/project/{{next_project.slug}}">
-                    <div class="next-project">
-                        <h2>{{next_project.title}}</h2>
-                        <img src="http://img.youtube.com/vi/{{next_project.videos[0].host_guid}}/mqdefault.jpg" alt="{{next_project.title}}"/>
-                    </div>                
+                        <div class="row-fluid next-project">
+                            <div class="col-md-6">
+                                <img src="http://img.youtube.com/vi/{{next_project.videos[0].host_guid}}/mqdefault.jpg" alt="{{next_project.title}}"/>
+                            </div>
+                            <div class="col-md-6">
+                                <h2>{{next_project.title}}</h2>
+                            </div>
+                        </div>           
                     </a>
-                  </div>
                 </div>
                 <!-- End Next Projects -->
 
-                <div class="well footer-form text-center">
+                <div class="well footer-form text-center row">
                     <h2>Get a FREE DIY Mini Course</h2>
 
                     <p class="large">
@@ -123,12 +122,13 @@
 I promise it'll change your life. 100% FREE!
 </p>
 
-                    <form class="form-inline registration-form" role="form">
+                    <form class="form-inline bottom-form registration-form" role="form">
                         {{ subscribe_form.csrf_token }}
                         <div class="form-group">
                             {{ subscribe_form.email.label(class="sr-only") }}
-                            {{ subscribe_form.email(class="form-control", placeholder=subscribe_form.email.label.text) }}
-                            <button type="submit" class="btn btn-lg btn-warning ladda-button" data-style="expand-right" data-size="l"><span class="ladda-label">{{ _('Go') }}</span></button>
+                            {{ subscribe_form.email(class="form-control input-lg", placeholder=subscribe_form.email.label.text) }}
+                            <br/>
+                            <button type="submit" class="btn btn-lg btn-warning ladda-button" data-style="expand-right" data-size="l"><span class="ladda-label">{{ _('Send my free course!') }}</span></button>
                             <div class="form-feedback"></div>
                         </div>
                         
@@ -167,25 +167,19 @@ I promise it'll change your life. 100% FREE!
         <!-- Right Sidebar -->
         <div class="col-md-4 magazine-page">
 
-            <div class="sidebar-projects">
-                <div class="panel panel-default" id="fixed-sidebar">
-                    <div class="panel-body"> 
-                        <h3>Recommended Projects</h3>
-                    </div>
+            <div class="sidebar-projects" id="fixed-sidebar">
+                  <h2>Best Projects</h2>
                   <!-- List group -->
                   <ul class="list-group">
                     {% for project in suggested_projects %}
                     <li class="list-group-item sidebar-project">
                         <a href="/project/{{project.slug}}">
-                            <a href="/project/{{project.slug}}"><h2>{{project.title}}</h2></a>
                             <img style="" src="http://img.youtube.com/vi/{{project.videos[0].host_guid}}/mqdefault.jpg" alt="{{project.title}}"/>
+                            <h3>{{project.title}}</h3>
                         </a>
                     </li>
                     {% endfor %}
-
                   </ul>
-                </div>
-                
             </div>
 
         </div>
