@@ -68,11 +68,15 @@ a:active
     padding-bottom: 4px
 
     @media screen and (min-width: $break-small)
-        height: 350px
+        //height: 350px
+        // masonry
+        width: 33%
         margin-bottom: 30px
 
     @media screen and (max-width: $break-small)
-        height: 200px
+        //height: 200px
+        // masonry
+        width: 100%
         margin-bottom: 15px
 
     .click-target
@@ -80,6 +84,10 @@ a:active
         border-right: 1px solid $theme-border-neutral
         border-top: 1px solid $theme-border-neutral
         border-left: 1px solid $theme-border-neutral
+        background: #ebebeb
+
+        &:hover
+            background: #ffffff
 
 .project-description
     margin: 14px auto 0 auto

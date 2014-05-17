@@ -13,11 +13,10 @@
 ## http://jinja.pocoo.org/docs/templates/#macros
 
 % macro project_bucket(title, class, projects)
-    <h1>{{title}}</h1>
-    <ul class="row sorting-grid">
+    <div class="row sorting-grid" id="all-projects">
         {% for project in projects %}
-        <li class="col-md-4 col-sm-6 col-xs-12 mix{{class}} project-listing" data-cat="1">
-            <a href="#" data-container="body" data-toggle="popover" data-description="{{ project.description }}" rel="popover" data-clickthru="/project/{{ project.slug }}">
+        <div class="col-md-4 col-sm-6 col-xs-12 mix{{class}} project-listing" data-cat="1">
+            <a href="/project/{{ project.slug }}" data-container="body" data-toggle="popover" data-description="{{ project.description }}" rel="popover" data-clickthru="/project/{{ project.slug }}">
             <div class="click-target">
                 <img style="width:100%" src="http://img.youtube.com/vi/{{project.videos[0].host_guid}}/mqdefault.jpg" alt="{{project.title}}"/>
                 <div class="project-description">
@@ -27,7 +26,7 @@
                 </div>
             </div>
             </a>
-        </li>
+        </div>
         {% endfor %}
     </ul>
 % endmacro
@@ -39,11 +38,11 @@
 
     <!-- Portfolio Sorting Blocks -->
     <div class="sorting-block">
-
+        <!--
         {{ project_bucket('Featured','featured',featured) }}
         {{ project_bucket('Latest','latest',latest) }}
         {{ project_bucket('Popular','popular',popular) }}
-
+        -->
         {{ project_bucket('All','all',all) }}
 
         <div class="clearfix"></div>
@@ -59,8 +58,20 @@
 <!-- JS Page Level -->
 <script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/pages/portfolio.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/masonry.pkgd.min.js') }}"></script>
 <script type="text/javascript">
+
+
     jQuery(document).ready(function() {
+
+        var container = document.querySelector('#all-projects');
+        var msnry = new Masonry( container, {
+          // options
+          //columnWidth: 348,
+          itemSelector: '.project-listing'
+        });
+
+
         App.init();
         Portfolio.init();
 
