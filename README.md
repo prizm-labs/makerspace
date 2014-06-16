@@ -204,6 +204,9 @@ source venv/bin/activate
 pip install -r requirements.txt
 
 
+cd /var/www/makerspace
+source venv/bin/activate 
+
 
 # How to run app locally
 source venv/bin/activate 
@@ -211,7 +214,10 @@ python wsgi.py
 
 gunicorn wsgi:app -b 0.0.0.0:7777 -w 3
 
+# Production Server
 
+ssh root@107.170.146.204
+rzpmnoaogmoj
 
 
 8ae1ac34f82c2f62bba6b98ed668c67e
