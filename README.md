@@ -128,7 +128,10 @@ db.session.commit()
 source ~/.profile
 source ~/.bashrc
 
-pg_dump -h 127.0.0.1 makefoo > dump.txt --no-owner --no-privileges
+pg_dump -h 127.0.0.1 makefoo > dump.sql --no-owner --no-privileges
+pg_dump -h 127.0.0.1 -Ft makefoo > dump.tar --no-owner --no-priviles
+
+pg_restore dump.tar -d makefoo -Ft
 
 
 https://github.com/jeffutter/dokku-postgresql-plugin
