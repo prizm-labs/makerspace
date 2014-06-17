@@ -19,11 +19,11 @@ db = SQLAlchemy(app)
 root_dir = '/Users/dodeca/makerspace/db/'
 
 def create_project(columns):
-  row = models.Project(slug=columns[0],title=columns[1],description=columns[2],metas=[models.Meta(data={'page_views': '0'})])
+  row = models.Project(id=columns[0],created_on=columns[1],slug=columns[2],title=columns[3],description=columns[4],full_description=columns[5],metas=[models.Meta(data={'page_views': '0'})])
   return row
 
 def create_video(columns):
-  row = models.Video(project_id=columns[0],host_guid=columns[1],name=columns[2],path=columns[3])
+  row = models.Video(project_id=columns[0],posted_on=columns[1],host_guid=columns[2],name=columns[3],path=columns[4])
   return row
 
 def create_tag(columns):

@@ -115,6 +115,7 @@ class Project(HasMeta,Base):
 
   title = Column(String(160), unique=True)
   description = Column(Text)
+  full_description = Column(Text)
   maker_id = Column(Integer, ForeignKey('maker.id'))
   slug = Column(String(80), unique=True)
   #difficulty = Column(Integer)
@@ -166,12 +167,14 @@ class Tag(HasMeta,Base):
 
 class Video(HasMeta,Base):
   id = Column(Integer, primary_key=True)
-  #hosted on youtube or wistia
+
+  posted_on = Column(DateTime, default=datetime.datetime.now)
   project_id = Column(Integer, ForeignKey('project.id'))
-  name = Column(String(80), unique=True)
+  name = Column(String(140), unique=True)
   host_guid = Column(String(80), unique=True) #i.e. Youtube "NVedGeVPc30"
   path = Column(String(80), unique=True)
   #thumbnail_path = Column(String(512))
+  #hosted on youtube or wistia
   #host_id = 
 
   chapters = relationship('Chapter', backref='project', lazy='dynamic')

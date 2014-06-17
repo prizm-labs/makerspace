@@ -317,13 +317,27 @@ def show_project(slug):
 
         #TODO do not show 'featured' tag
 
+        sub_text = '100% FREE. I promise never to spam you.'
+
         context_dict = {
             'project': project,
             'comment_form': forms.BlogCommentForm(),
             'subscribe_form': forms.SubscribeForm(),
             'suggested_projects': suggested_projects,
-            'next_project': next_project
+            'next_project': next_project,
+
+            #adding from from subscribe page
+            'form': forms.SubscribeForm(),
+            'modal_title':'My best content on DIY, lifehacks, and pranks',
+            'modal_subtitle':'Lifehack tips & videos delivered to you for free every week.',
+            'form_text': 'This content will be life-changing. I promise.',
+            'form_sub_text': sub_text.format(), 
+            'call_to_action':'Get more videos & tips!'
+            # http://stackoverflow.com/questions/10678229/selectively-escape-percent-in-python
+            #'html': u"<h1>Contact the King</h1><p>I get tons of emails every day. While I can’t respond to every email, I do read all of them -- so please email away.</p><p>My email is grant at thekingofrandom dot com</p>"
         }
+
+
 
         # record view count
         # http://docs.sqlalchemy.org/en/rel_0_9/dialects/postgresql.html#sqlalchemy.dialects.postgresql.HSTORE

@@ -99,6 +99,8 @@ Base.metadata.create_all(engine)
 python db_init.py
 python db_seed.py
 
+owner of tables must match user in db_init.py
+http://stackoverflow.com/questions/1348126/modify-owner-on-all-tables-simultaneously-in-postgresql
 
 
 # add default meta to all projects

@@ -14,6 +14,53 @@
 {% endblock %}
 
 {% block main_content %}
+<!-- Modal -->
+<div class="modal fade" id="subscribe-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="row">
+            <div class="col-md-12 text-center jumbo">
+              <h1>{{modal_title}}</h1>
+              <p class="lead">{{modal_subtitle}}</p>
+            </div>
+          </div>
+            <div class="row">
+            <div class="col-md-5 col-md-offset-1">
+              <img src="/img/pages/grant_solo.jpg" width="100%"/>
+            </div>
+            <div class="col-md-5">
+                <div class="well">
+                    <h3>{{form_text}}</h3>
+                    <p>{{form_sub_text}}</p>
+
+                    <div class="accent-form-fields">                                                 
+                            <form class="subscribe-form" role="form">
+                                {{ form.csrf_token }}
+                                  <div class="form-group">
+                                    {{ form.name.label }} {% if form.name.flags.required %}<span class="color-red">*</span>{% endif %}
+                                        {{ form.name(class="form-control") }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form.email.label }} {% if form.email.flags.required %}<span class="color-red">*</span>{% endif %}
+                                        {{ form.email(class="form-control") }}
+                                </div>
+                                <div class="form-group">
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-warning btn-lg">{{call_to_action}}</button>
+                                    </div>
+                                    <div class="text-center form-feedback"></div>
+                                </div>
+                            </form>
+                    </div>
+                  </div>
+               </div>
+            </div><!--/row-fluid-->
+      </div>
+    </div>
+  </div>
+</div>
+
 <!--=== Content Part ===-->
 <div class="container project">
 	<div class="row blog-page blog-item">
@@ -36,6 +83,7 @@
                 <p class="large">
                 {{ project.description|safe }}
                 </p>
+
             </div>
 
                 <div class="collapsible-form well">
@@ -84,11 +132,62 @@
                                   color: 'white',
                                   controls: 2,
                                   enablejsapi: 1,
-                                  rel: 0 
+                                  rel: 0
                               }
                             });
 
+                            //ytplayer = document.getElementById("myytplayer");
+                            player.addEventListener('onStateChange','onPlayerStateChange');
+
+                        
                             $(".project-video").fitVids();
+
+                            startTimer();
+                          }
+
+                          //https://developers.google.com/youtube/js_api_reference
+
+                          function onPlayerStateChange(event) {
+                            console.log('video state changed');
+                            console.log(event);
+                            if (event.data == YT.PlayerState.PLAYING) {
+                                pauseTimer();
+                            } else if (event.data == YT.PlayerState.PAUSED || event.data == YT.PlayerState.ENDED) {
+                                startTimer();
+                            }
+                          }
+
+                          var modal = {
+                            timer: null,
+                            done: false,
+                            time: 5
+                          }
+
+                          function deductTime() {
+                            modal.time-=1;
+                            console.log(modal.time);
+                            if (modal.time<=0) {
+                                destroyTimer();
+                                $('#subscribe-modal').modal('show');
+                            }
+                          }
+
+                          function startTimer(){
+                            if (!modal.done) {
+                                console.log('starting timer');
+                                modal.timer = setInterval(deductTime,1000);
+                            }
+                          }
+
+                          function pauseTimer(){
+                            console.log('pause timer');
+                            clearInterval(modal.timer);
+                          }
+
+                          function destroyTimer(){
+                            console.log('destroy timer');
+                            clearInterval(modal.timer);
+                            modal.done=true;
                           }
                         </script>
                     {% endfor %}
@@ -96,51 +195,62 @@
                 
 
             </div>
-            <!--End Project-->
-                <!-- Next Projects -->
-                <div class="next-projects text-center row">
-                    <h3>Your Next Awesome Project</h3>
 
-                    <a href="/project/{{next_project.slug}}">
-                        <div class="row-fluid next-project">
-                            <div class="col-md-6">
-                                <img src="http://img.youtube.com/vi/{{next_project.videos[0].host_guid}}/mqdefault.jpg" alt="{{next_project.title}}"/>
-                            </div>
-                            <div class="col-md-6">
-                                <h2>{{next_project.title}}</h2>
-                            </div>
-                        </div>           
-                    </a>
+            <div class="full-project-info row">
+                <button type="button" class="btn btn-default" id="toggle-info" data-toggle="collapse" data-target="#full-info">
+                  Show more info
+                </button>
+
+                <div id="full-info" class="collapse in">
+                    <p>
+                    {{ project.full_description|safe }}
+                    </p>
                 </div>
-                <!-- End Next Projects -->
+            </div>
+            <!--End Project-->
+            <!-- Next Projects -->
+            <div class="next-projects text-center row">
+                <h3>Your Next Awesome Project</h3>
 
-                <div class="well footer-form text-center row">
-                    <h2>Get a FREE DIY Mini Course</h2>
+                <a href="/project/{{next_project.slug}}">
+                    <div class="row-fluid next-project">
+                        <div class="col-md-6">
+                            <img src="http://img.youtube.com/vi/{{next_project.videos[0].host_guid}}/mqdefault.jpg" alt="{{next_project.title}}"/>
+                        </div>
+                        <div class="col-md-6">
+                            <h2>{{next_project.title}}</h2>
+                        </div>
+                    </div>           
+                </a>
+            </div>
+            <!-- End Next Projects -->
 
-                    <p class="large">
-                    Get 10 absolutely epic and amazing DIY projects delivered to your inbox.<br/>
+            <div class="well footer-form text-center row">
+                <h2>Get a FREE DIY Mini Course</h2>
+
+                <p class="large">
+                Get 10 absolutely epic and amazing DIY projects delivered to your inbox.<br/>
 I promise it'll change your life. 100% FREE!
 </p>
 
-                    <form class="form-inline bottom-form registration-form" role="form">
-                        {{ subscribe_form.csrf_token }}
-                        <div class="form-group">
-                            {{ subscribe_form.email.label(class="sr-only") }}
-                            {{ subscribe_form.email(class="form-control input-lg", placeholder=subscribe_form.email.label.text) }}
-                            <br/>
-                            <button type="submit" class="btn btn-lg btn-warning ladda-button" data-style="expand-right" data-size="l"><span class="ladda-label">{{ _('Send my free course!') }}</span></button>
-                            <div class="form-feedback"></div>
-                        </div>
-                        
-                    </form>
-
-                    <div class="privacy-policy">
-                        <small>We'll never spam you. Unsubscribe anytime.</small>
+                <form class="form-inline bottom-form registration-form" role="form">
+                    {{ subscribe_form.csrf_token }}
+                    <div class="form-group">
+                        {{ subscribe_form.email.label(class="sr-only") }}
+                        {{ subscribe_form.email(class="form-control input-lg", placeholder=subscribe_form.email.label.text) }}
+                        <br/>
+                        <button type="submit" class="btn btn-lg btn-warning ladda-button" data-style="expand-right" data-size="l"><span class="ladda-label">{{ _('Send my free course!') }}</span></button>
+                        <div class="form-feedback"></div>
                     </div>
+                    
+                </form>
+
+                <div class="privacy-policy">
+                    <small>We'll never spam you. Unsubscribe anytime.</small>
                 </div>
+            </div>
 
             <!-- Comment Form -->
-            
             <div class="post-comment">
                 <h3>{{ _('Leave a Comment') }}</h3>
 
@@ -200,7 +310,27 @@ I promise it'll change your life. 100% FREE!
 <script type="text/javascript" src="{{ url_for('static', filename='js/form.js') }}"></script>
 <script type="text/javascript">
     jQuery(document).ready(function() {
-        
+
+        // modal
+        $('#subscribe-modal').modal({
+            keyboard: true,
+            show: false
+        });
+
+
+        // collapsible info
+        $('#full-info').collapse({
+          toggle: true
+        });
+        $('#full-info').on('hidden.bs.collapse', function () {
+            console.log('hidden');
+            $('#toggle-info').html('Show more info');
+        });
+        $('#full-info').on('shown.bs.collapse', function () {
+            console.log('shown');
+            $('#toggle-info').html('Hide more info');
+        });
+
         App.init();
 
         //Ladda.bind( 'input[type=submit]' );
