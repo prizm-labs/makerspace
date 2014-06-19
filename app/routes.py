@@ -320,6 +320,7 @@ def show_project(slug):
         sub_text = '100% FREE. I promise never to spam you.'
 
         context_dict = {
+            'video': project.videos[0],
             'project': project,
             'comment_form': forms.BlogCommentForm(),
             'subscribe_form': forms.SubscribeForm(),

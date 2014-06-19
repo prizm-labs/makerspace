@@ -112,85 +112,6 @@
                     <div id="ytplayer" style="margin: 0px auto;width:100%;">
                         You need Flash player 8+ and JavaScript enabled to view this video.
                     </div>
-                    {% for video in project.videos %}
-                        <script>
-                          // Load the IFrame Player API code asynchronously.
-                          var tag = document.createElement('script');
-                          tag.src = "https://www.youtube.com/player_api";
-                          var firstScriptTag = document.getElementsByTagName('script')[0];
-                          firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-                          // https://developers.google.com/youtube/iframe_api_reference#Loading_a_Video_Player
-                          // https://developers.google.com/youtube/player_parameters?playerVersion=HTML5
-                          var player;
-                          function onYouTubePlayerAPIReady() {
-                            player = new YT.Player('ytplayer', {
-                              height: '476',
-                              width: '847',
-                              videoId: '{{video.host_guid}}',
-                              playerVars: { 
-                                  autohide: 1,
-                                  color: 'white',
-                                  controls: 2,
-                                  enablejsapi: 1,
-                                  rel: 0
-                              }
-                            });
-
-                            //ytplayer = document.getElementById("myytplayer");
-                            player.addEventListener('onStateChange','onPlayerStateChange');
-
-                        
-                            $(".project-video").fitVids();
-
-                            startTimer();
-                          }
-
-                          //https://developers.google.com/youtube/js_api_reference
-
-                          function onPlayerStateChange(event) {
-                            console.log('video state changed');
-                            console.log(event);
-                            if (event.data == YT.PlayerState.PLAYING) {
-                                pauseTimer();
-                            } else if (event.data == YT.PlayerState.PAUSED || event.data == YT.PlayerState.ENDED) {
-                                startTimer();
-                            }
-                          }
-
-                          var modal = {
-                            timer: null,
-                            done: false,
-                            time: 5
-                          }
-
-                          function deductTime() {
-                            modal.time-=1;
-                            console.log(modal.time);
-                            if (modal.time<=0) {
-                                destroyTimer();
-                                $('#subscribe-modal').modal('show');
-                            }
-                          }
-
-                          function startTimer(){
-                            if (!modal.done) {
-                                console.log('starting timer');
-                                modal.timer = setInterval(deductTime,1000);
-                            }
-                          }
-
-                          function pauseTimer(){
-                            console.log('pause timer');
-                            clearInterval(modal.timer);
-                          }
-
-                          function destroyTimer(){
-                            console.log('destroy timer');
-                            clearInterval(modal.timer);
-                            modal.done=true;
-                          }
-                        </script>
-                    {% endfor %}
                 </div>
                 
 
@@ -281,7 +202,7 @@ I promise it'll change your life. 100% FREE!
                 <div class="ad ad-med-rect">
                     Blank Ad
                 </div>
-                
+
                   <h2>Best Projects</h2>
                   <!-- List group -->
                   <ul class="list-group">
@@ -311,12 +232,125 @@ I promise it'll change your life. 100% FREE!
 <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='plugins/jquery.cookie.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='plugins/jquery.fitvids.js') }}"></script>
+<script>
+    // Load the IFrame Player API code asynchronously.
+                          var tag = document.createElement('script');
+                          tag.src = "https://www.youtube.com/player_api";
+                          var firstScriptTag = document.getElementsByTagName('script')[0];
+                          firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+                          // https://developers.google.com/youtube/iframe_api_reference#Loading_a_Video_Player
+                          // https://developers.google.com/youtube/player_parameters?playerVersion=HTML5
+                          var player;
+    
+    function onYouTubePlayerAPIReady() {
+                            player = new YT.Player('ytplayer', {
+                              height: '476',
+                              width: '847',
+                              videoId: '{{video.host_guid}}',
+                              playerVars: { 
+                                  autohide: 1,
+                                  color: 'white',
+                                  controls: 2,
+                                  enablejsapi: 1,
+                                  rel: 0
+                              }
+                            });
+
+                            //ytplayer = document.getElementById("myytplayer");
+                            player.addEventListener('onStateChange','onPlayerStateChange');
+
+                        
+                            $(".project-video").fitVids();
+
+                            if (checkCookie()) {
+                                startTimer();
+                            }
+                        
+                          }
+    function checkCookie() {
+
+                            var subscribeModalShown = $.cookie('modal-subscribe');
+                            var isSubscribed = $.cookie('user-subscribed');
+
+                            console.log(subscribeModalShown);
+
+                            if (typeof subscribeModalShown=='undefined') {
+
+                                return true;
+                            } else {
+                                // if not subscribed, 24hr limit
+                                var now = Date.now();
+                                var timeLimit = 24*60*60*1000;
+
+                                if (subscribeModalShown+timeLimit<now) {
+                                    $.removeCookie('modal-subscribe');
+
+                                    return true;
+                                } else {
+                                    return false;
+                                }
+
+                            }
+                          } 
+
+                          //https://developers.google.com/youtube/js_api_reference
+
+                          function onPlayerStateChange(event) {
+                            console.log('video state changed');
+                            console.log(event);
+                            if (event.data == YT.PlayerState.PLAYING) {
+                                pauseTimer();
+                            } else if (event.data == YT.PlayerState.PAUSED || event.data == YT.PlayerState.ENDED) {
+                                startTimer();
+                            }
+                          }
+
+                          var modal = {
+                            timer: null,
+                            done: false,
+                            time: 5
+                          }
+
+                          function showModal() {
+
+                            $('#subscribe-modal').modal('show');
+                            $.cookie('modal-subscribe', Date.now(), { expires: 30, path: '/' });
+                          }
+
+                          function deductTime() {
+                            modal.time-=1;
+                            console.log(modal.time);
+                            if (modal.time<=0) {
+                                destroyTimer();
+                                showModal();
+                            }
+                          }
+
+                          function startTimer(){
+                            if (!modal.done) {
+                                console.log('starting timer');
+                                modal.timer = setInterval(deductTime,1000);
+                            }
+                          }
+
+                          function pauseTimer(){
+                            console.log('pause timer');
+                            clearInterval(modal.timer);
+                          }
+
+                          function destroyTimer(){
+                            console.log('destroy timer');
+                            clearInterval(modal.timer);
+                            modal.done=true;
+                          }
+</script>
 <script type="text/javascript" src="{{ url_for('static', filename='plugins/jquery.sticky-sidebar-scroll.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='plugins/ladda/spin.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='plugins/ladda/ladda.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/form.js') }}"></script>
 <script type="text/javascript">
+
     jQuery(document).ready(function() {
 
         // modal
