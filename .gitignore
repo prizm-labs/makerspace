@@ -8,3 +8,6 @@
 /app/static/.webassets*
 /.idea/*
 /tmp/*
+/app/static/img/icons/*
+/app/static/img/thumbs/*
+/app/static/img/pages/*

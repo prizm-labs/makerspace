@@ -3,6 +3,7 @@ Flask==0.10.1
 Flask-Admin==1.0.7
 Flask-Assets==0.9
 Flask-Babel==0.9
+Flask-Compress==1.0.2
 Flask-Login==0.2.10
 Flask-Mail==0.9.0
 Flask-Migrate==1.2.0

@@ -194,6 +194,10 @@ GRANT ALL PRIVILEGES ON DATABASE makefoo TO admin;
 grant all on all tables in schema public to admin;
 \q
 
+#http://www.meeho.net/blog/2010/03/postgresql-error-cannot-drop-the-currently-open-database/
+\connect postgres
+DROP DATABASE makefoo
+
 # Install HSTORE extension
 # http://www.postgresql.org/docs/9.1/static/sql-createextension.html
 psql -h 127.0.0.1 -d makefoo
@@ -217,13 +221,25 @@ source venv/bin/activate
 source venv/bin/activate 
 python wsgi.py
 
+
+#Start server
 gunicorn wsgi:app -b 0.0.0.0:7777 -w 3
+
+#http://stackoverflow.com/questions/7959977/how-to-stop-gunicorn-django-in-virtualenv
+#Stop server
+ps aux | grep gunicorn
+pkill gunicorn
+
+
 
 # Production Server
 
 ssh root@107.170.146.204
 rzpmnoaogmoj
+cd /var/www/makerspace
+source venv/bin/activate 
 
+psql -h 127.0.0.1 -d makefoo -U admin
 
 8ae1ac34f82c2f62bba6b98ed668c67e
 d395e429c4528343b2310a8070ad23bb

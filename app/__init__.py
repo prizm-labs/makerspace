@@ -43,6 +43,9 @@ from flask.ext.sqlalchemy import SQLAlchemy
 
 from flask.ext.mail import Mail
 
+from flask_s3 import FlaskS3
+from flask.ext.compress import Compress
+
 # server robots.txt at root
 # http://www.robotstxt.org/orig.html
 # https://vilimpoc.org/blog/2012/11/21/serving-static-files-from-root-and-not-static-using-flask/
@@ -56,14 +59,15 @@ app.jinja_env.line_statement_prefix = '%'
 db = SQLAlchemy(app)
 babel = Babel(app)
 
-# http://flask-assets.readthedocs.org/en/latest/
-
 # custom fonts: Mueso Sans
 # https://typekit.com/fonts/museo-sans
 
 assets = Environment(app)
 sass = Bundle('sass/master.sass', filters='sass', output='gen/sass.css', depends='sass/*.sass')
 assets.register('sass_all',sass)
+
+s3 = FlaskS3(app)
+compress = Compress(app)
 
 # http://stackoverflow.com/questions/16826233/why-wont-python-webassets-pyscss-regenerate-css-from-scss-files-in-debug-mode
 # https://github.com/miracle2k/webassets/issues/231

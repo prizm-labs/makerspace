@@ -278,6 +278,10 @@ I promise it'll change your life. 100% FREE!
         <div class="col-md-4 magazine-page">
 
             <div class="sidebar-projects" id="fixed-sidebar">
+                <div class="ad ad-med-rect">
+                    Blank Ad
+                </div>
+                
                   <h2>Best Projects</h2>
                   <!-- List group -->
                   <ul class="list-group">
@@ -290,6 +294,9 @@ I promise it'll change your life. 100% FREE!
                     </li>
                     {% endfor %}
                   </ul>
+                <div class="ad ad-med-rect">
+                    Blank Ad
+                </div>
             </div>
 
         </div>
@@ -302,6 +309,7 @@ I promise it'll change your life. 100% FREE!
 {% block js %}
 <!-- JS Page Level -->
 <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='plugins/jquery.cookie.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='plugins/jquery.fitvids.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='plugins/jquery.sticky-sidebar-scroll.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='plugins/ladda/spin.min.js') }}"></script>
@@ -337,7 +345,7 @@ I promise it'll change your life. 100% FREE!
 
         // http://www.skipser.com/p/2/p/sticky-sidebar-div-jquery-plugin.html
         if ($(window).width()>=1200) {
-            $.stickysidebarscroll("#fixed-sidebar",{offset: {top: -100, bottom: 150}});
+            $.stickysidebarscroll("#fixed-sidebar",{offset: {top: -350, bottom: 150}});
         }
 
         $( "#project-top-form" ).accordion({
